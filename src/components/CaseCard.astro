@@ -1,0 +1,230 @@
+---
+interface Props {
+  number: string;
+  role: string;
+  title: string;
+  oneLiner: string;
+  slug: string;
+  liveUrl?: string;
+  index: number;
+}
+const { number, role, title, oneLiner, slug, liveUrl, index } = Astro.props;
+// three distinct atmospheres so the framed "paintings" aren't identical
+const tones = ['tone-gold', 'tone-aqua', 'tone-rose'];
+const tone = tones[index % tones.length];
+---
+
+<article class:list={['case-card', 'reveal', tone]} data-parallax-scope>
+  <a href={`/work/${slug}`} class="case-frame" aria-label={`Read case ${number}: ${title}`}>
+    <div class="case-art" data-parallax="0.1" aria-hidden="true">
+      <span class="case-numeral">{number}</span>
+      <div class="case-haze"></div>
+    </div>
+  </a>
+
+  <div class="case-plaque">
+    <p class="case-label"><span>{number}</span> · {role}</p>
+    <h3 class="case-title">
+      <a href={`/work/${slug}`}>{title}</a>
+    </h3>
+    <p class="case-line">{oneLiner}</p>
+    <div class="case-meta">
+      <a class="case-cta" href={`/work/${slug}`}>Read the case <span aria-hidden="true">→</span></a>
+      {
+        liveUrl && (
+          <a class="case-live" href={liveUrl} target="_blank" rel="noopener">
+            Live product ↗
+          </a>
+        )
+      }
+    </div>
+  </div>
+</article>
+
+<style>
+  .case-card {
+    display: grid;
+    grid-template-columns: minmax(260px, 42%) 1fr;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: center;
+    padding-block: var(--space-l);
+    border-top: 1px solid rgba(200, 162, 75, 0.16);
+  }
+
+  .case-card:first-of-type {
+    border-top: 0;
+  }
+
+  /* the gold frame */
+  .case-frame {
+    position: relative;
+    display: block;
+    aspect-ratio: 4 / 5;
+    padding: clamp(8px, 1.2vw, 14px);
+    border-radius: 6px;
+    background: var(--frame-gold);
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.5),
+      inset 0 0 0 1px rgba(255, 240, 200, 0.35);
+    transition:
+      transform 0.5s var(--ease-out),
+      box-shadow 0.5s var(--ease-out);
+  }
+
+  .case-frame::after {
+    /* inner bevel line, like a real frame lip */
+    content: '';
+    position: absolute;
+    inset: clamp(8px, 1.2vw, 14px);
+    border: 1px solid rgba(20, 16, 8, 0.55);
+    border-radius: 3px;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .case-frame:hover {
+    transform: translateY(-6px) rotate(-0.4deg);
+    box-shadow:
+      0 30px 70px rgba(0, 0, 0, 0.6),
+      0 0 40px rgba(200, 162, 75, 0.2),
+      inset 0 0 0 1px rgba(255, 240, 200, 0.5);
+  }
+
+  .case-art {
+    position: relative;
+    height: 116%;
+    margin-top: -8%;
+    border-radius: 3px;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(160deg, #0b0e13, #182233);
+  }
+
+  .case-haze {
+    position: absolute;
+    inset: 0;
+    opacity: 0.9;
+  }
+
+  .tone-gold .case-haze {
+    background:
+      radial-gradient(60% 50% at 34% 40%, rgba(230, 200, 120, 0.4), transparent 70%),
+      radial-gradient(70% 60% at 74% 74%, rgba(46, 110, 126, 0.35), transparent 72%);
+  }
+  .tone-aqua .case-haze {
+    background:
+      radial-gradient(66% 56% at 60% 30%, rgba(127, 184, 196, 0.42), transparent 70%),
+      radial-gradient(60% 60% at 26% 82%, rgba(200, 162, 75, 0.22), transparent 72%);
+  }
+  .tone-rose .case-haze {
+    background:
+      radial-gradient(60% 50% at 30% 70%, rgba(176, 106, 120, 0.42), transparent 70%),
+      radial-gradient(66% 56% at 76% 26%, rgba(127, 184, 196, 0.3), transparent 72%);
+  }
+
+  .case-numeral {
+    position: relative;
+    z-index: 1;
+    font-family: var(--serif);
+    font-size: clamp(4.5rem, 12vw, 8.5rem);
+    font-style: italic;
+    color: rgba(243, 236, 221, 0.9);
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    mix-blend-mode: overlay;
+  }
+
+  /* the museum placard */
+  .case-plaque {
+    max-width: 46ch;
+  }
+
+  .case-label {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .case-label span {
+    color: var(--gold-lite);
+  }
+
+  .case-title {
+    font-size: var(--step-3);
+    margin-top: 0.4rem;
+    color: var(--parchment);
+    line-height: 1.05;
+  }
+
+  .case-title a {
+    color: inherit;
+    text-decoration: none;
+    background-image: linear-gradient(var(--gold), var(--gold));
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.4s var(--ease-out);
+  }
+
+  .case-title a:hover {
+    background-size: 100% 1px;
+    color: var(--gold-lite);
+  }
+
+  .case-line {
+    margin-top: var(--space-s);
+    color: var(--text-dim);
+    font-size: var(--step-0);
+  }
+
+  .case-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem 1.8rem;
+    align-items: center;
+    margin-top: var(--space-m);
+  }
+
+  .case-cta {
+    font-size: var(--step--1);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-lite);
+    text-decoration: none;
+  }
+
+  .case-cta span {
+    display: inline-block;
+    transition: transform 0.3s var(--ease-out);
+  }
+
+  .case-cta:hover span {
+    transform: translateX(5px);
+  }
+
+  .case-live {
+    font-size: var(--step--1);
+    letter-spacing: 0.05em;
+    color: var(--aqua);
+    text-decoration: none;
+  }
+
+  .case-live:hover {
+    color: var(--aqua);
+    filter: brightness(1.2);
+  }
+
+  /* stack on tablet & phone; frames sit above their placard */
+  @media (max-width: 800px) {
+    .case-card {
+      grid-template-columns: 1fr;
+      gap: var(--space-m);
+    }
+    .case-frame {
+      max-width: 340px;
+      aspect-ratio: 5 / 4;
+    }
+  }
+</style>

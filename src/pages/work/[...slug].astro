@@ -1,0 +1,347 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const cases = await getCollection('cases');
+  return cases.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+
+const tones = ['tone-gold', 'tone-aqua', 'tone-rose'];
+const tone = tones[(d.order - 1) % tones.length];
+---
+
+<Base title={`${d.number} · ${d.title} — Tatiana Papastylianou`} description={d.oneLiner}>
+  <!-- case hero -->
+  <header class:list={['case-hero', tone]} data-parallax-scope>
+    <div class="case-hero-bg" data-parallax="0.08" aria-hidden="true"></div>
+    <div class="container case-hero-inner">
+      <p class="eyebrow reveal">
+        <a href="/work/design-system" class="back-link">Work</a>
+        <span aria-hidden="true"> / </span>Case {d.number}
+      </p>
+      <h1 class="case-h1 reveal">{d.title}</h1>
+      <p class="case-change reveal">
+        <span class="change-from">{d.change}</span>
+        <span class="change-arrow" aria-hidden="true">→</span>
+        <span class="change-to">{d.impact}</span>
+      </p>
+      <p class="case-oneliner reveal">{d.oneLiner}</p>
+      <p class="case-role reveal">{d.roleFull}</p>
+      {
+        d.liveUrl && (
+          <p class="reveal">
+            <a class="btn" href={d.liveUrl} target="_blank" rel="noopener">
+              Visit the live product ↗
+            </a>
+          </p>
+        )
+      }
+    </div>
+  </header>
+
+  <!-- the readable placard: parchment surface -->
+  <div class="placard-wrap">
+    <article class="container container-narrow placard reveal">
+      <Content />
+    </article>
+  </div>
+
+  <!-- next case -->
+  <nav class="next-case" aria-label="Next case">
+    <a href={`/work/${d.next.slug}`} class="container next-inner reveal">
+      <span class="next-label">Next in the collection</span>
+      <span class="next-title">{d.next.title}</span>
+      <span class="next-arrow" aria-hidden="true">→</span>
+    </a>
+  </nav>
+</Base>
+
+<style>
+  .case-hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: var(--space-2xl) var(--space-xl);
+    isolation: isolate;
+  }
+
+  .case-hero-bg {
+    position: absolute;
+    inset: -20% 0 0 0;
+    z-index: -1;
+  }
+
+  .tone-gold .case-hero-bg {
+    background:
+      radial-gradient(50% 45% at 25% 20%, rgba(230, 200, 120, 0.22), transparent 70%),
+      radial-gradient(60% 55% at 85% 80%, rgba(46, 110, 126, 0.28), transparent 72%),
+      linear-gradient(160deg, #0b0e13, #12192a);
+  }
+  .tone-aqua .case-hero-bg {
+    background:
+      radial-gradient(55% 50% at 70% 18%, rgba(127, 184, 196, 0.26), transparent 70%),
+      radial-gradient(55% 55% at 18% 82%, rgba(200, 162, 75, 0.18), transparent 72%),
+      linear-gradient(160deg, #0b0e13, #101a26);
+  }
+  .tone-rose .case-hero-bg {
+    background:
+      radial-gradient(52% 48% at 28% 78%, rgba(176, 106, 120, 0.28), transparent 70%),
+      radial-gradient(58% 52% at 80% 20%, rgba(127, 184, 196, 0.2), transparent 72%),
+      linear-gradient(160deg, #0b0e13, #150f1a);
+  }
+
+  .back-link {
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .back-link:hover {
+    color: var(--gold-lite);
+  }
+
+  .case-h1 {
+    font-size: var(--step-4);
+    margin-top: 0.5rem;
+    max-width: 20ch;
+    color: var(--parchment);
+  }
+
+  .case-change {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-top: var(--space-m);
+    font-family: var(--serif);
+    font-size: var(--step-1);
+  }
+
+  .change-from {
+    color: var(--text-dim);
+  }
+  .change-arrow {
+    color: var(--gold);
+  }
+  .change-to {
+    color: var(--gold-lite);
+    font-style: italic;
+  }
+
+  .case-oneliner {
+    max-width: 52ch;
+    margin-top: var(--space-m);
+    font-size: var(--step-1);
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .case-role {
+    margin-top: var(--space-s);
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  .case-role + p {
+    margin-top: var(--space-m);
+  }
+
+  /* ---- parchment placard ---- */
+  .placard-wrap {
+    background: linear-gradient(180deg, transparent, rgba(243, 236, 221, 0.04) 6%);
+    padding-block: var(--space-xl);
+  }
+
+  .placard {
+    background: var(--parchment);
+    color: var(--ink-body);
+    padding: clamp(1.75rem, 5vw, 4.5rem);
+    border-radius: var(--radius);
+    box-shadow:
+      0 30px 80px rgba(0, 0, 0, 0.45),
+      inset 0 0 0 1px rgba(200, 162, 75, 0.35);
+    font-size: var(--step-0);
+    line-height: 1.72;
+  }
+</style>
+
+<!-- prose styling for the rendered markdown lives global-ish but scoped via .placard -->
+<style is:global>
+  .placard > :first-child {
+    margin-top: 0;
+  }
+
+  .placard h2 {
+    font-family: var(--serif);
+    font-size: var(--step-3);
+    color: var(--ink);
+    line-height: 1.1;
+    margin-top: 2.4em;
+    padding-bottom: 0.35em;
+    border-bottom: 1px solid rgba(200, 162, 75, 0.55);
+  }
+
+  .placard h3 {
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    color: var(--ink);
+    margin-top: 2em;
+  }
+
+  .placard p,
+  .placard li {
+    color: var(--ink-body);
+  }
+
+  .placard p {
+    margin-top: 1.1em;
+    max-width: 68ch;
+  }
+
+  .placard ul {
+    margin-top: 1.1em;
+    padding-left: 1.3em;
+    display: grid;
+    gap: 0.6em;
+  }
+
+  .placard li {
+    padding-left: 0.25em;
+  }
+
+  .placard li::marker {
+    color: var(--gold);
+  }
+
+  .placard strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .placard em {
+    color: var(--ink-soft);
+  }
+
+  .placard a {
+    color: var(--aqua-deep);
+    text-decoration-color: rgba(46, 110, 126, 0.4);
+    font-weight: 600;
+  }
+
+  .placard a:hover {
+    color: var(--rose-deep);
+  }
+
+  .placard code {
+    font-family: var(--mono);
+    font-size: 0.9em;
+    background: rgba(14, 17, 22, 0.08);
+    padding: 0.12em 0.4em;
+    border-radius: 4px;
+    color: var(--ink);
+  }
+
+  /* the Snapshot table → a museum spec sheet */
+  .placard table {
+    width: 100%;
+    margin-top: 1.6em;
+    border-collapse: collapse;
+    font-size: 0.95em;
+  }
+
+  .placard table td {
+    padding: 0.7em 1em;
+    border-top: 1px solid rgba(14, 17, 22, 0.12);
+    vertical-align: top;
+  }
+
+  .placard table td:first-child {
+    width: 34%;
+    color: var(--ink-soft);
+  }
+
+  .placard table tr:first-child td {
+    border-top: 0;
+  }
+
+  /* blockquote (if used in body) */
+  .placard blockquote {
+    margin: 1.6em 0;
+    padding: 0.4em 0 0.4em 1.4em;
+    border-left: 3px solid var(--gold);
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  @media (max-width: 560px) {
+    .placard table td:first-child {
+      width: 42%;
+    }
+  }
+</style>
+
+<style>
+  /* next-case bar */
+  .next-case {
+    border-top: 1px solid rgba(200, 162, 75, 0.2);
+  }
+
+  .next-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-m);
+    padding-block: var(--space-xl);
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .next-label {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    flex: none;
+  }
+
+  .next-title {
+    font-family: var(--serif);
+    font-size: var(--step-2);
+    color: var(--parchment);
+    transition: color 0.3s var(--ease-out);
+  }
+
+  .next-arrow {
+    margin-left: auto;
+    font-size: var(--step-2);
+    color: var(--gold);
+    transition: transform 0.3s var(--ease-out);
+  }
+
+  .next-inner:hover .next-title {
+    color: var(--gold-lite);
+  }
+  .next-inner:hover .next-arrow {
+    transform: translateX(8px);
+  }
+
+  @media (max-width: 640px) {
+    .next-inner {
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .next-arrow {
+      margin-left: 0;
+    }
+  }
+</style>

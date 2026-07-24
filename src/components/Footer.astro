@@ -1,0 +1,88 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-lead">
+      <p class="eyebrow">Currently open to senior product design roles</p>
+      <a class="footer-mail" href="mailto:tatiana.papastylianou@gmail.com"
+        >tatiana.papastylianou@gmail.com</a
+      >
+    </div>
+
+    <nav class="footer-links" aria-label="Footer">
+      <a href="/work/design-system">Work</a>
+      <a href="/craft">Craft</a>
+      <a href="/about">About</a>
+      <a href="/Tatiana-Papastylianou-CV.pdf" target="_blank" rel="noopener">CV</a>
+      <a href="https://www.linkedin.com/in/tatiana-papastylianou" target="_blank" rel="noopener"
+        >LinkedIn ↗</a
+      >
+    </nav>
+  </div>
+  <div class="container footer-fine">
+    <span>© {year} Tatiana Papastylianou</span>
+    <span class="footer-note">A museum at night — built with Astro, hung by hand.</span>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: var(--space-2xl);
+    border-top: 1px solid rgba(200, 162, 75, 0.16);
+    background:
+      radial-gradient(140% 100% at 50% 0%, rgba(46, 110, 126, 0.12), transparent 60%),
+      var(--night-2);
+    padding-block: var(--space-xl) var(--space-l);
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-l);
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .footer-mail {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-family: var(--serif);
+    font-size: var(--step-2);
+    color: var(--parchment);
+    text-decoration: none;
+  }
+
+  .footer-mail:hover {
+    color: var(--gold-lite);
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+  }
+
+  .footer-links a {
+    font-size: var(--step--1);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    color: var(--gold-lite);
+  }
+
+  .footer-fine {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    justify-content: space-between;
+    margin-top: var(--space-xl);
+    color: var(--text-faint);
+    font-size: var(--step--1);
+  }
+</style>

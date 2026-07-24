@@ -1,0 +1,427 @@
+---
+import Base from '../layouts/Base.astro';
+
+const linkedin = 'https://www.linkedin.com/in/tatiana-papastylianou';
+
+// Recommendations. Paste the real LinkedIn text into `quote` when ready — until then
+// each card links out to the recommendation rather than inventing words. Honest by default.
+const recommendations = [
+  {
+    name: 'Andreas Wallén',
+    relation: 'Colleague at Akelius',
+    quote: '',
+  },
+  {
+    name: 'Svenja Henrichs',
+    relation: 'Colleague at Akelius',
+    quote: '',
+  },
+  {
+    name: 'Hadi Kashlan',
+    relation: 'Colleague at Akelius',
+    quote: '',
+  },
+];
+---
+
+<Base
+  title="About — Tatiana Papastylianou"
+  description="The person behind the work: an International-Relations-to-design path, a taste for dark, dreaming interfaces, and a book — No Water, A Designer's Confession."
+  world={true}
+>
+  <!-- immersive moonlit hero -->
+  <header class="about-hero" data-parallax-scope>
+    <div class="moon" data-parallax="0.04" aria-hidden="true"></div>
+    <div class="about-fog" aria-hidden="true"></div>
+    <div class="about-figure" data-parallax="0.1" aria-hidden="true"></div>
+    <div class="container about-hero-inner">
+      <p class="eyebrow reveal">The person behind the work</p>
+      <h1 class="about-h1 reveal">A designer who thinks<br /><em>in the dark</em></h1>
+      <p class="about-sub reveal">
+        Senior product designer by craft, storyteller by instinct — happiest where rigorous
+        systems meet a dreaming, painterly imagination.
+      </p>
+    </div>
+  </header>
+
+  <!-- bio -->
+  <section class="section bio" aria-labelledby="bio-title">
+    <div class="container container-narrow bio-inner">
+      <h2 id="bio-title" class="reveal bio-title">From International Relations to interfaces</h2>
+      <div class="bio-body reveal">
+        <p>
+          I didn’t arrive at product design by the straight road. I came to it from
+          <strong>International Relations</strong> — a training in reading people, power and
+          competing interests, and in finding the one account of a situation everyone in the room
+          can actually stand behind. It turns out that’s most of the job. A brief with three
+          stakeholders who can each overrule the others isn’t a design problem you draw your way
+          out of; it’s one you <em>negotiate</em> your way through, with the user as the person not
+          in the meeting.
+        </p>
+        <p>
+          What I bring to the craft is two things held together. One is
+          <strong>discipline</strong>: token systems, responsive matrices, handoffs engineered so a
+          developer can’t misread them, the unglamorous infrastructure that lets a team move fast
+          without breaking. The other is a
+          <strong>dark, dreaming sensibility</strong> — I love painterly light, candlelit and
+          aquatic, the old-master mood of a museum after closing. This portfolio is built the way I
+          think: the work hangs in gold frames, legible and credible; the personality glows in the
+          corners.
+        </p>
+        <p>
+          I’m drawn to work that matters — I’ve spent years on education products meant to reach
+          learners for free, worldwide, including children whose schooling has been interrupted by
+          war. Design as a lifeline, not a decoration. That’s the standard I hold my own work to.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- the book -->
+  <section class="section book" id="book" aria-labelledby="book-title">
+    <div class="container book-inner reveal">
+      <div class="book-object" aria-hidden="true">
+        <div class="book-cover">
+          <span class="book-cover-title">No&nbsp;Water</span>
+          <span class="book-cover-sub">A Designer’s Confession</span>
+        </div>
+      </div>
+      <div class="book-copy">
+        <p class="eyebrow">The book</p>
+        <h2 id="book-title" class="book-title"><em>No Water</em><br />A Designer’s Confession</h2>
+        <p class="book-line">
+          A book about design and doubt — the dark-dreamy inner world behind the disciplined
+          surface. It’s the most personal thing in this collection: the confession beneath the
+          case studies, where the heroine emerging from dark water into gold light is less a motif
+          and more a self-portrait.
+        </p>
+        <p class="book-note">A landing page for the book is in the works.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- recommendations -->
+  <section class="section recs" aria-labelledby="recs-title">
+    <div class="container">
+      <div class="recs-head reveal">
+        <p class="eyebrow">In others’ words</p>
+        <h2 id="recs-title" class="recs-title">Recommendations</h2>
+        <p class="recs-intro">
+          Colleagues who’ve worked alongside me. Read the full recommendations on LinkedIn.
+        </p>
+      </div>
+      <ul class="recs-grid">
+        {
+          recommendations.map((r) => (
+            <li class="rec reveal">
+              {r.quote ? (
+                <blockquote class="rec-quote">{r.quote}</blockquote>
+              ) : (
+                <p class="rec-placeholder">
+                  A recommendation from a colleague who worked with me directly.
+                </p>
+              )}
+              <div class="rec-by">
+                <span class="rec-name">{r.name}</span>
+                <span class="rec-rel">{r.relation}</span>
+              </div>
+              <a class="rec-link" href={linkedin} target="_blank" rel="noopener">
+                Read on LinkedIn ↗
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- contact -->
+  <section class="section contact" aria-labelledby="contact-title">
+    <div class="container contact-inner reveal">
+      <h2 id="contact-title" class="contact-title">Let’s make something worth hanging.</h2>
+      <p class="contact-sub">
+        Open to senior product design roles — remote-first. If the work resonates, I’d love to
+        talk.
+      </p>
+      <div class="contact-cta">
+        <a class="btn btn--solid" href="mailto:tatiana.papastylianou@gmail.com">Email me</a>
+        <a class="btn" href={linkedin} target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+        <a class="btn" href="/Tatiana-Papastylianou-CV.pdf" target="_blank" rel="noopener"
+          >Download CV</a
+        >
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* ---------- immersive About hero (Storybook Noir) ---------- */
+  .about-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 78svh;
+    display: flex;
+    align-items: flex-end;
+    padding-block: var(--space-2xl);
+    isolation: isolate;
+    background:
+      radial-gradient(90% 70% at 60% 15%, rgba(127, 184, 196, 0.16), transparent 60%),
+      radial-gradient(80% 80% at 15% 95%, rgba(176, 106, 120, 0.22), transparent 65%),
+      linear-gradient(150deg, #05070b 0%, #0e1116 55%, #1a0f1e 100%);
+  }
+
+  .moon {
+    position: absolute;
+    right: 12%;
+    top: 14%;
+    width: clamp(70px, 9vw, 130px);
+    height: clamp(70px, 9vw, 130px);
+    border-radius: 50%;
+    background: radial-gradient(circle at 42% 40%, #f2e2b0, #c8a24b 75%);
+    box-shadow:
+      0 0 70px 18px rgba(230, 200, 120, 0.35),
+      0 0 140px 50px rgba(230, 200, 120, 0.12);
+    z-index: -1;
+  }
+
+  .about-fog {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(60% 40% at 50% 100%, rgba(46, 110, 126, 0.28), transparent 70%),
+      radial-gradient(40% 30% at 80% 90%, rgba(176, 106, 120, 0.22), transparent 70%);
+    filter: blur(6px);
+  }
+
+  .about-figure {
+    position: absolute;
+    left: 16%;
+    bottom: 0;
+    width: clamp(140px, 20vw, 320px);
+    height: clamp(280px, 44vw, 620px);
+    border-radius: 46% 46% 0 0 / 60% 60% 0 0;
+    background: linear-gradient(
+      180deg,
+      rgba(127, 184, 196, 0.5),
+      rgba(46, 110, 126, 0.3) 45%,
+      rgba(14, 17, 22, 0.9)
+    );
+    box-shadow: 0 0 60px rgba(127, 184, 196, 0.3);
+    filter: blur(10px);
+    z-index: -1;
+  }
+
+  .about-h1 {
+    font-size: var(--step-5);
+    line-height: 0.95;
+    color: var(--parchment);
+  }
+  .about-h1 em {
+    color: var(--aqua);
+    font-style: italic;
+  }
+
+  .about-sub {
+    max-width: 48ch;
+    margin-top: var(--space-m);
+    font-size: var(--step-1);
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* ---------- bio ---------- */
+  .bio-title {
+    font-size: var(--step-3);
+    color: var(--parchment);
+  }
+  .bio-body {
+    margin-top: var(--space-m);
+  }
+  .bio-body p {
+    margin-top: 1.2em;
+    font-size: var(--step-1);
+    line-height: 1.62;
+    color: var(--text);
+  }
+  .bio-body strong {
+    color: var(--gold-lite);
+    font-weight: 600;
+  }
+  .bio-body em {
+    color: var(--aqua);
+  }
+
+  /* ---------- book ---------- */
+  .book-inner {
+    display: grid;
+    grid-template-columns: minmax(180px, 280px) 1fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+  }
+
+  .book-object {
+    perspective: 1200px;
+  }
+
+  .book-cover {
+    aspect-ratio: 3 / 4;
+    border-radius: 4px 10px 10px 4px;
+    padding: 1.6rem 1.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.4rem;
+    background:
+      radial-gradient(70% 50% at 30% 20%, rgba(46, 110, 126, 0.5), transparent 70%),
+      linear-gradient(160deg, #14202b, #0b0e13);
+    border-left: 4px solid rgba(200, 162, 75, 0.6);
+    box-shadow:
+      0 30px 60px rgba(0, 0, 0, 0.55),
+      inset 0 0 0 1px rgba(200, 162, 75, 0.25);
+    transform: rotateY(-12deg) rotateX(3deg);
+    transition: transform 0.6s var(--ease-out);
+  }
+
+  .book-object:hover .book-cover {
+    transform: rotateY(-4deg);
+  }
+
+  .book-cover-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 2rem;
+    color: var(--gold-lite);
+    line-height: 1;
+  }
+  .book-cover-sub {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .book-title {
+    font-size: var(--step-3);
+    color: var(--parchment);
+    margin-top: 0.3rem;
+  }
+  .book-title em {
+    color: var(--aqua);
+    font-style: italic;
+  }
+  .book-line {
+    margin-top: var(--space-s);
+    font-size: var(--step-1);
+    color: var(--text-dim);
+    line-height: 1.55;
+  }
+  .book-note {
+    margin-top: var(--space-s);
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.06em;
+    color: var(--text-faint);
+  }
+
+  @media (max-width: 680px) {
+    .book-inner {
+      grid-template-columns: 1fr;
+    }
+    .book-object {
+      max-width: 220px;
+    }
+  }
+
+  /* ---------- recommendations ---------- */
+  .recs-head {
+    max-width: 56ch;
+    margin-bottom: var(--space-l);
+  }
+  .recs-title {
+    font-size: var(--step-3);
+    color: var(--parchment);
+    margin-top: 0.3rem;
+  }
+  .recs-intro {
+    margin-top: var(--space-s);
+    color: var(--text-dim);
+  }
+
+  .recs-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-m);
+  }
+
+  .rec {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    padding: clamp(1.5rem, 3vw, 2.2rem);
+    border: 1px solid rgba(200, 162, 75, 0.2);
+    border-radius: var(--radius);
+    background: linear-gradient(160deg, rgba(26, 34, 48, 0.7), rgba(14, 17, 22, 0.4));
+  }
+
+  .rec-quote,
+  .rec-placeholder {
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--parchment);
+    flex: 1;
+  }
+  .rec-placeholder {
+    color: var(--text-dim);
+  }
+
+  .rec-by {
+    display: flex;
+    flex-direction: column;
+  }
+  .rec-name {
+    color: var(--gold-lite);
+    font-weight: 600;
+  }
+  .rec-rel {
+    font-size: var(--step--1);
+    color: var(--text-faint);
+  }
+  .rec-link {
+    font-size: var(--step--1);
+    letter-spacing: 0.05em;
+    color: var(--aqua);
+    text-decoration: none;
+  }
+
+  /* ---------- contact ---------- */
+  .contact-inner {
+    text-align: center;
+    padding-block: var(--space-l);
+  }
+  .contact-title {
+    font-size: var(--step-4);
+    color: var(--parchment);
+    max-width: 18ch;
+    margin-inline: auto;
+  }
+  .contact-sub {
+    margin-top: var(--space-s);
+    max-width: 46ch;
+    margin-inline: auto;
+    color: var(--text-dim);
+    font-size: var(--step-1);
+  }
+  .contact-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    justify-content: center;
+    margin-top: var(--space-l);
+  }
+</style>

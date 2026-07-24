@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Lost in the gallery — Tatiana Papastylianou" description="Page not found.">
+  <section class="section notfound">
+    <div class="container">
+      <p class="eyebrow">404 · This room is empty</p>
+      <h1 class="nf-title">The painting you’re looking for isn’t on this wall.</h1>
+      <p class="nf-sub">It may have been moved, or the frame was never hung here.</p>
+      <div class="nf-cta">
+        <a class="btn btn--solid" href="/">Back to the entrance</a>
+        <a class="btn" href="/work/design-system">See the work</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .notfound {
+    min-height: 66svh;
+    display: flex;
+    align-items: center;
+  }
+  .nf-title {
+    font-size: var(--step-4);
+    margin-top: 0.5rem;
+    max-width: 18ch;
+    color: var(--parchment);
+  }
+  .nf-sub {
+    margin-top: var(--space-s);
+    color: var(--text-dim);
+    font-size: var(--step-1);
+  }
+  .nf-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: var(--space-l);
+  }
+</style>

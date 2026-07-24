@@ -1,0 +1,182 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import ShaderHero from '../components/ShaderHero.astro';
+import CaseCard from '../components/CaseCard.astro';
+
+const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
+
+const impact = [
+  { stat: '3', label: 'platforms — web, iOS, Android — on one token system' },
+  { stat: '24', label: 'core web component families designed & maintained' },
+  { stat: 'Live', label: 'worldwide & free — math.akelius.education' },
+];
+---
+
+<Base title="Tatiana Papastylianou — Senior Product Designer">
+  <ShaderHero />
+
+  <!-- selected impact strip -->
+  <section class="section impact" aria-label="Selected impact">
+    <div class="container">
+      <ul class="impact-grid">
+        {
+          impact.map((i) => (
+            <li class="impact-item reveal">
+              <span class="impact-stat">{i.stat}</span>
+              <span class="impact-label">{i.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- the gallery: three framed cases -->
+  <section class="section work" id="work">
+    <div class="container">
+      <header class="work-head reveal">
+        <p class="eyebrow">The gallery · Selected work</p>
+        <h2 class="work-title">Three rooms in the collection</h2>
+        <p class="work-intro">
+          A design system rebuilt as infrastructure, a live product shipped through three
+          competing visions, and two apps merged and de-risked before a line of code. The work
+          hangs here; step closer to any frame.
+        </p>
+      </header>
+
+      <div class="work-list">
+        {
+          cases.map((c, i) => (
+            <CaseCard
+              number={c.data.number}
+              role={c.data.role}
+              title={c.data.title}
+              oneLiner={c.data.oneLiner}
+              slug={c.id}
+              liveUrl={c.data.liveUrl}
+              index={i}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- craft teaser -->
+  <section class="section craft-teaser">
+    <div class="container craft-inner reveal">
+      <div>
+        <p class="eyebrow">Beyond the main hall</p>
+        <h2 class="craft-title">Craft &amp; side rooms</h2>
+        <p class="craft-copy">
+          Instructional design for the Generator's column-operations lessons, a shipped iOS
+          eye-wellness app, a freelance planning tool on the App Store, and a book —
+          <em>No Water, A Designer's Confession</em>.
+        </p>
+      </div>
+      <a class="btn" href="/craft">Enter the craft room</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* impact strip */
+  .impact {
+    padding-block: var(--space-xl);
+    border-block: 1px solid rgba(200, 162, 75, 0.14);
+    background: linear-gradient(180deg, rgba(20, 26, 36, 0.5), transparent);
+  }
+
+  .impact-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-l);
+  }
+
+  .impact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .impact-stat {
+    font-family: var(--serif);
+    font-size: var(--step-4);
+    line-height: 1;
+    color: var(--gold-lite);
+  }
+
+  .impact-label {
+    color: var(--text-dim);
+    font-size: var(--step-0);
+    max-width: 26ch;
+  }
+
+  @media (max-width: 720px) {
+    .impact-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-m);
+    }
+    .impact-item {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    .impact-stat {
+      font-size: var(--step-3);
+    }
+  }
+
+  /* work section */
+  .work-head {
+    max-width: 60ch;
+    margin-bottom: var(--space-l);
+  }
+
+  .work-title {
+    font-size: var(--step-4);
+    margin-top: 0.4rem;
+    color: var(--parchment);
+  }
+
+  .work-intro {
+    margin-top: var(--space-s);
+    color: var(--text-dim);
+    font-size: var(--step-1);
+    line-height: 1.5;
+  }
+
+  /* craft teaser */
+  .craft-teaser {
+    padding-block: var(--space-xl) var(--space-2xl);
+  }
+
+  .craft-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-l);
+    padding: clamp(1.75rem, 4vw, 3rem);
+    border: 1px solid rgba(200, 162, 75, 0.2);
+    border-radius: var(--radius);
+    background:
+      radial-gradient(80% 120% at 100% 0%, rgba(46, 110, 126, 0.18), transparent 60%),
+      var(--night-2);
+  }
+
+  .craft-title {
+    font-size: var(--step-3);
+    margin-top: 0.3rem;
+    color: var(--parchment);
+  }
+
+  .craft-copy {
+    margin-top: var(--space-s);
+    max-width: 52ch;
+    color: var(--text-dim);
+  }
+</style>
