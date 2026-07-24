@@ -1,9 +1,11 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build
 export default defineConfig({
-  site: 'https://tatiana-portfolio.netlify.app',
+  site: 'https://tatiana-portfolio-nightfall.netlify.app',
+  integrations: [sitemap()],
   build: {
     inlineStylesheets: 'auto',
   },
