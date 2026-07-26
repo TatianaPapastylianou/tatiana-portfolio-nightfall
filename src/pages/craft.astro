@@ -40,12 +40,15 @@ const pieces = [
     tilt: 1,
   },
   {
-    kind: 'Book · Landing',
+    kind: 'Book · Memoir',
     name: 'No Water — A Designer’s Confession',
-    line: 'A book about design, doubt and the dark-dreamy inner world behind the work. The most personal thing in the collection.',
+    line: 'The true story of becoming a lead designer with no degree and no map — thirty-three chapters of shipped projects, hard conversations, and decisions still worth turning over, each closed by field notes on the craft.',
     tone: 'rose',
     tilt: -0.6,
-    href: '/about#book',
+    img: '/craft/no-water-cover.jpg',
+    href: 'https://no-water-book.netlify.app/',
+    external: true,
+    cta: 'Read the first 25 pages ↗',
   },
 ];
 ---
@@ -101,15 +104,47 @@ const pieces = [
         {
           pieces.map((p) => (
             <li class="piece reveal">
-              <Frame size="sm" tilt={p.tilt} mat={false} href={p.href} label="Open →" view={!!p.href}>
-                <div class:list={['piece-art', `tone-${p.tone}`]}>
-                  <span class="piece-initial">{p.name.charAt(0)}</span>
-                </div>
+              <Frame
+                size="sm"
+                tilt={p.tilt}
+                mat={!!p.img}
+                src={p.img}
+                alt={p.img ? `${p.name} — book cover` : undefined}
+                href={p.href}
+                external={p.external}
+                label={p.external ? 'Open ↗' : 'Open →'}
+                view={!!p.href}
+              >
+                {!p.img && (
+                  <div class:list={['piece-art', `tone-${p.tone}`]}>
+                    <span class="piece-initial">{p.name.charAt(0)}</span>
+                  </div>
+                )}
               </Frame>
               <p class="kicker piece-kind">{p.kind}</p>
-              <h3 class="piece-name">{p.href ? <a href={p.href}>{p.name}</a> : p.name}</h3>
+              <h3 class="piece-name">
+                {p.href ? (
+                  <a href={p.href} {...(p.external ? { target: '_blank', rel: 'noopener' } : {})}>
+                    {p.name}
+                  </a>
+                ) : (
+                  p.name
+                )}
+              </h3>
               <p class="piece-line">{p.line}</p>
-              {!p.href && <p class="piece-note">Live link coming soon.</p>}
+              {p.href ? (
+                p.cta && (
+                  <a
+                    class="piece-cta"
+                    href={p.href}
+                    {...(p.external ? { target: '_blank', rel: 'noopener' } : {})}
+                  >
+                    {p.cta}
+                  </a>
+                )
+              ) : (
+                <p class="piece-note">Live link coming soon.</p>
+              )}
             </li>
           ))
         }
@@ -269,5 +304,19 @@ const pieces = [
     font-size: var(--step--1);
     letter-spacing: 0.06em;
     color: var(--dim);
+  }
+  .piece-cta {
+    display: inline-block;
+    margin-top: 0.7rem;
+    font-size: var(--step--1);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    transition: opacity 0.2s var(--ease-out);
+  }
+  .piece-cta:hover {
+    opacity: 0.62;
   }
 </style>

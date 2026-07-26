@@ -12,6 +12,7 @@ const withPreview = cases.map((c, i) => ({
   ...c,
   preview: c.data.hero.src ?? c.data.exhibits[0]?.src ?? '',
   previewAlt: c.data.hero.alt ?? c.data.exhibits[0]?.alt ?? c.data.title,
+  previewOrient: c.data.hero.orient ?? c.data.exhibits[0]?.orient ?? 'portrait',
   tilt: [-1.1, 1, -0.6][i % 3],
 }));
 
@@ -30,6 +31,7 @@ const indexRows = [
     href: `/work/${c.id}`,
     preview: c.preview,
     alt: c.previewAlt,
+    orient: c.previewOrient,
   })),
   {
     number: '—',
@@ -38,6 +40,7 @@ const indexRows = [
     href: '/craft',
     preview: '/cases/ds-05-cards.jpg',
     alt: 'Craft room',
+    orient: 'landscape' as const,
   },
 ];
 ---
@@ -61,7 +64,7 @@ const indexRows = [
       </div>
 
       <figure class="hero-frame reveal">
-        <Frame size="lg" tilt={-0.6} mat={false}>
+        <Frame size="lg" tilt={-0.6} mat={false} live>
           <LiveComponents />
         </Frame>
         <figcaption class="hero-plaque">
@@ -105,7 +108,7 @@ const indexRows = [
   <section class="section case-index" aria-label="Index of work" data-index-scope>
     <div class="container index-grid">
       <div class="index-preview" aria-hidden="true">
-        <Frame src={indexRows[0].preview} alt="" size="md" tilt={-0.6} />
+        <Frame src={indexRows[0].preview} alt="" orient={indexRows[0].orient} size="md" tilt={-0.6} />
       </div>
       <ol class="index-list">
         {
@@ -115,6 +118,7 @@ const indexRows = [
                 href={r.href}
                 class="index-link"
                 data-preview={r.preview}
+                data-orient={r.orient}
                 data-view
                 data-label="View →"
               >
@@ -157,6 +161,7 @@ const indexRows = [
               liveUrl={c.data.liveUrl}
               preview={c.preview}
               alt={c.previewAlt}
+              orient={c.previewOrient}
               tilt={c.tilt}
               index={i}
             />
@@ -184,12 +189,22 @@ const indexRows = [
 </Base>
 
 <script>
-  // case index — swap the shared preview frame on hover/focus
-  const frame = document.querySelector<HTMLImageElement>('.index-preview img.fit');
+  // case index — swap the shared preview frame (image + orientation) on hover/focus
+  const fig = document.querySelector<HTMLElement>('.index-preview .frame');
+  const fit = fig?.querySelector<HTMLImageElement>('img.fit');
+  const fr = fig?.querySelector<HTMLImageElement>('img.fr');
   document.querySelectorAll<HTMLElement>('.index-link').forEach((link) => {
     const src = link.dataset.preview;
+    const orient = link.dataset.orient === 'landscape' ? 'landscape' : 'portrait';
     const swap = () => {
-      if (frame && src) frame.src = src;
+      if (!fig || !fit || !fr || !src) return;
+      fit.src = src;
+      fig.classList.toggle('frame--landscape', orient === 'landscape');
+      fig.classList.toggle('frame--portrait', orient !== 'landscape');
+      fr.src =
+        orient === 'landscape'
+          ? '/frames/frame-cut-web-landscape.png'
+          : '/frames/frame-cut-web.png';
     };
     link.addEventListener('pointerenter', swap);
     link.addEventListener('focus', swap);
@@ -397,7 +412,8 @@ const indexRows = [
     }
     .hero-frame {
       order: -1;
-      max-width: 460px;
+      max-width: 520px;
+      width: 100%;
     }
     .index-grid {
       grid-template-columns: 1fr;

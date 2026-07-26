@@ -10,16 +10,37 @@ interface Props {
   liveUrl?: string;
   preview: string; // /cases/… framed screen
   alt: string;
+  orient?: 'portrait' | 'landscape';
   tilt?: number;
   index: number;
 }
-const { number, role, title, oneLiner, slug, liveUrl, preview, alt, tilt = 0 } = Astro.props;
+const {
+  number,
+  role,
+  title,
+  oneLiner,
+  slug,
+  liveUrl,
+  preview,
+  alt,
+  orient = 'portrait',
+  tilt = 0,
+} = Astro.props;
 const href = `/work/${slug}`;
 ---
 
 <article class="case-card reveal">
   <div class="case-frame">
-    <Frame src={preview} alt={alt} size="md" tilt={tilt} href={href} label="View case →" view />
+    <Frame
+      src={preview}
+      alt={alt}
+      orient={orient}
+      size="md"
+      tilt={tilt}
+      href={href}
+      label="View case →"
+      view
+    />
   </div>
 
   <div class="case-plaque">

@@ -18,25 +18,29 @@ exhibits:
     alt: "Button component matrix — every size, state and variant"
     kicker: "The breadth"
     caption: "One component, every size × state × variant. The instant read: comprehensive and rigorous."
+    orient: "landscape"
     size: "lg"
     tilt: -1.2
   - src: "/cases/ds-01-handoff-matrix.jpg"
     alt: "Handoff responsive matrix — each component across five breakpoints"
     kicker: "The rigor"
     caption: "The most senior artefact in the kit: a per-component responsive matrix across five breakpoints, so engineers can't misread the spec."
+    orient: "landscape"
     size: "lg"
     tilt: 1
   - src: "/cases/ds-07-extra-library.jpg"
     alt: "The illustration and icon library"
     kicker: "System of systems · 1"
     caption: "Beyond the UI kit: a dedicated illustration & icon library — education, vocational, language and math."
-    size: "md"
+    orient: "landscape"
+    size: "lg"
     tilt: -0.8
   - src: "/cases/ds-08-generator.jpg"
     alt: "The Generator authoring-tool library"
     kicker: "System of systems · 2"
     caption: "A second, purpose-built system for the internal authoring tool — its own style guide, variables and editor-only components. I architected a system of systems, not one kit."
-    size: "md"
+    orient: "landscape"
+    size: "lg"
     tilt: 1.2
 ---
 

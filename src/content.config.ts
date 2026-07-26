@@ -9,6 +9,7 @@ const exhibit = z.object({
   alt: z.string(),
   kicker: z.string(), // tracked-uppercase label, e.g. "THE BREADTH"
   caption: z.string(), // one honest line on why this exhibit earns its place
+  orient: z.enum(['portrait', 'landscape']).optional(), // frame orientation (default portrait)
   size: z.enum(['lg', 'md', 'sm']).optional(),
   tilt: z.number().optional(), // museum hang angle for variety
 });
@@ -31,6 +32,7 @@ const cases = defineCollection({
       kind: z.enum(['live', 'image']).default('image'),
       src: z.string().optional(),
       alt: z.string().optional(),
+      orient: z.enum(['portrait', 'landscape']).optional(),
       caption: z.string(),
     }),
     // the Head-of-Design depth: 2–3 curated framed exhibits

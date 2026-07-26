@@ -68,21 +68,30 @@ const recommendations = [
   <!-- the book -->
   <section class="section book" id="book" aria-labelledby="book-title">
     <div class="container book-inner reveal">
-      <div class="book-object" aria-hidden="true">
-        <div class="book-cover">
-          <span class="book-cover-title">No&nbsp;Water</span>
-          <span class="book-cover-sub">A Designer’s Confession</span>
-        </div>
-      </div>
+      <a
+        class="book-object"
+        href="https://no-water-book.netlify.app/"
+        target="_blank"
+        rel="noopener"
+        aria-label="No Water — A Designer's Confession: visit the book site"
+      >
+        <img class="book-cover-img" src="/craft/no-water-cover.jpg" alt="" />
+      </a>
       <div class="book-copy">
         <p class="kicker">The book</p>
         <h2 id="book-title" class="book-title"><em>No Water</em><br />A Designer’s Confession</h2>
         <p class="book-line">
           The true story of how I became a lead designer without a degree, without a map, and
-          without the things I thought I needed — a book about design, doubt, and the lessons
-          that actually held. The most personal thing in this collection.
+          without the things I thought I needed — thirty-three chapters of projects I shipped and
+          decisions I still turn over, each closed by field notes on the craft. The most personal
+          thing in this collection.
         </p>
-        <p class="book-note">A landing page for the book is in the works.</p>
+        <p class="book-note">
+          <a class="book-cta" href="https://no-water-book.netlify.app/" target="_blank" rel="noopener"
+            >Read the first 25 pages ↗</a
+          >
+          <span class="book-avail">339 pages · EN · RU · Chinese edition coming soon</span>
+        </p>
       </div>
     </div>
   </section>
@@ -254,18 +263,14 @@ const recommendations = [
   }
   .book-object {
     perspective: 1200px;
+    display: block;
+    text-decoration: none;
   }
-  .book-cover {
-    aspect-ratio: 3 / 4;
-    border-radius: 4px 10px 10px 4px;
-    padding: 1.6rem 1.3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    gap: 0.4rem;
-    background:
-      radial-gradient(70% 50% at 30% 20%, rgba(58, 22, 29, 0.6), transparent 70%),
-      linear-gradient(160deg, #1c1712, #0e0b09);
+  .book-cover-img {
+    width: 100%;
+    aspect-ratio: 1654 / 2339;
+    object-fit: cover;
+    border-radius: 3px 8px 8px 3px;
     border-left: 4px solid rgba(201, 162, 75, 0.6);
     box-shadow:
       0 30px 60px rgba(0, 0, 0, 0.55),
@@ -273,22 +278,9 @@ const recommendations = [
     transform: rotateY(-12deg) rotateX(3deg);
     transition: transform 0.6s var(--ease-out);
   }
-  .book-object:hover .book-cover {
+  .book-object:hover .book-cover-img,
+  .book-object:focus-visible .book-cover-img {
     transform: rotateY(-4deg);
-  }
-  .book-cover-title {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 2rem;
-    color: var(--gold-lite);
-    line-height: 1;
-  }
-  .book-cover-sub {
-    font-family: var(--sans);
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--on-dark-dim);
   }
   .book-title {
     font-size: var(--step-3);
@@ -306,10 +298,24 @@ const recommendations = [
     line-height: 1.55;
   }
   .book-note {
-    margin-top: var(--space-s);
+    margin-top: var(--space-m);
     font-family: var(--sans);
     font-size: var(--step--1);
     letter-spacing: 0.06em;
+    color: var(--on-dark-dim);
+  }
+  .book-cta {
+    color: var(--on-dark);
+    border-bottom: 1px solid rgba(239, 230, 212, 0.45);
+    padding-bottom: 2px;
+    text-transform: uppercase;
+  }
+  .book-cta:hover {
+    color: var(--gold-lite);
+  }
+  .book-avail {
+    display: block;
+    margin-top: 0.7rem;
     color: var(--on-dark-dim);
   }
   @media (max-width: 680px) {

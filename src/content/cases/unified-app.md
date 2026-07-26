@@ -32,19 +32,22 @@ exhibits:
     alt: "The old classroom — before"
     kicker: "Before"
     caption: "The old Classroom: teachers couldn't tell what to do. This is the state I rebuilt from — shown small, on purpose."
+    orient: "landscape"
     size: "sm"
     tilt: -1.6
   - src: "/cases/classroom-web-classes.jpg"
     alt: "The redesigned teacher classroom on web — manage classes"
     kicker: "After · web, net-new"
     caption: "The redesigned Classroom, built on web for the first time: create classes, connect students by QR, read progress — teachers are no longer lost."
+    orient: "landscape"
     size: "lg"
     tilt: 0.8
   - src: "/cases/classroom-web-progress.jpg"
     alt: "Redesigned reports — scores chart, filters, monthly PDF"
     kicker: "After · the reports"
     caption: "Reports redesigned for a clearer read: scores over week/month/quarter, a below-threshold filter, and a monthly PDF."
-    size: "md"
+    orient: "landscape"
+    size: "lg"
     tilt: -1
   - src: "/cases/classroom-mobile-classes.jpg"
     alt: "The same classroom on mobile"

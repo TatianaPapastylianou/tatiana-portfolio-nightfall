@@ -51,11 +51,17 @@ const d = entry.data;
       <div class="exhibit-frame reveal">
         {
           d.hero.kind === 'live' ? (
-            <Frame size="lg" tilt={-0.6} mat={false}>
+            <Frame size="lg" tilt={-0.6} mat={false} live>
               <LiveComponents />
             </Frame>
           ) : (
-            <Frame src={d.hero.src} alt={d.hero.alt} size="lg" tilt={-0.6} />
+            <Frame
+              src={d.hero.src}
+              alt={d.hero.alt}
+              orient={d.hero.orient ?? 'portrait'}
+              size="lg"
+              tilt={-0.6}
+            />
           )
         }
       </div>
@@ -71,7 +77,13 @@ const d = entry.data;
           {d.exhibits.map((ex, i) => (
             <figure class:list={['exhibit-row', { alt: i % 2 === 1 }]}>
               <div class="exhibit-frame reveal">
-                <Frame src={ex.src} alt={ex.alt} size={ex.size ?? 'md'} tilt={ex.tilt ?? 0} />
+                <Frame
+                  src={ex.src}
+                  alt={ex.alt}
+                  orient={ex.orient ?? 'portrait'}
+                  size={ex.size ?? 'md'}
+                  tilt={ex.tilt ?? 0}
+                />
               </div>
               <figcaption class="exhibit-note reveal">
                 <p class="kicker">{ex.kicker}</p>

@@ -15,19 +15,22 @@ hero:
   kind: "image"
   src: "/cases/math-final-lesson.jpg"
   alt: "The shipped Akelius Math lesson screen — radically minimal, search-first, method-icon cards"
+  orient: "landscape"
   caption: "Shipped, live at math.akelius.education. Radically minimal so it reads as serious for a child and an adult alike — search-first navigation, and the method icons that survived the cut for the wayfinding they carry."
 exhibits:
   - src: "/cases/math-final-progress.jpg"
     alt: "The shipped my-progress / learning-track screen"
     kicker: "Shipped · progress"
     caption: "The learning-track view — progress made legible without illustration or colour noise, exactly the austerity the founder argued for."
+    orient: "landscape"
     size: "lg"
     tilt: 1
   - src: "/cases/math-final-lesson.jpg"
     alt: "The surviving method-icon cards, close"
     kicker: "The decision I defended"
     caption: "They wanted zero icons. In an app already stripped of illustration and colour, I saved the few that carried real wayfinding — a partial win, honestly: I protected what the learner actually needed."
-    size: "md"
+    orient: "landscape"
+    size: "lg"
     tilt: -1.2
 ---
 

@@ -2,48 +2,65 @@
 /**
  * Frame — the signature gilded picture frame.
  * Mounts a fitted image OR a live panel (default slot) behind the real
- * Firefly-generated transparent frame (assets/frames/frame-cut-web.png),
- * using the window-rect tokens. The proven single frame, varied per use via
- * `size` + `tilt` + `mat` so the collection reads as a museum-style set.
- * Images fit fully inside the opening (object-fit: contain on a mat) — never clipped.
+ * Firefly-generated transparent frame, using the window-rect tokens. The proven
+ * single frame comes in two orientations (portrait + a rotated landscape) and is
+ * varied per use via `size` + `tilt`, so the collection reads as a museum-style
+ * set. Images fit fully inside the opening (object-fit: contain) — never clipped;
+ * landscape screens hang in a landscape frame so they fill the window.
  */
 interface Props {
   src?: string; // image to hang; omit to use the default slot (live panel)
   alt?: string;
+  orient?: 'portrait' | 'landscape';
   size?: 'lg' | 'md' | 'sm';
   tilt?: number; // base hang angle in degrees (museum variety)
   mat?: boolean; // show the paper mat behind the art (default true for images)
+  live?: boolean; // slot is a live panel that must scale to the window (container query)
   view?: boolean; // morph the cursor to the "View case →" pill on hover
   href?: string; // wrap the frame in a link
+  external?: boolean; // open href in a new tab (for links off-site)
   label?: string; // cursor pill label when linked (default "View case →")
   class?: string;
 }
 const {
   src,
   alt = '',
+  orient = 'portrait',
   size = 'md',
   tilt = 0,
   mat = true,
+  live = false,
   view = false,
   href,
+  external = false,
   label = 'View case →',
   class: extra = '',
 } = Astro.props;
 
+const frameSrc =
+  orient === 'landscape' ? '/frames/frame-cut-web-landscape.png' : '/frames/frame-cut-web.png';
+
 const Tag = href ? 'a' : 'div';
 const tagProps = href
-  ? { href, 'aria-label': alt || label }
+  ? {
+      href,
+      'aria-label': alt || label,
+      ...(external ? { target: '_blank', rel: 'noopener' } : {}),
+    }
   : {};
 ---
 
-<figure class:list={['frame', `frame--${size}`, extra]} style={`--tilt:${tilt}deg`}>
+<figure
+  class:list={['frame', `frame--${size}`, `frame--${orient}`, extra]}
+  style={`--tilt:${tilt}deg`}
+>
   <Tag
     class="frameart"
     data-view={view ? '' : undefined}
     data-label={view ? label : undefined}
     {...tagProps}
   >
-    <div class:list={['window', { 'window--mat': mat && src }]}>
+    <div class:list={['window', { 'window--mat': mat && src, 'window--live': live }]}>
       {
         src ? (
           <img class="fit" src={src} alt={alt} loading="lazy" decoding="async" />
@@ -52,7 +69,7 @@ const tagProps = href
         )
       }
     </div>
-    <img class="fr" src="/frames/frame-cut-web.png" alt="" aria-hidden="true" loading="lazy" />
+    <img class="fr" src={frameSrc} alt="" aria-hidden="true" loading="lazy" />
   </Tag>
 </figure>
 
@@ -67,25 +84,44 @@ const tagProps = href
     position: relative;
     display: block;
     width: 100%;
-    max-width: 540px;
+    max-width: 480px;
     transform-origin: top center;
     animation: sway 13s ease-in-out infinite;
     text-decoration: none;
     color: inherit;
   }
 
-  a.frameart {
-    display: block;
-  }
-
-  .frame--lg .frameart {
+  /* portrait sizes */
+  .frame--portrait.frame--lg .frameart {
     max-width: 600px;
   }
-  .frame--md .frameart {
+  .frame--portrait.frame--md .frameart {
     max-width: 480px;
   }
-  .frame--sm .frameart {
+  .frame--portrait.frame--sm .frameart {
     max-width: 380px;
+  }
+
+  /* landscape sizes — wider frame, so the window content stays comparable */
+  .frame--landscape .frameart {
+    max-width: 640px;
+  }
+  .frame--landscape.frame--lg .frameart {
+    max-width: 760px;
+  }
+  .frame--landscape.frame--md .frameart {
+    max-width: 640px;
+  }
+  .frame--landscape.frame--sm .frameart {
+    max-width: 500px;
+  }
+
+  /* landscape window rect (the portrait rect rotated 90°) */
+  .frame--landscape {
+    --winL: 21.96%;
+    --winT: 25.65%;
+    --winW: 55.99%;
+    --winH: 48.71%;
   }
 
   @keyframes sway {
@@ -110,6 +146,12 @@ const tagProps = href
     align-items: center;
     justify-content: center;
     background: #fbfcfd;
+  }
+
+  /* only a live panel needs to be a sizing container (scales to fit the window);
+     image windows must NOT be size-contained or the contained image collapses. */
+  .window--live {
+    container-type: size;
   }
 
   .window--mat {
