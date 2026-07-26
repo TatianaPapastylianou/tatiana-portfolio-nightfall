@@ -1,0 +1,214 @@
+---
+/**
+ * Loader — the cinematic preloader (home only). A dark burgundy field, a live %
+ * counter, and three case screens hanging up into gold frames, then it resolves
+ * into the warm-paper gallery. ≤2s, skippable, plays once per session, and fully
+ * skipped for prefers-reduced-motion (composed light gallery shows immediately).
+ */
+const shots = [
+  { src: '/cases/ds-04-buttons.jpg', tilt: -2 },
+  { src: '/cases/math-final-lesson.jpg', tilt: 1.4 },
+  { src: '/cases/unified-path-language.jpg', tilt: -1 },
+];
+---
+
+<div class="loader" data-loader aria-hidden="true">
+  <div class="loader-inner">
+    <p class="loader-kicker">Hanging the collection</p>
+    <div class="loader-frames">
+      {
+        shots.map((s, i) => (
+          <div class="lf" style={`--i:${i}; --lt:${s.tilt}deg`}>
+            <div class="lf-win">
+              <img src={s.src} alt="" loading="eager" decoding="async" />
+            </div>
+            <img class="lf-fr" src="/frames/frame-cut-web.png" alt="" />
+          </div>
+        ))
+      }
+    </div>
+    <div class="loader-count">
+      <span data-count>0</span><span class="pct">%</span>
+    </div>
+  </div>
+  <button type="button" class="loader-skip" data-skip>Skip <span aria-hidden="true">→</span></button>
+</div>
+
+<style>
+  .loader {
+    position: fixed;
+    inset: 0;
+    z-index: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.6rem, 4vh, 3rem);
+    background:
+      radial-gradient(120% 90% at 50% 0%, var(--burgundy-2), transparent 60%),
+      linear-gradient(180deg, var(--burgundy) 0%, var(--char) 100%);
+    color: var(--on-dark);
+    transition:
+      opacity 0.6s var(--ease-out),
+      visibility 0.6s var(--ease-out);
+  }
+  .loader.is-done {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .loader-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1.4rem, 4vh, 2.6rem);
+  }
+
+  .loader-kicker {
+    font-family: var(--sans);
+    font-size: var(--step--1);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--on-dark-dim);
+  }
+
+  .loader-frames {
+    display: flex;
+    align-items: flex-end;
+    gap: clamp(0.6rem, 3vw, 2rem);
+  }
+
+  .lf {
+    position: relative;
+    width: clamp(78px, 15vw, 150px);
+    transform-origin: top center;
+    animation: lf-hang 0.7s var(--ease-out) both;
+    animation-delay: calc(var(--i) * 0.16s);
+  }
+  .lf-win {
+    position: absolute;
+    left: var(--winL);
+    top: var(--winT);
+    width: var(--winW);
+    height: var(--winH);
+    overflow: hidden;
+    background: #0d0b09;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lf-win img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: translateY(40%);
+    animation: lf-slide 0.6s var(--ease-out) both;
+    animation-delay: calc(0.2s + var(--i) * 0.16s);
+  }
+  .lf-fr {
+    position: relative;
+    display: block;
+    width: 100%;
+    filter: drop-shadow(0 18px 22px rgba(0, 0, 0, 0.55));
+  }
+
+  @keyframes lf-hang {
+    from {
+      opacity: 0;
+      transform: translateY(-26px) rotate(calc(var(--lt) - 4deg));
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) rotate(var(--lt));
+    }
+  }
+  @keyframes lf-slide {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .loader-count {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 8vw, 4.6rem);
+    line-height: 1;
+    color: var(--on-dark);
+    font-variant-numeric: tabular-nums;
+  }
+  .loader-count .pct {
+    font-size: 0.42em;
+    color: var(--gold-lite);
+    margin-left: 0.15em;
+  }
+
+  .loader-skip {
+    position: absolute;
+    bottom: clamp(1.2rem, 5vh, 2.4rem);
+    right: clamp(1.2rem, 5vw, 2.4rem);
+    background: none;
+    border: 1px solid rgba(239, 230, 212, 0.4);
+    color: var(--on-dark);
+    font-family: var(--sans);
+    font-size: var(--step--1);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.6em 1.2em;
+    border-radius: 100px;
+    cursor: pointer;
+    transition:
+      background 0.2s var(--ease-out),
+      color 0.2s var(--ease-out);
+  }
+  .loader-skip:hover {
+    background: var(--on-dark);
+    color: var(--char);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .loader {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const loader = document.querySelector<HTMLElement>('[data-loader]');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (loader) {
+    const played = sessionStorage.getItem('gallery-entered') === '1';
+
+    const finish = () => {
+      loader.classList.add('is-done');
+      document.documentElement.style.removeProperty('overflow');
+      sessionStorage.setItem('gallery-entered', '1');
+      window.setTimeout(() => loader.remove(), 650);
+    };
+
+    if (reduce || played) {
+      // No cinematic entrance: reveal the gallery immediately.
+      loader.remove();
+    } else {
+      document.documentElement.style.overflow = 'hidden';
+      const count = loader.querySelector<HTMLElement>('[data-count]');
+      const skip = loader.querySelector<HTMLElement>('[data-skip]');
+      let n = 0;
+      const iv = window.setInterval(() => {
+        n = Math.min(100, n + Math.round(3 + Math.random() * 6));
+        if (count) count.textContent = String(n);
+        if (n >= 100) {
+          window.clearInterval(iv);
+          window.setTimeout(finish, 260);
+        }
+      }, 55); // ~1.6–1.9s to 100
+
+      skip?.addEventListener('click', () => {
+        window.clearInterval(iv);
+        finish();
+      });
+    }
+  }
+</script>

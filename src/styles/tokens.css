@@ -1,56 +1,66 @@
 /* ============================================================
-   Nightfall Gallery — design tokens
-   An old-master museum at night: dark walls, gold frames,
-   parchment placards. Aqua/rose are rare jewels.
+   The Gallery — design tokens  (LOCKED language)
+   A warm-paper daylight gallery: parchment walls, real gilded
+   picture frames, ink for every control. Gold is reserved for
+   frames + one accented word. Dark burgundy/charcoal appear ONLY
+   for atmosphere moments (loader, About).
+   Product components inside frames use the real Akelius tokens.
    ============================================================ */
 :root {
-  /* surfaces */
-  --night: #0e1116;
-  --night-2: #141a24;
-  --panel: #1a2230;
-  --panel-line: #2a3342;
+  /* ---- surfaces: warm paper ---- */
+  --paper: #ede4d2;
+  --paper-2: #e6dcc6; /* slightly deeper paper for bands */
+  --card: #f6f0e2;
+  --mat: #f2ead8; /* frame mat behind fitted art */
+  --line: rgba(60, 44, 24, 0.16);
+  --line-strong: rgba(60, 44, 24, 0.28);
 
-  /* gold — guides the eye */
-  --gold: #c8a24b;
+  /* ---- ink: text + every UI control (cursor, links, buttons) ---- */
+  --ink: #211913;
+  --head: #1c140e;
+  --body: #4e4234;
+  --dim: #8c7e69;
+  --faint: #a99e88;
+
+  /* ---- gold: frames + ONE accent word only. Never on UI. ---- */
+  --gold: #c8a24b; /* frame metal */
   --gold-lite: #e6c878;
-  --gold-glow: rgba(230, 200, 120, 0.35);
+  --gold-deep: #7e611f; /* accent word on paper (AA on parchment) */
+  --gold-glow: rgba(201, 162, 75, 0.35);
+  --frame-gold: linear-gradient(150deg, #e6c878, #c8a24b 45%, #8c6e2f 100%);
 
-  /* jewels — use sparingly */
-  --aqua: #7fb8c4;
-  --aqua-deep: #2e6e7e;
-  --rose: #e3aeb8;
-  --rose-deep: #b06a78;
+  /* ---- dark atmosphere: loader + About only ---- */
+  --night: #14100c;
+  --night-2: #1c1712;
+  --burgundy: #2a1116;
+  --burgundy-2: #3a161d;
+  --char: #0e0b09;
+  --on-dark: #efe6d4; /* parchment text on dark */
+  --on-dark-dim: #b7a98f;
 
-  /* readable surfaces */
-  --parchment: #f3ecdd;
-  --parchment-2: #e9e0cd;
-  --ink: #0e1116;
-  --ink-soft: #3b3730;
+  /* ---- product-component tokens (real Akelius design system) ---- */
+  --green: #00a57c;
+  --green-d: #007a5c;
+  --off: #e2e5e8; /* gray300 — switch off track */
+  --blue: #172b53; /* primary dark blue */
+  --blueBg: #d0efff; /* download-button bg */
 
-  /* text on dark */
-  --text: #e8e6e0;
-  --text-dim: #9aa3ae;
-  --text-faint: #6b7480;
-
-  /* text on parchment */
-  --ink-body: #2a2620;
-  --ink-dim: #5b5340;
-
-  /* type families */
-  --serif: 'Cormorant Garamond Variable', 'Cormorant Garamond', Georgia, serif;
-  --sans: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
+  /* ---- type families (Fontshare + system Verdana) ---- */
+  --serif: 'Zodiak', Georgia, 'Times New Roman', serif;
+  --sans: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --sysfont: Verdana, Geneva, Tahoma, sans-serif; /* product components */
   --mono: ui-monospace, 'SF Mono', 'Menlo', monospace;
 
-  /* fluid type scale (clamp: mobile → desktop) */
-  --step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
+  /* ---- fluid type scale (clamp: mobile → desktop) ---- */
+  --step--1: clamp(0.78rem, 0.75rem + 0.15vw, 0.86rem);
   --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.12rem);
-  --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
-  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2.1rem);
-  --step-3: clamp(2rem, 1.6rem + 2vw, 3.2rem);
-  --step-4: clamp(2.6rem, 1.9rem + 3.4vw, 4.8rem);
-  --step-5: clamp(3.2rem, 2rem + 6vw, 7rem);
+  --step-1: clamp(1.18rem, 1.08rem + 0.5vw, 1.5rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2.15rem);
+  --step-3: clamp(2rem, 1.55rem + 2.1vw, 3.3rem);
+  --step-4: clamp(2.6rem, 1.85rem + 3.5vw, 5rem);
+  --step-5: clamp(3.2rem, 1.9rem + 6.2vw, 7.4rem);
 
-  /* spacing scale */
+  /* ---- spacing scale ---- */
   --space-2xs: 0.375rem;
   --space-xs: 0.625rem;
   --space-s: 1rem;
@@ -60,18 +70,21 @@
   --space-2xl: 6.5rem;
   --space-3xl: 9rem;
 
-  /* structure */
-  --measure: 68ch;
-  --container: 1160px;
+  /* ---- structure ---- */
+  --measure: 66ch;
+  --container: 1240px;
   --container-narrow: 760px;
   --radius: 14px;
   --radius-s: 8px;
 
-  /* motion */
+  /* ---- motion ---- */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --dur: 0.6s;
 
-  /* frame */
-  --frame-gold: linear-gradient(150deg, #e6c878, #c8a24b 45%, #8c6e2f 100%);
+  /* ---- the framed picture window (matches assets/frames/frame-cut-web.png) ---- */
+  --winL: 25.65%;
+  --winT: 22.05%;
+  --winW: 48.71%;
+  --winH: 55.99%;
 }

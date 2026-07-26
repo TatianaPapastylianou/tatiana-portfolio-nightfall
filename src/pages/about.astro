@@ -6,42 +6,30 @@ const linkedin = 'https://www.linkedin.com/in/tatiana-papastylianou-8b67a5193/';
 // Recommendations. Paste the real LinkedIn text into `quote` when ready — until then
 // each card links out to the recommendation rather than inventing words. Honest by default.
 const recommendations = [
-  {
-    name: 'Andreas Wallén',
-    relation: 'Colleague at Akelius',
-    quote: '',
-  },
-  {
-    name: 'Svenja Henrichs',
-    relation: 'Colleague at Akelius',
-    quote: '',
-  },
-  {
-    name: 'Hadi Kashlan',
-    relation: 'Colleague at Akelius',
-    quote: '',
-  },
+  { name: 'Andreas Wallén', relation: 'Colleague at Akelius', quote: '' },
+  { name: 'Svenja Henrichs', relation: 'Colleague at Akelius', quote: '' },
+  { name: 'Hadi Kashlan', relation: 'Colleague at Akelius', quote: '' },
 ];
 ---
 
 <Base
   title="About — Tatiana Papastylianou"
-  description="The person behind the work: an International-Relations-to-design path, a taste for dark, dreaming interfaces, and a book — No Water, A Designer's Confession."
-  world={true}
+  description="The person behind the work: an International-Relations-to-design path, a taste for rigorous systems, and a book — No Water, A Designer's Confession."
+  dark={true}
 >
-  <!-- immersive moonlit hero -->
-  <header class="about-hero" data-parallax-scope>
-    <div class="moon" data-parallax="0.04" aria-hidden="true"></div>
+  <!-- dark atmosphere hero -->
+  <header class="about-hero">
+    <div class="moon" aria-hidden="true"></div>
     <div class="about-fog" aria-hidden="true"></div>
-    <div class="about-figure" data-parallax="0.1" aria-hidden="true"></div>
     <div class="container about-hero-inner">
-      <p class="eyebrow reveal">The person behind the work</p>
-      <h1 class="about-h1 reveal">A designer who thinks<br /><em>in the dark</em></h1>
+      <p class="kicker reveal">The person behind the work</p>
+      <h1 class="about-h1 reveal">A designer who reads<br /><em>the whole room</em></h1>
       <p class="about-sub reveal">
-        Senior product designer by craft, storyteller by instinct — happiest where rigorous
-        systems meet a dreaming, painterly imagination.
+        Senior product designer by craft, negotiator by training — happiest where rigorous
+        systems meet the messy politics of getting real work shipped.
       </p>
     </div>
+    <span class="margin-note mn-1" aria-hidden="true">Padding. Margin. Container.</span>
   </header>
 
   <!-- bio -->
@@ -52,29 +40,29 @@ const recommendations = [
         <p>
           I didn’t arrive at product design by the straight road. I came to it from
           <strong>International Relations</strong> — a training in reading people, power and
-          competing interests, and in finding the one account of a situation everyone in the room
-          can actually stand behind. It turns out that’s most of the job. A brief with three
-          stakeholders who can each overrule the others isn’t a design problem you draw your way
-          out of; it’s one you <em>negotiate</em> your way through, with the user as the person not
-          in the meeting.
+          competing interests, and in finding the one account of a situation everyone in the
+          room can actually stand behind. It turns out that’s most of the job. A brief with
+          three stakeholders who can each overrule the others isn’t a design problem you draw
+          your way out of; it’s one you <em>negotiate</em> your way through, with the user as the
+          person not in the meeting.
         </p>
         <p>
           What I bring to the craft is two things held together. One is
-          <strong>discipline</strong>: token systems, responsive matrices, handoffs engineered so a
-          developer can’t misread them, the unglamorous infrastructure that lets a team move fast
-          without breaking. The other is a
-          <strong>dark, dreaming sensibility</strong> — I love painterly light, candlelit and
-          aquatic, the old-master mood of a museum after closing. This portfolio is built the way I
-          think: the work hangs in gold frames, legible and credible; the personality glows in the
-          corners.
+          <strong>discipline</strong>: token systems, responsive matrices, handoffs engineered
+          so a developer can’t misread them — the unglamorous infrastructure that lets a team
+          move fast without breaking. The other is <strong>judgement about what to leave
+          out</strong>. This portfolio is built the way I think: the work hangs in gold frames,
+          legible and credible; the case is made by the decisions, not the pixels.
         </p>
         <p>
           I’m drawn to work that matters — I’ve spent years on education products meant to reach
-          learners for free, worldwide, including children whose schooling has been interrupted by
-          war. Design as a lifeline, not a decoration. That’s the standard I hold my own work to.
+          learners for free, worldwide, including children whose schooling has been interrupted
+          by war. Design as a lifeline, not a decoration. That’s the standard I hold my own work
+          to.
         </p>
       </div>
     </div>
+    <span class="margin-note mn-2" aria-hidden="true">The screens are evidence. They are not the story.</span>
   </section>
 
   <!-- the book -->
@@ -87,13 +75,12 @@ const recommendations = [
         </div>
       </div>
       <div class="book-copy">
-        <p class="eyebrow">The book</p>
+        <p class="kicker">The book</p>
         <h2 id="book-title" class="book-title"><em>No Water</em><br />A Designer’s Confession</h2>
         <p class="book-line">
-          A book about design and doubt — the dark-dreamy inner world behind the disciplined
-          surface. It’s the most personal thing in this collection: the confession beneath the
-          case studies, where the heroine emerging from dark water into gold light is less a motif
-          and more a self-portrait.
+          The true story of how I became a lead designer without a degree, without a map, and
+          without the things I thought I needed — a book about design, doubt, and the lessons
+          that actually held. The most personal thing in this collection.
         </p>
         <p class="book-note">A landing page for the book is in the works.</p>
       </div>
@@ -104,7 +91,7 @@ const recommendations = [
   <section class="section recs" aria-labelledby="recs-title">
     <div class="container">
       <div class="recs-head reveal">
-        <p class="eyebrow">In others’ words</p>
+        <p class="kicker">In others’ words</p>
         <h2 id="recs-title" class="recs-title">Recommendations</h2>
         <p class="recs-intro">
           Colleagues who’ve worked alongside me. Read the full recommendations on LinkedIn.
@@ -144,32 +131,33 @@ const recommendations = [
         talk.
       </p>
       <div class="contact-cta">
-        <a class="btn btn--solid" href="mailto:tatiana.papastylianou@gmail.com">Email me</a>
-        <a class="btn" href={linkedin} target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
-        <a class="btn" href="/Tatiana-Papastylianou-CV.pdf" target="_blank" rel="noopener"
-          >Download CV</a
-        >
+        <a class="btn btn--solid on-dark" href="mailto:tatiana.papastylianou@gmail.com">Email me</a>
+        <a class="btn on-dark" href={linkedin} target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+        <a class="btn on-dark" href="/Tatiana-Papastylianou-CV.pdf" target="_blank" rel="noopener">Download CV</a>
       </div>
     </div>
   </section>
 </Base>
 
 <style>
-  /* ---------- immersive About hero (Storybook Noir) ---------- */
+  /* the whole About page sits on a dark atmosphere surface */
+  :global(body.dark) {
+    background: linear-gradient(180deg, var(--char) 0%, var(--night) 60%, var(--burgundy) 140%);
+    color: var(--on-dark-dim);
+  }
+
   .about-hero {
     position: relative;
     overflow: hidden;
-    min-height: 78svh;
+    min-height: 72svh;
     display: flex;
     align-items: flex-end;
     padding-block: var(--space-2xl);
     isolation: isolate;
     background:
-      radial-gradient(90% 70% at 60% 15%, rgba(127, 184, 196, 0.16), transparent 60%),
-      radial-gradient(80% 80% at 15% 95%, rgba(176, 106, 120, 0.22), transparent 65%),
-      linear-gradient(150deg, #05070b 0%, #0e1116 55%, #1a0f1e 100%);
+      radial-gradient(80% 80% at 15% 95%, rgba(58, 22, 29, 0.5), transparent 65%),
+      radial-gradient(70% 60% at 82% 12%, rgba(201, 162, 75, 0.12), transparent 62%);
   }
-
   .moon {
     position: absolute;
     right: 12%;
@@ -179,61 +167,65 @@ const recommendations = [
     border-radius: 50%;
     background: radial-gradient(circle at 42% 40%, #f2e2b0, #c8a24b 75%);
     box-shadow:
-      0 0 70px 18px rgba(230, 200, 120, 0.35),
-      0 0 140px 50px rgba(230, 200, 120, 0.12);
+      0 0 70px 18px rgba(230, 200, 120, 0.3),
+      0 0 140px 50px rgba(230, 200, 120, 0.1);
     z-index: -1;
   }
-
   .about-fog {
     position: absolute;
     inset: 0;
     z-index: -1;
-    background:
-      radial-gradient(60% 40% at 50% 100%, rgba(46, 110, 126, 0.28), transparent 70%),
-      radial-gradient(40% 30% at 80% 90%, rgba(176, 106, 120, 0.22), transparent 70%);
+    background: radial-gradient(60% 40% at 50% 100%, rgba(42, 17, 22, 0.6), transparent 70%);
     filter: blur(6px);
   }
-
-  .about-figure {
-    position: absolute;
-    left: 16%;
-    bottom: 0;
-    width: clamp(140px, 20vw, 320px);
-    height: clamp(280px, 44vw, 620px);
-    border-radius: 46% 46% 0 0 / 60% 60% 0 0;
-    background: linear-gradient(
-      180deg,
-      rgba(127, 184, 196, 0.5),
-      rgba(46, 110, 126, 0.3) 45%,
-      rgba(14, 17, 22, 0.9)
-    );
-    box-shadow: 0 0 60px rgba(127, 184, 196, 0.3);
-    filter: blur(10px);
-    z-index: -1;
-  }
-
   .about-h1 {
     font-size: var(--step-5);
     line-height: 0.95;
-    color: var(--parchment);
+    color: var(--on-dark);
   }
   .about-h1 em {
-    color: var(--aqua);
+    color: var(--gold-lite);
     font-style: italic;
   }
-
   .about-sub {
     max-width: 48ch;
     margin-top: var(--space-m);
     font-size: var(--step-1);
-    color: var(--text);
+    color: var(--on-dark);
     line-height: 1.5;
   }
 
-  /* ---------- bio ---------- */
+  /* marginalia — sparing fragments from No Water */
+  .margin-note {
+    position: absolute;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: var(--step--1);
+    letter-spacing: 0.04em;
+    color: rgba(183, 169, 143, 0.5);
+    writing-mode: vertical-rl;
+    user-select: none;
+  }
+  .mn-1 {
+    right: 1.4rem;
+    bottom: 8%;
+  }
+  .mn-2 {
+    left: 1.2rem;
+    top: 12%;
+  }
+  @media (max-width: 900px) {
+    .margin-note {
+      display: none;
+    }
+  }
+
+  .bio {
+    position: relative;
+  }
   .bio-title {
     font-size: var(--step-3);
-    color: var(--parchment);
+    color: var(--on-dark);
   }
   .bio-body {
     margin-top: var(--space-m);
@@ -242,28 +234,27 @@ const recommendations = [
     margin-top: 1.2em;
     font-size: var(--step-1);
     line-height: 1.62;
-    color: var(--text);
+    color: var(--on-dark);
   }
   .bio-body strong {
     color: var(--gold-lite);
-    font-weight: 600;
+    font-weight: 500;
   }
   .bio-body em {
-    color: var(--aqua);
+    color: var(--on-dark);
+    font-style: italic;
   }
 
-  /* ---------- book ---------- */
+  /* book */
   .book-inner {
     display: grid;
     grid-template-columns: minmax(180px, 280px) 1fr;
     gap: clamp(2rem, 6vw, 5rem);
     align-items: center;
   }
-
   .book-object {
     perspective: 1200px;
   }
-
   .book-cover {
     aspect-ratio: 3 / 4;
     border-radius: 4px 10px 10px 4px;
@@ -273,20 +264,18 @@ const recommendations = [
     justify-content: flex-end;
     gap: 0.4rem;
     background:
-      radial-gradient(70% 50% at 30% 20%, rgba(46, 110, 126, 0.5), transparent 70%),
-      linear-gradient(160deg, #14202b, #0b0e13);
-    border-left: 4px solid rgba(200, 162, 75, 0.6);
+      radial-gradient(70% 50% at 30% 20%, rgba(58, 22, 29, 0.6), transparent 70%),
+      linear-gradient(160deg, #1c1712, #0e0b09);
+    border-left: 4px solid rgba(201, 162, 75, 0.6);
     box-shadow:
       0 30px 60px rgba(0, 0, 0, 0.55),
-      inset 0 0 0 1px rgba(200, 162, 75, 0.25);
+      inset 0 0 0 1px rgba(201, 162, 75, 0.25);
     transform: rotateY(-12deg) rotateX(3deg);
     transition: transform 0.6s var(--ease-out);
   }
-
   .book-object:hover .book-cover {
     transform: rotateY(-4deg);
   }
-
   .book-cover-title {
     font-family: var(--serif);
     font-style: italic;
@@ -295,36 +284,34 @@ const recommendations = [
     line-height: 1;
   }
   .book-cover-sub {
-    font-family: var(--mono);
+    font-family: var(--sans);
     font-size: 0.65rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--text-dim);
+    color: var(--on-dark-dim);
   }
-
   .book-title {
     font-size: var(--step-3);
-    color: var(--parchment);
+    color: var(--on-dark);
     margin-top: 0.3rem;
   }
   .book-title em {
-    color: var(--aqua);
+    color: var(--gold-lite);
     font-style: italic;
   }
   .book-line {
     margin-top: var(--space-s);
     font-size: var(--step-1);
-    color: var(--text-dim);
+    color: var(--on-dark-dim);
     line-height: 1.55;
   }
   .book-note {
     margin-top: var(--space-s);
-    font-family: var(--mono);
+    font-family: var(--sans);
     font-size: var(--step--1);
     letter-spacing: 0.06em;
-    color: var(--text-faint);
+    color: var(--on-dark-dim);
   }
-
   @media (max-width: 680px) {
     .book-inner {
       grid-template-columns: 1fr;
@@ -334,21 +321,20 @@ const recommendations = [
     }
   }
 
-  /* ---------- recommendations ---------- */
+  /* recommendations */
   .recs-head {
     max-width: 56ch;
     margin-bottom: var(--space-l);
   }
   .recs-title {
     font-size: var(--step-3);
-    color: var(--parchment);
+    color: var(--on-dark);
     margin-top: 0.3rem;
   }
   .recs-intro {
     margin-top: var(--space-s);
-    color: var(--text-dim);
+    color: var(--on-dark-dim);
   }
-
   .recs-grid {
     list-style: none;
     padding: 0;
@@ -356,57 +342,58 @@ const recommendations = [
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: var(--space-m);
   }
-
   .rec {
     display: flex;
     flex-direction: column;
     gap: var(--space-s);
     padding: clamp(1.5rem, 3vw, 2.2rem);
-    border: 1px solid rgba(200, 162, 75, 0.2);
+    border: 1px solid rgba(201, 162, 75, 0.2);
     border-radius: var(--radius);
-    background: linear-gradient(160deg, rgba(26, 34, 48, 0.7), rgba(14, 17, 22, 0.4));
+    background: rgba(28, 23, 18, 0.6);
   }
-
   .rec-quote,
   .rec-placeholder {
     font-family: var(--serif);
     font-size: var(--step-1);
     font-style: italic;
     line-height: 1.4;
-    color: var(--parchment);
+    color: var(--on-dark);
     flex: 1;
   }
   .rec-placeholder {
-    color: var(--text-dim);
+    color: var(--on-dark-dim);
   }
-
   .rec-by {
     display: flex;
     flex-direction: column;
   }
   .rec-name {
     color: var(--gold-lite);
-    font-weight: 600;
+    font-weight: 500;
   }
   .rec-rel {
     font-size: var(--step--1);
-    color: var(--text-faint);
+    color: var(--on-dark-dim);
   }
   .rec-link {
     font-size: var(--step--1);
     letter-spacing: 0.05em;
-    color: var(--aqua);
-    text-decoration: none;
+    color: var(--on-dark);
+    border-bottom: 1px solid rgba(239, 230, 212, 0.4);
+    align-self: flex-start;
+  }
+  .rec-link:hover {
+    color: var(--gold-lite);
   }
 
-  /* ---------- contact ---------- */
+  /* contact */
   .contact-inner {
     text-align: center;
     padding-block: var(--space-l);
   }
   .contact-title {
     font-size: var(--step-4);
-    color: var(--parchment);
+    color: var(--on-dark);
     max-width: 18ch;
     margin-inline: auto;
   }
@@ -414,7 +401,7 @@ const recommendations = [
     margin-top: var(--space-s);
     max-width: 46ch;
     margin-inline: auto;
-    color: var(--text-dim);
+    color: var(--on-dark-dim);
     font-size: var(--step-1);
   }
   .contact-cta {
@@ -423,5 +410,22 @@ const recommendations = [
     gap: 0.9rem;
     justify-content: center;
     margin-top: var(--space-l);
+  }
+  /* buttons inverted for the dark room */
+  .btn.on-dark {
+    border-color: var(--on-dark);
+    color: var(--on-dark);
+  }
+  .btn.on-dark:hover {
+    background: var(--on-dark);
+    color: var(--char);
+  }
+  .btn--solid.on-dark {
+    background: var(--on-dark);
+    color: var(--char);
+  }
+  .btn--solid.on-dark:hover {
+    background: var(--gold-lite);
+    color: var(--char);
   }
 </style>

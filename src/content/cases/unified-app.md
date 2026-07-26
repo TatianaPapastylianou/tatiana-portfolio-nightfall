@@ -10,6 +10,48 @@ order: 3
 next:
   slug: "design-system"
   title: "Building the Akelius education design system"
+hero:
+  kind: "image"
+  src: "/cases/unified-path-language.jpg"
+  alt: "The unified learning-path 'mountain' screen — A1 to B2, word goals"
+  caption: "The signature screen of the unified product: one clean learning path (A1→B2), polished and shipping in staged rollout."
+exhibits:
+  - src: "/cases/unified-path-merge.jpg"
+    alt: "The learning path with course/language switcher and 'also available: math'"
+    kicker: "The merge, shown not told"
+    caption: "This one screen is the whole thesis: two apps become one. A course/language switcher (English, Swedish, +course) and 'also available: math' in four languages."
+    size: "lg"
+    tilt: -1
+  - src: "/cases/unified-android.jpg"
+    alt: "Flow maps, breakpoints and error/edge states, checked off before code"
+    kicker: "The de-risking"
+    caption: "Flows, breakpoints and error/edge states mapped and ticked before a line of code — where missing QR-login and forgot-password screens were caught in prototype, not production."
+    size: "lg"
+    tilt: 1.1
+  - src: "/cases/classroom-current.jpg"
+    alt: "The old classroom — before"
+    kicker: "Before"
+    caption: "The old Classroom: teachers couldn't tell what to do. This is the state I rebuilt from — shown small, on purpose."
+    size: "sm"
+    tilt: -1.6
+  - src: "/cases/classroom-web-classes.jpg"
+    alt: "The redesigned teacher classroom on web — manage classes"
+    kicker: "After · web, net-new"
+    caption: "The redesigned Classroom, built on web for the first time: create classes, connect students by QR, read progress — teachers are no longer lost."
+    size: "lg"
+    tilt: 0.8
+  - src: "/cases/classroom-web-progress.jpg"
+    alt: "Redesigned reports — scores chart, filters, monthly PDF"
+    kicker: "After · the reports"
+    caption: "Reports redesigned for a clearer read: scores over week/month/quarter, a below-threshold filter, and a monthly PDF."
+    size: "md"
+    tilt: -1
+  - src: "/cases/classroom-mobile-classes.jpg"
+    alt: "The same classroom on mobile"
+    kicker: "Cross-platform handoff"
+    caption: "The same Classroom at a mobile breakpoint — designed per device size, so the handoff leaves no room for a wrong guess."
+    size: "sm"
+    tilt: 1.4
 ---
 
 ## Snapshot

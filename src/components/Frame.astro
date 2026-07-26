@@ -1,0 +1,146 @@
+---
+/**
+ * Frame — the signature gilded picture frame.
+ * Mounts a fitted image OR a live panel (default slot) behind the real
+ * Firefly-generated transparent frame (assets/frames/frame-cut-web.png),
+ * using the window-rect tokens. The proven single frame, varied per use via
+ * `size` + `tilt` + `mat` so the collection reads as a museum-style set.
+ * Images fit fully inside the opening (object-fit: contain on a mat) — never clipped.
+ */
+interface Props {
+  src?: string; // image to hang; omit to use the default slot (live panel)
+  alt?: string;
+  size?: 'lg' | 'md' | 'sm';
+  tilt?: number; // base hang angle in degrees (museum variety)
+  mat?: boolean; // show the paper mat behind the art (default true for images)
+  view?: boolean; // morph the cursor to the "View case →" pill on hover
+  href?: string; // wrap the frame in a link
+  label?: string; // cursor pill label when linked (default "View case →")
+  class?: string;
+}
+const {
+  src,
+  alt = '',
+  size = 'md',
+  tilt = 0,
+  mat = true,
+  view = false,
+  href,
+  label = 'View case →',
+  class: extra = '',
+} = Astro.props;
+
+const Tag = href ? 'a' : 'div';
+const tagProps = href
+  ? { href, 'aria-label': alt || label }
+  : {};
+---
+
+<figure class:list={['frame', `frame--${size}`, extra]} style={`--tilt:${tilt}deg`}>
+  <Tag
+    class="frameart"
+    data-view={view ? '' : undefined}
+    data-label={view ? label : undefined}
+    {...tagProps}
+  >
+    <div class:list={['window', { 'window--mat': mat && src }]}>
+      {
+        src ? (
+          <img class="fit" src={src} alt={alt} loading="lazy" decoding="async" />
+        ) : (
+          <slot />
+        )
+      }
+    </div>
+    <img class="fr" src="/frames/frame-cut-web.png" alt="" aria-hidden="true" loading="lazy" />
+  </Tag>
+</figure>
+
+<style>
+  .frame {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .frameart {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 540px;
+    transform-origin: top center;
+    animation: sway 13s ease-in-out infinite;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a.frameart {
+    display: block;
+  }
+
+  .frame--lg .frameart {
+    max-width: 600px;
+  }
+  .frame--md .frameart {
+    max-width: 480px;
+  }
+  .frame--sm .frameart {
+    max-width: 380px;
+  }
+
+  @keyframes sway {
+    0%,
+    100% {
+      transform: rotate(calc(var(--tilt, 0deg) - 0.8deg));
+    }
+    50% {
+      transform: rotate(calc(var(--tilt, 0deg) + 0.8deg));
+    }
+  }
+
+  .window {
+    position: absolute;
+    left: var(--winL);
+    top: var(--winT);
+    width: var(--winW);
+    height: var(--winH);
+    overflow: hidden;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fbfcfd;
+  }
+
+  .window--mat {
+    background: var(--mat);
+    padding: 2%;
+  }
+
+  .window img.fit {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 1px;
+  }
+
+  .fr {
+    position: relative;
+    display: block;
+    width: 100%;
+    z-index: 2;
+    pointer-events: none;
+    filter: drop-shadow(0 26px 26px rgba(60, 40, 10, 0.28));
+  }
+
+  a.frameart:hover .fr {
+    filter: drop-shadow(0 30px 30px rgba(60, 40, 10, 0.34));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .frameart {
+      animation: none;
+      transform: rotate(var(--tilt, 0deg));
+    }
+  }
+</style>

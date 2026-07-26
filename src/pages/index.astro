@@ -1,24 +1,93 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import ShaderHero from '../components/ShaderHero.astro';
+import Frame from '../components/Frame.astro';
+import LiveComponents from '../components/LiveComponents.astro';
 import CaseCard from '../components/CaseCard.astro';
 
 const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
 
+// preview image for each case (live case falls back to its first exhibit)
+const withPreview = cases.map((c, i) => ({
+  ...c,
+  preview: c.data.hero.src ?? c.data.exhibits[0]?.src ?? '',
+  previewAlt: c.data.hero.alt ?? c.data.exhibits[0]?.alt ?? c.data.title,
+  tilt: [-1.1, 1, -0.6][i % 3],
+}));
+
 const impact = [
   { stat: '3', label: 'platforms — web, iOS, Android — on one token system' },
   { stat: '24', label: 'core web component families designed & maintained' },
-  { stat: 'Live', label: 'worldwide & free — math.akelius.education' },
+  { stat: 'Live', label: 'shipped free & worldwide — math.akelius.education' },
+];
+
+// index rows: the three cases + the craft room
+const indexRows = [
+  ...withPreview.map((c) => ({
+    number: c.data.number,
+    label: c.data.role,
+    title: c.data.title,
+    href: `/work/${c.id}`,
+    preview: c.preview,
+    alt: c.previewAlt,
+  })),
+  {
+    number: '—',
+    label: 'Craft & side rooms',
+    title: 'Instructional design · IrisVault · stePlan · No Water',
+    href: '/craft',
+    preview: '/cases/ds-05-cards.jpg',
+    alt: 'Craft room',
+  },
 ];
 ---
 
-<Base title="Tatiana Papastylianou — Senior Product Designer">
-  <ShaderHero />
+<Base title="Tatiana Papastylianou — Senior Product Designer" loader={true}>
+  <!-- hero: name + manifesto line, live-component frame -->
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="kicker reveal">Senior Product Designer</p>
+        <h1 class="hero-name reveal">Tatiana<br />Papastylianou</h1>
+        <p class="hero-statement reveal">
+          I build the systems behind serious products — and keep the work legible enough to
+          trust.
+        </p>
+        <p class="hero-manifesto reveal">
+          A portfolio sells <span class="accent">judgement</span>, not screens.
+          <cite>— No Water, a designer's confession</cite>
+        </p>
+        <a class="btn reveal hero-cta" href="#work">Walk the gallery <span aria-hidden="true">→</span></a>
+      </div>
 
-  <!-- selected impact strip -->
+      <figure class="hero-frame reveal">
+        <Frame size="lg" tilt={-0.6} mat={false}>
+          <LiveComponents />
+        </Frame>
+        <figcaption class="hero-plaque">
+          <span class="hero-plaque-t">The design system — real components, not screenshots</span>
+          <span class="hero-plaque-s">01 · Design lead · Akelius</span>
+        </figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <!-- manifesto statement -->
+  <section class="section manifesto" aria-label="Statement">
+    <div class="container">
+      <p class="kicker reveal">The standard</p>
+      <p class="manifesto-line text-reveal reveal">
+        A portfolio in 2026 sells <span class="accent">judgement</span>, not screens. Lead with
+        the problem, the constraint, the choice, the consequence. The screens are only evidence.
+      </p>
+      <p class="manifesto-cite reveal">Adapted from my book, <em>No Water — A Designer's Confession</em></p>
+    </div>
+  </section>
+
+  <!-- selected impact -->
   <section class="section impact" aria-label="Selected impact">
     <div class="container">
+      <p class="kicker reveal">Selected impact</p>
       <ul class="impact-grid">
         {
           impact.map((i) => (
@@ -32,22 +101,53 @@ const impact = [
     </div>
   </section>
 
+  <!-- case index: hover previews the framed screen -->
+  <section class="section case-index" aria-label="Index of work" data-index-scope>
+    <div class="container index-grid">
+      <div class="index-preview" aria-hidden="true">
+        <Frame src={indexRows[0].preview} alt="" size="md" tilt={-0.6} />
+      </div>
+      <ol class="index-list">
+        {
+          indexRows.map((r) => (
+            <li class="index-row">
+              <a
+                href={r.href}
+                class="index-link"
+                data-preview={r.preview}
+                data-view
+                data-label="View →"
+              >
+                <span class="index-num">{r.number}</span>
+                <span class="index-titles">
+                  <span class="index-title">{r.title}</span>
+                  <span class="index-label">{r.label}</span>
+                </span>
+                <span class="index-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
   <!-- the gallery: three framed cases -->
   <section class="section work" id="work">
     <div class="container">
       <header class="work-head reveal">
-        <p class="eyebrow">The gallery · Selected work</p>
+        <p class="kicker">The gallery · Selected work</p>
         <h2 class="work-title">Three rooms in the collection</h2>
         <p class="work-intro">
           A design system rebuilt as infrastructure, a live product shipped through three
-          competing visions, and two apps merged and de-risked before a line of code. The work
-          hangs here; step closer to any frame.
+          competing visions, and two apps merged and de-risked before a line of code. Step
+          closer to any frame.
         </p>
       </header>
 
       <div class="work-list">
         {
-          cases.map((c, i) => (
+          withPreview.map((c, i) => (
             <CaseCard
               number={c.data.number}
               role={c.data.role}
@@ -55,6 +155,9 @@ const impact = [
               oneLiner={c.data.oneLiner}
               slug={c.id}
               liveUrl={c.data.liveUrl}
+              preview={c.preview}
+              alt={c.previewAlt}
+              tilt={c.tilt}
               index={i}
             />
           ))
@@ -67,7 +170,7 @@ const impact = [
   <section class="section craft-teaser">
     <div class="container craft-inner reveal">
       <div>
-        <p class="eyebrow">Beyond the main hall</p>
+        <p class="kicker">Beyond the main hall</p>
         <h2 class="craft-title">Craft &amp; side rooms</h2>
         <p class="craft-copy">
           Instructional design for the Generator's column-operations lessons, a shipped iOS
@@ -80,41 +183,139 @@ const impact = [
   </section>
 </Base>
 
+<script>
+  // case index — swap the shared preview frame on hover/focus
+  const frame = document.querySelector<HTMLImageElement>('.index-preview img.fit');
+  document.querySelectorAll<HTMLElement>('.index-link').forEach((link) => {
+    const src = link.dataset.preview;
+    const swap = () => {
+      if (frame && src) frame.src = src;
+    };
+    link.addEventListener('pointerenter', swap);
+    link.addEventListener('focus', swap);
+  });
+</script>
+
 <style>
-  /* impact strip */
-  .impact {
-    padding-block: var(--space-xl);
-    border-block: 1px solid rgba(200, 162, 75, 0.14);
-    background: linear-gradient(180deg, rgba(20, 26, 36, 0.5), transparent);
+  /* hero */
+  .hero {
+    padding-block: clamp(2.5rem, 6vw, 5rem) var(--space-l);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .hero-name {
+    font-size: var(--step-5);
+    line-height: 0.94;
+    letter-spacing: -0.02em;
+    margin-top: 0.6rem;
+  }
+  .hero-statement {
+    margin-top: var(--space-m);
+    max-width: 34ch;
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    font-style: italic;
+    color: var(--head);
+    line-height: 1.3;
+  }
+  .hero-manifesto {
+    margin-top: var(--space-m);
+    max-width: 40ch;
+    font-size: var(--step-0);
+    color: var(--body);
+  }
+  .hero-manifesto cite {
+    display: block;
+    margin-top: 0.35rem;
+    font-style: normal;
+    font-size: var(--step--1);
+    letter-spacing: 0.06em;
+    color: var(--dim);
+  }
+  .hero-cta {
+    margin-top: var(--space-l);
   }
 
+  .hero-frame {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-plaque {
+    margin: 0.6rem auto 0;
+    max-width: 360px;
+    text-align: center;
+    background: linear-gradient(180deg, #e4d9c0, #d6c9a9);
+    border: 1px solid rgba(120, 97, 31, 0.4);
+    border-radius: 3px;
+    padding: 10px 16px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+  .hero-plaque-t {
+    display: block;
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    color: #3a2c14;
+  }
+  .hero-plaque-s {
+    display: block;
+    margin-top: 3px;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8a744a;
+  }
+
+  /* manifesto */
+  .manifesto {
+    background: var(--paper-2);
+    border-block: 1px solid var(--line);
+  }
+  .manifesto-line {
+    margin-top: var(--space-m);
+    max-width: 24ch;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: var(--step-4);
+    line-height: 1.08;
+  }
+  .manifesto-cite {
+    margin-top: var(--space-m);
+    font-size: var(--step--1);
+    letter-spacing: 0.06em;
+    color: var(--dim);
+  }
+
+  /* impact */
   .impact-grid {
     list-style: none;
     padding: 0;
+    margin-top: var(--space-l);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-l);
   }
-
   .impact-item {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
   }
-
   .impact-stat {
     font-family: var(--serif);
     font-size: var(--step-4);
     line-height: 1;
-    color: var(--gold-lite);
+    color: var(--head);
   }
-
   .impact-label {
-    color: var(--text-dim);
+    color: var(--dim);
     font-size: var(--step-0);
     max-width: 26ch;
   }
-
   @media (max-width: 720px) {
     .impact-grid {
       grid-template-columns: 1fr;
@@ -130,21 +331,94 @@ const impact = [
     }
   }
 
-  /* work section */
+  /* case index */
+  .index-grid {
+    display: grid;
+    grid-template-columns: 0.75fr 1.25fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .index-preview {
+    position: sticky;
+    top: 100px;
+  }
+  .index-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--line);
+  }
+  .index-link {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: var(--space-m) 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--head);
+    transition: padding-left 0.3s var(--ease-out);
+  }
+  .index-link:hover,
+  .index-link:focus-visible {
+    padding-left: 0.8rem;
+  }
+  .index-num {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    color: var(--gold-deep);
+    min-width: 2ch;
+  }
+  .index-titles {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .index-title {
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    letter-spacing: 0.02em;
+  }
+  .index-label {
+    font-size: var(--step--1);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+  .index-arrow {
+    margin-left: auto;
+    color: var(--gold-deep);
+    transition: transform 0.3s var(--ease-out);
+  }
+  .index-link:hover .index-arrow {
+    transform: translateX(6px);
+  }
+  @media (max-width: 820px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-frame {
+      order: -1;
+      max-width: 460px;
+    }
+    .index-grid {
+      grid-template-columns: 1fr;
+    }
+    .index-preview {
+      display: none;
+    }
+  }
+
+  /* work head */
   .work-head {
     max-width: 60ch;
     margin-bottom: var(--space-l);
   }
-
   .work-title {
     font-size: var(--step-4);
     margin-top: 0.4rem;
-    color: var(--parchment);
   }
-
   .work-intro {
     margin-top: var(--space-s);
-    color: var(--text-dim);
+    color: var(--body);
     font-size: var(--step-1);
     line-height: 1.5;
   }
@@ -153,7 +427,6 @@ const impact = [
   .craft-teaser {
     padding-block: var(--space-xl) var(--space-2xl);
   }
-
   .craft-inner {
     display: flex;
     flex-wrap: wrap;
@@ -161,22 +434,17 @@ const impact = [
     justify-content: space-between;
     gap: var(--space-l);
     padding: clamp(1.75rem, 4vw, 3rem);
-    border: 1px solid rgba(200, 162, 75, 0.2);
+    border: 1px solid var(--line);
     border-radius: var(--radius);
-    background:
-      radial-gradient(80% 120% at 100% 0%, rgba(46, 110, 126, 0.18), transparent 60%),
-      var(--night-2);
+    background: var(--card);
   }
-
   .craft-title {
     font-size: var(--step-3);
     margin-top: 0.3rem;
-    color: var(--parchment);
   }
-
   .craft-copy {
     margin-top: var(--space-s);
     max-width: 52ch;
-    color: var(--text-dim);
+    color: var(--body);
   }
 </style>

@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Frame from '../components/Frame.astro';
 
 // Column-operations lessons told as elegant sequential panels (graphic-novel restraint).
 const panels = [
@@ -13,7 +14,7 @@ const panels = [
   },
   {
     step: 'Craft',
-    body: 'Instructional design as choreography — sequencing each reveal, aligning digits to a strict grid, and letting a single functional accent colour point to the one thing that just changed.',
+    body: 'Instructional design as choreography — sequencing each reveal, aligning digits to a strict grid, and letting a single functional accent point to the one thing that just changed.',
   },
   {
     step: 'Outcome',
@@ -27,21 +28,23 @@ const pieces = [
     kind: 'iOS · SwiftUI · Shipped',
     name: 'IrisVault',
     line: 'An eye-wellness companion for iOS — gentle reminders, exercises and rest habits for people who live on screens. Designed and shipped end-to-end in SwiftUI.',
-    tone: 'tone-aqua',
-    // url: 'https://apps.apple.com/...'
+    tone: 'aqua',
+    tilt: -1.2,
+    // href pending — no invented link
   },
   {
     kind: 'iOS · App Store · Freelance',
     name: 'stePlan',
     line: 'A freelance planning tool that reached the App Store — project and task planning distilled to the few moves a busy solo worker actually makes.',
-    tone: 'tone-gold',
-    // url: 'https://apps.apple.com/...'
+    tone: 'gold',
+    tilt: 1,
   },
   {
     kind: 'Book · Landing',
     name: 'No Water — A Designer’s Confession',
-    line: 'A book about design, doubt and the dark-dreamy inner world behind the work. The most personal thing in the collection — read more in the About room.',
-    tone: 'tone-rose',
+    line: 'A book about design, doubt and the dark-dreamy inner world behind the work. The most personal thing in the collection.',
+    tone: 'rose',
+    tilt: -0.6,
     href: '/about#book',
   },
 ];
@@ -53,7 +56,7 @@ const pieces = [
 >
   <header class="section craft-head">
     <div class="container">
-      <p class="eyebrow reveal">The craft room</p>
+      <p class="kicker reveal">The craft room</p>
       <h1 class="craft-h1 reveal">Craft &amp; side rooms</h1>
       <p class="craft-lead reveal">
         Not everything is a flagship case. This room holds the smaller pieces — the teaching
@@ -66,11 +69,11 @@ const pieces = [
   <section class="section spotlight" aria-labelledby="spotlight-title">
     <div class="container">
       <div class="spotlight-head reveal">
-        <p class="eyebrow">Spotlight · Instructional design</p>
+        <p class="kicker">Spotlight · Instructional design</p>
         <h2 id="spotlight-title" class="spotlight-title">Teaching column operations</h2>
         <p class="spotlight-intro">
           Turning a professor’s dense method into steps a learner can follow — the same
-          problem→decision→outcome discipline as the cases, at the scale of a single lesson.
+          problem → decision → outcome discipline as the cases, at the scale of a single lesson.
         </p>
       </div>
 
@@ -97,17 +100,16 @@ const pieces = [
       <ul class="pieces-grid">
         {
           pieces.map((p) => (
-            <li class:list={['piece', 'reveal', p.tone]}>
-              <div class="piece-frame">
-                <div class="piece-art" aria-hidden="true">
+            <li class="piece reveal">
+              <Frame size="sm" tilt={p.tilt} mat={false} href={p.href} label="Open →" view={!!p.href}>
+                <div class:list={['piece-art', `tone-${p.tone}`]}>
                   <span class="piece-initial">{p.name.charAt(0)}</span>
                 </div>
-              </div>
-              <p class="piece-kind">{p.kind}</p>
-              <h3 class="piece-name">
-                {p.href ? <a href={p.href}>{p.name}</a> : p.name}
-              </h3>
+              </Frame>
+              <p class="kicker piece-kind">{p.kind}</p>
+              <h3 class="piece-name">{p.href ? <a href={p.href}>{p.name}</a> : p.name}</h3>
               <p class="piece-line">{p.line}</p>
+              {!p.href && <p class="piece-note">Live link coming soon.</p>}
             </li>
           ))
         }
@@ -123,17 +125,15 @@ const pieces = [
   .craft-h1 {
     font-size: var(--step-4);
     margin-top: 0.4rem;
-    color: var(--parchment);
   }
   .craft-lead {
     margin-top: var(--space-s);
     max-width: 56ch;
     font-size: var(--step-1);
-    color: var(--text-dim);
+    color: var(--body);
     line-height: 1.5;
   }
 
-  /* spotlight panels */
   .spotlight-head {
     max-width: 58ch;
     margin-bottom: var(--space-l);
@@ -141,11 +141,10 @@ const pieces = [
   .spotlight-title {
     font-size: var(--step-3);
     margin-top: 0.3rem;
-    color: var(--parchment);
   }
   .spotlight-intro {
     margin-top: var(--space-s);
-    color: var(--text-dim);
+    color: var(--body);
   }
 
   .panels {
@@ -154,40 +153,35 @@ const pieces = [
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1px;
-    background: rgba(200, 162, 75, 0.22);
-    border: 1px solid rgba(200, 162, 75, 0.22);
+    background: var(--line);
+    border: 1px solid var(--line);
     border-radius: var(--radius);
     overflow: hidden;
   }
-
   .panel {
-    background: var(--night-2);
+    background: var(--card);
     padding: clamp(1.4rem, 2.4vw, 2.1rem);
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
     min-height: 240px;
   }
-
   .panel-index {
     font-family: var(--mono);
     font-size: var(--step--1);
-    color: var(--gold);
+    color: var(--gold-deep);
     letter-spacing: 0.1em;
   }
-
   .panel-step {
     font-family: var(--serif);
     font-size: var(--step-2);
-    color: var(--gold-lite);
+    color: var(--head);
   }
-
   .panel-body {
-    color: var(--text-dim);
+    color: var(--body);
     font-size: var(--step--1);
     line-height: 1.6;
   }
-
   @media (max-width: 900px) {
     .panels {
       grid-template-columns: repeat(2, 1fr);
@@ -208,83 +202,72 @@ const pieces = [
   }
   .pieces-title {
     font-size: var(--step-3);
-    color: var(--parchment);
     margin-bottom: var(--space-l);
   }
-
   .pieces-grid {
     list-style: none;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--space-l);
   }
-
-  .piece-frame {
-    padding: 10px;
-    border-radius: 5px;
-    background: var(--frame-gold);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-    margin-bottom: var(--space-m);
+  .piece {
+    display: flex;
+    flex-direction: column;
   }
-
   .piece-art {
-    aspect-ratio: 3 / 2;
-    border-radius: 2px;
+    width: 100%;
+    height: 100%;
     display: grid;
     place-items: center;
-    background: linear-gradient(160deg, #0b0e13, #182233);
+    background: linear-gradient(160deg, #efe7d5, #e2d7bd);
   }
-
-  .tone-aqua .piece-art {
+  .tone-aqua {
     background:
-      radial-gradient(60% 60% at 60% 35%, rgba(127, 184, 196, 0.4), transparent 70%),
-      linear-gradient(160deg, #0b0e13, #101a26);
+      radial-gradient(60% 60% at 60% 35%, rgba(46, 110, 126, 0.28), transparent 70%),
+      linear-gradient(160deg, #eef0ea, #dfe6e2);
   }
-  .tone-gold .piece-art {
+  .tone-gold {
     background:
-      radial-gradient(60% 60% at 35% 40%, rgba(230, 200, 120, 0.35), transparent 70%),
-      linear-gradient(160deg, #0b0e13, #182233);
+      radial-gradient(60% 60% at 35% 40%, rgba(201, 162, 75, 0.32), transparent 70%),
+      linear-gradient(160deg, #f3ecd8, #e6d9b8);
   }
-  .tone-rose .piece-art {
+  .tone-rose {
     background:
-      radial-gradient(60% 60% at 40% 65%, rgba(176, 106, 120, 0.4), transparent 70%),
-      linear-gradient(160deg, #0b0e13, #150f1a);
+      radial-gradient(60% 60% at 40% 65%, rgba(176, 106, 120, 0.28), transparent 70%),
+      linear-gradient(160deg, #f1e7e4, #e6d3d3);
   }
-
   .piece-initial {
     font-family: var(--serif);
     font-style: italic;
-    font-size: 3.4rem;
-    color: rgba(243, 236, 221, 0.85);
-    mix-blend-mode: overlay;
+    font-size: 3rem;
+    color: rgba(33, 25, 19, 0.5);
   }
-
   .piece-kind {
-    font-family: var(--mono);
-    font-size: var(--step--1);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold);
+    margin-top: var(--space-m);
+    color: var(--gold-deep);
   }
-
   .piece-name {
     font-size: var(--step-2);
     margin-top: 0.3rem;
-    color: var(--parchment);
   }
   .piece-name a {
-    color: inherit;
-    text-decoration: none;
+    color: var(--head);
+    border-bottom: 1px solid transparent;
   }
   .piece-name a:hover {
-    color: var(--gold-lite);
+    border-bottom-color: var(--ink);
   }
-
   .piece-line {
     margin-top: 0.6rem;
-    color: var(--text-dim);
+    color: var(--body);
     font-size: var(--step--1);
     line-height: 1.6;
+  }
+  .piece-note {
+    margin-top: 0.5rem;
+    font-size: var(--step--1);
+    letter-spacing: 0.06em;
+    color: var(--dim);
   }
 </style>

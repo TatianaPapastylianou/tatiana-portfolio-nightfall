@@ -1,22 +1,25 @@
 ---
-import '@fontsource-variable/cormorant-garamond';
-import '@fontsource-variable/inter';
 import '../styles/tokens.css';
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import SiteChrome from '../components/SiteChrome.astro';
+import Loader from '../components/Loader.astro';
 
 interface Props {
   title: string;
   description?: string;
-  /** adds the immersive Storybook-Noir class for the About page */
-  world?: boolean;
+  /** dark/atmospheric page (About) — inverts cursor, allows dark surfaces */
+  dark?: boolean;
+  /** show the cinematic preloader (home only) */
+  loader?: boolean;
 }
 
 const {
   title,
-  description = 'Tatiana Papastylianou — Senior Product Designer. Design systems, shipped products, and a taste for dark, dreaming interfaces.',
-  world = false,
+  description = 'Tatiana Papastylianou — Senior Product Designer. Design systems, shipped education products, and a portfolio that sells judgement, not screens.',
+  dark = false,
+  loader = false,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -31,7 +34,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta name="theme-color" content="#0e1116" />
+    <meta name="theme-color" content="#ede4d2" />
+
+    <!-- Fonts: Zodiak (display) + General Sans (UI/body), free via Fontshare -->
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=zodiak@400,401,700,701&f[]=general-sans@400,500,600&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -45,13 +55,15 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       document.documentElement.classList.remove('no-js');
     </script>
   </head>
-  <body class={world ? 'world' : ''}>
+  <body class={dark ? 'dark' : ''}>
     <a class="skip-link" href="#main">Skip to content</a>
-    <Nav />
+    {loader && <Loader />}
+    <SiteChrome />
+    <Nav dark={dark} />
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    <Footer dark={dark} />
 
     <!-- progressive-enhancement motion: reveals + smooth scroll, reduced-motion aware -->
     <script src="../scripts/motion.js"></script>

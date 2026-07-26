@@ -30,6 +30,21 @@ if (prefersReduced) {
   gsap.ticker.add((time) => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
 
+  // expose for anchor links + tooling
+  window.__lenis = lenis;
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (id && id.length > 1) {
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          lenis.scrollTo(target, { offset: -80 });
+        }
+      }
+    });
+  });
+
   /* ---- Scroll reveals ---- */
   const revealEls = gsap.utils.toArray('.reveal');
   revealEls.forEach((el) => {

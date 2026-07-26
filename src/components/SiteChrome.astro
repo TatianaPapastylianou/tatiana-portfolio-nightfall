@@ -1,0 +1,90 @@
+---
+/**
+ * SiteChrome — the two signature global elements:
+ *  • custom cursor: an ink dot that morphs to a "View case →" pill over [data-view]
+ *  • eye-orb: fixed top-right, pupils track the cursor AND the orb travels down the
+ *    right edge as the scroll-progress indicator.
+ * Both are pure enhancement: hidden/none on touch + reduced-motion; the site is fully
+ * usable without them.
+ */
+---
+
+<div class="cursor" data-cursor aria-hidden="true"><span class="lbl">View case →</span></div>
+
+<div class="eye-orb" data-eye aria-hidden="true">
+  <span class="eye"><span class="pupil"></span></span>
+  <span class="eye"><span class="pupil"></span></span>
+</div>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  const cursor = document.querySelector<HTMLElement>('[data-cursor]');
+  const label = cursor?.querySelector<HTMLElement>('.lbl');
+  const eye = document.querySelector<HTMLElement>('[data-eye]');
+
+  /* ---- custom cursor (fine pointers only) ---- */
+  if (cursor && fine && !reduce) {
+    let x = innerWidth / 2,
+      y = innerHeight / 2,
+      cx = x,
+      cy = y;
+    addEventListener(
+      'pointermove',
+      (e) => {
+        x = e.clientX;
+        y = e.clientY;
+      },
+      { passive: true }
+    );
+    const loop = () => {
+      cx += (x - cx) * 0.22;
+      cy += (y - cy) * 0.22;
+      cursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+
+    // pill morph over case frames / links carrying [data-view]
+    document.querySelectorAll<HTMLElement>('[data-view]').forEach((el) => {
+      el.addEventListener('pointerenter', () => {
+        if (label && el.dataset.label) label.textContent = el.dataset.label;
+        cursor.classList.add('pill');
+      });
+      el.addEventListener('pointerleave', () => cursor.classList.remove('pill'));
+    });
+  }
+
+  /* ---- eye-orb: scroll-progress position (always, cheap) ---- */
+  if (eye) {
+    const onScroll = () => {
+      const h = document.documentElement.scrollHeight - innerHeight;
+      const pct = h > 0 ? scrollY / h : 0;
+      const travel = innerHeight - 220;
+      eye.style.top = 100 + pct * Math.max(0, travel) + 'px';
+    };
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll, { passive: true });
+    onScroll();
+
+    // pupils follow the cursor (fine pointers, motion allowed)
+    if (fine && !reduce) {
+      addEventListener(
+        'pointermove',
+        (e) => {
+          eye.querySelectorAll<HTMLElement>('.eye').forEach((socket) => {
+            const r = socket.getBoundingClientRect();
+            const ex = r.left + r.width / 2,
+              ey = r.top + r.height / 2;
+            const a = Math.atan2(e.clientY - ey, e.clientX - ex);
+            const d = Math.min(3.2, Math.hypot(e.clientX - ex, e.clientY - ey) / 28);
+            const p = socket.querySelector<HTMLElement>('.pupil');
+            if (p) p.style.transform = `translate(${Math.cos(a) * d}px, ${Math.sin(a) * d}px)`;
+          });
+        },
+        { passive: true }
+      );
+    }
+  }
+</script>

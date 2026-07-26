@@ -1,0 +1,283 @@
+---
+/**
+ * LiveComponents — the Case-01 hero panel, rebuilt to the REAL Akelius
+ * design-system tokens (Verdana, green #00a57c, primary blue #172b53,
+ * download bg #d0efff). These are live, keyboard-operable components — not a
+ * screenshot — so the system reads as real and usable inside the frame.
+ */
+---
+
+<div class="livepanel" role="group" aria-label="Live design-system components">
+  <div class="lp-title">Fractions<small>Lesson 3 · pick your level</small></div>
+
+  <div class="seg" role="tablist" aria-label="Difficulty level" data-seg>
+    <button type="button" role="tab" aria-selected="true" class="on">easy</button>
+    <button type="button" role="tab" aria-selected="false">medium</button>
+    <button type="button" role="tab" aria-selected="false">hard</button>
+  </div>
+
+  <div class="row">
+    <span class="lp-lbl" id="dm-lbl">dark mode</span>
+    <button
+      type="button"
+      class="tgl"
+      role="switch"
+      aria-checked="false"
+      aria-labelledby="dm-lbl"
+      data-tgl
+    >
+      <span class="knob"></span>
+    </button>
+  </div>
+
+  <label class="lp-field">
+    <span class="visually-hidden">Your name</span>
+    <input class="lp-input" type="text" placeholder="your name…" />
+  </label>
+
+  <button type="button" class="dlbtn" data-dl>
+    <span class="fill" aria-hidden="true"></span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"
+      ><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"></path></svg
+    >
+    <span class="t2">download all</span><span class="sz">3.5MB</span>
+  </button>
+</div>
+
+<style>
+  .livepanel {
+    width: 100%;
+    height: 100%;
+    background: #fbfcfd;
+    padding: 7% 8%;
+    display: flex;
+    flex-direction: column;
+    gap: 5.5%;
+    justify-content: center;
+    font-size: clamp(9px, 1.25vw, 13px);
+    font-family: var(--sysfont);
+  }
+  .livepanel * {
+    font-family: var(--sysfont);
+  }
+  .lp-title {
+    font-weight: 700;
+    color: var(--blue);
+    font-size: 1.35em;
+    line-height: 1.1;
+  }
+  .lp-title small {
+    display: block;
+    font-weight: 400;
+    color: #8a94a2;
+    font-size: 0.62em;
+    letter-spacing: 0.4px;
+    margin-top: 0.2em;
+  }
+
+  /* segmented level control */
+  .seg {
+    display: flex;
+    background: #eef2f6;
+    border-radius: 0.7em;
+    padding: 0.28em;
+    gap: 0.28em;
+  }
+  .seg button {
+    flex: 1;
+    border: none;
+    background: none;
+    font-weight: 500;
+    color: #5a6473;
+    font-size: 0.92em;
+    padding: 0.5em 0;
+    border-radius: 0.5em;
+    transition: 0.2s;
+  }
+  .seg button.on {
+    background: #fff;
+    color: var(--green-d);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6em;
+  }
+  .lp-lbl {
+    color: #5a6473;
+    font-weight: 500;
+  }
+
+  /* iOS squircle switch (matches Akelius) */
+  .tgl {
+    --r: 34%;
+    width: 3.5em;
+    height: 2.05em;
+    border-radius: 34% / 50%;
+    background: var(--off);
+    position: relative;
+    transition: background 0.3s;
+    flex: none;
+    border: none;
+    padding: 0;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.14);
+  }
+  .tgl.on {
+    background: var(--green);
+  }
+  .tgl .knob {
+    position: absolute;
+    top: 0.16em;
+    left: 0.16em;
+    width: 1.73em;
+    height: 1.73em;
+    border-radius: 32% / 44%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.32);
+    transition: left 0.28s cubic-bezier(0.4, 1.3, 0.5, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tgl.on .knob {
+    left: 1.61em;
+  }
+  .tgl .knob::after {
+    content: '';
+    width: 2px;
+    height: 0.72em;
+    background: #c4c9cf;
+    border-radius: 2px;
+    transition: background 0.3s;
+  }
+  .tgl.on .knob::after {
+    background: var(--green);
+  }
+
+  /* input with green focus */
+  .lp-field {
+    display: block;
+  }
+  .lp-input {
+    width: 100%;
+    border: 1.5px solid #cfd6dd;
+    border-radius: 0.65em;
+    padding: 0.62em 0.8em;
+    font-size: 1em;
+    color: #1b2430;
+    background: #fff;
+    outline: none;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+  }
+  .lp-input:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(0, 165, 124, 0.18);
+  }
+
+  /* download button (pill: icon + label + size, fill on click) */
+  .dlbtn {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    background: var(--blueBg);
+    color: var(--blue);
+    border: none;
+    border-radius: 99px;
+    padding: 0.62em 1em;
+    font-weight: 700;
+    font-size: 1em;
+    width: 100%;
+  }
+  .dlbtn .fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: rgba(24, 95, 165, 0.16);
+    transition: width 0.05s linear;
+  }
+  .dlbtn svg {
+    width: 1.15em;
+    height: 1.15em;
+    position: relative;
+    z-index: 1;
+  }
+  .dlbtn .t2 {
+    position: relative;
+    z-index: 1;
+  }
+  .dlbtn .sz {
+    position: relative;
+    z-index: 1;
+    margin-left: auto;
+    color: #7c92ad;
+    font-weight: 500;
+  }
+</style>
+
+<script>
+  // Idempotent wiring; each panel instance wires its own controls.
+  document.querySelectorAll<HTMLElement>('.livepanel').forEach((panel) => {
+    if (panel.dataset.wired) return;
+    panel.dataset.wired = '1';
+
+    // segmented control
+    const seg = panel.querySelector('[data-seg]');
+    seg?.querySelectorAll('button').forEach((b) => {
+      b.addEventListener('click', () => {
+        seg.querySelectorAll('button').forEach((x) => {
+          x.classList.remove('on');
+          x.setAttribute('aria-selected', 'false');
+        });
+        b.classList.add('on');
+        b.setAttribute('aria-selected', 'true');
+      });
+    });
+
+    // squircle toggle
+    const tgl = panel.querySelector<HTMLElement>('[data-tgl]');
+    tgl?.addEventListener('click', () => {
+      const on = tgl.classList.toggle('on');
+      tgl.setAttribute('aria-checked', on ? 'true' : 'false');
+    });
+
+    // download button with progress fill
+    const dl = panel.querySelector<HTMLElement>('[data-dl]');
+    if (dl) {
+      const fill = dl.querySelector<HTMLElement>('.fill');
+      const t2 = dl.querySelector<HTMLElement>('.t2');
+      const sz = dl.querySelector<HTMLElement>('.sz');
+      let busy = false;
+      dl.addEventListener('click', () => {
+        if (busy || !fill || !t2 || !sz) return;
+        busy = true;
+        t2.textContent = 'downloading';
+        let p = 0;
+        const iv = setInterval(() => {
+          p += 3;
+          fill.style.width = p + '%';
+          sz.textContent = ((3.5 * p) / 100).toFixed(1) + 'MB';
+          if (p >= 100) {
+            clearInterval(iv);
+            t2.textContent = 'done';
+            sz.textContent = '✓';
+            setTimeout(() => {
+              fill.style.width = '0';
+              t2.textContent = 'download all';
+              sz.textContent = '3.5MB';
+              busy = false;
+            }, 1400);
+          }
+        }, 35);
+      });
+    }
+  });
+</script>
