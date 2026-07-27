@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1430" font-family="'Poppins','Trebuchet MS','Segoe UI',system-ui,sans-serif">
+  <rect width="1000" height="1430" fill="#f6f1e6"/>
+  <!-- brand -->
+  <g transform="translate(95,150)">
+    <ellipse cx="52" cy="0" rx="52" ry="33" fill="none" stroke="#2f8079" stroke-width="9"/>
+    <circle cx="52" cy="0" r="20" fill="#2f8079"/>
+    <circle cx="60" cy="-7" r="6" fill="#f6f1e6"/>
+    <text x="140" y="18" font-size="62" font-weight="700" fill="#17262e" letter-spacing="-1">IrisVault</text>
+  </g>
+  <!-- headline -->
+  <g fill="#17262e" font-weight="800" letter-spacing="-3">
+    <text x="90" y="770" font-size="132">Give your eyes</text>
+    <text x="90" y="905" font-size="132"><tspan fill="#2f8079">a brea</tspan>k.</text>
+  </g>
+  <!-- subtitle -->
+  <g fill="#5f7079" font-size="47" font-weight="500">
+    <text x="92" y="1055">10 evidence-based eye exercises.</text>
+    <text x="92" y="1120">A symptom check-in every couple</text>
+    <text x="92" y="1185">of weeks. Reminders that fit your day.</text>
+  </g>
+  <!-- footer -->
+  <line x1="92" y1="1300" x2="908" y2="1300" stroke="#d8d0c0" stroke-width="2"/>
+  <text x="92" y="1372" font-size="44" font-weight="600" fill="#2f8079">Free on the App Store</text>
+</svg>
