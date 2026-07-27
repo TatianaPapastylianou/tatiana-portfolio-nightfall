@@ -2,8 +2,8 @@
 /**
  * Loader — the cinematic preloader (home only). A dark burgundy field, a live %
  * counter, and three case screens hanging up into gold frames, then it resolves
- * into the warm-paper gallery. ≤2s, skippable, plays once per session, and fully
- * skipped for prefers-reduced-motion (composed light gallery shows immediately).
+ * into the warm-paper gallery. ≤2s, skippable, plays on every home-page load, and
+ * fully skipped for prefers-reduced-motion (composed light gallery shows immediately).
  */
 const shots = [
   { src: '/cases/ds-04-buttons.jpg', tilt: -2 },
@@ -179,19 +179,17 @@ const shots = [
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (loader) {
-    const played = sessionStorage.getItem('gallery-entered') === '1';
-
     const finish = () => {
       loader.classList.add('is-done');
       document.documentElement.style.removeProperty('overflow');
-      sessionStorage.setItem('gallery-entered', '1');
       window.setTimeout(() => loader.remove(), 650);
     };
 
-    if (reduce || played) {
-      // No cinematic entrance: reveal the gallery immediately.
+    if (reduce) {
+      // Reduced motion: no cinematic entrance — reveal the gallery immediately.
       loader.remove();
     } else {
+      // Plays on every home-page load (skippable).
       document.documentElement.style.overflow = 'hidden';
       const count = loader.querySelector<HTMLElement>('[data-count]');
       const skip = loader.querySelector<HTMLElement>('[data-skip]');
