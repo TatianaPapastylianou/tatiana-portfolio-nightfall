@@ -1,21 +1,27 @@
 ---
 /**
- * LiveComponents — the Case-01 hero panel, rebuilt to the REAL Akelius
- * design-system tokens (Verdana, green #00a57c, primary blue #172b53,
- * download bg #d0efff). These are live, keyboard-operable components — not a
- * screenshot — so the system reads as real and usable inside the frame.
+ * LiveComponents — the home hero panel, rebuilt to match the REAL Akelius
+ * design-system components (pulled from the Figma component library, node ids
+ * noted). Verdana, on the real tokens:
+ *   segmented "group button" — selected segment #d0efff, navy #172b53 text
+ *   iOS toggle — green #00a57c on, white squircle knob
+ *   text field — grey label, leading search, navy #172b53 focus, clear ✕
+ *   download button — #d0efff pill, "download all" + size, navy
+ * These are live, keyboard-operable components — not a screenshot.
  */
 ---
 
 <div class="livepanel" role="group" aria-label="Live design-system components">
   <div class="lp-title">Fractions<small>Lesson 3 · pick your level</small></div>
 
+  <!-- group button (segmented) -->
   <div class="seg" role="tablist" aria-label="Difficulty level" data-seg>
     <button type="button" role="tab" aria-selected="true" class="on">easy</button>
     <button type="button" role="tab" aria-selected="false">medium</button>
     <button type="button" role="tab" aria-selected="false">hard</button>
   </div>
 
+  <!-- iOS toggle -->
   <div class="row">
     <span class="lp-lbl" id="dm-lbl">dark mode</span>
     <button
@@ -30,11 +36,23 @@
     </button>
   </div>
 
-  <label class="lp-field">
-    <span class="visually-hidden">Your name</span>
-    <input class="lp-input" type="text" placeholder="your name…" />
+  <!-- text field (search variant, navy focus, clear ✕) -->
+  <label class="tf" data-tf>
+    <span class="tf-label">search lessons</span>
+    <span class="tf-box">
+      <svg class="tf-lead" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"
+        ><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg
+      >
+      <input class="tf-input" type="text" placeholder="fractions…" />
+      <button type="button" class="tf-clear" aria-label="Clear" data-clear>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"
+          ><path d="M6 6l12 12M18 6L6 18"></path></svg
+        >
+      </button>
+    </span>
   </label>
 
+  <!-- download button -->
   <button type="button" class="dlbtn" data-dl>
     <span class="fill" aria-hidden="true"></span>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"
@@ -54,8 +72,7 @@
     flex-direction: column;
     gap: 6%;
     justify-content: center;
-    /* scale the whole panel to the frame window so it never clips.
-       cqh = 1% of the window height; the vw line is the fallback. */
+    /* scale the whole panel to the frame window so it never clips. */
     font-size: clamp(9px, 2.2vw, 14px);
     font-size: clamp(8px, 5.2cqh, 15px);
     font-family: var(--sysfont);
@@ -72,36 +89,40 @@
   .lp-title small {
     display: block;
     font-weight: 400;
-    color: #8a94a2;
+    color: #67696a;
     font-size: 0.56em;
     letter-spacing: 0.2px;
     margin-top: 0.35em;
     white-space: nowrap;
   }
 
-  /* segmented level control */
+  /* group button — pill, selected segment #d0efff, navy text */
   .seg {
     display: flex;
-    background: #eef2f6;
-    border-radius: 0.7em;
-    padding: 0.28em;
-    gap: 0.28em;
+    background: #fff;
+    border: 1px solid var(--off);
+    border-radius: 999px;
+    overflow: hidden;
   }
   .seg button {
     flex: 1;
     border: none;
-    background: none;
-    font-weight: 500;
-    color: #5a6473;
-    font-size: 0.92em;
-    padding: 0.5em 0;
-    border-radius: 0.5em;
-    transition: 0.2s;
+    background: transparent;
+    color: var(--blue);
+    font-size: 0.95em;
+    padding: 0.55em 0.2em;
+    border-radius: 999px;
+    transition: background 0.18s;
+  }
+  .seg button + button {
+    border-left: 1px solid var(--off);
   }
   .seg button.on {
-    background: #fff;
-    color: var(--green-d);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    background: var(--blueBg);
+    border-left-color: transparent;
+  }
+  .seg button.on + button {
+    border-left-color: transparent;
   }
 
   .row {
@@ -111,13 +132,12 @@
     gap: 0.6em;
   }
   .lp-lbl {
-    color: #5a6473;
-    font-weight: 500;
+    color: #3d4b63;
+    font-weight: 400;
   }
 
-  /* iOS squircle switch (matches Akelius) */
+  /* iOS squircle switch */
   .tgl {
-    --r: 34%;
     width: 3.5em;
     height: 2.05em;
     border-radius: 34% / 50%;
@@ -127,7 +147,7 @@
     flex: none;
     border: none;
     padding: 0;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.14);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
   }
   .tgl.on {
     background: var(--green);
@@ -161,42 +181,84 @@
     background: var(--green);
   }
 
-  /* input with green focus */
-  .lp-field {
-    display: block;
+  /* text field — grey label, leading search, navy focus, clear ✕ */
+  .tf {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35em;
   }
-  .lp-input {
-    width: 100%;
-    border: 1.5px solid #cfd6dd;
-    border-radius: 0.65em;
-    padding: 0.62em 0.8em;
+  .tf-label {
+    color: #67696a;
+    font-size: 0.82em;
+    padding-left: 0.15em;
+  }
+  .tf-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    background: #fff;
+    border: 1.5px solid var(--off);
+    border-radius: 0.6em;
+    padding: 0.55em 0.7em;
+    transition: border-color 0.18s;
+  }
+  .tf-box:focus-within {
+    border-color: var(--blue);
+  }
+  .tf:focus-within .tf-label {
+    color: var(--blue);
+  }
+  .tf-lead {
+    width: 1.05em;
+    height: 1.05em;
+    color: #8a94a2;
+    flex: none;
+  }
+  .tf-box:focus-within .tf-lead {
+    color: var(--blue);
+  }
+  .tf-input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
     font-size: 1em;
     color: #1b2430;
-    background: #fff;
-    outline: none;
-    transition:
-      border-color 0.2s,
-      box-shadow 0.2s;
   }
-  .lp-input:focus {
-    border-color: var(--green);
-    box-shadow: 0 0 0 3px rgba(0, 165, 124, 0.18);
+  .tf-clear {
+    flex: none;
+    border: none;
+    background: none;
+    padding: 0;
+    color: #8a94a2;
+    width: 1.05em;
+    height: 1.05em;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .tf-clear svg {
+    width: 100%;
+    height: 100%;
+  }
+  .tf.has-text .tf-clear {
+    opacity: 1;
   }
 
-  /* download button (pill: icon + label + size, fill on click) */
+  /* download button — #d0efff pill, navy */
   .dlbtn {
     position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
-    gap: 0.4em;
+    gap: 0.32em;
     background: var(--blueBg);
     color: var(--blue);
     border: none;
-    border-radius: 99px;
-    padding: 0.6em 0.8em;
+    border-radius: 999px;
+    padding: 0.62em 0.7em;
     font-weight: 700;
-    font-size: 1em;
+    font-size: 0.94em;
     width: 100%;
   }
   .dlbtn .fill {
@@ -223,7 +285,7 @@
     position: relative;
     z-index: 1;
     margin-left: auto;
-    color: #7c92ad;
+    color: #6f86a3;
     font-weight: 500;
     font-size: 0.9em;
     white-space: nowrap;
@@ -231,12 +293,11 @@
 </style>
 
 <script>
-  // Idempotent wiring; each panel instance wires its own controls.
   document.querySelectorAll<HTMLElement>('.livepanel').forEach((panel) => {
     if (panel.dataset.wired) return;
     panel.dataset.wired = '1';
 
-    // segmented control
+    // group button (segmented)
     const seg = panel.querySelector('[data-seg]');
     seg?.querySelectorAll('button').forEach((b) => {
       b.addEventListener('click', () => {
@@ -249,11 +310,25 @@
       });
     });
 
-    // squircle toggle
+    // iOS toggle
     const tgl = panel.querySelector<HTMLElement>('[data-tgl]');
     tgl?.addEventListener('click', () => {
       const on = tgl.classList.toggle('on');
       tgl.setAttribute('aria-checked', on ? 'true' : 'false');
+    });
+
+    // text field — show clear ✕ when there's text; clear on click
+    const tf = panel.querySelector<HTMLElement>('[data-tf]');
+    const input = tf?.querySelector<HTMLInputElement>('.tf-input');
+    const clear = tf?.querySelector<HTMLElement>('[data-clear]');
+    const sync = () => tf?.classList.toggle('has-text', !!input?.value);
+    input?.addEventListener('input', sync);
+    clear?.addEventListener('click', () => {
+      if (input) {
+        input.value = '';
+        input.focus();
+      }
+      sync();
     });
 
     // download button with progress fill

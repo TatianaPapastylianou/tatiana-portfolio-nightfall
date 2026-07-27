@@ -11,8 +11,11 @@ next:
   slug: "math-app"
   title: "Akelius Math — shipping through three competing visions"
 hero:
-  kind: "live"
-  caption: "The system is real, not a screenshot — reach in: toggle, input, level control and download are the actual components, on the real tokens (Verdana, green #00a57c, primary blue)."
+  kind: "image"
+  src: "/cases/ds-overview.jpg"
+  alt: "The Akelius design-system board — cards, method-icon states, grade-progress, the full button matrix and dev-annotated handoff"
+  orient: "portrait"
+  caption: "The real system on one wall: components and their states, grade-progress cards, the full button matrix, and dev-annotated handoff that links each element back to its Figma node."
 exhibits:
   - src: "/cases/ds-04-buttons.jpg"
     alt: "Button component matrix — every size, state and variant"
