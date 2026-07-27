@@ -297,8 +297,9 @@
     transition: width 0.05s linear;
   }
   .dlbtn svg {
-    width: 1.15em;
-    height: 1.15em;
+    width: 1.5em; /* ~24px at the 16px component base */
+    height: 1.5em;
+    flex: none; /* don't let the flex row squish it */
     position: relative;
     z-index: 1;
   }

@@ -6,9 +6,9 @@
  * fully skipped for prefers-reduced-motion (composed light gallery shows immediately).
  */
 const shots = [
-  { src: '/cases/ds-overview.jpg', tilt: -2 },
-  { src: '/cases/math-final-lesson.jpg', tilt: 1.4 },
-  { src: '/cases/unified-path-language.jpg', tilt: -1 },
+  { src: '/cases/ds-overview.jpg', tilt: -2, orient: 'portrait' },
+  { src: '/cases/math-final-lesson.jpg', tilt: 1.4, orient: 'landscape' },
+  { src: '/cases/unified-path-language.jpg', tilt: -1, orient: 'portrait' },
 ];
 ---
 
@@ -18,11 +18,17 @@ const shots = [
     <div class="loader-frames">
       {
         shots.map((s, i) => (
-          <div class="lf" style={`--i:${i}; --lt:${s.tilt}deg`}>
+          <div class:list={['lf', { land: s.orient === 'landscape' }]} style={`--i:${i}; --lt:${s.tilt}deg`}>
             <div class="lf-win">
               <img src={s.src} alt="" loading="eager" decoding="async" />
             </div>
-            <img class="lf-fr" src="/frames/frame-cut-web.png" alt="" />
+            <img
+              class="lf-fr"
+              src={s.orient === 'landscape'
+                ? '/frames/frame-cut-web-landscape.png'
+                : '/frames/frame-cut-web.png'}
+              alt=""
+            />
           </div>
         ))
       }
@@ -85,6 +91,14 @@ const shots = [
     transform-origin: top center;
     animation: lf-hang 0.7s var(--ease-out) both;
     animation-delay: calc(var(--i) * 0.16s);
+  }
+  /* a landscape mini-frame (wider frame + rotated window rect) */
+  .lf.land {
+    width: clamp(120px, 22vw, 215px);
+    --winL: 21.96%;
+    --winT: 25.65%;
+    --winW: 55.99%;
+    --winH: 48.71%;
   }
   .lf-win {
     position: absolute;
