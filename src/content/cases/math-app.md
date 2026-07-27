@@ -57,18 +57,18 @@ Designing minimalism *to a moving target*, on top of world-class but dense mathe
 
 I wasn't reconciling opinions. I was reconciling **people with the power to overrule each other**, each with a sincere and different vision:
 
-- **Roger — founder.** No long text. No illustrations. No colour. Show *progress*. Every lesson free and reachable at any time — a learner should never have to climb levels to see any lesson. **Search is the primary way to navigate**, not hierarchy.
-- **Igor — board member and decision-maker.** Everything clear on screen. A legible app structure. *Some* visual representation and engagement elements to hold attention.
+- **The founder.** No long text. No illustrations. No colour. Show *progress*. Every lesson free and reachable at any time — a learner should never have to climb levels to see any lesson. **Search is the primary way to navigate**, not hierarchy.
+- **The board member and decision-maker.** Everything clear on screen. A legible app structure. *Some* visual representation and engagement elements to hold attention.
 - **The math-team editors.** More assets, more colour, more interactivity — richer, more engaging content.
 
-Roger pulled toward austerity, the editors toward richness, Igor toward structured clarity in between. There was no compromise that made all three fully happy, and no option to simply pick one — they could each move the project.
+The founder pulled toward austerity, the editors toward richness, the board member toward structured clarity in between. There was no compromise that made all three fully happy, and no option to simply pick one — they could each move the project.
 
 ## What I actually did
 
 I was the lead designer, and the job was **synthesis under authority, not decoration.** Concretely, every cycle I:
 
 - **Gathered every stakeholder's feedback** and treated it as data, not noise — including where it directly contradicted the previous round.
-- **Produced distinct, fully-realised directions** rather than arguing in the abstract. The Figma trail shows named explorations — a *Roger version*, a *Roger/Igor version*, a *math-team version*, a *design-team version* — each carried through to mobile. Showing the visions as real screens let stakeholders react to something concrete and let me move the debate forward instead of in circles.
+- **Produced distinct, fully-realised directions** rather than arguing in the abstract. The Figma trail shows named explorations — a *founder version*, a *founder + board version*, a *math-team version*, a *design-team version* — each carried through to mobile. Showing the visions as real screens let stakeholders react to something concrete and let me move the debate forward instead of in circles.
 - **Kept the learner as the fourth stakeholder** — the one not in the meeting. When executive taste and user need diverged, I argued for the user with evidence, not preference.
 
 That's the senior move: not "whose idea wins," but "how do I turn three conflicting mandates into one product a real person can learn from."
@@ -87,12 +87,12 @@ The honest headline isn't a metric. It's this: **I can hold contradictory senior
 
 ## What I'd do next / what I'd argue for
 
-- **Usability testing of search-first navigation** across age groups — Roger's search-primary bet is defensible, but I'd want evidence that an older first-time learner and a child both find their lesson, and I'd design the fallback for when search fails.
+- **Usability testing of search-first navigation** across age groups — the founder's search-primary bet is defensible, but I'd want evidence that an older first-time learner and a child both find their lesson, and I'd design the fallback for when search fails.
 - **A lightweight decision log** so cuts like the curriculum page are visible and reversible with context, not silent.
 
 ### Evidence captured
 
-- Dated exploration trail (Feb 2025 → Jan 2026): Roger, Roger/Igor, math-team, and design-team versions, each with mobile variants
+- Dated exploration trail (Feb 2025 → Jan 2026): founder, founder + board, math-team, and design-team versions, each with mobile variants
 - HANDOFF section: variables, general components, and dev-ready pages (home, search lessons, lesson page, progress page)
 - Supporting artifacts: concept/workflow flows, hierarchical search design, "build a calculator," curriculum, math icons, MATH WORLD archive
 - Live product: math.akelius.education
