@@ -2,7 +2,30 @@
 import Base from '../layouts/Base.astro';
 import Frame from '../components/Frame.astro';
 
-// Column-operations lessons told as elegant sequential panels (graphic-novel restraint).
+// Column-operations: framed real artefacts + the problem→outcome narrative.
+const exhibits = [
+  {
+    src: '/craft/column-ops-system.jpg',
+    alt: 'The column-operations instructional-design board — multiplication and division, generator and consumer views, a toolbox for every cell',
+    orient: 'landscape' as const,
+    kicker: 'The system',
+    caption:
+      'One board holds the whole method: multiplication and division, the generator (authoring) view beside the consumer kit, and a toolbox spec’d for every cell — total-number, divided-by, decimals and remainders — so editors can build any lesson the same way.',
+    size: 'lg' as const,
+    tilt: -0.8,
+  },
+  {
+    src: '/craft/column-ops-research.jpg',
+    alt: 'The research and rules behind the column-operations lessons',
+    orient: 'portrait' as const,
+    kicker: 'The research',
+    caption:
+      'Behind it: the rules a learner never sees — digit limits, when the carry appears, how a too-tall equation scrolls, the exact behaviour for decimals and remainders. The discipline that makes the steps feel effortless.',
+    size: 'md' as const,
+    tilt: 1,
+  },
+];
+
 const panels = [
   {
     step: 'Problem',
@@ -18,17 +41,18 @@ const panels = [
   },
   {
     step: 'Outcome',
-    body: 'The method reads as steps a person can follow, not a proof to decode. Built to sit inside the Generator’s authoring tools so editors can produce more lessons the same way.',
+    body: 'The method reads as steps a person can follow, not a proof to decode. Built into the Generator’s authoring tools so editors can produce more lessons the same way.',
   },
 ];
 
-// Smaller framed side-pieces. Live URLs left for the author to drop in — no invented links.
+// Framed side-pieces — real product imagery, links live where they exist.
 const pieces = [
   {
     kind: 'iOS · SwiftUI · Shipped',
     name: 'IrisVault',
     line: 'An eye-wellness companion for iOS — gentle reminders, exercises and rest habits for people who live on screens. Designed and shipped end-to-end in SwiftUI.',
-    tone: 'aqua',
+    img: '/craft/irisvault-icon.png',
+    mat: true,
     tilt: -1.2,
     href: 'https://apps.apple.com/cy/app/irisvault-eye-exercises/id6764104619',
     external: true,
@@ -38,7 +62,8 @@ const pieces = [
     kind: 'iOS · App Store · Freelance',
     name: 'stePlan',
     line: 'A freelance planning tool that reached the App Store — project and task planning distilled to the few moves a busy solo worker actually makes.',
-    tone: 'gold',
+    img: '/craft/steplan-projects.jpg',
+    mat: false,
     tilt: 1,
     href: 'https://apps.apple.com/cy/app/steplan-freelancer-plan/id6762138338',
     external: true,
@@ -47,10 +72,10 @@ const pieces = [
   {
     kind: 'Book · Memoir',
     name: 'No Water — A Designer’s Confession',
-    line: 'The true story of becoming a lead designer with no degree and no map — thirty-three chapters of shipped projects, hard conversations, and decisions still worth turning over, each closed by field notes on the craft.',
-    tone: 'rose',
-    tilt: -0.6,
+    line: 'The true story of becoming a lead designer with no degree and no map — thirty-three chapters of shipped projects, hard conversations, and decisions still worth turning over.',
     img: '/craft/no-water-cover.jpg',
+    mat: true,
+    tilt: -0.6,
     href: 'https://no-water-book.netlify.app/',
     external: true,
     cta: 'Read the first 25 pages ↗',
@@ -73,7 +98,7 @@ const pieces = [
     </div>
   </header>
 
-  <!-- Column operations, told in panels -->
+  <!-- Column operations — framed artefacts + the narrative -->
   <section class="section spotlight" aria-labelledby="spotlight-title">
     <div class="container">
       <div class="spotlight-head reveal">
@@ -85,7 +110,25 @@ const pieces = [
         </p>
       </div>
 
-      <ol class="panels">
+      <div class="exhibits">
+        {
+          exhibits.map((ex, i) => (
+            <figure class:list={['exhibit-row', { alt: i % 2 === 1 }]}>
+              <div class="exhibit-frame reveal" data-parallax-scope>
+                <div class="exhibit-art" data-parallax="0.04">
+                  <Frame src={ex.src} alt={ex.alt} orient={ex.orient} size={ex.size} tilt={ex.tilt} />
+                </div>
+              </div>
+              <figcaption class="exhibit-note reveal">
+                <p class="kicker">{ex.kicker}</p>
+                <p class="exhibit-caption">{ex.caption}</p>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+
+      <ol class="panels" data-stagger>
         {
           panels.map((p, i) => (
             <li class="panel reveal">
@@ -101,55 +144,36 @@ const pieces = [
     </div>
   </section>
 
-  <!-- side pieces as small framed tiles -->
+  <!-- framed side-pieces -->
   <section class="section pieces" aria-labelledby="pieces-title">
     <div class="container">
       <h2 id="pieces-title" class="pieces-title reveal">Framed side-pieces</h2>
-      <ul class="pieces-grid">
+      <ul class="pieces-grid" data-stagger>
         {
           pieces.map((p) => (
             <li class="piece reveal">
               <Frame
+                src={p.img}
+                alt={`${p.name} — ${p.kind}`}
+                orient="portrait"
                 size="sm"
                 tilt={p.tilt}
-                mat={!!p.img}
-                src={p.img}
-                alt={p.img ? `${p.name} — book cover` : undefined}
+                mat={p.mat}
                 href={p.href}
                 external={p.external}
-                label={p.external ? 'Open ↗' : 'Open →'}
-                view={!!p.href}
-              >
-                {!p.img && (
-                  <div class:list={['piece-art', `tone-${p.tone}`]}>
-                    <span class="piece-initial">{p.name.charAt(0)}</span>
-                  </div>
-                )}
-              </Frame>
+                label="Open ↗"
+                view
+              />
               <p class="kicker piece-kind">{p.kind}</p>
               <h3 class="piece-name">
-                {p.href ? (
-                  <a href={p.href} {...(p.external ? { target: '_blank', rel: 'noopener' } : {})}>
-                    {p.name}
-                  </a>
-                ) : (
-                  p.name
-                )}
+                <a href={p.href} target="_blank" rel="noopener">
+                  {p.name}
+                </a>
               </h3>
               <p class="piece-line">{p.line}</p>
-              {p.href ? (
-                p.cta && (
-                  <a
-                    class="piece-cta"
-                    href={p.href}
-                    {...(p.external ? { target: '_blank', rel: 'noopener' } : {})}
-                  >
-                    {p.cta}
-                  </a>
-                )
-              ) : (
-                <p class="piece-note">Live link coming soon.</p>
-              )}
+              <a class="piece-cta" href={p.href} target="_blank" rel="noopener">
+                {p.cta}
+              </a>
             </li>
           ))
         }
@@ -176,7 +200,7 @@ const pieces = [
 
   .spotlight-head {
     max-width: 58ch;
-    margin-bottom: var(--space-l);
+    margin-bottom: var(--space-xl);
   }
   .spotlight-title {
     font-size: var(--step-3);
@@ -187,9 +211,47 @@ const pieces = [
     color: var(--body);
   }
 
+  /* framed exhibits (matches the case-page treatment) */
+  .exhibit-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) 0.85fr;
+    gap: clamp(1.5rem, 5vw, 4rem);
+    align-items: center;
+    margin: 0;
+    padding-block: var(--space-l);
+    border-top: 1px solid var(--line);
+  }
+  .exhibit-row.alt {
+    direction: rtl;
+  }
+  .exhibit-row.alt > * {
+    direction: ltr;
+  }
+  .exhibit-note {
+    max-width: 42ch;
+  }
+  .exhibit-note .kicker {
+    color: var(--gold-deep);
+  }
+  .exhibit-caption {
+    margin-top: 0.7rem;
+    font-size: var(--step-0);
+    color: var(--body);
+    line-height: 1.55;
+  }
+  @media (max-width: 820px) {
+    .exhibit-row,
+    .exhibit-row.alt {
+      grid-template-columns: 1fr;
+      direction: ltr;
+    }
+  }
+
+  /* narrative panels */
   .panels {
     list-style: none;
     padding: 0;
+    margin-top: var(--space-2xl);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1px;
@@ -255,34 +317,6 @@ const pieces = [
     display: flex;
     flex-direction: column;
   }
-  .piece-art {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    place-items: center;
-    background: linear-gradient(160deg, #efe7d5, #e2d7bd);
-  }
-  .tone-aqua {
-    background:
-      radial-gradient(60% 60% at 60% 35%, rgba(46, 110, 126, 0.28), transparent 70%),
-      linear-gradient(160deg, #eef0ea, #dfe6e2);
-  }
-  .tone-gold {
-    background:
-      radial-gradient(60% 60% at 35% 40%, rgba(201, 162, 75, 0.32), transparent 70%),
-      linear-gradient(160deg, #f3ecd8, #e6d9b8);
-  }
-  .tone-rose {
-    background:
-      radial-gradient(60% 60% at 40% 65%, rgba(176, 106, 120, 0.28), transparent 70%),
-      linear-gradient(160deg, #f1e7e4, #e6d3d3);
-  }
-  .piece-initial {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 3rem;
-    color: rgba(33, 25, 19, 0.5);
-  }
   .piece-kind {
     margin-top: var(--space-m);
     color: var(--gold-deep);
@@ -303,12 +337,6 @@ const pieces = [
     color: var(--body);
     font-size: var(--step--1);
     line-height: 1.6;
-  }
-  .piece-note {
-    margin-top: 0.5rem;
-    font-size: var(--step--1);
-    letter-spacing: 0.06em;
-    color: var(--dim);
   }
   .piece-cta {
     display: inline-block;

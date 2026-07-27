@@ -195,13 +195,13 @@ const shots = [
       const skip = loader.querySelector<HTMLElement>('[data-skip]');
       let n = 0;
       const iv = window.setInterval(() => {
-        n = Math.min(100, n + Math.round(2 + Math.random() * 4));
+        n = Math.min(100, n + Math.round(2 + Math.random() * 4.5));
         if (count) count.textContent = String(n);
         if (n >= 100) {
           window.clearInterval(iv);
-          window.setTimeout(finish, 300);
+          window.setTimeout(finish, 280);
         }
-      }, 72); // ~1.9–2.1s to 100
+      }, 58); // ~1.5–1.7s to 100
 
       skip?.addEventListener('click', () => {
         window.clearInterval(iv);

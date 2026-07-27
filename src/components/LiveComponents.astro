@@ -96,7 +96,8 @@
     white-space: nowrap;
   }
 
-  /* group button — pill, selected segment #d0efff, navy text */
+  /* group button — pill container; the selected segment is clipped to the
+     container's rounding on its outer edge only (no per-button pill). */
   .seg {
     display: flex;
     background: #fff;
@@ -110,17 +111,16 @@
     background: transparent;
     color: var(--blue);
     font-size: 0.95em;
-    padding: 0.55em 0.2em;
-    border-radius: 999px;
-    transition: background 0.18s;
+    padding: 0.62em 0.2em;
+    transition: background 0.18s var(--ease-out);
   }
-  .seg button + button {
+  .seg button:not(:first-child) {
     border-left: 1px solid var(--off);
   }
   .seg button.on {
     background: var(--blueBg);
-    border-left-color: transparent;
   }
+  .seg button.on,
   .seg button.on + button {
     border-left-color: transparent;
   }
@@ -136,18 +136,20 @@
     font-weight: 400;
   }
 
-  /* iOS squircle switch */
+  /* iOS glass toggle (real component): light track → green; white squircle
+     knob with a grip line; on press the knob elongates + a soft ring glows. */
   .tgl {
     width: 3.5em;
     height: 2.05em;
-    border-radius: 34% / 50%;
+    border-radius: 1.025em;
     background: var(--off);
     position: relative;
-    transition: background 0.3s;
     flex: none;
     border: none;
     padding: 0;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
+    transition:
+      background 0.3s var(--ease-out),
+      box-shadow 0.2s var(--ease-out);
   }
   .tgl.on {
     background: var(--green);
@@ -158,19 +160,24 @@
     left: 0.16em;
     width: 1.73em;
     height: 1.73em;
-    border-radius: 32% / 44%;
+    border-radius: 42%;
     background: #fff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.32);
-    transition: left 0.28s cubic-bezier(0.4, 1.3, 0.5, 1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    box-shadow:
+      0 2px 5px rgba(0, 0, 0, 0.2),
+      0 0 1px rgba(0, 0, 0, 0.15);
+    transition:
+      left 0.32s cubic-bezier(0.4, 1.2, 0.5, 1),
+      width 0.22s var(--ease-out);
   }
   .tgl.on .knob {
-    left: 1.61em;
+    left: calc(100% - 1.89em);
   }
   .tgl .knob::after {
     content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 2px;
     height: 0.72em;
     background: #c4c9cf;
@@ -179,6 +186,19 @@
   }
   .tgl.on .knob::after {
     background: var(--green);
+  }
+  /* press: knob stretches + a soft glow ring (glass interaction) */
+  .tgl:active .knob {
+    width: 2.15em;
+  }
+  .tgl.on:active .knob {
+    left: calc(100% - 2.31em);
+  }
+  .tgl:active {
+    box-shadow: 0 0 0 5px rgba(23, 43, 83, 0.12);
+  }
+  .tgl.on:active {
+    box-shadow: 0 0 0 5px rgba(0, 165, 124, 0.2);
   }
 
   /* text field — grey label, leading search, navy focus, clear ✕ */
