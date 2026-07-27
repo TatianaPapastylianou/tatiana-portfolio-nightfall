@@ -5,6 +5,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import SiteChrome from '../components/SiteChrome.astro';
 import Loader from '../components/Loader.astro';
+import BottomNav from '../components/BottomNav.astro';
 
 interface Props {
   title: string;
@@ -64,6 +65,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       <slot />
     </main>
     <Footer dark={dark} />
+    <BottomNav dark={dark} />
 
     <!-- progressive-enhancement motion: reveals + smooth scroll, reduced-motion aware -->
     <script src="../scripts/motion.js"></script>

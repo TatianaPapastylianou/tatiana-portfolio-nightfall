@@ -1,0 +1,100 @@
+---
+/**
+ * BottomNav — a floating pill nav for mobile (thumb reach), inspired by the
+ * app-style bottom bar on yanhladchenko.com. Shown ≤720px; the top nav's
+ * primary links are hidden there so it isn't redundant.
+ */
+interface Props {
+  dark?: boolean;
+}
+const { dark = false } = Astro.props;
+
+const path = Astro.url.pathname;
+const isActive = (match: string) => (match === '/' ? path === '/' : path.startsWith(match));
+const items = [
+  { href: '/', label: 'Home', match: '/' },
+  { href: '/work/design-system', label: 'Work', match: '/work' },
+  { href: '/craft', label: 'Craft', match: '/craft' },
+  { href: '/about', label: 'About', match: '/about' },
+];
+---
+
+<nav class:list={['bottomnav', { dark }]} aria-label="Primary (mobile)">
+  {
+    items.map((i) => (
+      <a
+        href={i.href}
+        class:list={['bn-item', { 'is-active': isActive(i.match) }]}
+        aria-current={isActive(i.match) ? 'page' : undefined}
+      >
+        {i.label}
+      </a>
+    ))
+  }
+</nav>
+
+<style>
+  .bottomnav {
+    position: fixed;
+    left: 50%;
+    bottom: 0.9rem;
+    transform: translateX(-50%);
+    z-index: 130;
+    display: none;
+    gap: 0.2rem;
+    padding: 0.35rem;
+    border-radius: 100px;
+    background: color-mix(in srgb, var(--card) 84%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--line);
+    box-shadow: 0 14px 34px -10px rgba(60, 44, 24, 0.35);
+  }
+  @media (max-width: 720px) {
+    .bottomnav {
+      display: flex;
+    }
+  }
+
+  .bn-item {
+    padding: 0.62rem 1.05rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--dim);
+    transition:
+      color 0.2s var(--ease-out),
+      background 0.2s var(--ease-out);
+  }
+  .bn-item.is-active {
+    color: var(--head);
+    background: var(--paper);
+    box-shadow: 0 2px 6px rgba(60, 44, 24, 0.16);
+  }
+
+  /* dark room (About) */
+  .bottomnav.dark {
+    background: color-mix(in srgb, var(--night-2) 82%, transparent);
+    border-color: rgba(239, 230, 212, 0.16);
+  }
+  .dark .bn-item {
+    color: var(--on-dark-dim);
+  }
+  .dark .bn-item.is-active {
+    color: var(--char);
+    background: var(--on-dark);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bottomnav {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background: var(--card);
+    }
+    .bottomnav.dark {
+      background: var(--night-2);
+    }
+  }
+</style>

@@ -111,6 +111,13 @@ em {
   padding-block: var(--space-2xl);
 }
 
+/* clear the floating mobile bottom bar */
+@media (max-width: 720px) {
+  .site-footer {
+    padding-bottom: 6rem;
+  }
+}
+
 /* ---- tracked uppercase kicker (every section) ---- */
 .kicker {
   font-family: var(--sans);

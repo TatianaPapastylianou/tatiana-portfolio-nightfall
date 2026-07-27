@@ -27,7 +27,7 @@ const linkedin = 'https://www.linkedin.com/in/tatiana-papastylianou-8b67a5193/';
         links.map((l) => (
           <a
             href={l.href}
-            class:list={['nav-link', { 'is-active': isActive(l.match) }]}
+            class:list={['nav-link', 'nav-primary', { 'is-active': isActive(l.match) }]}
             aria-current={isActive(l.match) ? 'page' : undefined}
           >
             {l.label}
@@ -108,6 +108,13 @@ const linkedin = 'https://www.linkedin.com/in/tatiana-papastylianou-8b67a5193/';
   .dark .nav-link.is-active {
     color: var(--on-dark);
     background: color-mix(in srgb, var(--on-dark) 12%, transparent);
+  }
+
+  /* on mobile the primary links live in the floating bottom bar */
+  @media (max-width: 720px) {
+    .nav-primary {
+      display: none;
+    }
   }
 
   @media (max-width: 640px) {
