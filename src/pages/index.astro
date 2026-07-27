@@ -22,6 +22,11 @@ const impact = [
   { stat: 'Live', label: 'shipped free & worldwide — math.akelius.education' },
 ];
 
+// the manifesto statement — revealed word-by-word on scroll ("read" as you go)
+const manifesto =
+  'A portfolio in 2026 sells judgement, not screens. Lead with the problem, the constraint, the choice, the consequence. The screens are only evidence.';
+const manifestoWords = manifesto.split(' ');
+
 // index rows: the three cases + the craft room
 const indexRows = [
   ...withPreview.map((c) => ({
@@ -79,9 +84,15 @@ const indexRows = [
   <section class="section manifesto" aria-label="Statement">
     <div class="container">
       <p class="kicker reveal">The standard</p>
-      <p class="manifesto-line text-reveal reveal">
-        A portfolio in 2026 sells <span class="accent">judgement</span>, not screens. Lead with
-        the problem, the constraint, the choice, the consequence. The screens are only evidence.
+      <p class="manifesto-line reveal" aria-label={manifesto}>
+        {
+          manifestoWords.map((w) => (
+            <>
+              {/* prettier-ignore */}
+              <span class:list={['mword', { accent: w.replace(/[.,]/g, '') === 'judgement' }]} aria-hidden="true">{w}</span>{' '}
+            </>
+          ))
+        }
       </p>
       <p class="manifesto-cite reveal">Adapted from my book, <em>No Water — A Designer's Confession</em></p>
     </div>
@@ -305,6 +316,24 @@ const indexRows = [
     font-style: italic;
     font-size: var(--step-4);
     line-height: 1.08;
+  }
+  /* word-by-word scroll reveal: faint → ink as you read down the line */
+  .manifesto-line .mword {
+    color: var(--faint);
+    transition: color 0.4s var(--ease-out);
+  }
+  .manifesto-line .mword.is-lit {
+    color: var(--body);
+  }
+  .manifesto-line .mword.accent.is-lit {
+    color: var(--gold-deep);
+  }
+  /* no-JS / reduced-motion: show the finished (read) state */
+  .no-js .manifesto-line .mword {
+    color: var(--body);
+  }
+  .no-js .manifesto-line .mword.accent {
+    color: var(--gold-deep);
   }
   .manifesto-cite {
     margin-top: var(--space-m);

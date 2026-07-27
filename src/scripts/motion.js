@@ -16,6 +16,8 @@ function revealAll() {
 if (prefersReduced) {
   // Show everything immediately, no smooth scroll, no parallax.
   revealAll();
+  // manifesto shows its finished (read) state
+  document.querySelectorAll('.manifesto-line .mword').forEach((w) => w.classList.add('is-lit'));
 } else {
   gsap.registerPlugin(ScrollTrigger);
 
@@ -74,6 +76,21 @@ if (prefersReduced) {
       }
     );
   });
+
+  /* ---- manifesto: light each word as it scrolls up, like it's being read ---- */
+  const mwords = gsap.utils.toArray('.manifesto-line .mword');
+  if (mwords.length) {
+    ScrollTrigger.create({
+      trigger: '.manifesto-line',
+      start: 'top 82%',
+      end: 'bottom 58%',
+      scrub: true,
+      onUpdate: (self) => {
+        const lit = Math.round(self.progress * mwords.length);
+        mwords.forEach((w, i) => w.classList.toggle('is-lit', i < lit));
+      },
+    });
+  }
 
   // Safety net: if anything above threw before a card entered view, still reveal.
   window.addEventListener('load', () => ScrollTrigger.refresh());
