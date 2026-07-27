@@ -4,6 +4,7 @@ title: "Unifying two apps and rebuilding the classroom, tested before a line of 
 role: "Product Designer"
 roleFull: "Product Designer driving the work, reviewed by the Head of Design"
 oneLiner: "Two separate apps, one new unified product, and a teacher experience rebuilt from scratch for web — de-risked with mobile and desktop prototypes so engineering could build it once, right."
+tag: "Product · in rollout"
 change: "Two apps and a broken classroom"
 impact: "one product, validated end-to-end before engineering"
 order: 3

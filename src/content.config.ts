@@ -22,6 +22,7 @@ const cases = defineCollection({
     role: z.string(), // short plaque label, e.g. "Design Lead"
     roleFull: z.string(), // full role line for the snapshot hero
     oneLiner: z.string(),
+    tag: z.string().optional(), // "Category · year" for the work index, e.g. "Design System · 2023"
     change: z.string(), // the "[change]" half of the case title discipline
     impact: z.string(), // the "impact" half
     liveUrl: z.string().url().optional(),

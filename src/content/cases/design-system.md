@@ -4,6 +4,7 @@ title: "Building the Akelius education design system"
 role: "Design Lead"
 roleFull: "Senior Product Designer — owner of the design system"
 oneLiner: "I turned three disconnected app teams and a designer-vs-developer naming gap into a single token-driven design system — shared in Storybook, spoken in one language by design and code."
+tag: "Design System · 2023–now"
 change: "A design system that existed on paper"
 impact: "became infrastructure — one language for design and code"
 order: 1

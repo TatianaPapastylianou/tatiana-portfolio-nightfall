@@ -48,8 +48,23 @@ if (prefersReduced) {
   });
 
   /* ---- Scroll reveals ---- */
-  const revealEls = gsap.utils.toArray('.reveal');
-  revealEls.forEach((el) => {
+  // grouped reveals rise in with a gentle stagger (monfeur-style entrance)
+  gsap.utils.toArray('[data-stagger]').forEach((group) => {
+    const items = group.querySelectorAll('.reveal');
+    ScrollTrigger.create({
+      trigger: group,
+      start: 'top 84%',
+      once: true,
+      onEnter: () =>
+        items.forEach((el, i) => {
+          el.style.transitionDelay = i * 0.09 + 's';
+          el.classList.add('is-in');
+        }),
+    });
+  });
+  // individual reveals (skip any already handled inside a stagger group)
+  gsap.utils.toArray('.reveal').forEach((el) => {
+    if (el.closest('[data-stagger]')) return;
     ScrollTrigger.create({
       trigger: el,
       start: 'top 88%',

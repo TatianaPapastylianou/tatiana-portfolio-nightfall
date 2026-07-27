@@ -19,8 +19,10 @@ html {
 
 body {
   min-height: 100vh;
+  /* warm paper + a faint horizontal line weave (material, not flat) */
   background:
     radial-gradient(1100px 640px at 86% -10%, rgba(201, 162, 75, 0.14), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(60, 44, 24, 0.022) 0 1px, transparent 1px 4px),
     var(--paper);
   color: var(--body);
   font-family: var(--sans);
@@ -30,6 +32,27 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+}
+
+/* fixed film-grain overlay — subtle tooth over the whole page */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+body.dark::before {
+  mix-blend-mode: screen;
+  opacity: 0.045;
+}
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    display: none;
+  }
 }
 
 img,
