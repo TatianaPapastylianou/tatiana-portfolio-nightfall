@@ -174,39 +174,5 @@ const shots = [
   }
 </style>
 
-<script>
-  const loader = document.querySelector<HTMLElement>('[data-loader]');
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (loader) {
-    const finish = () => {
-      loader.classList.add('is-done');
-      document.documentElement.style.removeProperty('overflow');
-      window.setTimeout(() => loader.remove(), 650);
-    };
-
-    if (reduce) {
-      // Reduced motion: no cinematic entrance — reveal the gallery immediately.
-      loader.remove();
-    } else {
-      // Plays on every home-page load (skippable).
-      document.documentElement.style.overflow = 'hidden';
-      const count = loader.querySelector<HTMLElement>('[data-count]');
-      const skip = loader.querySelector<HTMLElement>('[data-skip]');
-      let n = 0;
-      const iv = window.setInterval(() => {
-        n = Math.min(100, n + Math.round(2 + Math.random() * 4.5));
-        if (count) count.textContent = String(n);
-        if (n >= 100) {
-          window.clearInterval(iv);
-          window.setTimeout(finish, 280);
-        }
-      }, 58); // ~1.5–1.7s to 100
-
-      skip?.addEventListener('click', () => {
-        window.clearInterval(iv);
-        finish();
-      });
-    }
-  }
-</script>
+<!-- control lives in a global script in Base.astro (so it works no matter which
+     page is the entry point, and never replays during SPA navigation) -->

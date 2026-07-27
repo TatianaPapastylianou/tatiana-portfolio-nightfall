@@ -4,14 +4,17 @@
  *  • custom cursor: an ink dot that morphs to a "View case →" pill over [data-view]
  *  • eye-orb: fixed top-right, pupils track the cursor AND the orb travels down the
  *    right edge as the scroll-progress indicator.
- * Both are pure enhancement: hidden/none on touch + reduced-motion; the site is fully
- * usable without them.
+ * They `transition:persist` across View-Transitions navigations (the animation loop
+ * keeps running); the [data-view] pill triggers + scroll position re-bind per page.
+ * Both are pure enhancement: hidden on touch + reduced-motion.
  */
 ---
 
-<div class="cursor" data-cursor aria-hidden="true"><span class="lbl">View case →</span></div>
+<div class="cursor" data-cursor aria-hidden="true" transition:persist>
+  <span class="lbl">View case →</span>
+</div>
 
-<div class="eye-orb" data-eye aria-hidden="true">
+<div class="eye-orb" data-eye aria-hidden="true" transition:persist>
   <span class="eye"><span class="pupil"></span></span>
   <span class="eye"><span class="pupil"></span></span>
 </div>
@@ -24,7 +27,7 @@
   const label = cursor?.querySelector<HTMLElement>('.lbl');
   const eye = document.querySelector<HTMLElement>('[data-eye]');
 
-  /* ---- custom cursor (fine pointers only) ---- */
+  /* ---- custom cursor (fine pointers only) — set up once ---- */
   if (cursor && fine && !reduce) {
     let x = innerWidth / 2,
       y = innerHeight / 2,
@@ -46,17 +49,23 @@
     };
     requestAnimationFrame(loop);
 
-    // pill morph over case frames / links carrying [data-view]
-    document.querySelectorAll<HTMLElement>('[data-view]').forEach((el) => {
-      el.addEventListener('pointerenter', () => {
-        if (label && el.dataset.label) label.textContent = el.dataset.label;
-        cursor.classList.add('pill');
+    // (re)bind the pill-morph over [data-view] elements — new each navigation
+    const bindPills = () => {
+      cursor.classList.remove('pill');
+      document.querySelectorAll<HTMLElement>('[data-view]').forEach((el) => {
+        if (el.dataset.vbound) return;
+        el.dataset.vbound = '1';
+        el.addEventListener('pointerenter', () => {
+          if (label && el.dataset.label) label.textContent = el.dataset.label;
+          cursor.classList.add('pill');
+        });
+        el.addEventListener('pointerleave', () => cursor.classList.remove('pill'));
       });
-      el.addEventListener('pointerleave', () => cursor.classList.remove('pill'));
-    });
+    };
+    document.addEventListener('astro:page-load', bindPills);
   }
 
-  /* ---- eye-orb: scroll-progress position (always, cheap) ---- */
+  /* ---- eye-orb: scroll-progress position + pupil tracking — set up once ---- */
   if (eye) {
     const onScroll = () => {
       const h = document.documentElement.scrollHeight - innerHeight;
@@ -66,9 +75,8 @@
     };
     addEventListener('scroll', onScroll, { passive: true });
     addEventListener('resize', onScroll, { passive: true });
-    onScroll();
+    document.addEventListener('astro:page-load', onScroll);
 
-    // pupils follow the cursor (fine pointers, motion allowed)
     if (fine && !reduce) {
       addEventListener(
         'pointermove',

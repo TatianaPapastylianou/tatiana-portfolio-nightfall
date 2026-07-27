@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import SiteChrome from '../components/SiteChrome.astro';
 import Loader from '../components/Loader.astro';
 import BottomNav from '../components/BottomNav.astro';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title: string;
@@ -51,6 +52,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <!-- SPA-style animated navigation -->
+    <ClientRouter />
+
     <!-- swap the no-js class as early as possible to avoid a flash -->
     <script is:inline>
       document.documentElement.classList.remove('no-js');
@@ -66,6 +70,53 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     </main>
     <Footer dark={dark} />
     <BottomNav dark={dark} />
+
+    <!-- cinematic loader control (global so it works from any entry page, and
+         never replays during SPA navigation) -->
+    <script>
+      // strip the loader from an incoming page during SPA navigation
+      document.addEventListener('astro:before-swap', (e) => {
+        if (window.__booted) {
+          const l = e.newDocument.querySelector('[data-loader]');
+          if (l) l.remove();
+        }
+      });
+      document.addEventListener('astro:page-load', () => {
+        const loader = document.querySelector('[data-loader]');
+        const firstEver = !window.__booted;
+        window.__booted = true;
+        if (!loader) return;
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce || !firstEver) {
+          document.documentElement.style.removeProperty('overflow');
+          loader.remove();
+          return;
+        }
+        // cinematic play on the very first full load (skippable)
+        const finish = () => {
+          loader.classList.add('is-done');
+          document.documentElement.style.removeProperty('overflow');
+          window.setTimeout(() => loader.remove(), 650);
+        };
+        document.documentElement.style.overflow = 'hidden';
+        const count = loader.querySelector('[data-count]');
+        const skip = loader.querySelector('[data-skip]');
+        let n = 0;
+        const iv = window.setInterval(() => {
+          n = Math.min(100, n + Math.round(2 + Math.random() * 4.5));
+          if (count) count.textContent = String(n);
+          if (n >= 100) {
+            window.clearInterval(iv);
+            window.setTimeout(finish, 280);
+          }
+        }, 58);
+        skip &&
+          skip.addEventListener('click', () => {
+            window.clearInterval(iv);
+            finish();
+          });
+      });
+    </script>
 
     <!-- progressive-enhancement motion: reveals + smooth scroll, reduced-motion aware -->
     <script src="../scripts/motion.js"></script>

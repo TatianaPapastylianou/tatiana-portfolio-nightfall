@@ -319,7 +319,9 @@
 </style>
 
 <script>
-  document.querySelectorAll<HTMLElement>('.livepanel').forEach((panel) => {
+  // wire every live panel; idempotent, re-run on each View-Transitions navigation
+  function wireLivePanels() {
+    document.querySelectorAll<HTMLElement>('.livepanel').forEach((panel) => {
     if (panel.dataset.wired) return;
     panel.dataset.wired = '1';
 
@@ -387,5 +389,8 @@
         }, 35);
       });
     }
-  });
+    });
+  }
+
+  document.addEventListener('astro:page-load', wireLivePanels);
 </script>
