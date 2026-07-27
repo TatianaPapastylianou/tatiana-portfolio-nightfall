@@ -136,13 +136,14 @@
     font-weight: 400;
   }
 
-  /* iOS glass toggle (real component): light track → green; white squircle
-     knob with a grip line; on press the knob elongates + a soft ring glows. */
+  /* iOS glass toggle (real component): a light track → green, with a wide
+     white glass capsule knob; on press the knob stretches + a soft ring glows. */
   .tgl {
-    width: 3.5em;
+    width: 3.6em;
     height: 2.05em;
     border-radius: 1.025em;
     background: var(--off);
+    box-shadow: inset 0 0 0 1px rgba(23, 43, 83, 0.05);
     position: relative;
     flex: none;
     border: none;
@@ -153,49 +154,37 @@
   }
   .tgl.on {
     background: var(--green);
+    box-shadow: inset 0 0 0 1px rgba(0, 122, 92, 0.25);
   }
+  /* the wide glass capsule knob */
   .tgl .knob {
     position: absolute;
-    top: 0.16em;
-    left: 0.16em;
-    width: 1.73em;
-    height: 1.73em;
-    border-radius: 42%;
-    background: #fff;
+    top: 0.17em;
+    left: 0.17em;
+    width: 1.9em;
+    height: 1.71em;
+    border-radius: 0.86em;
+    background: linear-gradient(180deg, #ffffff 0%, #f2f5f8 100%);
     box-shadow:
-      0 2px 5px rgba(0, 0, 0, 0.2),
-      0 0 1px rgba(0, 0, 0, 0.15);
+      0 3px 6px rgba(0, 0, 0, 0.22),
+      0 0 0 0.5px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
     transition:
-      left 0.32s cubic-bezier(0.4, 1.2, 0.5, 1),
+      left 0.34s cubic-bezier(0.4, 1.15, 0.5, 1),
       width 0.22s var(--ease-out);
   }
   .tgl.on .knob {
-    left: calc(100% - 1.89em);
+    left: calc(100% - 2.07em);
   }
-  .tgl .knob::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 2px;
-    height: 0.72em;
-    background: #c4c9cf;
-    border-radius: 2px;
-    transition: background 0.3s;
-  }
-  .tgl.on .knob::after {
-    background: var(--green);
-  }
-  /* press: knob stretches + a soft glow ring (glass interaction) */
+  /* press: knob stretches wider + a soft glow ring (glass interaction) */
   .tgl:active .knob {
-    width: 2.15em;
+    width: 2.3em;
   }
   .tgl.on:active .knob {
-    left: calc(100% - 2.31em);
+    left: calc(100% - 2.47em);
   }
   .tgl:active {
-    box-shadow: 0 0 0 5px rgba(23, 43, 83, 0.12);
+    box-shadow: 0 0 0 5px rgba(23, 43, 83, 0.1);
   }
   .tgl.on:active {
     box-shadow: 0 0 0 5px rgba(0, 165, 124, 0.2);
