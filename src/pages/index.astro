@@ -380,6 +380,22 @@ const manifestoWords = manifesto.split(' ');
     .impact-stat {
       font-size: var(--step-3);
     }
+    /* art direction: each statement slides in from the left and settles a
+       little further right than the one above — a cascading staircase, timed
+       by the data-stagger delay so they arrive one after another. */
+    .impact-item.reveal {
+      transform: translateX(-40px);
+      transition-duration: 0.9s;
+    }
+    .impact-item.reveal.is-in {
+      transform: none;
+    }
+    .impact-item:nth-child(2) {
+      margin-left: 1.5rem;
+    }
+    .impact-item:nth-child(3) {
+      margin-left: 3rem;
+    }
   }
 
   /* work head */

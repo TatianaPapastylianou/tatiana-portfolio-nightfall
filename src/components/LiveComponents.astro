@@ -283,7 +283,7 @@
     border: none;
     border-radius: 999px;
     padding: 0.62em 0.72em;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 0.92em;
     width: 100%;
   }
@@ -302,6 +302,10 @@
     flex: none; /* don't let the flex row squish it */
     position: relative;
     z-index: 1;
+  }
+  /* while downloading, hide the icon so the longer label always fits */
+  .dlbtn.busy svg {
+    display: none;
   }
   .dlbtn .t2 {
     position: relative;
@@ -370,6 +374,7 @@
       dl.addEventListener('click', () => {
         if (busy || !fill || !t2 || !sz) return;
         busy = true;
+        dl.classList.add('busy'); // hide the icon so "downloading" has room
         t2.textContent = 'downloading';
         let p = 0;
         const iv = setInterval(() => {
@@ -382,6 +387,7 @@
             sz.textContent = '✓';
             setTimeout(() => {
               fill.style.width = '0';
+              dl.classList.remove('busy');
               t2.textContent = 'download';
               sz.textContent = '3.5MB';
               busy = false;
