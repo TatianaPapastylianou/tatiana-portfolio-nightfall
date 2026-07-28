@@ -15,6 +15,7 @@ interface Props {
   size?: 'lg' | 'md' | 'sm';
   tilt?: number; // base hang angle in degrees (museum variety)
   mat?: boolean; // show the paper mat behind the art (default true for images)
+  fit?: 'contain' | 'top'; // 'contain' shows the whole image; 'top' fills the window width and pins to the top (crops the bottom)
   live?: boolean; // slot is a live panel that must scale to the window (container query)
   view?: boolean; // morph the cursor to the "View case →" pill on hover
   href?: string; // wrap the frame in a link
@@ -29,6 +30,7 @@ const {
   size = 'md',
   tilt = 0,
   mat = true,
+  fit = 'contain',
   live = false,
   view = false,
   href,
@@ -63,7 +65,7 @@ const tagProps = href
     <div class:list={['window', { 'window--mat': mat && src, 'window--live': live }]}>
       {
         src ? (
-          <img class="fit" src={src} alt={alt} loading="lazy" decoding="async" />
+          <img class:list={['fit', { 'fit--top': fit === 'top' }]} src={src} alt={alt} loading="lazy" decoding="async" />
         ) : (
           <slot />
         )
@@ -165,6 +167,12 @@ const tagProps = href
     height: 100%;
     object-fit: contain;
     display: block;
+  }
+  /* fill the window edge-to-edge horizontally and pin to the top — the bottom
+     of a taller image crops away, so the piece hangs flush with no side margin. */
+  .window img.fit--top {
+    object-fit: cover;
+    object-position: top center;
   }
 
   .fr {

@@ -18,6 +18,7 @@ const exhibits = [
     src: '/craft/column-ops-research.jpg',
     alt: 'The research and rules behind the column-operations lessons',
     orient: 'portrait' as const,
+    fit: 'top' as const,
     kicker: 'The research',
     caption:
       'Behind it: the rules a learner never sees — digit limits, when the carry appears, how a too-tall equation scrolls, the exact behaviour for decimals and remainders. The discipline that makes the steps feel effortless.',
@@ -62,8 +63,9 @@ const pieces = [
     kind: 'iOS · App Store · Freelance',
     name: 'stePlan',
     line: 'A freelance planning tool that reached the App Store — project and task planning distilled to the few moves a busy solo worker actually makes.',
-    img: '/craft/steplan-card.svg',
+    img: '/craft/steplan-projects-list.jpg',
     mat: false,
+    fit: 'top' as const,
     tilt: 1,
     href: 'https://apps.apple.com/cy/app/steplan-freelancer-plan/id6762138338',
     external: true,
@@ -116,7 +118,7 @@ const pieces = [
             <figure class:list={['exhibit-row', { alt: i % 2 === 1 }]}>
               <div class="exhibit-frame reveal" data-parallax-scope>
                 <div class="exhibit-art" data-parallax="0.04">
-                  <Frame src={ex.src} alt={ex.alt} orient={ex.orient} size={ex.size} tilt={ex.tilt} />
+                  <Frame src={ex.src} alt={ex.alt} orient={ex.orient} size={ex.size} tilt={ex.tilt} fit={ex.fit} />
                 </div>
               </div>
               <figcaption class="exhibit-note reveal">
@@ -159,6 +161,7 @@ const pieces = [
                 size="sm"
                 tilt={p.tilt}
                 mat={p.mat}
+                fit={p.fit}
                 href={p.href}
                 external={p.external}
                 label="Open ↗"
