@@ -9,6 +9,7 @@ const exhibit = z.object({
   alt: z.string(),
   kicker: z.string(), // tracked-uppercase label, e.g. "THE BREADTH"
   caption: z.string(), // one honest line on why this exhibit earns its place
+  status: z.enum(['shipped', 'explored']).optional(), // small honesty tag: shipped/live vs an explored-but-unbuilt study
   orient: z.enum(['portrait', 'landscape']).optional(), // frame orientation (default portrait)
   size: z.enum(['lg', 'md', 'sm']).optional(),
   tilt: z.number().optional(), // museum hang angle for variety

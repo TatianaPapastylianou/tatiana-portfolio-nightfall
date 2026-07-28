@@ -88,6 +88,11 @@ const d = entry.data;
                 />
               </div>
               <figcaption class="exhibit-note reveal">
+                {ex.status && (
+                  <span class:list={['exhibit-status', `exhibit-status--${ex.status}`]}>
+                    {ex.status === 'shipped' ? 'Shipped — live' : 'Explored — not shipped'}
+                  </span>
+                )}
                 <p class="kicker">{ex.kicker}</p>
                 <p class="exhibit-caption">{ex.caption}</p>
               </figcaption>
@@ -211,6 +216,28 @@ const d = entry.data;
   }
   .exhibit-note {
     max-width: 42ch;
+  }
+  /* honesty tag — a small museum-style placard status above the kicker */
+  .exhibit-status {
+    display: inline-block;
+    margin-bottom: 0.7rem;
+    padding: 0.28em 0.7em;
+    border-radius: 100px;
+    font-family: var(--sans);
+    font-size: var(--step--1);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--line);
+  }
+  .exhibit-status--shipped {
+    color: var(--head);
+    background: var(--paper-2);
+    border-color: var(--gold-deep);
+  }
+  .exhibit-status--explored {
+    color: var(--dim);
+    background: transparent;
+    border-style: dashed;
   }
   .exhibit-note .kicker {
     color: var(--gold-deep);
