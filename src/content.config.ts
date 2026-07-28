@@ -12,6 +12,7 @@ const exhibit = z.object({
   orient: z.enum(['portrait', 'landscape']).optional(), // frame orientation (default portrait)
   size: z.enum(['lg', 'md', 'sm']).optional(),
   tilt: z.number().optional(), // museum hang angle for variety
+  fit: z.enum(['contain', 'top']).optional(), // 'top' fills the window width and pins to the top (crops the bottom)
 });
 
 const cases = defineCollection({
@@ -34,6 +35,7 @@ const cases = defineCollection({
       src: z.string().optional(),
       alt: z.string().optional(),
       orient: z.enum(['portrait', 'landscape']).optional(),
+      fit: z.enum(['contain', 'top']).optional(),
       caption: z.string(),
     }),
     // the Head-of-Design depth: 2–3 curated framed exhibits

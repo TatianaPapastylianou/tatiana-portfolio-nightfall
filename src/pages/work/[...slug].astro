@@ -59,6 +59,7 @@ const d = entry.data;
               src={d.hero.src}
               alt={d.hero.alt}
               orient={d.hero.orient ?? 'portrait'}
+              fit={d.hero.fit}
               size="lg"
               tilt={-0.6}
             />
@@ -81,6 +82,7 @@ const d = entry.data;
                   src={ex.src}
                   alt={ex.alt}
                   orient={ex.orient ?? 'portrait'}
+                  fit={ex.fit}
                   size={ex.size ?? 'md'}
                   tilt={ex.tilt ?? 0}
                 />
