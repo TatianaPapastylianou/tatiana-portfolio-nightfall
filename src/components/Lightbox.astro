@@ -1,0 +1,327 @@
+---
+/**
+ * Lightbox — click any non-linked picture frame to open its image full-screen,
+ * then zoom in on the detail: scroll / pinch to zoom, drag to pan, click to
+ * toggle 1×↔2.5×, double-click or Esc to reset/close. One global overlay,
+ * opened by event-delegation on [data-zoom-src]; survives View-Transitions.
+ */
+---
+
+<div class="lightbox" data-lightbox aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button type="button" class="lb-close" data-lb-close aria-label="Close (Esc)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"
+      ><path d="M6 6l12 12M18 6L6 18"></path></svg
+    >
+  </button>
+  <div class="lb-stage" data-lb-stage>
+    <img class="lb-img" data-lb-img alt="" draggable="false" />
+  </div>
+  <p class="lb-caption" data-lb-caption></p>
+  <p class="lb-hint" data-lb-hint aria-hidden="true">Scroll or pinch to zoom · drag to pan</p>
+</div>
+
+<style>
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: clamp(1rem, 4vh, 2.5rem);
+    background:
+      radial-gradient(120% 90% at 50% 0%, rgba(58, 22, 30, 0.55), transparent 60%),
+      rgba(10, 8, 7, 0.94);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.32s var(--ease-out),
+      visibility 0.32s var(--ease-out);
+  }
+  .lightbox.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .lb-stage {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    touch-action: none; /* we handle pan/zoom gestures ourselves */
+  }
+  .lb-img {
+    max-width: 92vw;
+    max-height: 80vh;
+    object-fit: contain;
+    transform-origin: center center;
+    will-change: transform;
+    user-select: none;
+    -webkit-user-drag: none;
+    cursor: zoom-in;
+    border-radius: 3px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    transition: transform 0.18s var(--ease-out);
+  }
+  .lb-img.zoomed {
+    cursor: grab;
+  }
+  .lb-img.grabbing {
+    cursor: grabbing;
+    transition: none; /* 1:1 with the pointer while dragging */
+  }
+
+  .lb-close {
+    position: absolute;
+    top: clamp(0.8rem, 3vh, 1.6rem);
+    right: clamp(0.8rem, 3vw, 1.6rem);
+    z-index: 2;
+    width: 2.8rem;
+    height: 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(239, 230, 212, 0.35);
+    border-radius: 100px;
+    background: rgba(239, 230, 212, 0.06);
+    color: var(--on-dark, #ede4d2);
+    cursor: pointer;
+    transition:
+      background 0.2s var(--ease-out),
+      transform 0.2s var(--ease-out);
+  }
+  .lb-close:hover {
+    background: rgba(239, 230, 212, 0.16);
+    transform: rotate(90deg);
+  }
+  .lb-close svg {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .lb-caption {
+    margin-top: 1rem;
+    max-width: 60ch;
+    text-align: center;
+    color: var(--on-dark, #ede4d2);
+    font-family: var(--sans);
+    font-size: var(--step--1);
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+  .lb-hint {
+    margin-top: 0.5rem;
+    color: rgba(239, 230, 212, 0.55);
+    font-family: var(--sans);
+    font-size: var(--step--2, 0.72rem);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: opacity 0.2s var(--ease-out);
+  }
+  .lightbox.is-zoomed .lb-hint {
+    opacity: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lightbox,
+    .lb-img,
+    .lb-close {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  function initLightbox() {
+    const box = document.querySelector<HTMLElement>('[data-lightbox]');
+    if (!box || box.dataset.ready) return;
+    box.dataset.ready = '1';
+
+    const stage = box.querySelector<HTMLElement>('[data-lb-stage]')!;
+    const img = box.querySelector<HTMLImageElement>('[data-lb-img]')!;
+    const caption = box.querySelector<HTMLElement>('[data-lb-caption]')!;
+    const closeBtn = box.querySelector<HTMLElement>('[data-lb-close]')!;
+
+    let scale = 1;
+    let tx = 0;
+    let ty = 0;
+    const MAX = 6;
+
+    const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
+
+    function clampPan() {
+      const s = stage.getBoundingClientRect();
+      const w = img.offsetWidth * scale;
+      const h = img.offsetHeight * scale;
+      const maxX = Math.max(0, (w - s.width) / 2);
+      const maxY = Math.max(0, (h - s.height) / 2);
+      tx = clamp(tx, -maxX, maxX);
+      ty = clamp(ty, -maxY, maxY);
+    }
+
+    function apply() {
+      clampPan();
+      img.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+      const zoomed = scale > 1.01;
+      img.classList.toggle('zoomed', zoomed);
+      box.classList.toggle('is-zoomed', zoomed);
+    }
+
+    function centre() {
+      const s = stage.getBoundingClientRect();
+      return { x: s.left + s.width / 2, y: s.top + s.height / 2 };
+    }
+
+    // zoom toward a screen point, keeping the image-point under it fixed
+    function zoomTo(next: number, px: number, py: number) {
+      const c = centre();
+      const o = { x: (px - c.x - tx) / scale, y: (py - c.y - ty) / scale };
+      const ns = clamp(next, 1, MAX);
+      tx = px - c.x - ns * o.x;
+      ty = py - c.y - ns * o.y;
+      scale = ns;
+      if (scale <= 1.01) {
+        scale = 1;
+        tx = 0;
+        ty = 0;
+      }
+      apply();
+    }
+
+    function open(src: string, alt: string) {
+      img.src = src;
+      img.alt = alt || '';
+      caption.textContent = alt || '';
+      scale = 1;
+      tx = 0;
+      ty = 0;
+      apply();
+      box.classList.add('open');
+      box.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lb-open');
+      closeBtn.focus();
+    }
+
+    function close() {
+      box.classList.remove('open');
+      box.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lb-open');
+      // clear the source after the fade so we don't flash the old image next open
+      setTimeout(() => {
+        if (!box.classList.contains('open')) img.removeAttribute('src');
+      }, 350);
+    }
+
+    // ---- open triggers (delegated, so new frames on each page just work) ----
+    document.addEventListener('click', (e) => {
+      const t = (e.target as HTMLElement)?.closest?.('[data-zoom-src]') as HTMLElement | null;
+      if (!t) return;
+      e.preventDefault();
+      open(t.dataset.zoomSrc || '', t.dataset.zoomAlt || '');
+    });
+    document.addEventListener('keydown', (e) => {
+      const t = document.activeElement as HTMLElement | null;
+      if ((e.key === 'Enter' || e.key === ' ') && t?.matches?.('[data-zoom-src]')) {
+        e.preventDefault();
+        open(t.dataset.zoomSrc || '', t.dataset.zoomAlt || '');
+      }
+    });
+
+    // ---- close triggers ----
+    closeBtn.addEventListener('click', close);
+    box.addEventListener('click', (e) => {
+      if (e.target === box || e.target === stage) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && box.classList.contains('open')) close();
+    });
+
+    // ---- wheel zoom (toward the cursor) ----
+    stage.addEventListener(
+      'wheel',
+      (e) => {
+        if (!box.classList.contains('open')) return;
+        e.preventDefault();
+        const factor = e.deltaY < 0 ? 1.16 : 1 / 1.16;
+        zoomTo(scale * factor, e.clientX, e.clientY);
+      },
+      { passive: false }
+    );
+
+    // ---- double-click resets ----
+    img.addEventListener('dblclick', (e) => {
+      e.preventDefault();
+      zoomTo(1, e.clientX, e.clientY);
+    });
+
+    // ---- pointer drag (pan) + click-to-toggle + pinch ----
+    const pts = new Map<number, { x: number; y: number }>();
+    let moved = 0;
+    let downX = 0;
+    let downY = 0;
+    let pinchStart = 0;
+    let pinchScale = 1;
+
+    img.addEventListener('pointerdown', (e) => {
+      img.setPointerCapture(e.pointerId);
+      pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (pts.size === 1) {
+        moved = 0;
+        downX = e.clientX;
+        downY = e.clientY;
+        img.classList.add('grabbing');
+      } else if (pts.size === 2) {
+        const [a, b] = [...pts.values()];
+        pinchStart = Math.hypot(a.x - b.x, a.y - b.y);
+        pinchScale = scale;
+      }
+    });
+
+    img.addEventListener('pointermove', (e) => {
+      if (!pts.has(e.pointerId)) return;
+      const prev = pts.get(e.pointerId)!;
+      pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+      if (pts.size === 2) {
+        const [a, b] = [...pts.values()];
+        const dist = Math.hypot(a.x - b.x, a.y - b.y);
+        if (pinchStart > 0) {
+          zoomTo((pinchScale * dist) / pinchStart, (a.x + b.x) / 2, (a.y + b.y) / 2);
+        }
+        return;
+      }
+
+      if (scale <= 1.01) return; // nothing to pan when not zoomed
+      const dx = e.clientX - prev.x;
+      const dy = e.clientY - prev.y;
+      moved += Math.abs(dx) + Math.abs(dy);
+      tx += dx;
+      ty += dy;
+      apply();
+    });
+
+    function endPointer(e: PointerEvent) {
+      if (!pts.has(e.pointerId)) return;
+      pts.delete(e.pointerId);
+      if (pts.size < 2) pinchStart = 0;
+      if (pts.size === 0) {
+        img.classList.remove('grabbing');
+        // a tap/click that didn't really move → toggle zoom at that point
+        if (moved < 6) {
+          zoomTo(scale > 1.01 ? 1 : 2.5, downX, downY);
+        }
+      }
+    }
+    img.addEventListener('pointerup', endPointer);
+    img.addEventListener('pointercancel', endPointer);
+
+    // keep things centred if the viewport resizes mid-view
+    window.addEventListener('resize', () => box.classList.contains('open') && apply());
+  }
+
+  document.addEventListener('astro:page-load', initLightbox);
+</script>

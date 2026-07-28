@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import SiteChrome from '../components/SiteChrome.astro';
 import Loader from '../components/Loader.astro';
 import BottomNav from '../components/BottomNav.astro';
+import Lightbox from '../components/Lightbox.astro';
 import { ClientRouter } from 'astro:transitions';
 
 interface Props {
@@ -70,6 +71,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     </main>
     <Footer dark={dark} />
     <BottomNav dark={dark} />
+    <Lightbox transition:persist />
+
 
     <!-- cinematic loader control (global so it works from any entry page, and
          never replays during SPA navigation) -->

@@ -18,6 +18,7 @@ interface Props {
   fit?: 'contain' | 'top'; // 'contain' shows the whole image; 'top' fills the window width and pins to the top (crops the bottom)
   live?: boolean; // slot is a live panel that must scale to the window (container query)
   view?: boolean; // morph the cursor to the "View case →" pill on hover
+  zoom?: boolean; // click to open the image full-screen in the zoomable lightbox (default: on for non-linked image frames)
   href?: string; // wrap the frame in a link
   external?: boolean; // open href in a new tab (for links off-site)
   label?: string; // cursor pill label when linked (default "View case →")
@@ -33,6 +34,7 @@ const {
   fit = 'contain',
   live = false,
   view = false,
+  zoom,
   href,
   external = false,
   label = 'View case →',
@@ -42,6 +44,13 @@ const {
 const frameSrc =
   orient === 'landscape' ? '/frames/frame-cut-web-landscape.png' : '/frames/frame-cut-web.png';
 
+// A non-linked image frame is click-to-zoom by default; a live panel or a
+// linked frame never is. Both the zoom target and the linked frame share the
+// same cursor-pill mechanism ([data-view] + [data-label]).
+const zoomable = !!src && !href && zoom !== false;
+const pill = view || zoomable;
+const pillLabel = zoomable ? 'Zoom in ⤢' : label;
+
 const Tag = href ? 'a' : 'div';
 const tagProps = href
   ? {
@@ -49,7 +58,15 @@ const tagProps = href
       'aria-label': alt || label,
       ...(external ? { target: '_blank', rel: 'noopener' } : {}),
     }
-  : {};
+  : zoomable
+    ? {
+        role: 'button',
+        tabindex: '0',
+        'aria-label': `View full screen: ${alt || 'image'}`,
+        'data-zoom-src': src,
+        'data-zoom-alt': alt,
+      }
+    : {};
 ---
 
 <figure
@@ -57,9 +74,9 @@ const tagProps = href
   style={`--tilt:${tilt}deg`}
 >
   <Tag
-    class="frameart"
-    data-view={view ? '' : undefined}
-    data-label={view ? label : undefined}
+    class:list={['frameart', { 'frameart--zoom': zoomable }]}
+    data-view={pill ? '' : undefined}
+    data-label={pill ? pillLabel : undefined}
     {...tagProps}
   >
     <div class:list={['window', { 'window--mat': mat && src, 'window--live': live }]}>
@@ -91,6 +108,14 @@ const tagProps = href
     animation: sway 13s ease-in-out infinite;
     text-decoration: none;
     color: inherit;
+  }
+  .frameart--zoom {
+    cursor: zoom-in; /* fallback where the custom cursor isn't shown (touch/keyboard) */
+  }
+  .frameart--zoom:focus-visible {
+    outline: 2px solid var(--gold-deep);
+    outline-offset: 8px;
+    border-radius: 4px;
   }
 
   /* portrait sizes */

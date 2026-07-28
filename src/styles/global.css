@@ -269,6 +269,19 @@ body.dark .cursor .lbl {
   color: var(--char);
 }
 
+/* lightbox open: lock the page, hide the custom cursor + eye, and give the
+   overlay a real cursor (zoom-out on the backdrop, zoom-in/grab on the image) */
+body.lb-open {
+  overflow: hidden;
+}
+body.lb-open .cursor,
+body.lb-open [data-eye] {
+  opacity: 0 !important;
+}
+.lightbox {
+  cursor: zoom-out;
+}
+
 @media (hover: hover) and (pointer: fine) {
   body:not(.no-cursor) {
     cursor: none;
