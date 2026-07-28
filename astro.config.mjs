@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build
 export default defineConfig({
-  site: 'https://tatiana-portfolio-nightfall.netlify.app',
+  site: 'https://tatiana-papastylianou-portfolio.netlify.app',
   integrations: [sitemap()],
   build: {
     inlineStylesheets: 'auto',

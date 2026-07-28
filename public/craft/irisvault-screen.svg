@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1206 2610" font-family="'Poppins','Trebuchet MS','Segoe UI',system-ui,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c1a1b"/>
+      <stop offset="0.5" stop-color="#0d1f20"/>
+      <stop offset="1" stop-color="#0a1416"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#6fb0b0" stop-opacity="0.55"/>
+      <stop offset="0.55" stop-color="#357878" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#357878" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="iris" cx="0.42" cy="0.38" r="0.62">
+      <stop offset="0" stop-color="#9fd6d0"/>
+      <stop offset="0.45" stop-color="#4a8b8b"/>
+      <stop offset="1" stop-color="#1c3c3c"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e8c89a"/>
+      <stop offset="1" stop-color="#d4a574"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1206" height="2610" fill="url(#bg)"/>
+
+  <!-- status bar -->
+  <text x="96" y="118" font-size="46" font-weight="600" fill="#e8eeec">9:41</text>
+  <g fill="#e8eeec">
+    <rect x="980" y="86" width="46" height="30" rx="5" opacity="0.9"/>
+    <path d="M1044 86 h58 a10 10 0 0 1 10 10 v14 a10 10 0 0 1 -10 10 h-58 z" opacity="0.9"/>
+    <rect x="1116" y="93" width="6" height="16" rx="3" opacity="0.6"/>
+  </g>
+  <rect x="503" y="70" width="200" height="52" rx="26" fill="#060d0e"/>
+
+  <!-- header -->
+  <text x="96" y="286" font-size="34" font-weight="700" letter-spacing="7" fill="#d4a574">GUIDED EXERCISE</text>
+  <text x="94" y="372" font-size="82" font-weight="700" letter-spacing="-2" fill="#eef4f2">Conscious blinking</text>
+
+  <!-- streak chip -->
+  <g transform="translate(846,236)">
+    <rect x="0" y="0" width="264" height="72" rx="36" fill="#1a3130" stroke="#2f5b58" stroke-width="2"/>
+    <circle cx="42" cy="36" r="15" fill="url(#gold)"/>
+    <text x="76" y="48" font-size="36" font-weight="600" fill="#e8c89a">12-day streak</text>
+  </g>
+
+  <!-- exercise orb -->
+  <g transform="translate(603,880)">
+    <circle cx="0" cy="0" r="470" fill="url(#glow)"/>
+    <circle cx="0" cy="0" r="360" fill="none" stroke="#254a49" stroke-width="3" opacity="0.7"/>
+    <!-- progress ring 62% -->
+    <circle cx="0" cy="0" r="330" fill="none" stroke="#14292a" stroke-width="26"/>
+    <circle cx="0" cy="0" r="330" fill="none" stroke="#6fb0b0" stroke-width="26" stroke-linecap="round"
+      stroke-dasharray="2073.4" stroke-dashoffset="787.9" transform="rotate(-90)"/>
+    <!-- iris -->
+    <circle cx="0" cy="0" r="188" fill="url(#iris)"/>
+    <circle cx="0" cy="0" r="188" fill="none" stroke="#bfe6e0" stroke-width="4" opacity="0.4"/>
+    <circle cx="0" cy="0" r="82" fill="#0a1416"/>
+    <circle cx="26" cy="-30" r="26" fill="#dff2ee" opacity="0.85"/>
+  </g>
+
+  <!-- playing state + scrubber -->
+  <text x="603" y="1466" text-anchor="middle" font-size="40" font-weight="500" fill="#8fa6a6">Playing · 0:38 / 1:00</text>
+  <g transform="translate(96,1520)">
+    <rect x="0" y="0" width="1014" height="12" rx="6" fill="#1a3130"/>
+    <rect x="0" y="0" width="640" height="12" rx="6" fill="#6fb0b0"/>
+    <circle cx="640" cy="6" r="16" fill="#dff2ee"/>
+  </g>
+
+  <!-- haptic tag -->
+  <g transform="translate(96,1596)">
+    <rect x="0" y="0" width="330" height="66" rx="33" fill="#14292a"/>
+    <circle cx="42" cy="33" r="11" fill="#84b891"/>
+    <text x="72" y="45" font-size="34" font-weight="500" fill="#a9c4c2">Haptic guidance</text>
+  </g>
+  <g transform="translate(452,1596)">
+    <rect x="0" y="0" width="300" height="66" rx="33" fill="#14292a"/>
+    <circle cx="42" cy="33" r="11" fill="#d4a574"/>
+    <text x="72" y="45" font-size="34" font-weight="500" fill="#a9c4c2">No headphones</text>
+  </g>
+
+  <!-- up next -->
+  <text x="96" y="1810" font-size="38" font-weight="700" letter-spacing="4" fill="#6f8a8a">UP NEXT</text>
+
+  <!-- rows -->
+  <g font-family="'Poppins','Trebuchet MS','Segoe UI',system-ui,sans-serif">
+    <!-- row template -->
+    <g transform="translate(96,1856)">
+      <rect x="0" y="0" width="1014" height="150" rx="30" fill="#112524"/>
+      <circle cx="82" cy="75" r="42" fill="#1c3c3c"/>
+      <path d="M60 75 q22 -26 44 0 q-22 26 -44 0 z" fill="none" stroke="#6fb0b0" stroke-width="6"/>
+      <circle cx="82" cy="75" r="10" fill="#6fb0b0"/>
+      <text x="168" y="66" font-size="44" font-weight="600" fill="#e8eeec">Near–far focus shift</text>
+      <text x="168" y="116" font-size="34" fill="#7f9a9a">Accommodation · 1:30</text>
+      <text x="946" y="90" font-size="40" font-weight="600" fill="#8fa6a6">1:30</text>
+    </g>
+
+    <g transform="translate(96,2030)">
+      <rect x="0" y="0" width="1014" height="150" rx="30" fill="#112524"/>
+      <circle cx="82" cy="75" r="42" fill="#1c3c3c"/>
+      <path d="M56 60 h52 v30 h-52 z" fill="none" stroke="#84b891" stroke-width="6" rx="6"/>
+      <text x="168" y="66" font-size="44" font-weight="600" fill="#e8eeec">Palming</text>
+      <text x="168" y="116" font-size="34" fill="#7f9a9a">Rest &amp; warmth · 2:00</text>
+      <text x="946" y="90" font-size="40" font-weight="600" fill="#8fa6a6">2:00</text>
+    </g>
+
+    <g transform="translate(96,2204)">
+      <rect x="0" y="0" width="1014" height="150" rx="30" fill="#112524"/>
+      <circle cx="82" cy="75" r="42" fill="#1c3c3c"/>
+      <path d="M82 75 c-24 -22 -44 -6 -20 12 c24 18 4 34 -20 12 M82 75 c24 -22 44 -6 20 12 c-24 18 -4 34 20 12" fill="none" stroke="#d4a574" stroke-width="5"/>
+      <text x="168" y="66" font-size="44" font-weight="600" fill="#e8eeec">Figure-8 tracing</text>
+      <text x="168" y="116" font-size="34" fill="#7f9a9a">Oculomotor · 1:00</text>
+      <text x="946" y="90" font-size="40" font-weight="600" fill="#8fa6a6">1:00</text>
+    </g>
+
+    <text x="603" y="2452" text-anchor="middle" font-size="38" font-weight="500" fill="#5f7c7c">+ 5 more exercises</text>
+  </g>
+
+  <!-- tab bar -->
+  <g transform="translate(0,2506)">
+    <rect x="96" y="0" width="1014" height="0" fill="none"/>
+    <line x1="96" y1="0" x2="1110" y2="0" stroke="#173130" stroke-width="2"/>
+    <g fill="#6fb0b0">
+      <circle cx="252" cy="58" r="10"/>
+      <text x="252" y="112" text-anchor="middle" font-size="30" font-weight="600" fill="#6fb0b0">Exercises</text>
+    </g>
+    <g fill="#5f7c7c">
+      <circle cx="486" cy="58" r="10"/>
+      <text x="486" y="112" text-anchor="middle" font-size="30" fill="#5f7c7c">Routines</text>
+    </g>
+    <g fill="#5f7c7c">
+      <circle cx="720" cy="58" r="10"/>
+      <text x="720" y="112" text-anchor="middle" font-size="30" fill="#5f7c7c">Insights</text>
+    </g>
+    <g fill="#5f7c7c">
+      <circle cx="954" cy="58" r="10"/>
+      <text x="954" y="112" text-anchor="middle" font-size="30" fill="#5f7c7c">Settings</text>
+    </g>
+  </g>
+</svg>
