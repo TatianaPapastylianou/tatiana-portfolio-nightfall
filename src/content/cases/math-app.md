@@ -30,8 +30,8 @@ exhibits:
     alt: "The mobile topic picker — the surviving wayfinding icons for each subject"
     kicker: "The decision I defended"
     caption: "They wanted zero icons. In an app already stripped of illustration and colour, I saved the few that carried real wayfinding — a partial win, honestly: I protected what the learner actually needed."
-    orient: "landscape"
-    size: "lg"
+    orient: "portrait"
+    size: "md"
     tilt: -1.2
 ---
 
