@@ -9,18 +9,29 @@ const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.dat
 // the sticky-left / scrolling-band work gallery: each case = pinned meta + a band
 // of its framed screens (hero + first exhibits) scrolling past on the right.
 const bandTilts = [-0.8, 0.7, -0.5];
+
+// landing-page-only band overrides (leave the case pages on their own screens)
+const landingBand: Record<string, { src: string; alt: string; orient: 'portrait' | 'landscape' }[]> = {
+  'math-app': [
+    { src: '/cases/math-home-1.jpg', alt: 'Akelius Math — numbers up to 1000, grade progress', orient: 'landscape' },
+    { src: '/cases/math-home-2.jpg', alt: 'Akelius Math — your learning journey', orient: 'landscape' },
+    { src: '/cases/math-home-3.jpg', alt: 'Akelius Math — welcome and explore', orient: 'landscape' },
+  ],
+};
+
 const gallery = cases.map((c) => {
-  const band: { src: string; alt: string; orient: 'portrait' | 'landscape' }[] = [];
+  const derived: { src: string; alt: string; orient: 'portrait' | 'landscape' }[] = [];
   if (c.data.hero.src) {
-    band.push({
+    derived.push({
       src: c.data.hero.src,
       alt: c.data.hero.alt ?? c.data.title,
       orient: c.data.hero.orient ?? 'portrait',
     });
   }
-  c.data.exhibits.slice(0, 3 - band.length).forEach((ex) => {
-    band.push({ src: ex.src, alt: ex.alt, orient: ex.orient ?? 'portrait' });
+  c.data.exhibits.slice(0, 3 - derived.length).forEach((ex) => {
+    derived.push({ src: ex.src, alt: ex.alt, orient: ex.orient ?? 'portrait' });
   });
+  const band = landingBand[c.id] ?? derived;
   return {
     id: c.id,
     number: c.data.number,
