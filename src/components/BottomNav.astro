@@ -64,6 +64,10 @@ const items = [
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--dim);
+    /* without this, iOS Safari waits ~300ms after the first tap to see
+       whether a second tap follows (double-tap-to-zoom disambiguation),
+       which reads as "the link needs two taps to work". */
+    touch-action: manipulation;
     transition:
       color 0.2s var(--ease-out),
       background 0.2s var(--ease-out);
