@@ -10,7 +10,7 @@ impact: "became infrastructure — one language for design and code"
 order: 1
 next:
   slug: "math-app"
-  title: "Akelius Math — shipping through three competing visions"
+  title: "Akelius Education — shipping through three competing visions"
 hero:
   kind: "image"
   src: "/cases/ds-overview.jpg"

@@ -1,13 +1,13 @@
 ---
 number: "02"
-title: "Akelius Math: shipping a live product through three competing visions"
+title: "Akelius Education: shipping a live product through three competing visions"
 role: "Lead Designer"
 roleFull: "Lead Product Designer (sole design lead on the project)"
-oneLiner: "Three stakeholders wanted three different apps. I was the lead designer who absorbed all of it, kept the learner in the room, and shipped one coherent, radically minimal product — now live at math.akelius.education."
+oneLiner: "Three stakeholders wanted three different apps. I was the lead designer who absorbed all of it, kept the learner in the room, and shipped one coherent, radically minimal product — now live at akelius.education."
 tag: "EdTech, shipped · 2026"
 change: "Three conflicting mandates"
 impact: "one coherent product, live worldwide and free"
-liveUrl: "https://math.akelius.education"
+liveUrl: "https://akelius.education/"
 order: 2
 next:
   slug: "unified-app"
@@ -15,10 +15,10 @@ next:
 hero:
   kind: "image"
   src: "/cases/math-final-lesson.jpg"
-  alt: "The shipped Akelius Math lesson screen — radically minimal, search-first, method-icon cards"
+  alt: "The shipped Akelius Education lesson screen — radically minimal, search-first, method-icon cards"
   orient: "landscape"
   fit: "top"
-  caption: "Shipped, live at math.akelius.education. Radically minimal so it reads as serious for a child and an adult alike — search-first navigation, and the method icons that survived the cut for the wayfinding they carry."
+  caption: "Shipped, live at akelius.education. Radically minimal so it reads as serious for a child and an adult alike — search-first navigation, and the method icons that survived the cut for the wayfinding they carry."
 exhibits:
   - src: "/cases/math-final-progress.jpg"
     alt: "The shipped my-progress / learning-track screen"
@@ -115,7 +115,7 @@ process:
       outcome: "dropped"
     - tag: "Shipped"
       move: "Radically minimal, search-first, a few wayfinding icons saved"
-      why: "Reads as serious for an adult and a child alike — live at math.akelius.education"
+      why: "Reads as serious for an adult and a child alike — live at akelius.education"
       outcome: "shipped"
   tradeoff:
     chose: "Austerity, with a small set of real wayfinding icons protected"
@@ -137,7 +137,7 @@ process:
 | | |
 |---|---|
 | **Role** | Lead Product Designer (sole design lead on the project) |
-| **Product** | Akelius Math — free, web-based math learning, live at [math.akelius.education](https://math.akelius.education) |
+| **Product** | Akelius Education — free, web-based math learning, live at [akelius.education](https://akelius.education/) |
 | **Content** | Curriculum authored by a University of Gothenburg mathematics professor |
 | **Mission context** | Akelius partners with organisations educating children through crisis and war — free, worldwide access is the point, not a feature |
 | **Timeframe** | Iterative exploration Feb 2025 → Jan 2026 (dated version trail in Figma) |
@@ -145,7 +145,7 @@ process:
 
 ## The brief that kept moving
 
-Akelius Math set out to turn a mathematics professor's high-quality curriculum into an app anyone could use for free, anywhere — including learners in places where school itself has been interrupted by war. Education as a lifeline, not a nice-to-have.
+Akelius Education set out to turn a mathematics professor's high-quality curriculum into an app anyone could use for free, anywhere — including learners in places where school itself has been interrupted by war. Education as a lifeline, not a nice-to-have.
 
 But the brief didn't hold still. **The audience changed mid-project** — from "kids and teenagers in school" to "any age." That single shift rewrote the visual rules: an app for everyone had to read as *serious* — no illustrations, no imagery, only a handful of functional colour accents. What would have been playful for children now had to feel credible for an adult learner and a child in the same interface.
 
@@ -179,7 +179,7 @@ And one I lost: **we had won approval for a curriculum page, then it was cut —
 
 ## Outcome
 
-**It shipped.** Akelius Math is live at [math.akelius.education](https://math.akelius.education) — free, accessible worldwide, built on the professor's curriculum. Through an audience pivot and three competing executive visions, the product got built and launched. The design work is now archived by the team (the "discontinued" label is on the *Figma file*, not the product) — the record of every direction we explored and why.
+**It shipped.** Akelius Education is live at [akelius.education](https://akelius.education/) — free, accessible worldwide, built on the professor's curriculum. Through an audience pivot and three competing executive visions, the product got built and launched. The design work is now archived by the team (the "discontinued" label is on the *Figma file*, not the product) — the record of every direction we explored and why.
 
 The honest headline isn't a metric. It's this: **I can hold contradictory senior stakeholders, an academic content partner, and a real learner in my head at once, and still ship something coherent.** That's the job at scale.
 
@@ -193,4 +193,4 @@ The honest headline isn't a metric. It's this: **I can hold contradictory senior
 - Dated exploration trail (Feb 2025 → Jan 2026): founder, founder + board, math-team, and design-team versions, each with mobile variants
 - HANDOFF section: variables, general components, and dev-ready pages (home, search lessons, lesson page, progress page)
 - Supporting artifacts: concept/workflow flows, hierarchical search design, "build a calculator," curriculum, math icons, MATH WORLD archive
-- Live product: math.akelius.education
+- Live product: akelius.education
