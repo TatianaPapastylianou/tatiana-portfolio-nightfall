@@ -82,6 +82,54 @@ exhibits:
     size: "lg"
     fit: "top"
     tilt: -1.2
+process:
+  lens: "The senior move wasn't ‘whose idea wins’ — it was turning three conflicting mandates into one product a real person can learn from."
+  map: "stakeholders"
+  briefed: "Turn a mathematics professor's high-quality curriculum into a free app for children and teenagers in school — including learners whose schooling has been interrupted by war."
+  reframe: "Mid-project the audience widened from ‘school kids’ to ‘any age,’ and three executives who could each overrule the others wanted three different apps. The real problem wasn't drawing screens — it was designing minimalism to a moving target while holding three authorities and the learner in one coherent product."
+  questions:
+    - "Who is this really for now — a child, an adult, or both in the same interface — and what has to read as serious for all of them at once?"
+    - "When the founder, the board and the editors contradict each other, which of them is actually speaking for the user — and where do I argue for the learner instead?"
+    - "If search is the primary way to navigate, what happens when search fails, and does an older first-time learner find their lesson as fast as a child?"
+    - "Which icons are decoration, and which are the only wayfinding a learner has left once illustration and colour are gone?"
+    - "What's the cheapest way to move this debate forward — keep arguing in the abstract, or build each vision as a real screen people can react to?"
+  hypotheses:
+    - h: "Showing each stakeholder's vision as a fully-realised screen will move the decision forward faster than arguing in the abstract."
+      test: "Built distinct, named directions — founder, founder + board, math-team, design-team — each carried through to mobile."
+      learned: "Concrete screens let stakeholders react to something real and let me steer the decision instead of circling; the shipped product converged out of them."
+    - h: "Radical minimalism — no illustration, no colour, search-first — can still read as credible for an adult and stay navigable for a child."
+      test: "Stripped the interface to functional accents only, then pressure-tested removing icons entirely."
+      learned: "It holds — but only if a few method icons survive; stripping every icon left dense maths with no visual anchors at all."
+  path:
+    - tag: "Direction A · Founder"
+      move: "Austerity — no text, no colour, search-first"
+      why: "Set the discipline, but risked leaving learners with no anchors"
+      outcome: "explored"
+    - tag: "Direction B · + Board"
+      move: "Structured clarity — legible app structure, some representation"
+      why: "Added the scaffolding pure austerity lacked; became the spine"
+      outcome: "merged"
+    - tag: "Direction C · Editors"
+      move: "Richer assets, more colour, more interactivity"
+      why: "Pulled toward engagement — too much for an all-ages serious tool"
+      outcome: "dropped"
+    - tag: "Shipped"
+      move: "Radically minimal, search-first, a few wayfinding icons saved"
+      why: "Reads as serious for an adult and a child alike — live at math.akelius.education"
+      outcome: "shipped"
+  tradeoff:
+    chose: "Austerity, with a small set of real wayfinding icons protected"
+    gaveUp: "The curriculum page I'd won approval for (cut without consultation), and the editors' richer, more colourful direction"
+    why: "An all-ages learning tool has to read as serious first; the icons that survived were the ones carrying wayfinding, not decoration"
+  measure:
+    - metric: "Returning-learner retention"
+      value: "~40%"
+      how: "Observed internally after launch — directional, not yet isolated to one cause. I'd baseline it against pre-change cohorts and treat the search-first navigation as the single variable before claiming it."
+    - metric: "Learner satisfaction"
+      value: "~15% lift"
+      how: "An early signal from internal feedback; I'd harden it with a short in-product survey on a stable denominator rather than a one-off read."
+    - metric: "Search-first findability"
+      how: "Not yet instrumented. I'd run task-based usability tests across age groups — can an older first-timer and a child both reach their lesson — and design the fallback for when search returns nothing."
 ---
 
 ## Snapshot

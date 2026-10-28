@@ -19,6 +19,7 @@ interface Props {
   live?: boolean; // slot is a live panel that must scale to the window (container query)
   view?: boolean; // morph the cursor to the "View case →" pill on hover
   zoom?: boolean; // click to open the image full-screen in the zoomable lightbox (default: on for non-linked image frames)
+  eager?: boolean; // load immediately (above-the-fold hero frames) instead of lazily
   href?: string; // wrap the frame in a link
   external?: boolean; // open href in a new tab (for links off-site)
   label?: string; // cursor pill label when linked (default "View case →")
@@ -35,6 +36,7 @@ const {
   live = false,
   view = false,
   zoom,
+  eager = false,
   href,
   external = false,
   label = 'View case →',
@@ -42,7 +44,8 @@ const {
 } = Astro.props;
 
 const frameSrc =
-  orient === 'landscape' ? '/frames/frame-cut-web-landscape.png' : '/frames/frame-cut-web.png';
+  orient === 'landscape' ? '/frames/frame-cut-web-landscape.webp' : '/frames/frame-cut-web.webp';
+const loadMode = eager ? 'eager' : 'lazy';
 
 // A non-linked image frame is click-to-zoom by default; a live panel or a
 // linked frame never is. Both the zoom target and the linked frame share the
@@ -82,13 +85,13 @@ const tagProps = href
     <div class:list={['window', { 'window--mat': mat && src, 'window--live': live }]}>
       {
         src ? (
-          <img class:list={['fit', { 'fit--top': fit === 'top' }]} src={src} alt={alt} loading="lazy" decoding="async" />
+          <img class:list={['fit', { 'fit--top': fit === 'top' }]} src={src} alt={alt} loading={loadMode} decoding="async" />
         ) : (
           <slot />
         )
       }
     </div>
-    <img class="fr" src={frameSrc} alt="" aria-hidden="true" loading="lazy" />
+    <img class="fr" src={frameSrc} alt="" aria-hidden="true" loading={loadMode} />
   </Tag>
 </figure>
 

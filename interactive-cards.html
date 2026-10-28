@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive cards · Tatiana Papastylianou</title>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,700&f[]=zodiak@401,701&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDE4D2;--card:#F6F0E2;--ink:#211913;--head:#1C140E;--body:#4E4234;--dim:#8C7E69;--line:rgba(60,44,24,.16);
+  --gold:#C9A24B;--gold-lite:#E7CD82;--gold-deep:#7E611F;--mat:#efe7d4;
+  --serif:'Zodiak',Georgia,serif;--sans:'General Sans',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(1100px 640px at 86% -10%,rgba(201,162,75,.16),transparent 60%),var(--paper);color:var(--body);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+#progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:60;background:var(--ink);opacity:.5}
+@media(hover:hover){body{cursor:none}
+ .cursor{position:fixed;z-index:100;top:0;left:0;pointer-events:none;transform:translate(-50%,-50%);width:11px;height:11px;border-radius:50%;background:var(--ink);transition:width .2s,height .2s}
+ .cursor.big{width:82px;height:82px}.cursor .lbl{opacity:0;color:var(--paper);font-size:11px;font-weight:500;text-align:center;line-height:1.15;height:100%;display:flex;align-items:center;justify-content:center;transition:opacity .2s}.cursor.big .lbl{opacity:1}}
+
+nav{position:sticky;top:0;z-index:40;backdrop-filter:blur(9px);background:color-mix(in srgb,var(--paper) 80%,transparent);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+.brand{font-family:var(--serif);font-size:21px;color:var(--head)}
+.navlinks{display:flex;gap:4px}.navlinks a{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);padding:9px 14px;border-radius:22px;transition:.25s}.navlinks a:hover{color:var(--head);background:color-mix(in srgb,var(--ink) 7%,transparent)}
+
+/* intro row with tiny eyes top-right */
+.intro{padding:60px 0 22px;position:relative}
+.intro h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1.04;color:var(--head);max-width:20ch;letter-spacing:-.4px}
+.intro h1 em{font-style:italic;color:var(--gold-deep)}
+.intro p{margin-top:16px;max-width:46ch;font-size:17px;color:var(--body)}
+.miniface{position:fixed;top:82px;right:32px;z-index:55;width:54px;height:54px;border-radius:50%;
+  background:radial-gradient(circle at 42% 34%,#fff8ea,#e3d7bd 70%,#d3c19c);box-shadow:0 10px 18px -8px rgba(90,60,20,.5),inset -5px -6px 14px rgba(120,90,40,.25),inset 4px 5px 12px rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;gap:6px}
+.miniface .e{width:12px;height:12px;border-radius:50%;background:#fbf6ec;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 1px 2px rgba(90,60,20,.4)}
+.miniface .p{width:6px;height:6px;border-radius:50%;background:var(--ink);transition:transform .08s linear}
+
+/* bento */
+.bento{display:grid;grid-template-columns:1.35fr 1fr;gap:30px;padding:24px 0 90px;align-items:start}
+.stack{display:flex;flex-direction:column;gap:30px}
+
+/* ===== detailed gilded frame ===== */
+figure.piece{margin:0}
+.oframe{position:relative;filter:drop-shadow(0 28px 30px rgba(90,55,20,.30)) drop-shadow(0 10px 12px rgba(60,40,10,.22));transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.piece:hover .oframe{transform:translateY(-5px)}
+/* outer gold with detailed acanthus border-image */
+.oframe .band{position:relative;padding:34px;border-radius:6px;
+  background:
+    linear-gradient(135deg,#FBEEBE 0%,#D9B45E 20%,#9A7A2C 42%,#EBD588 60%,#8A6B24 82%,#E7CD82 100%);
+  box-shadow:
+    inset 0 3px 2px rgba(255,250,224,.95),
+    inset 0 -4px 4px rgba(56,36,4,.75),
+    inset 4px 0 4px rgba(255,250,224,.4),
+    inset -4px 0 5px rgba(56,36,4,.6);}
+/* two ornament tracks for depth */
+.oframe .band::before{content:"";position:absolute;inset:9px;border-radius:4px;border:11px solid transparent;
+  border-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cg fill='none' stroke='%23705318' stroke-width='2.2' opacity='.65'%3E%3Cpath d='M0 30 q9 -13 18 0 q9 13 18 0 q9 -13 18 0'/%3E%3Cpath d='M0 30 q9 13 18 0 q9 -13 18 0 q9 13 18 0'/%3E%3Ccircle cx='30' cy='30' r='2.4' fill='%23705318' stroke='none'/%3E%3C/g%3E%3C/svg%3E") 22 round;}
+.oframe .band::after{content:"";position:absolute;inset:20px;border-radius:3px;border:3px solid transparent;
+  border-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cg fill='%23FBEEBE' opacity='.5'%3E%3Ccircle cx='4' cy='12' r='1.5'/%3E%3Ccircle cx='12' cy='12' r='1.5'/%3E%3Ccircle cx='20' cy='12' r='1.5'/%3E%3C/g%3E%3C/svg%3E") 8 round;}
+/* beaded inner lip */
+.oframe .lip{position:relative;border-radius:3px;padding:7px;background:linear-gradient(135deg,#F0DA92,#7E611F);box-shadow:inset 0 2px 3px rgba(255,250,224,.85),inset 0 -3px 4px rgba(46,28,2,.75)}
+.oframe .mat{background:var(--mat);border-radius:2px;padding:16px;box-shadow:inset 0 4px 12px rgba(80,60,30,.3),inset 0 0 0 1px rgba(120,97,31,.25)}
+.oframe .win{overflow:hidden;border-radius:1px}.oframe .win img{display:block;width:100%;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.piece:hover .win img{transform:scale(1.04)}
+/* richer corner cartouches */
+.oframe .c{position:absolute;width:74px;height:74px;z-index:3;
+  background:linear-gradient(135deg,#FBEEBE,#C9A24B 45%,#6E5318);
+  -webkit-mask:var(--orn) center/contain no-repeat;mask:var(--orn) center/contain no-repeat;
+  filter:drop-shadow(0 2px 2px rgba(40,26,4,.55))}
+:root{--orn:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 74 74'%3E%3Cpath d='M6 40 C4 22 14 8 34 6 C24 12 22 20 27 30 C34 24 44 26 42 36 C50 30 58 34 55 42 C48 40 44 46 46 54 C38 48 30 50 30 58 C24 50 14 52 10 60 C10 50 4 48 6 40 Z M20 40 a6 6 0 1 0 12 0 a6 6 0 1 0 -12 0'/%3E%3C/svg%3E")}
+.oframe .c.tl{top:-16px;left:-16px}.oframe .c.tr{top:-16px;right:-16px;transform:scaleX(-1)}.oframe .c.bl{bottom:-16px;left:-16px;transform:scaleY(-1)}.oframe .c.br{bottom:-16px;right:-16px;transform:scale(-1)}
+/* top-edge crest */
+.oframe .crest{position:absolute;top:-22px;left:50%;transform:translateX(-50%);width:120px;height:34px;z-index:3;
+  background:linear-gradient(135deg,#FBEEBE,#C9A24B 50%,#6E5318);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 34'%3E%3Cpath d='M60 2 C66 10 78 8 86 4 C82 14 92 18 104 16 C96 22 98 30 108 32 L12 32 C22 30 24 22 16 16 C28 18 38 14 34 4 C42 8 54 10 60 2 Z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 34'%3E%3Cpath d='M60 2 C66 10 78 8 86 4 C82 14 92 18 104 16 C96 22 98 30 108 32 L12 32 C22 30 24 22 16 16 C28 18 38 14 34 4 C42 8 54 10 60 2 Z'/%3E%3C/svg%3E") center/contain no-repeat;filter:drop-shadow(0 2px 2px rgba(40,26,4,.5))}
+.sign{margin:18px auto 0;max-width:440px;background:linear-gradient(180deg,#e4d9c0,#d6c9a9);border:1px solid rgba(120,97,31,.4);border-radius:2px;padding:11px 16px;text-align:center;box-shadow:0 2px 4px rgba(90,60,20,.2),inset 0 1px 0 rgba(255,255,255,.6)}
+.sign .t{font-family:var(--serif);font-size:15px;color:#3a2c14}.sign .s{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a744a;margin-top:3px}
+
+/* ===== playable design-system card ===== */
+.play{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 20px 50px -34px rgba(90,60,20,.5)}
+.play .k{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+.play h3{font-family:var(--serif);font-size:22px;color:var(--head);margin:6px 0 2px}
+.play .hint{font-size:13px;color:var(--dim);margin-bottom:16px}
+/* live sample component */
+.demo{--p:#185FA5;--r:14px;--surf:#ffffff;--txt:#1b2430;background:var(--surf);border-radius:16px;padding:18px;border:1px solid rgba(0,0,0,.06);box-shadow:0 8px 20px -12px rgba(0,0,0,.3);transition:background .3s,color .3s}
+.demo .dt{font-family:var(--sans);font-weight:600;color:var(--txt);font-size:15px}
+.demo .ds{font-size:12.5px;color:#7a8494;margin-top:2px}
+.demo .bar{height:8px;border-radius:99px;background:rgba(0,0,0,.08);margin:14px 0;overflow:hidden}
+.demo .bar span{display:block;height:100%;width:62%;background:var(--p);border-radius:99px;transition:background .3s}
+.demo .btn{display:inline-block;background:var(--p);color:#fff;font-family:var(--sans);font-weight:600;font-size:13px;padding:9px 16px;border-radius:var(--r);transition:transform .12s,filter .2s,border-radius .2s;border:none}
+.demo.state-hover .btn{filter:brightness(1.12)}
+.demo.state-pressed .btn{transform:scale(.96);filter:brightness(.9)}
+/* controls */
+.ctl{margin-top:16px;display:flex;flex-direction:column;gap:12px}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.row .lab{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);width:64px;flex:none}
+.sw{width:26px;height:26px;border-radius:50%;border:2px solid transparent;transition:transform .15s,border-color .2s}
+.sw:hover{transform:scale(1.12)}.sw[aria-pressed="true"]{border-color:var(--ink)}
+.chip{font-size:12px;font-family:var(--sans);color:var(--body);background:none;border:1px solid var(--line);border-radius:20px;padding:6px 12px;transition:.2s}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.rng{flex:1;accent-color:var(--ink)}
+.tog{font-size:12px;border:1px solid var(--line);border-radius:20px;padding:6px 12px;background:none;color:var(--body)}
+button{font-family:inherit}
+@media(hover:hover){.sw,.chip,.tog,.rng{cursor:none}}
+
+/* three libraries */
+.libs{padding:20px 0 80px}
+.libs h2{font-family:var(--serif);font-weight:400;font-size:clamp(24px,3vw,36px);color:var(--head);margin-bottom:6px}
+.libs .sub{font-size:15px;color:var(--body);max-width:60ch;margin-bottom:30px}
+.libgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.mframe{position:relative;filter:drop-shadow(0 20px 22px rgba(90,55,20,.26));transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.libitem:hover .mframe{transform:translateY(-5px)}
+.mframe .mb{position:relative;padding:16px;border-radius:4px;background:linear-gradient(135deg,#FBEEBE,#C9A24B 24%,#8A6B24 50%,#E7CD82 72%,#8A6B24);box-shadow:inset 0 2px 1px rgba(255,250,224,.9),inset 0 -3px 3px rgba(56,36,4,.7),inset 3px 0 3px rgba(255,250,224,.35),inset -3px 0 4px rgba(56,36,4,.55)}
+.mframe .mb::before{content:"";position:absolute;inset:6px;border-radius:3px;border:7px solid transparent;border-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cg fill='none' stroke='%23705318' stroke-width='2.2' opacity='.6'%3E%3Cpath d='M0 30 q9 -13 18 0 q9 13 18 0 q9 -13 18 0'/%3E%3Cpath d='M0 30 q9 13 18 0 q9 -13 18 0 q9 13 18 0'/%3E%3C/g%3E%3C/svg%3E") 16 round}
+.mframe .ml{border-radius:3px;padding:4px;background:linear-gradient(135deg,#F0DA92,#7E611F)}
+.mframe .mm{background:var(--mat);border-radius:2px;padding:10px;box-shadow:inset 0 3px 8px rgba(80,60,30,.28)}
+.mframe .mw{overflow:hidden;border-radius:1px;aspect-ratio:4/3}
+.mframe .mw img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.libitem:hover .mw img{transform:scale(1.05)}
+.msign{margin:12px auto 0;max-width:300px;background:linear-gradient(180deg,#e4d9c0,#d6c9a9);border:1px solid rgba(120,97,31,.4);border-radius:2px;padding:8px 12px;text-align:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}
+.msign .t{font-family:var(--serif);font-size:14px;color:#3a2c14}.msign .s{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#8a744a;margin-top:2px}
+/* real floating component accents on the playground */
+.float{display:flex;gap:14px;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.float img{height:54px;width:auto;filter:drop-shadow(0 6px 10px rgba(90,60,20,.18));transition:transform .25s}
+.float img:hover{transform:translateY(-4px) scale(1.06)}
+.float .fl{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--dim)}
+@media(max-width:860px){.libgrid{grid-template-columns:1fr}}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+footer{padding:56px 0;text-align:center;color:var(--dim);font-size:13px;border-top:1px solid var(--line)}
+@media(max-width:860px){.bento{grid-template-columns:1fr}.navlinks a{display:none}.miniface{top:74px;right:18px}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div class="cursor" id="cur"><span class="lbl">View<br>case →</span></div>
+
+<nav><div class="wrap">
+  <span class="brand">Tatiana Papastylianou</span>
+  <span class="navlinks"><a href="#">Work</a><a href="#">Craft</a><a href="#">About</a><a href="#">CV</a></span>
+</div></nav>
+
+<section class="intro"><div class="wrap">
+  <div class="miniface" id="face"><span class="e"><span class="p"></span></span><span class="e"><span class="p"></span></span></div>
+  <h1>I design the systems behind serious products — and I make them <em>beautiful.</em></h1>
+  <p>Senior product designer. Design systems, shipped 0→1 apps, learning tools used across the world. Poke the work below — don't just read it.</p>
+</div></section>
+
+<div class="wrap"><div class="bento">
+  <figure class="piece" data-view>
+    <div class="oframe">
+      <span class="crest"></span><span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span>
+      <div class="band"><div class="lip"><div class="mat"><div class="win">
+        <img src="assets/design-system/web/02-colors.jpg" alt="Akelius design system — colour tokens">
+      </div></div></div></div>
+    </div>
+    <div class="sign"><div class="t">The design system that made design &amp; code speak one language</div><div class="s">01 · Design lead · Akelius</div></div>
+  </figure>
+
+  <div class="stack">
+    <div class="play">
+      <div class="k">Try it · design system</div>
+      <h3>Operate the tokens</h3>
+      <div class="hint">Click a colour, a state, drag the radius — the component reacts live. This is what a token system feels like.</div>
+      <div class="demo" id="demo">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="flex:none;width:42px;height:42px;border-radius:12px;background:var(--p);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;transition:background .3s">3</div>
+          <div><div class="dt">Lesson 3 · Fractions</div><div class="ds">Continue where you left off</div></div>
+        </div>
+        <div class="bar"><span></span></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <span style="font-size:12px;color:#7a8494">62% complete</span>
+          <button class="btn">Resume lesson</button>
+        </div>
+      </div>
+      <div class="ctl">
+        <div class="row"><span class="lab">Primary</span>
+          <button class="sw" style="background:#185FA5" data-p="#185FA5" aria-pressed="true"></button>
+          <button class="sw" style="background:#0F2E5C" data-p="#0F2E5C" aria-pressed="false"></button>
+          <button class="sw" style="background:#1D9E75" data-p="#1D9E75" aria-pressed="false"></button>
+          <button class="sw" style="background:#2E6E7E" data-p="#2E6E7E" aria-pressed="false"></button>
+          <button class="sw" style="background:#B84A3B" data-p="#B84A3B" aria-pressed="false"></button>
+        </div>
+        <div class="row"><span class="lab">State</span>
+          <button class="chip" data-state="" aria-pressed="true">default</button>
+          <button class="chip" data-state="state-hover" aria-pressed="false">hover</button>
+          <button class="chip" data-state="state-pressed" aria-pressed="false">pressed</button>
+        </div>
+        <div class="row"><span class="lab">Radius</span><input class="rng" type="range" min="0" max="24" value="14" id="rad"><span id="radv" style="font-size:12px;color:var(--dim);width:38px">14px</span></div>
+        <div class="row"><span class="lab">Theme</span><button class="tog" id="theme">◐ switch light / dark</button></div>
+      </div>
+      <div class="float">
+        <span class="fl">real components →</span>
+        <img src="assets/design-system/components/chips.png" alt="Real chip components from the Akelius design system">
+        <img src="assets/design-system/components/switches.png" alt="Real switch components from the Akelius design system">
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<section class="libs"><div class="wrap">
+  <h2>Three libraries, one system</h2>
+  <p class="sub">The system isn't one sticker sheet — it's three purpose-built libraries: the product components, an illustration &amp; icon library, and a separate library for the content-authoring tool editors use.</p>
+  <div class="libgrid">
+    <div class="libitem" data-view><div class="mframe"><div class="mb"><div class="ml"><div class="mm"><div class="mw">
+      <img src="assets/design-system/web/04-buttons.jpg" alt="Product component library"></div></div></div></div></div>
+      <div class="msign"><div class="t">Product components</div><div class="s">24 families · web · iOS · Android</div></div></div>
+    <div class="libitem" data-view><div class="mframe"><div class="mb"><div class="ml"><div class="mm"><div class="mw">
+      <img src="assets/design-system/web/07-extra-library.jpg" alt="Extra illustration and icon library"></div></div></div></div></div>
+      <div class="msign"><div class="t">Extra library</div><div class="s">illustrations · icons · characters</div></div></div>
+    <div class="libitem" data-view><div class="mframe"><div class="mb"><div class="ml"><div class="mm"><div class="mw">
+      <img src="assets/design-system/web/08-generator.jpg" alt="Generator authoring-tool library"></div></div></div></div></div>
+      <div class="msign"><div class="t">Generator library</div><div class="s">the content-authoring tool</div></div></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">Playable card + detailed gilded frame + subtle gaze · warm paper · gold on frames only · Zodiak + General Sans</div></footer>
+
+<script>
+const hover=matchMedia('(hover:hover)').matches,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const cur=document.getElementById('cur');
+if(hover){let x=innerWidth/2,y=innerHeight/2,cx=x,cy=y;
+  addEventListener('pointermove',e=>{x=e.clientX;y=e.clientY});
+  (function l(){cx+=(x-cx)*.22;cy+=(y-cy)*.22;cur.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;requestAnimationFrame(l)})();
+  document.querySelectorAll('[data-view]').forEach(el=>{el.addEventListener('pointerenter',()=>cur.classList.add('big'));el.addEventListener('pointerleave',()=>cur.classList.remove('big'))});}
+/* subtle gaze */
+if(hover&&!reduce)addEventListener('pointermove',e=>document.querySelectorAll('.miniface .p').forEach(p=>{const r=p.parentElement.getBoundingClientRect();const a=Math.atan2(e.clientY-(r.top+r.height/2),e.clientX-(r.left+r.width/2));p.style.transform=`translate(${Math.cos(a)*3}px,${Math.sin(a)*3}px)`}));
+/* progress */
+const pb=document.getElementById('progress');addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;pb.style.width=(h>0?scrollY/h*100:0)+'%'},{passive:true});
+/* playground */
+const demo=document.getElementById('demo');
+document.querySelectorAll('.sw').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.sw').forEach(s=>s.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');
+  demo.style.setProperty('--p',b.dataset.p);}));
+document.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.chip').forEach(s=>s.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');
+  demo.className='demo '+(b.dataset.state||'');}));
+const rad=document.getElementById('rad'),radv=document.getElementById('radv');
+rad.addEventListener('input',()=>{demo.style.setProperty('--r',rad.value+'px');radv.textContent=rad.value+'px';});
+let dark=false;document.getElementById('theme').addEventListener('click',()=>{dark=!dark;
+  demo.style.setProperty('--surf',dark?'#141a24':'#ffffff');demo.style.setProperty('--txt',dark?'#eef2f7':'#1b2430');});
+/* scroll-reveal entrances */
+if(!reduce){
+  const els=document.querySelectorAll('figure.piece,.play,.libitem,.intro h1,.libs h2');
+  els.forEach(e=>e.classList.add('reveal'));
+  const io=new IntersectionObserver((es)=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.14});
+  els.forEach(e=>io.observe(e));
+}
+</script>
+</body>
+</html>

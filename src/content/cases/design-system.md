@@ -46,6 +46,54 @@ exhibits:
     orient: "landscape"
     size: "lg"
     tilt: 1.2
+process:
+  lens: "Turning a design system from a picture into infrastructure — won month by month as the new person on the team, not with one big argument."
+  briefed: "A ‘design system’ already existed — a folder of finished-looking components for the Math and Languages apps."
+  reframe: "It looked done but didn't connect design and engineering: designers and developers used different names — and sometimes different values — for the same token, components weren't architected to be shared, and the brand was mid-shift. The real problem wasn't drawing more components; it was building one shared language and the change management to make a team actually adopt it."
+  questions:
+    - "Where exactly do design and code diverge today — naming, values, or the components themselves — and which divergence is the most expensive?"
+    - "Do I optimise token names for designers' comfort or for the syntax developers actually write — and can one system honestly serve both?"
+    - "Which components genuinely need to differ per platform, and which are just being duplicated out of habit?"
+    - "What would make using the system obviously easier than not using it — so adoption happens without a mandate I don't have?"
+    - "The consumer app and the internal authoring tool are different jobs — should they share one library, or get purpose-built systems?"
+  hypotheses:
+    - h: "Naming tokens to match code syntax — not design-friendly names — will make the system real: the same token meaning the same thing in Figma and the repo."
+      test: "Went to each engineering group — Web, Android, iOS — and aligned token naming and syntax to what developers actually write."
+      learned: "Code-truth over design-comfort held. Mismatches that used to surface at build time now have a shared reference; designers gave up some naming nicety and the system became infrastructure."
+    - h: "Documenting components in Storybook will turn the system from a picture into a shared, inspectable source of truth."
+      test: "Pushed engineering to adopt Storybook so design and code share one inspectable reference."
+      learned: "The piece I'm proudest of — it's the whole difference between a design system as a picture and as infrastructure."
+    - h: "Sharing components by default and splitting only where the platform demands it will cut cost without duplication."
+      test: "Shared the set across web and Android; platform-specific variants only where needed (top nav, dialog); a dedicated iOS set."
+      learned: "A deliberate cost decision, not duplication — and where a few components can't be 1:1 between design and code, I documented why, so the divergence is intentional rather than a silent bug."
+  path:
+    - tag: "Inherited"
+      move: "Components on paper"
+      why: "Looked finished; design and code spoke different languages"
+      outcome: "explored"
+    - tag: "Step 1"
+      move: "One shared token language across three platforms"
+      why: "A token in Figma now maps to the variable developers write"
+      outcome: "merged"
+    - tag: "Step 2"
+      move: "Storybook as the shared source of truth"
+      why: "From a picture to inspectable infrastructure"
+      outcome: "merged"
+    - tag: "Now"
+      move: "A system of systems — consumer kit + Generator library"
+      why: "Two fit-for-purpose systems, maintained across web · iOS · Android"
+      outcome: "shipped"
+  tradeoff:
+    chose: "Code-syntax token names, aligned across all three platforms"
+    gaveUp: "Designer-friendly ‘nice’ names, and exact 1:1 parity for a few flexible Figma components"
+    why: "A token has to mean the same thing in Figma and the repo; where parity was impossible I documented the divergence so it reads as a known decision, not a bug"
+  measure:
+    - metric: "Component-adoption rate"
+      how: "Not yet instrumented — the honest next step. I'd track how often teams compose from the system versus create one-off components per release."
+    - metric: "Token drift (Figma ↔ code)"
+      how: "I'd add automated drift detection between Figma tokens and code tokens to catch mismatches before they reach a build."
+    - metric: "Handoff turnaround"
+      how: "Qualitatively faster — developers self-serve from the library. I'd measure questions routed back to design per handoff to put a number on it."
 ---
 
 ## Snapshot

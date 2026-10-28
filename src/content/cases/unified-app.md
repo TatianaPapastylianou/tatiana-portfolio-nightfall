@@ -56,6 +56,56 @@ exhibits:
     caption: "The same Classroom at a mobile breakpoint — designed per device size, so the handoff leaves no room for a wrong guess."
     size: "sm"
     tilt: 1.4
+process:
+  lens: "De-risking a large migration in a clickable prototype — so engineering builds it once, correctly, instead of discovering the gaps in code."
+  map: "derisk"
+  briefed: "Merge the Languages and Math apps into one product, and move the teacher Classroom — which lived inside the Languages app, mobile-only — onto the web."
+  reframe: "The split meant duplicated patterns and a fragmented journey, and the old Classroom had a real usability problem: teachers couldn't tell what to do. Rebuilding for web wasn't a reskin — it was a chance to fix the workflow at its root. And because a missed screen becomes expensive rebuild work, the job was as much de-risking as drawing screens."
+  questions:
+    - "What's actually broken in the old Classroom — the visuals, or the workflow teachers are forced to follow?"
+    - "Which screens and states will we only discover are missing once someone tries to walk the whole flow end-to-end?"
+    - "Where will navigation break if interactions ship in the wrong order?"
+    - "How do I catch my own blind spots on a project this large before anything reaches engineering?"
+    - "What's the cheapest place to be wrong — a clickable prototype, or a half-built sprint?"
+  hypotheses:
+    - h: "Walking every path in a full mobile + desktop prototype before handoff will surface missing screens and broken ordering while they're still cheap to fix."
+      test: "Built clickable mobile and desktop prototypes and walked every navigation path, workflow and user flow before asking engineering to build anything."
+      learned: "It caught real gaps — missing QR-code login and forgot-password screens, and that breadcrumbs had to be removed and back-buttons added together, not in sequence. Found in prototype, not production."
+    - h: "Rebuilding the Classroom net-new for web — not porting the mobile compromises — will make the teacher's path obvious instead of guessed."
+      test: "Reimagined class and student creation, QR-code connection and the teacher↔student links from scratch, and tested every decision with real teachers."
+      learned: "The measure was simple and human: teachers are no longer lost. Building for web first meant designing the right flow rather than inheriting mobile's."
+    - h: "Deliberately building in senior review will catch what one person inevitably misses on a project this size."
+      test: "I prepared all the visions, connections and flows; the Head of Design reviewed them before handoff."
+      learned: "On a project this large one person will miss something — engineering the review in is how you avoid shipping a gap. It's a strength, not a caveat."
+  path:
+    - tag: "Before"
+      move: "Two apps + a mobile-only Classroom teachers couldn't use"
+      why: "Duplicated patterns, fragmented journey, lost teachers"
+      outcome: "explored"
+    - tag: "Prototype"
+      move: "Full mobile + desktop, every path walked"
+      why: "Where missing screens and broken ordering were caught"
+      outcome: "merged"
+    - tag: "Handoff"
+      move: "Per-breakpoint layouts, auto-layout + variables, DS-linked"
+      why: "Engineered so developers can't misread it"
+      outcome: "merged"
+    - tag: "Rollout"
+      move: "One product + a net-new web Classroom"
+      why: "Shipping step by step in a staged migration"
+      outcome: "shipped"
+  tradeoff:
+    chose: "Prototype-first — validate the whole thing end-to-end before engineering touches it"
+    gaveUp: "Speed to first code — the up-front prototyping and senior-review time"
+    why: "Every gap found after code is a bug, a re-spec, or a sprint of rework; a clickable prototype is the cheapest possible place to be wrong"
+  measure:
+    - metric: "Active users after the path-page change"
+      value: "↑ directional"
+      how: "After changing the path-page view we saw more users in the app — I don't have exact numbers, so I'd define the metric, baseline it, and isolate the change before claiming causation."
+    - metric: "Teacher task success"
+      how: "The success measure is ‘teachers are no longer lost.’ I'd formalise it as task-completion rate on class creation, QR connection and reading reports, tested at each rollout step."
+    - metric: "Prototype gap-catch rate"
+      how: "I'd log gaps caught in prototype versus in production across the rollout — the clearest proof the de-risking pays for itself."
 ---
 
 ## Snapshot

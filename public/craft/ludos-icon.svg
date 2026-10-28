@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Ludos — App Icon
+  "Ink & Paper" identity: flat bold sage background, cream controller mark,
+  thick ink outline + hard offset sticker shadow. No gradients, no glow.
+  1024×1024  |  Export as AppIcon-1024.png (no alpha)
+  iOS applies rounded corners automatically — do NOT pre-round this canvas.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <clipPath id="canvas">
+      <rect width="1024" height="1024"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#canvas)">
+
+    <!-- ── Background: flat sage, brand primary ──────────────────── -->
+    <rect width="1024" height="1024" fill="#4FA37D"/>
+
+    <!-- Whisper of depth — barely-there radial, stays flat/illustrated -->
+    <ellipse cx="512" cy="430" rx="520" ry="420" fill="#63BB94" opacity="0.35"/>
+
+    <!-- Tiny ink sparkle accents — sticker/doodle touch, kept small so the
+         mark stays legible at 60pt -->
+    <g fill="#241C13">
+      <path d="M 830 190 l 10 26 l 26 10 l -26 10 l -10 26 l -10 -26 l -26 -10 l 26 -10 Z"/>
+      <path d="M 175 760 l 7 18 l 18 7 l -18 7 l -7 18 l -7 -18 l -18 -7 l 18 -7 Z"/>
+    </g>
+
+    <!-- ── Hard offset "sticker" shadow for the whole controller ─── -->
+    <g fill="#241C13" transform="translate(16,20)">
+      <rect x="248" y="372" width="528" height="242" rx="76"/>
+      <rect x="248" y="520" width="154" height="208" rx="66"/>
+      <rect x="622" y="520" width="154" height="208" rx="66"/>
+    </g>
+
+    <!-- Thick ink outline: same three-rect silhouette, inflated 22px on
+         every side, painted directly behind the cream fill → reads as a
+         clean uniform outline with no hand-traced compound path. -->
+    <g fill="#241C13">
+      <rect x="226" y="350" width="572" height="286" rx="98"/>
+      <rect x="226" y="498" width="198" height="252" rx="88"/>
+      <rect x="600" y="498" width="198" height="252" rx="88"/>
+    </g>
+
+    <!-- ── Controller silhouette — cream fill, three overlapping
+         rounded-rects (same fill → seamless controller shape) ──── -->
+    <g fill="#FBF3E3">
+      <rect x="248" y="372" width="528" height="242" rx="76"/>
+      <rect x="248" y="520" width="154" height="208" rx="66"/>
+      <rect x="622" y="520" width="154" height="208" rx="66"/>
+    </g>
+
+    <!-- ── Shoulder button nubs (L / R) ───────────────────────── -->
+    <rect x="278" y="372" width="98" height="20" rx="10" fill="#241C13"/>
+    <rect x="648" y="372" width="98" height="20" rx="10" fill="#241C13"/>
+
+    <!-- ── D-Pad (left side) — ink cross ──────────────────────── -->
+    <rect x="298" y="474" width="88" height="26" rx="8" fill="#241C13"/>
+    <rect x="329" y="443" width="26" height="88" rx="8" fill="#241C13"/>
+
+    <!-- ── Face buttons (right side) — flat accent diamond ───── -->
+    <circle cx="682" cy="453" r="18" fill="#E85A45"/>
+    <circle cx="682" cy="521" r="18" fill="#4FA37D"/>
+    <circle cx="648" cy="487" r="18" fill="#3D7FC9"/>
+    <circle cx="716" cy="487" r="18" fill="#E2971F"/>
+
+    <!-- ── Center button ──────────────────────────────────────── -->
+    <circle cx="512" cy="487" r="23" fill="#241C13"/>
+
+    <!-- ── Analog stick circles on grips ─────────────────────── -->
+    <circle cx="325" cy="612" r="38" fill="#241C13"/>
+    <circle cx="325" cy="612" r="30" fill="#FBF3E3"/>
+    <circle cx="699" cy="612" r="38" fill="#241C13"/>
+    <circle cx="699" cy="612" r="30" fill="#FBF3E3"/>
+
+  </g>
+</svg>

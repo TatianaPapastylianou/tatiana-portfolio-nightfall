@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=zodiak@400,401,700&f[]=general-sans@400,500,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: #ede4d2; --ink: #211913; --head: #1c140e; --body: #4e4234;
+        --dim: #8c7e69; --gold-deep: #7e611f;
+        --serif: 'Zodiak', Georgia, serif; --sans: 'General Sans', system-ui, sans-serif;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1584px; height: 396px; overflow: hidden; }
+      body {
+        background:
+          radial-gradient(50% 120% at 50% 0%, rgba(201,162,75,0.14), transparent 70%),
+          var(--paper);
+        font-family: var(--sans);
+        display: flex; align-items: center; justify-content: center;
+        position: relative;
+      }
+      /* keep the bottom-left clear — LinkedIn overlaps the avatar there */
+      .block { text-align: center; padding: 0 60px; max-width: 1180px; }
+      .kicker {
+        font-size: 16px; letter-spacing: 0.3em; text-transform: uppercase;
+        color: var(--dim); margin-bottom: 14px;
+      }
+      .name {
+        font-family: var(--serif); font-size: 58px; line-height: 1; color: var(--head);
+        letter-spacing: -0.01em;
+      }
+      .rule { width: 54px; height: 2px; background: var(--gold-deep); opacity: 0.6; margin: 22px auto; }
+      .facts { font-size: 20px; color: var(--body); letter-spacing: 0.01em; }
+      .manifesto {
+        margin-top: 16px; font-family: var(--serif); font-style: italic; font-size: 21px; color: var(--head);
+      }
+      .manifesto b { color: var(--gold-deep); font-weight: 400; }
+    </style>
+  </head>
+  <body>
+    <div class="block">
+      <p class="kicker">Senior Product Designer · open to roles</p>
+      <h1 class="name">Tatiana Papastylianou</h1>
+      <div class="rule"></div>
+      <p class="facts">
+        Design systems across web · iOS · Android &nbsp;·&nbsp; a live global learning product
+        &nbsp;·&nbsp; 3 App Store apps &nbsp;·&nbsp; a published book
+      </p>
+      <p class="manifesto">A portfolio sells <b>judgement</b>, not screens.</p>
+    </div>
+  </body>
+</html>

@@ -49,6 +49,48 @@ const impact = [
   { stat: 'Live', label: 'shipped free & worldwide — math.akelius.education' },
 ];
 
+// "Shipped & published" proof — the instant credibility a recruiter needs in the
+// first scroll: a live global product, three App Store apps, and a book in print.
+// Gold stays on frames only; these are quiet ink plaques that each link out.
+const proof = [
+  {
+    kind: 'Live product',
+    name: 'Akelius Math',
+    line: 'Shipped free, worldwide',
+    href: 'https://math.akelius.education',
+    live: true,
+  },
+  {
+    kind: 'iOS · App Store · 2026',
+    name: 'Ludos',
+    line: '20 mini-games, one app',
+    icon: '/craft/ludos-appicon.jpg',
+    href: 'https://apps.apple.com/app/ludos/id6797640259',
+  },
+  {
+    kind: 'iOS · App Store',
+    name: 'IrisVault',
+    line: 'Eye-wellness · SwiftUI',
+    icon: '/craft/irisvault-appicon.jpg',
+    href: 'https://apps.apple.com/cy/app/irisvault-eye-exercises/id6764104619',
+  },
+  {
+    kind: 'iOS · App Store',
+    name: 'stePlan',
+    line: 'Freelance planning',
+    icon: '/craft/steplan-appicon.jpg',
+    href: 'https://apps.apple.com/cy/app/steplan-freelancer-plan/id6762138338',
+  },
+  {
+    kind: 'Book · 339 pages',
+    name: 'No Water',
+    line: 'A Designer’s Confession',
+    icon: '/craft/no-water-cover.jpg',
+    href: 'https://no-water-book.netlify.app/',
+    book: true,
+  },
+];
+
 // the manifesto statement — revealed word-by-word on scroll ("read" as you go)
 const manifesto =
   'A portfolio in 2026 sells judgement, not screens. Lead with the problem, the constraint, the choice, the consequence. The screens are only evidence.';
@@ -71,11 +113,18 @@ const manifestoWords = manifesto.split(' ');
           <cite>— No Water, a designer's confession</cite>
         </p>
         <a class="btn reveal hero-cta" href="#work">Walk the gallery <span aria-hidden="true">→</span></a>
+
+        <ul class="hero-chips reveal" aria-label="At a glance">
+          <li>Shipped a live global product</li>
+          <li>Design system · web · iOS · Android</li>
+          <li>3 App Store apps</li>
+          <li>Published author</li>
+        </ul>
       </div>
 
       <figure class="hero-frame reveal" data-parallax-scope>
         <div class="hero-frame-art" data-parallax="0.035">
-          <Frame size="lg" tilt={-0.6} mat={false} live>
+          <Frame size="lg" tilt={-0.6} mat={false} live eager>
             <LiveComponents />
           </Frame>
         </div>
@@ -86,6 +135,43 @@ const manifestoWords = manifesto.split(' ');
       </figure>
     </div>
   </header>
+
+  <!-- shipped & published: instant proof, high on the page -->
+  <section class="section proof" aria-labelledby="proof-title">
+    <div class="container">
+      <div class="proof-head reveal">
+        <p class="kicker">Shipped &amp; in the world</p>
+        <h2 id="proof-title" class="proof-title">Not just mockups — things real people use.</h2>
+        <p class="proof-sub">
+          A live global learning product, three apps on the App Store, and a book in print —
+          designed and shipped, not just pitched.
+        </p>
+      </div>
+      <ul class="proof-grid" data-stagger>
+        {
+          proof.map((p) => (
+            <li class="proof-item reveal">
+              <a class="proof-link" href={p.href} target="_blank" rel="noopener">
+                <span class:list={['proof-mark', { 'is-book': p.book, 'is-live': p.live }]}>
+                  {p.icon ? (
+                    <img src={p.icon} alt="" loading="lazy" />
+                  ) : (
+                    <span class="proof-livedot" aria-hidden="true" />
+                  )}
+                </span>
+                <span class="proof-body">
+                  <span class="proof-kind">{p.kind}</span>
+                  <span class="proof-name">{p.name}</span>
+                  <span class="proof-line">{p.line}</span>
+                </span>
+                <span class="proof-go" aria-hidden="true">↗</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
 
   <!-- manifesto statement — a cinematic pause -->
   <section class="section manifesto" aria-label="Statement">
@@ -186,9 +272,9 @@ const manifestoWords = manifesto.split(' ');
         <p class="kicker">Beyond the main hall</p>
         <h2 class="craft-title">Craft &amp; side rooms</h2>
         <p class="craft-copy">
-          Instructional design for the Generator's column-operations lessons, a shipped iOS
-          eye-wellness app, a freelance planning tool on the App Store, and a book —
-          <em>No Water, A Designer's Confession</em>.
+          Instructional design for the Generator's column-operations lessons, three apps shipped
+          on the App Store — including <em>Ludos</em>, 20 mini-games with a world built for
+          designers — and a book, <em>No Water, A Designer's Confession</em>.
         </p>
       </div>
       <a class="btn" href="/craft">Enter the craft room</a>
@@ -239,6 +325,25 @@ const manifestoWords = manifesto.split(' ');
   .hero-cta {
     margin-top: var(--space-l);
   }
+  /* at-a-glance credibility chips — the facts a recruiter wants fast */
+  .hero-chips {
+    list-style: none;
+    padding: 0;
+    margin-top: var(--space-l);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .hero-chips li {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--body);
+    padding: 0.4rem 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    background: var(--card);
+  }
 
   .hero-frame {
     margin: 0 auto;
@@ -279,6 +384,134 @@ const manifestoWords = manifesto.split(' ');
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--dim);
+  }
+
+  /* shipped & published proof band */
+  .proof {
+    padding-block: var(--space-xl);
+    border-top: 1px solid var(--line);
+  }
+  .proof-head {
+    max-width: 60ch;
+    margin-bottom: var(--space-l);
+  }
+  .proof-title {
+    font-size: var(--step-2);
+    margin-top: 0.3rem;
+  }
+  .proof-sub {
+    margin-top: var(--space-s);
+    max-width: 56ch;
+    color: var(--body);
+    font-size: var(--step-0);
+    line-height: 1.55;
+  }
+  .proof-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: var(--space-s);
+  }
+  .proof-link {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    height: 100%;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    background: var(--card);
+    color: var(--head);
+    transition:
+      border-color 0.25s var(--ease-out),
+      transform 0.25s var(--ease-out),
+      box-shadow 0.25s var(--ease-out);
+  }
+  .proof-link:hover {
+    border-color: var(--line-strong);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(60, 44, 24, 0.12);
+  }
+  .proof-mark {
+    flex: 0 0 auto;
+    width: 46px;
+    height: 46px;
+    border-radius: 11px;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: var(--paper-2);
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+  .proof-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .proof-mark.is-book {
+    border-radius: 3px 5px 5px 3px;
+    border-left: 2px solid var(--gold-deep);
+  }
+  .proof-mark.is-live {
+    background: var(--head);
+  }
+  .proof-livedot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 0 rgba(0, 165, 124, 0.5);
+    animation: proofPulse 2.4s var(--ease-out) infinite;
+  }
+  @keyframes proofPulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(0, 165, 124, 0.45);
+    }
+    70% {
+      box-shadow: 0 0 0 8px rgba(0, 165, 124, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(0, 165, 124, 0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .proof-livedot {
+      animation: none;
+    }
+  }
+  .proof-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-width: 0;
+  }
+  .proof-kind {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+  .proof-name {
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    line-height: 1.1;
+    color: var(--head);
+  }
+  .proof-line {
+    font-size: var(--step--1);
+    color: var(--dim);
+  }
+  .proof-go {
+    margin-left: auto;
+    align-self: flex-start;
+    color: var(--dim);
+    transition: transform 0.25s var(--ease-out);
+  }
+  .proof-link:hover .proof-go {
+    transform: translate(3px, -3px);
+    color: var(--head);
   }
 
   /* manifesto — a cinematic pause: gold light-wash + a faint watermark line */

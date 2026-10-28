@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interaction prototype · Tatiana Papastylianou</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,400&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#151310;        /* warm charcoal — not black, not burgundy */
+  --bg2:#1D1A15;
+  --card:#211D17;
+  --wine:#5A2233;      /* burgundy kept as ACCENT only */
+  --gold:#C9A24B;--gold-lite:#F0DA92;
+  --aqua:#8FCAD6;
+  --cream:#F5EEDF;--text:#EAE3D4;--dim:#9A9382;--line:rgba(240,218,146,.14);
+  --serif:'Fraunces',Georgia,serif;--sans:'Inter Tight',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:
+  radial-gradient(1000px 600px at 80% -5%,rgba(201,162,75,.10),transparent 60%),
+  radial-gradient(800px 700px at 8% 100%,rgba(90,34,51,.22),transparent 62%),
+  var(--bg);
+  color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 34px}
+
+/* custom cursor */
+@media(hover:hover){
+ *{cursor:none}
+ .cursor{position:fixed;z-index:100;top:0;left:0;pointer-events:none;transform:translate(-50%,-50%);
+   width:14px;height:14px;border-radius:50%;background:var(--gold-lite);mix-blend-mode:difference;
+   transition:width .25s,height .25s,background .25s,border-radius .25s}
+ .cursor.big{width:96px;height:96px;background:rgba(201,162,75,.92);mix-blend-mode:normal;color:#20170a}
+ .cursor .lbl{opacity:0;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.4px;
+   display:flex;align-items:center;justify-content:center;height:100%;transition:opacity .2s;text-align:center}
+ .cursor.big .lbl{opacity:1}
+}
+
+/* nav */
+nav{position:sticky;top:0;z-index:40;backdrop-filter:blur(10px);background:rgba(21,19,16,.7);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{font-family:var(--serif);font-size:20px;color:var(--cream)}
+.navlinks{display:flex;gap:8px;align-items:center}
+.navlinks a{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);padding:8px 12px;border-radius:20px;transition:.25s}
+.navlinks a:hover{color:var(--gold-lite);background:rgba(240,218,146,.08)}
+.snd{font-size:12px;color:var(--dim);border:1px solid var(--line);border-radius:20px;padding:6px 12px;background:none}
+.snd:hover{color:var(--gold-lite)}
+
+/* hero */
+.hero{position:relative;padding:90px 0 40px}
+.gaze{position:absolute;right:6%;top:70px;width:210px;height:210px;border-radius:50%;
+  background:radial-gradient(circle at 50% 40%,rgba(240,218,146,.22),rgba(90,34,51,.18) 60%,transparent 72%);
+  display:flex;align-items:center;justify-content:center;gap:26px}
+.eye{width:46px;height:46px;border-radius:50%;background:#0f0d0a;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 2px rgba(240,218,146,.3)}
+.pupil{width:18px;height:18px;border-radius:50%;background:var(--gold-lite);transition:transform .08s linear}
+.eyebrow{font-size:12px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-lite)}
+.h1{font-family:var(--serif);font-weight:300;font-size:clamp(46px,8vw,110px);line-height:.96;color:var(--cream);letter-spacing:-1px;margin:16px 0 0;max-width:14ch}
+.h1 em{font-style:italic;color:var(--gold-lite)}
+.lede{margin-top:24px;max-width:48ch;font-size:clamp(16px,1.5vw,19px);color:#D8D0BF}
+
+/* marquee */
+.marq{margin:52px 0 8px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;overflow:hidden;white-space:nowrap;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marq .row{display:inline-block;animation:scroll 26s linear infinite}
+.marq span{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--dim);margin:0 26px}
+.marq span b{color:var(--gold-lite);font-weight:400;font-style:normal}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* project grid */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:34px;padding:34px 0 80px}
+.grid .big{grid-column:1 / -1}
+.pcard{position:relative;border-radius:16px;overflow:hidden;background:var(--card);border:1px solid var(--line);
+  transform-style:preserve-3d;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .3s;will-change:transform}
+.pcard:hover{box-shadow:0 40px 70px -30px rgba(0,0,0,.8),0 0 40px -12px rgba(201,162,75,.4);border-color:rgba(240,218,146,.5)}
+.pcard .imgwrap{position:relative;aspect-ratio:16/10;overflow:hidden;background:#0e0c09}
+.pcard.big .imgwrap{aspect-ratio:21/9}
+.pcard img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.pcard:hover img{transform:scale(1.06)}
+.pcard .glow{position:absolute;inset:0;opacity:0;transition:opacity .3s;pointer-events:none;
+  background:radial-gradient(300px 200px var(--mx,50%) var(--my,50%),rgba(240,218,146,.16),transparent 60%)}
+.pcard:hover .glow{opacity:1}
+.pcard .body{padding:20px 22px 24px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;transform:translateZ(30px)}
+.pnum{font-family:var(--sans);font-size:11px;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+.ptitle{font-family:var(--serif);font-size:24px;color:var(--cream);margin-top:6px;line-height:1.15}
+.ptag{font-size:13px;color:var(--dim);margin-top:6px}
+/* animated icon chip on card */
+.chip{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--gold-lite);transition:.3s;transform:rotate(0)}
+.pcard:hover .chip{background:var(--gold);color:#20170a;transform:rotate(-45deg) scale(1.08);border-color:var(--gold)}
+.chip svg{width:18px;height:18px}
+
+footer{padding:60px 0;text-align:center;color:var(--dim);font-size:13px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.gaze{display:none}.navlinks a:not(.snd){display:none}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cur"><span class="lbl">View<br>case →</span></div>
+
+<nav><div class="wrap">
+  <span class="brand" data-c>Tatiana Papastylianou</span>
+  <span class="navlinks">
+    <a href="#" data-c>Work</a><a href="#" data-c>Craft</a><a href="#" data-c>About</a>
+    <button class="snd" id="snd" data-c>♪ sound: off</button>
+  </span>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="gaze" id="gaze"><div class="eye"><div class="pupil"></div></div><div class="eye"><div class="pupil"></div></div></div>
+  <div class="eyebrow">Senior Product Designer</div>
+  <h1 class="h1">Dark scenes,<br><em>dreaming interfaces.</em></h1>
+  <p class="lede">I build the systems behind serious products — design systems, shipped 0→1 apps, and learning tools used across the world. And I like them beautiful.</p>
+</div></header>
+
+<div class="marq"><div class="row" id="marq">
+  <span>design systems <b>·</b> 0→1 products <b>·</b> tokens &amp; variables <b>·</b> AI-assisted learning <b>·</b> shipped, not shelved <b>·</b> design systems <b>·</b> 0→1 products <b>·</b> tokens &amp; variables <b>·</b> AI-assisted learning <b>·</b> shipped, not shelved <b>·</b> </span>
+</div></div>
+
+<div class="wrap"><div class="grid">
+  <a class="pcard big" data-view><div class="imgwrap"><img src="assets/design-system/web/04-buttons.jpg" alt="Design system"><div class="glow"></div></div>
+    <div class="body"><div><div class="pnum">01 · design lead</div><div class="ptitle">The design system that made design &amp; code speak one language</div><div class="ptag">Akelius · web · iOS · Android</div></div>
+    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></span></div>
+  </a>
+  <a class="pcard" data-view><div class="imgwrap"><img src="assets/design-system/web/02-colors.jpg" alt="Math app"><div class="glow"></div></div>
+    <div class="body"><div><div class="pnum">02 · lead designer</div><div class="ptitle">Shipping through three visions</div><div class="ptag">Akelius Math · live</div></div>
+    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></span></div>
+  </a>
+  <a class="pcard" data-view><div class="imgwrap"><img src="assets/design-system/web/01-handoff-matrix.jpg" alt="Unified app"><div class="glow"></div></div>
+    <div class="body"><div><div class="pnum">03 · product designer</div><div class="ptitle">Proven before a line of code</div><div class="ptag">Unified education app</div></div>
+    <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg></span></div>
+  </a>
+</div></div>
+
+<footer><div class="wrap">Interaction prototype · warm-charcoal palette · custom cursor, card tilt + glow, gaze-follow, marquee, click sound</div></footer>
+
+<script>
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const hover=matchMedia('(hover:hover)').matches;
+/* custom cursor */
+const cur=document.getElementById('cur');
+if(hover){
+  let x=innerWidth/2,y=innerHeight/2,cx=x,cy=y;
+  addEventListener('pointermove',e=>{x=e.clientX;y=e.clientY});
+  (function loop(){cx+=(x-cx)*.2;cy+=(y-cy)*.2;cur.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;requestAnimationFrame(loop)})();
+  document.querySelectorAll('[data-view]').forEach(el=>{
+    el.addEventListener('pointerenter',()=>cur.classList.add('big'));
+    el.addEventListener('pointerleave',()=>cur.classList.remove('big'));
+  });
+}
+/* card tilt + glow */
+if(!reduce&&hover){
+  document.querySelectorAll('.pcard').forEach(card=>{
+    card.addEventListener('pointermove',e=>{
+      const r=card.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width, py=(e.clientY-r.top)/r.height;
+      card.style.transform=`perspective(900px) rotateY(${(px-.5)*7}deg) rotateX(${(.5-py)*7}deg) scale(1.02)`;
+      card.style.setProperty('--mx',px*100+'%');card.style.setProperty('--my',py*100+'%');
+    });
+    card.addEventListener('pointerleave',()=>card.style.transform='');
+  });
+}
+/* gaze follows cursor */
+const gaze=document.getElementById('gaze');
+if(!reduce&&hover&&gaze){
+  addEventListener('pointermove',e=>{
+    gaze.querySelectorAll('.pupil').forEach(p=>{
+      const r=p.parentElement.getBoundingClientRect();
+      const a=Math.atan2(e.clientY-(r.top+r.height/2),e.clientX-(r.left+r.width/2));
+      p.style.transform=`translate(${Math.cos(a)*9}px,${Math.sin(a)*9}px)`;
+    });
+  });
+}
+/* optional click sound (WebAudio, off by default) */
+let soundOn=false,actx;
+const sndBtn=document.getElementById('snd');
+sndBtn.addEventListener('click',()=>{soundOn=!soundOn;sndBtn.textContent=soundOn?'♪ sound: on':'♪ sound: off';if(soundOn&&!actx)actx=new(window.AudioContext||window.webkitAudioContext)();});
+function tick(){if(!soundOn||!actx)return;const o=actx.createOscillator(),g=actx.createGain();o.type='sine';o.frequency.value=660;g.gain.value=.05;o.connect(g);g.connect(actx.destination);o.start();g.gain.exponentialRampToValueAtTime(.0001,actx.currentTime+.12);o.stop(actx.currentTime+.13);}
+document.querySelectorAll('.navlinks a, .brand').forEach(a=>a.addEventListener('pointerenter',tick));
+</script>
+</body>
+</html>

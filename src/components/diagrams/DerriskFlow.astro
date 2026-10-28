@@ -1,0 +1,106 @@
+---
+// Case 03 — the de-risking flow. Every navigation path is walked in a clickable
+// prototype before engineering, so missing screens and broken ordering are caught
+// in the cheapest place to be wrong. Ink line-work; gold marks the "caught here"
+// moment only.
+---
+
+<svg
+  class="df"
+  viewBox="0 0 760 360"
+  role="img"
+  aria-label="A flow: prototype the whole product and walk every path, which catches missing screens and broken interaction ordering before handoff — so engineering builds it once, correctly."
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- connecting spine -->
+  <line class="df-spine" x1="110" y1="70" x2="650" y2="70"></line>
+
+  <!-- stage 1 -->
+  <g class="df-stage">
+    <circle class="df-dot" cx="110" cy="70" r="9"></circle>
+    <text class="df-stage-t" x="110" y="42" text-anchor="middle">Prototype</text>
+    <text class="df-stage-s" x="110" y="104" text-anchor="middle">full mobile</text>
+    <text class="df-stage-s" x="110" y="120" text-anchor="middle">+ desktop</text>
+  </g>
+  <!-- stage 2 -->
+  <g class="df-stage">
+    <circle class="df-dot" cx="380" cy="70" r="9"></circle>
+    <text class="df-stage-t" x="380" y="42" text-anchor="middle">Walk every path</text>
+    <text class="df-stage-s" x="380" y="104" text-anchor="middle">navigation, flows,</text>
+    <text class="df-stage-s" x="380" y="120" text-anchor="middle">edge &amp; error states</text>
+  </g>
+  <!-- stage 3 -->
+  <g class="df-stage">
+    <circle class="df-dot df-dot--ship" cx="650" cy="70" r="9"></circle>
+    <text class="df-stage-t" x="650" y="42" text-anchor="middle">Handoff</text>
+    <text class="df-stage-s" x="650" y="104" text-anchor="middle">built once,</text>
+    <text class="df-stage-s" x="650" y="120" text-anchor="middle">correctly</text>
+  </g>
+
+  <!-- "caught here" cluster under the middle -->
+  <line class="df-drop" x1="380" y1="79" x2="380" y2="168"></line>
+  <rect class="df-catch" x="150" y="170" width="460" height="150" rx="12"></rect>
+  <text class="df-catch-k" x="380" y="198" text-anchor="middle">CAUGHT IN PROTOTYPE — NOT IN PRODUCTION</text>
+
+  <g class="df-item">
+    <text class="df-item-t" x="180" y="232">· Missing QR-code login screen</text>
+    <text class="df-item-t" x="180" y="258">· Missing forgot-your-password screen</text>
+    <text class="df-item-t" x="180" y="284">· Breadcrumbs out, back-buttons in — together, not in sequence</text>
+    <text class="df-item-t" x="180" y="310">· Which landing page shows, and when</text>
+  </g>
+</svg>
+
+<style>
+  .df {
+    width: 100%;
+    max-width: 680px;
+    height: auto;
+    margin-inline: auto;
+    display: block;
+  }
+  .df-spine {
+    stroke: var(--ink);
+    stroke-width: 1.8;
+  }
+  .df-dot {
+    fill: var(--card);
+    stroke: var(--ink);
+    stroke-width: 2;
+  }
+  .df-dot--ship {
+    fill: var(--gold-lite);
+    stroke: var(--gold-deep);
+  }
+  .df-stage-t {
+    fill: var(--head);
+    font-family: var(--serif);
+    font-size: 17px;
+  }
+  .df-stage-s {
+    fill: var(--body);
+    font-family: var(--sans);
+    font-size: 11.5px;
+  }
+  .df-drop {
+    stroke: var(--gold-deep);
+    stroke-width: 1.6;
+    stroke-dasharray: 4 5;
+  }
+  .df-catch {
+    fill: var(--card);
+    stroke: var(--gold-deep);
+    stroke-width: 1.4;
+  }
+  .df-catch-k {
+    fill: var(--gold-deep);
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+  }
+  .df-item-t {
+    fill: var(--body);
+    font-family: var(--sans);
+    font-size: 13px;
+  }
+</style>

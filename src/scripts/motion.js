@@ -16,6 +16,17 @@ function revealStatic() {
   document.querySelectorAll('.manifesto-line .mword').forEach((w) => w.classList.add('is-lit'));
 }
 
+// Safety net: never leave content that's on-screen (or already scrolled past)
+// stuck invisible — covers fast scrolls, mid-page loads, and any trigger that
+// doesn't fire. Only reveals what's at/above the fold, so below-fold elements
+// keep their scroll-in animation.
+function revealVisible() {
+  const vh = window.innerHeight;
+  document.querySelectorAll('.reveal:not(.is-in)').forEach((el) => {
+    if (el.getBoundingClientRect().top < vh * 0.98) el.classList.add('is-in');
+  });
+}
+
 function setupLenis() {
   if (lenis) return;
   gsap.registerPlugin(ScrollTrigger);
@@ -109,6 +120,10 @@ function initPage() {
   }
 
   ScrollTrigger.refresh();
+
+  // guarantee nothing on-screen stays hidden, now and shortly after
+  revealVisible();
+  setTimeout(revealVisible, 900);
 }
 
 if (prefersReduced) {

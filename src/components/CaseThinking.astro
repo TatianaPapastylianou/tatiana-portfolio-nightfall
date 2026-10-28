@@ -1,0 +1,567 @@
+---
+// The visible reasoning layer for a case: problem reframe → questions →
+// hypotheses → decision path → trade-off → measurement. Author-driven from the
+// case `process` frontmatter. Renders in the locked warm-paper language: ink,
+// serif headings, hairlines; gold reserved for small accent markers only.
+import StakeholderMap from './diagrams/StakeholderMap.astro';
+import DerriskFlow from './diagrams/DerriskFlow.astro';
+
+interface Hypothesis {
+  h: string;
+  test: string;
+  learned: string;
+}
+interface PathStep {
+  tag: string;
+  move: string;
+  why: string;
+  outcome?: 'dropped' | 'merged' | 'shipped' | 'explored';
+}
+interface MeasureRow {
+  metric: string;
+  value?: string;
+  how: string;
+}
+interface Process {
+  lens?: string;
+  briefed: string;
+  reframe: string;
+  questions?: string[];
+  hypotheses?: Hypothesis[];
+  path?: PathStep[];
+  tradeoff?: { chose: string; gaveUp: string; why: string };
+  measure?: MeasureRow[];
+  map?: 'stakeholders' | 'derisk';
+}
+
+const { process: p } = Astro.props as { process: Process };
+---
+
+<section class="thinking" aria-labelledby="thinking-title">
+  <div class="container">
+    <header class="th-head reveal">
+      <p class="kicker">How I thought about it</p>
+      <h2 id="thinking-title" class="th-title">The reasoning, not just the result</h2>
+      {p.lens && <p class="th-lens">{p.lens}</p>}
+    </header>
+
+    <!-- 1 · the reframe -->
+    <div class="th-reframe reveal">
+      <div class="th-reframe-col th-as-briefed">
+        <p class="th-label">As briefed</p>
+        <p class="th-reframe-text">{p.briefed}</p>
+      </div>
+      <span class="th-reframe-arrow" aria-hidden="true">→</span>
+      <div class="th-reframe-col th-reframed">
+        <p class="th-label th-label--accent">The real problem</p>
+        <p class="th-reframe-text">{p.reframe}</p>
+      </div>
+    </div>
+
+    <!-- optional inline diagram -->
+    {
+      p.map === 'stakeholders' && (
+        <figure class="th-diagram reveal">
+          <StakeholderMap />
+          <figcaption class="th-diagram-cap">
+            Three authorities who could each overrule the others — and the learner, the
+            stakeholder not in the meeting, that I argued for.
+          </figcaption>
+        </figure>
+      )
+    }
+    {
+      p.map === 'derisk' && (
+        <figure class="th-diagram reveal">
+          <DerriskFlow />
+          <figcaption class="th-diagram-cap">
+            Every path walked in a clickable prototype first — so missing screens and broken
+            ordering were caught here, not in a sprint of engineering rework.
+          </figcaption>
+        </figure>
+      )
+    }
+
+    <!-- 2 · the questions -->
+    {
+      p.questions && p.questions.length > 0 && (
+        <div class="th-block reveal">
+          <p class="th-block-title">The questions I asked before deciding</p>
+          <ol class="th-questions" data-stagger>
+            {p.questions.map((q, i) => (
+              <li class="th-question reveal">
+                <span class="th-q-index" aria-hidden="true">
+                  Q{i + 1}
+                </span>
+                <span class="th-q-text">{q}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )
+    }
+
+    <!-- 3 · hypotheses -->
+    {
+      p.hypotheses && p.hypotheses.length > 0 && (
+        <div class="th-block reveal">
+          <p class="th-block-title">What I bet, how I tested it, what I learned</p>
+          <ul class="th-hyps" data-stagger>
+            {p.hypotheses.map((hy) => (
+              <li class="th-hyp reveal">
+                <p class="th-hyp-h">
+                  <span class="th-hyp-tag">Hypothesis</span>
+                  {hy.h}
+                </p>
+                <div class="th-hyp-row">
+                  <div>
+                    <span class="th-hyp-k">Tested by</span>
+                    <p>{hy.test}</p>
+                  </div>
+                  <div>
+                    <span class="th-hyp-k">Learned</span>
+                    <p>{hy.learned}</p>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+
+    <!-- 4 · the decision path -->
+    {
+      p.path && p.path.length > 0 && (
+        <div class="th-block reveal">
+          <p class="th-block-title">How the solution moved — A to shipped</p>
+          <ol class="th-path" data-stagger>
+            {p.path.map((s, i) => (
+              <li class={`th-step reveal th-step--${s.outcome ?? 'explored'}`}>
+                <div class="th-step-top">
+                  <span class="th-step-num" aria-hidden="true">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  {s.outcome && <span class="th-step-badge">{s.outcome}</span>}
+                </div>
+                <p class="th-step-tag">{s.tag}</p>
+                <p class="th-step-move">{s.move}</p>
+                <p class="th-step-why">{s.why}</p>
+                {i < p.path.length - 1 && (
+                  <span class="th-step-arrow" aria-hidden="true">
+                    →
+                  </span>
+                )}
+              </li>
+            ))}
+          </ol>
+        </div>
+      )
+    }
+
+    <!-- 5 · the trade-off -->
+    {
+      p.tradeoff && (
+        <div class="th-tradeoff reveal">
+          <p class="th-block-title">The decision &amp; what it cost</p>
+          <div class="th-trade-grid">
+            <div class="th-trade-cell th-trade-chose">
+              <span class="th-trade-k">I chose</span>
+              <p>{p.tradeoff.chose}</p>
+            </div>
+            <div class="th-trade-cell th-trade-gave">
+              <span class="th-trade-k">I gave up</span>
+              <p>{p.tradeoff.gaveUp}</p>
+            </div>
+            <div class="th-trade-cell th-trade-why">
+              <span class="th-trade-k">Because</span>
+              <p>{p.tradeoff.why}</p>
+            </div>
+          </div>
+        </div>
+      )
+    }
+
+    <!-- 6 · measurement -->
+    {
+      p.measure && p.measure.length > 0 && (
+        <div class="th-block reveal">
+          <p class="th-block-title">How I measure it — honestly</p>
+          <ul class="th-measure" data-stagger>
+            {p.measure.map((m) => (
+              <li class="th-m reveal">
+                <div class="th-m-head">
+                  <span class="th-m-metric">{m.metric}</span>
+                  {m.value && <span class="th-m-value">{m.value}</span>}
+                </div>
+                <p class="th-m-how">{m.how}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .thinking {
+    background: var(--paper-2);
+    border-block: 1px solid var(--line);
+    padding-block: var(--space-2xl);
+  }
+  .th-head {
+    max-width: 60ch;
+    margin-bottom: var(--space-xl);
+  }
+  .th-title {
+    font-size: var(--step-3);
+    margin-top: 0.3rem;
+  }
+  .th-lens {
+    margin-top: var(--space-s);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: var(--step-1);
+    color: var(--body);
+    max-width: 52ch;
+  }
+
+  .th-block {
+    margin-top: var(--space-2xl);
+  }
+  .th-block-title {
+    font-family: var(--sans);
+    font-size: var(--step--1);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: var(--space-m);
+  }
+
+  /* 1 · reframe */
+  .th-reframe {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    align-items: stretch;
+  }
+  .th-reframe-col {
+    padding: clamp(1.2rem, 2.5vw, 1.8rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    background: var(--card);
+  }
+  .th-reframed {
+    border-color: var(--gold-deep);
+    box-shadow: inset 0 0 0 1px rgba(126, 97, 31, 0.3);
+  }
+  .th-label {
+    font-family: var(--sans);
+    font-size: var(--step--1);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 0.6rem;
+  }
+  .th-label--accent {
+    color: var(--gold-deep);
+  }
+  .th-reframe-text {
+    font-size: var(--step-0);
+    color: var(--body);
+    line-height: 1.55;
+  }
+  .th-reframed .th-reframe-text {
+    color: var(--head);
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    line-height: 1.4;
+  }
+  .th-reframe-arrow {
+    align-self: center;
+    font-size: var(--step-2);
+    color: var(--gold-deep);
+  }
+  @media (max-width: 720px) {
+    .th-reframe {
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+    }
+    .th-reframe-arrow {
+      transform: rotate(90deg);
+      justify-self: center;
+    }
+  }
+
+  /* diagram */
+  .th-diagram {
+    margin: var(--space-2xl) 0 0;
+    text-align: center;
+  }
+  .th-diagram-cap {
+    margin-top: var(--space-m);
+    max-width: 58ch;
+    margin-inline: auto;
+    font-size: var(--step--1);
+    color: var(--dim);
+    line-height: 1.5;
+  }
+
+  /* 2 · questions */
+  .th-questions {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    overflow: hidden;
+  }
+  .th-question {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    background: var(--card);
+    padding: clamp(1rem, 2vw, 1.3rem) clamp(1.1rem, 2.5vw, 1.6rem);
+  }
+  .th-q-index {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    color: var(--gold-deep);
+    letter-spacing: 0.06em;
+    flex: 0 0 auto;
+  }
+  .th-q-text {
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    color: var(--head);
+    line-height: 1.35;
+  }
+
+  /* 3 · hypotheses */
+  .th-hyps {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--space-m);
+  }
+  .th-hyp {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    background: var(--card);
+    padding: clamp(1.2rem, 2.5vw, 1.8rem);
+  }
+  .th-hyp-h {
+    font-size: var(--step-1);
+    color: var(--head);
+    line-height: 1.4;
+  }
+  .th-hyp-tag {
+    display: inline-block;
+    margin-right: 0.6rem;
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    vertical-align: middle;
+  }
+  .th-hyp-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1rem, 3vw, 2rem);
+    margin-top: var(--space-m);
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--line);
+  }
+  .th-hyp-k {
+    display: block;
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 0.4rem;
+  }
+  .th-hyp-row p {
+    font-size: var(--step--1);
+    color: var(--body);
+    line-height: 1.55;
+  }
+  @media (max-width: 620px) {
+    .th-hyp-row {
+      grid-template-columns: 1fr;
+      gap: var(--space-s);
+    }
+  }
+
+  /* 4 · decision path */
+  .th-path {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: clamp(1rem, 2.5vw, 1.6rem);
+  }
+  .th-step {
+    position: relative;
+    padding: clamp(1.1rem, 2.2vw, 1.5rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    background: var(--card);
+  }
+  .th-step--dropped {
+    border-style: dashed;
+    opacity: 0.82;
+  }
+  .th-step--shipped {
+    border-color: var(--gold-deep);
+    box-shadow: inset 0 0 0 1px rgba(126, 97, 31, 0.25);
+  }
+  .th-step-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.6rem;
+  }
+  .th-step-num {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    color: var(--gold-deep);
+  }
+  .th-step-badge {
+    font-family: var(--sans);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dim);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 0.2em 0.6em;
+  }
+  .th-step--shipped .th-step-badge {
+    color: var(--head);
+    border-color: var(--gold-deep);
+    background: var(--paper-2);
+  }
+  .th-step-tag {
+    font-family: var(--sans);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+  .th-step-move {
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    color: var(--head);
+    margin-top: 0.3rem;
+    line-height: 1.25;
+  }
+  .th-step-why {
+    margin-top: 0.5rem;
+    font-size: var(--step--1);
+    color: var(--body);
+    line-height: 1.5;
+  }
+  .th-step-arrow {
+    position: absolute;
+    right: -1.05rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold-deep);
+    font-size: var(--step-1);
+    z-index: 1;
+  }
+  @media (max-width: 720px) {
+    .th-step-arrow {
+      display: none;
+    }
+  }
+
+  /* 5 · trade-off */
+  .th-tradeoff {
+    margin-top: var(--space-2xl);
+  }
+  .th-trade-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-s);
+    overflow: hidden;
+  }
+  .th-trade-cell {
+    background: var(--card);
+    padding: clamp(1.2rem, 2.5vw, 1.8rem);
+  }
+  .th-trade-k {
+    display: block;
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 0.5rem;
+  }
+  .th-trade-chose .th-trade-k {
+    color: var(--gold-deep);
+  }
+  .th-trade-cell p {
+    font-size: var(--step-0);
+    color: var(--head);
+    line-height: 1.5;
+  }
+  .th-trade-gave p,
+  .th-trade-why p {
+    color: var(--body);
+    font-size: var(--step--1);
+  }
+  @media (max-width: 720px) {
+    .th-trade-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* 6 · measurement */
+  .th-measure {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-s);
+  }
+  .th-m {
+    border: 1px solid var(--line);
+    border-left: 2px solid var(--gold-deep);
+    border-radius: var(--radius-s);
+    background: var(--card);
+    padding: clamp(1rem, 2vw, 1.4rem);
+  }
+  .th-m-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .th-m-metric {
+    font-family: var(--serif);
+    font-size: var(--step-0);
+    color: var(--head);
+  }
+  .th-m-value {
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    color: var(--gold-deep);
+    white-space: nowrap;
+  }
+  .th-m-how {
+    font-size: var(--step--1);
+    color: var(--body);
+    line-height: 1.5;
+  }
+</style>

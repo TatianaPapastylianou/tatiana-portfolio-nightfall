@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Frame from '../../components/Frame.astro';
 import LiveComponents from '../../components/LiveComponents.astro';
+import CaseThinking from '../../components/CaseThinking.astro';
 
 export async function getStaticPaths() {
   const cases = await getCollection('cases');
@@ -51,7 +52,7 @@ const d = entry.data;
       <div class="exhibit-frame reveal">
         {
           d.hero.kind === 'live' ? (
-            <Frame size="lg" tilt={-0.6} mat={false} live>
+            <Frame size="lg" tilt={-0.6} mat={false} live eager>
               <LiveComponents />
             </Frame>
           ) : (
@@ -62,6 +63,7 @@ const d = entry.data;
               fit={d.hero.fit}
               size="lg"
               tilt={-0.6}
+              eager
             />
           )
         }
@@ -102,6 +104,9 @@ const d = entry.data;
       </section>
     )
   }
+
+  <!-- the visible reasoning layer -->
+  {d.process && <CaseThinking process={d.process} />}
 
   <!-- the readable placard: the deep read -->
   <div class="placard-wrap">

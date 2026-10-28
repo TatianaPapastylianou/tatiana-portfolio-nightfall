@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case 01 — The Akelius design system · Tatiana Papastylianou</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,400&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* warm museum walls — NOT black */
+  --wall:#3A1622;         /* deep wine */
+  --wall-lo:#26101A;      /* lower wall */
+  --wall-hi:#5A2233;      /* spotlit upper wall */
+  --plaster:#F3E9D8;      /* light placard sections */
+  --ink:#241017;
+  --gold:#C9A24B;--gold-lite:#F0DA92;--gold-deep:#7E611F;
+  --cream:#F6EEDE;--text:#F2E7D6;--dim:#C9A9A6;--line:rgba(240,218,146,.16);
+  --serif:'Fraunces',Georgia,serif;--sans:'Inter Tight',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--wall);color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;width:100%;height:auto}
+.wrap{max-width:1140px;margin:0 auto;padding:0 32px}
+
+/* the gallery wall */
+.wall{position:relative;
+  background:
+    radial-gradient(1200px 720px at 50% -8%, var(--wall-hi), transparent 60%),
+    radial-gradient(900px 900px at 50% 30%, rgba(120,50,70,.35), transparent 70%),
+    linear-gradient(180deg, var(--wall) 0%, var(--wall-lo) 100%);}
+.wall::after{content:"";position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 300px 40px rgba(20,8,14,.55);}
+.wall-grain{position:absolute;inset:0;opacity:.06;pointer-events:none;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* nav */
+nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(10px);background:rgba(38,16,26,.72);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-family:var(--serif);font-size:19px;color:var(--cream)}
+.navlinks{display:flex;gap:26px;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--dim)}
+.navlinks a{text-decoration:none;transition:.25s}.navlinks a:hover{color:var(--gold-lite)}
+
+/* hero */
+.hero{position:relative;padding:100px 0 64px;z-index:1}
+.eyebrow{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-lite)}
+.htitle{font-family:var(--serif);font-weight:300;font-size:clamp(38px,6vw,82px);line-height:1.02;color:var(--cream);letter-spacing:-.5px;margin:16px 0 0;max-width:16ch;text-shadow:0 2px 30px rgba(0,0,0,.4)}
+.htitle em{font-style:italic;color:var(--gold-lite)}
+.hlede{margin-top:22px;max-width:56ch;font-size:clamp(16px,1.6vw,19px);color:#EAD8CE}
+.meta{display:flex;flex-wrap:wrap;gap:24px 44px;margin-top:38px;padding-top:26px;border-top:1px solid var(--line)}
+.meta .k{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+.meta .v{font-size:15px;color:var(--cream);margin-top:5px}
+
+/* impact */
+.impact{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:40px 0 8px;position:relative;z-index:1}
+.impact .n{font-family:var(--serif);font-size:clamp(34px,5vw,58px);color:var(--gold-lite);font-weight:300;line-height:1}
+.impact .l{font-size:14px;color:#E2C7C1;margin-top:8px;max-width:26ch}
+
+/* sections */
+section.block{padding:60px 0;position:relative;z-index:1}
+.klabel{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-lite)}
+.btitle{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.4vw,40px);color:var(--cream);margin:10px 0 14px;line-height:1.12}
+.bcopy{max-width:64ch;color:#EAD8CE;font-size:17px}
+
+/* light placard section (breaks the darkness) */
+.placard{background:linear-gradient(180deg,#F3E9D8,#E9DCC4);color:var(--ink)}
+.placard .klabel{color:var(--gold-deep)}
+.placard .btitle{color:#2B1620}
+.placard .bcopy{color:#4A2E30}
+.placard .pull{color:#2B1620}
+.placard .pull span{color:var(--gold-deep)}
+
+/* ===== realistic gilded frame ===== */
+.gallery-row{display:grid;grid-template-columns:1fr;gap:64px;margin-top:40px}
+figure.art{margin:0;display:flex;flex-direction:column;align-items:center}
+.oframe{position:relative;display:inline-block;max-width:100%;
+  /* cast shadow onto the wall, light from top */
+  filter:drop-shadow(0 34px 34px rgba(15,4,10,.65)) drop-shadow(0 8px 10px rgba(0,0,0,.5));}
+/* outer carved gold band */
+.oframe .band{position:relative;padding:26px;border-radius:5px;
+  background:
+    linear-gradient(135deg,#F3E1A0 0%,#C9A24B 26%,#8A6B24 52%,#E7CD82 74%,#9A7A2C 100%);
+  box-shadow:
+    inset 0 2px 1px rgba(255,247,214,.9),          /* top light ridge */
+    inset 0 -3px 3px rgba(60,40,6,.7),             /* bottom shadow ridge */
+    inset 3px 0 3px rgba(255,247,214,.35),
+    inset -3px 0 4px rgba(60,40,6,.55);}
+/* ornamental relief on the band */
+.oframe .band::before{content:"";position:absolute;inset:8px;border-radius:3px;pointer-events:none;
+  border:6px solid transparent;
+  border-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cg fill='none' stroke='%237E611F' stroke-width='2' opacity='.55'%3E%3Cpath d='M0 24 q12 -14 24 0 q12 14 24 0'/%3E%3Cpath d='M0 24 q12 14 24 0 q12 -14 24 0'/%3E%3C/g%3E%3C/svg%3E") 12 round;}
+/* inner bevel + gold lip */
+.oframe .lip{border-radius:3px;padding:5px;
+  background:linear-gradient(135deg,#E7CD82,#8A6B24);
+  box-shadow:inset 0 2px 2px rgba(255,247,214,.8),inset 0 -2px 3px rgba(50,32,4,.7);}
+/* linen mat */
+.oframe .mat{background:linear-gradient(180deg,#efe7d4,#e3d8bf);border-radius:2px;padding:16px;
+  box-shadow:inset 0 3px 10px rgba(80,60,30,.35),inset 0 0 0 1px rgba(120,97,31,.25);}
+.oframe .mat img{border-radius:1px;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+/* corner cartouches */
+.oframe .c{position:absolute;width:52px;height:52px;z-index:2;opacity:.95;
+  background:radial-gradient(circle at 40% 35%,#F3E1A0,#C9A24B 55%,#7E611F);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Cpath d='M4 26 C4 12 12 4 26 4 C18 10 16 16 20 24 C26 22 30 26 26 34 C18 30 12 34 4 26 Z'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 52 52'%3E%3Cpath d='M4 26 C4 12 12 4 26 4 C18 10 16 16 20 24 C26 22 30 26 26 34 C18 30 12 34 4 26 Z'/%3E%3C/svg%3E") center/contain no-repeat;
+  filter:drop-shadow(0 1px 1px rgba(40,26,4,.6))}
+.oframe .c.tl{top:-6px;left:-6px}.oframe .c.tr{top:-6px;right:-6px;transform:scaleX(-1)}
+.oframe .c.bl{bottom:-6px;left:-6px;transform:scaleY(-1)}.oframe .c.br{bottom:-6px;right:-6px;transform:scale(-1)}
+/* museum placard under the art */
+.plaque{margin-top:22px;background:linear-gradient(180deg,#6a2a3c,#4a1c2a);border:1px solid rgba(240,218,146,.25);
+  border-radius:3px;padding:12px 18px;max-width:520px;text-align:center;box-shadow:0 10px 20px -8px rgba(0,0,0,.6)}
+.plaque .t{font-family:var(--serif);font-style:italic;color:var(--cream);font-size:16px}
+.plaque .s{font-size:12px;letter-spacing:1px;color:var(--dim);margin-top:3px;text-transform:uppercase}
+
+.pull{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(23px,3vw,34px);color:var(--cream);line-height:1.35;max-width:24ch;margin:0 auto;text-align:center}
+.pull span{color:var(--gold-lite)}
+
+footer{padding:72px 0;text-align:center;color:var(--dim);font-size:14px;position:relative;z-index:1}
+.next{font-family:var(--serif);font-size:28px;color:var(--cream);text-decoration:none}.next:hover{color:var(--gold-lite)}
+
+@media(max-width:760px){.impact{grid-template-columns:1fr;gap:28px}.navlinks{display:none}.oframe .band{padding:16px}.oframe .c{width:38px;height:38px}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <span class="brand">Tatiana Papastylianou</span>
+  <span class="navlinks"><a href="#">Work</a><a href="#">Craft</a><a href="#">About</a><a href="#">CV</a></span>
+</div></nav>
+
+<div class="wall">
+<span class="wall-grain"></span>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">01 · Design lead · Akelius</div>
+  <h1 class="htitle">The system that made design and code <em>speak one language</em></h1>
+  <p class="hlede">A folder of pretty components became real infrastructure: token-driven, engineer-adopted in Storybook, and shared across web, iOS, and Android.</p>
+  <div class="meta">
+    <div><div class="k">Role</div><div class="v">System owner, team of 3</div></div>
+    <div><div class="k">Platforms</div><div class="v">Web · iOS · Android</div></div>
+    <div><div class="k">Scope</div><div class="v">24 families · 3 libraries</div></div>
+    <div><div class="k">Years</div><div class="v">2023 – present</div></div>
+  </div>
+</div></header>
+
+<div class="wrap">
+  <div class="impact">
+    <div><div class="n">1</div><div class="l">shared token language across design & code</div></div>
+    <div><div class="n">24</div><div class="l">core component families — web, Android, iOS</div></div>
+    <div><div class="n">3</div><div class="l">purpose-built libraries: product, authoring, illustration</div></div>
+  </div>
+</div>
+
+<section class="block"><div class="wrap">
+  <div class="klabel">The problem</div>
+  <h2 class="btitle">Design and code used different words for the same thing</h2>
+  <p class="bcopy">When I joined, designers and developers named tokens differently — and in places used different colour values for the same intended token. Components were drawn for design, not architected to be shared, so every handoff risked a re-interpretation. Nothing was on fire; everything was quietly expensive.</p>
+</div></section>
+
+<section class="block"><div class="wrap"><div class="gallery-row">
+  <figure class="art">
+    <div class="oframe"><span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span>
+      <div class="band"><div class="lip"><div class="mat">
+        <img src="assets/design-system/web/02-colors.jpg" alt="Akelius colour system — brand and semantic palettes with per-product variables">
+      </div></div></div>
+    </div>
+    <div class="plaque"><div class="t">One colour source of truth</div><div class="s">Brand + semantic tokens · mapped per product & platform</div></div>
+  </figure>
+
+  <figure class="art">
+    <div class="oframe"><span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span>
+      <div class="band"><div class="lip"><div class="mat">
+        <img src="assets/design-system/web/04-buttons.jpg" alt="Button component matrix — sizes, states, variants and responsive layouts">
+      </div></div></div>
+    </div>
+    <div class="plaque"><div class="t">Every state, every size</div><div class="s">Buttons: sizes × states × variants, built to be rebuilt in code</div></div>
+  </figure>
+</div></div></section>
+
+<section class="block placard"><div class="wrap">
+  <div class="klabel">The rigor · handoff</div>
+  <h2 class="btitle">Documented so engineering builds it once, right</h2>
+  <p class="bcopy">The part most systems skip: explicit handoff guidance with a per-component responsive matrix across five breakpoints — mobile, small tablet, tablet, wide tablet/laptop, desktop. This is what turns a component library into something developers can build from without asking.</p>
+  <div class="gallery-row"><figure class="art">
+    <div class="oframe"><span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span>
+      <div class="band"><div class="lip"><div class="mat">
+        <img src="assets/design-system/web/01-handoff-matrix.jpg" alt="Handoff guidelines with a per-component responsive breakpoint matrix">
+      </div></div></div>
+    </div>
+    <div class="plaque"><div class="t">Hand-off guidelines</div><div class="s">How each component changes across five device sizes</div></div>
+  </figure></div>
+</div></section>
+
+<section class="block"><div class="wrap"><div class="gallery-row">
+  <figure class="art">
+    <div class="oframe"><span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span>
+      <div class="band"><div class="lip"><div class="mat">
+        <img src="assets/design-system/web/03-typography.jpg" alt="Typography scale bound to variables, responsive across breakpoints">
+      </div></div></div>
+    </div>
+    <div class="plaque"><div class="t">A type scale bound to variables</div><div class="s">Responsive primitives, mobile → desktop</div></div>
+  </figure>
+  <figure class="art">
+    <div class="oframe"><span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span>
+      <div class="band"><div class="lip"><div class="mat">
+        <img src="assets/design-system/web/06-mountain.jpg" alt="Custom mountain learning-path progress component">
+      </div></div></div>
+    </div>
+    <div class="plaque"><div class="t">The learning path as a mountain</div><div class="s">A bespoke progress component, systematised</div></div>
+  </figure>
+</div></div></section>
+
+<section class="block"><div class="wrap">
+  <p class="pull">The win wasn't a percentage. It was getting engineers to <span>document components in Storybook</span> — so design and code finally share one source of truth.</p>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="klabel" style="text-align:center">Next in the collection</div>
+  <a class="next" href="#">02 — Shipping through three visions →</a>
+  <p style="margin-top:28px">Exports pulled from the live Akelius Figma libraries · frames hand-built in CSS</p>
+</div></footer>
+</div>
+</body>
+</html>
