@@ -9,8 +9,8 @@ change: "Two apps and a broken classroom"
 impact: "one product, validated end-to-end before engineering"
 order: 4
 next:
-  slug: "real-estate"
-  title: "From 23 real estate apps to 4 products"
+  slug: "ai-skills"
+  title: "Turning design rules into AI skills the team uses"
 hero:
   kind: "image"
   src: "/cases/unified-path-language.jpg"

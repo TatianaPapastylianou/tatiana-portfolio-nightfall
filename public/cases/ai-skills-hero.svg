@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" width="1000" height="640" role="img" aria-labelledby="aih-t aih-d" class="re-drawing">
+<title id="aih-t">Seven AI skills on two foundations</title>
+<desc id="aih-d">Two foundation skills, clean-your-text for writing and akelius-design for the design system, sit at the bottom. Five working skills build on them: android-screen-review, dev-handoff-spec, component-spec, akelius-measurement-spec and akelius-renaming-files. At the top are the people who use them: the design team, content and marketing staff, Android developers and the CEO of Akelius Languages.</desc>
+<style>
+.aih-k{fill:var(--dim, #8c7e69);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:11px;font-weight:600;letter-spacing:.14em}
+.aih-kg{fill:var(--gold-deep, #7e611f);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:11px;font-weight:600;letter-spacing:.14em}
+.aih-h{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:19px}
+.aih-num{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:120px}
+.aih-s{fill:var(--body, #4e4234);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12.5px}
+.aih-sd{fill:var(--dim, #8c7e69);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12px}
+.aih-sb{fill:var(--head, #1c140e);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:13px;font-weight:600}
+.aih-box{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.2}
+.aih-boxs{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.8}
+.aih-boxg{fill:var(--card, #f6f0e2);stroke:var(--gold-deep, #7e611f);stroke-width:1.6}
+.aih-band{fill:var(--paper-2, #e6dcc6);stroke:var(--line-strong, rgba(60,44,24,.28));stroke-width:1}
+.aih-ln{fill:none;stroke:var(--ink, #211913);stroke-width:1.5}
+.aih-lngd{fill:none;stroke:var(--gold-deep, #7e611f);stroke-width:1.6;stroke-dasharray:4 5}
+.aih-ah{fill:var(--ink, #211913)}
+.aih-ahg{fill:var(--gold-deep, #7e611f)}
+.aih-chip{fill:var(--paper-2, #e6dcc6);stroke:var(--ink, #211913);stroke-width:1}
+</style>
+<defs>
+<marker id="aih-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aih-ah" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="aih-ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aih-ahg" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<text class="aih-num" x="60" y="250" text-anchor="start">7</text>
+<text class="aih-sd" x="66" y="284" text-anchor="start">AI skills, written once,</text>
+<text class="aih-sd" x="66" y="302" text-anchor="start">used by four groups</text>
+<text class="aih-k" x="250" y="70" text-anchor="start">WHO USES THEM</text>
+<rect class="aih-chip" x="250.0" y="86" width="167.0" height="38" rx="19"/>
+<text class="aih-sb" x="333.5" y="110" text-anchor="middle">Design team</text>
+<rect class="aih-chip" x="431.0" y="86" width="167.0" height="38" rx="19"/>
+<text class="aih-sb" x="514.5" y="110" text-anchor="middle">Content and marketing</text>
+<rect class="aih-chip" x="612.0" y="86" width="167.0" height="38" rx="19"/>
+<text class="aih-sb" x="695.5" y="110" text-anchor="middle">Android developers</text>
+<rect class="aih-chip" x="793.0" y="86" width="167.0" height="38" rx="19"/>
+<text class="aih-sb" x="876.5" y="110" text-anchor="middle">CEO, Akelius Languages</text>
+<text class="aih-k" x="250" y="182" text-anchor="start">WORKING SKILLS</text>
+<rect class="aih-boxs" x="250.0" y="198" width="132.4" height="128" rx="6"/>
+<text class="aih-sb" x="262.0" y="226" text-anchor="start">android-screen-</text>
+<text class="aih-sb" x="262.0" y="244" text-anchor="start">review</text>
+<text class="aih-s" x="262.0" y="270" text-anchor="start">live app vs Figma</text>
+<text class="aih-s" x="262.0" y="288" text-anchor="start">vs library vs code</text>
+<text class="aih-s" x="262.0" y="306" text-anchor="start">→ Jira tickets</text>
+<path class="aih-lngd" d="M316.2,330 L316.2,414" marker-end="url(#aih-ag)"/>
+<rect class="aih-box" x="394.4" y="198" width="132.4" height="128" rx="6"/>
+<text class="aih-sb" x="406.4" y="226" text-anchor="start">dev-handoff-spec</text>
+<text class="aih-s" x="406.4" y="252" text-anchor="start">build specs</text>
+<text class="aih-s" x="406.4" y="270" text-anchor="start">for developers</text>
+<path class="aih-lngd" d="M460.6,330 L460.6,414" marker-end="url(#aih-ag)"/>
+<rect class="aih-box" x="538.8" y="198" width="132.4" height="128" rx="6"/>
+<text class="aih-sb" x="550.8" y="226" text-anchor="start">component-spec</text>
+<text class="aih-s" x="550.8" y="252" text-anchor="start">component docs</text>
+<text class="aih-s" x="550.8" y="270" text-anchor="start">for designers</text>
+<path class="aih-lngd" d="M605.0,330 L605.0,414" marker-end="url(#aih-ag)"/>
+<rect class="aih-box" x="683.2" y="198" width="132.4" height="128" rx="6"/>
+<text class="aih-sb" x="695.2" y="226" text-anchor="start">measurement-spec</text>
+<text class="aih-s" x="695.2" y="252" text-anchor="start">spec frames</text>
+<text class="aih-s" x="695.2" y="270" text-anchor="start">in Figma</text>
+<path class="aih-lngd" d="M749.4,330 L749.4,414" marker-end="url(#aih-ag)"/>
+<rect class="aih-box" x="827.6" y="198" width="132.4" height="128" rx="6"/>
+<text class="aih-sb" x="839.6" y="226" text-anchor="start">renaming-files</text>
+<text class="aih-s" x="839.6" y="252" text-anchor="start">one file naming</text>
+<text class="aih-s" x="839.6" y="270" text-anchor="start">rule for everyone</text>
+<path class="aih-lngd" d="M893.8,330 L893.8,414" marker-end="url(#aih-ag)"/>
+<text class="aih-kg" x="250" y="436" text-anchor="start">FOUNDATIONS</text>
+<text class="aih-sd" x="960" y="436" text-anchor="end">working skills build on the foundations</text>
+<rect class="aih-boxg" x="250.0" y="448" width="347.0" height="150" rx="6"/>
+<text class="aih-h" x="268.0" y="484" text-anchor="start">clean-your-text</text>
+<text class="aih-s" x="268.0" y="516" text-anchor="start">How Akelius writes, from the 2018 editing method.</text>
+<text class="aih-s" x="268.0" y="538" text-anchor="start">No colon, fewer words, facts not opinions.</text>
+<text class="aih-s" x="268.0" y="560" text-anchor="start">Docs, emails, decks, UI copy and specs.</text>
+<rect class="aih-boxg" x="613.0" y="448" width="347.0" height="150" rx="6"/>
+<text class="aih-h" x="631.0" y="484" text-anchor="start">akelius-design</text>
+<text class="aih-s" x="631.0" y="516" text-anchor="start">The design system as rules and real tokens.</text>
+<text class="aih-s" x="631.0" y="538" text-anchor="start">Colours, type, spacing, components, illustration,</text>
+<text class="aih-s" x="631.0" y="560" text-anchor="start">motion, accessibility and product rules for learners.</text>
+</svg>
