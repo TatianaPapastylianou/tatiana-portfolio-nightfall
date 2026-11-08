@@ -36,6 +36,7 @@ Each case is a Markdown file in **`src/content/cases/`**:
 | `design-system.md` | `/work/design-system` |
 | `math-app.md` | `/work/math-app` |
 | `unified-app.md` | `/work/unified-app` |
+| `ai-skills.md` | `/work/ai-skills` |
 
 Open a file and edit the text — the page updates on the next build. The top block (between the `---` lines) is the **frontmatter**. Alongside the plaque fields it drives the **framed hero** and the **curated exhibits**:
 

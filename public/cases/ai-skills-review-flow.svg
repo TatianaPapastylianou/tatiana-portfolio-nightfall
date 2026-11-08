@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="1000" height="600" role="img" aria-labelledby="aip-t aip-d" class="re-drawing">
+<title id="aip-t">How one Android screen review runs</title>
+<desc id="aip-d">Four sources go in: the live app captured at compact, medium and expanded sizes, the Figma design, the component library and the Android code. Each part is compared at component level, and the skill decides whether the fix belongs in the screen, the code component or the library. Three outputs come out: a review page in Figma with live and designed images at all sizes, Jira tickets grouped by component and sorted by priority, and a CSV for Jira import. Developers fix the tickets, and new rules learned during a review are written back into the skill.</desc>
+<style>
+.aip-k{fill:var(--dim, #8c7e69);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:11px;font-weight:600;letter-spacing:.14em}
+.aip-kg{fill:var(--gold-deep, #7e611f);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:11px;font-weight:600;letter-spacing:.14em}
+.aip-h{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:19px}
+.aip-num{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:120px}
+.aip-s{fill:var(--body, #4e4234);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12.5px}
+.aip-sd{fill:var(--dim, #8c7e69);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12px}
+.aip-sb{fill:var(--head, #1c140e);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:13px;font-weight:600}
+.aip-box{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.2}
+.aip-boxs{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.8}
+.aip-boxg{fill:var(--card, #f6f0e2);stroke:var(--gold-deep, #7e611f);stroke-width:1.6}
+.aip-band{fill:var(--paper-2, #e6dcc6);stroke:var(--line-strong, rgba(60,44,24,.28));stroke-width:1}
+.aip-ln{fill:none;stroke:var(--ink, #211913);stroke-width:1.5}
+.aip-lngd{fill:none;stroke:var(--gold-deep, #7e611f);stroke-width:1.6;stroke-dasharray:4 5}
+.aip-ah{fill:var(--ink, #211913)}
+.aip-ahg{fill:var(--gold-deep, #7e611f)}
+.aip-chip{fill:var(--paper-2, #e6dcc6);stroke:var(--ink, #211913);stroke-width:1}
+</style>
+<defs>
+<marker id="aip-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aip-ah" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="aip-ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aip-ahg" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<text class="aip-k" x="40" y="46" text-anchor="start">IN · 4 SOURCES</text>
+<text class="aip-k" x="380" y="46" text-anchor="start">COMPARE</text>
+<text class="aip-k" x="700" y="46" text-anchor="start">OUT · READY FOR DEVELOPERS</text>
+<rect class="aip-box" x="40" y="66" width="250" height="86" rx="6"/>
+<text class="aip-sb" x="58" y="94" text-anchor="start">Live app</text>
+<text class="aip-s" x="58" y="116" text-anchor="start">captured at 3 sizes,</text>
+<text class="aip-s" x="58" y="134" text-anchor="start">compact, medium, expanded</text>
+<path class="aip-ln" d="M292,109 C330,109 340,250 378,250" marker-end="url(#aip-a)"/>
+<rect class="aip-box" x="40" y="170" width="250" height="86" rx="6"/>
+<text class="aip-sb" x="58" y="198" text-anchor="start">Figma design</text>
+<text class="aip-s" x="58" y="220" text-anchor="start">every instance, text style</text>
+<text class="aip-s" x="58" y="238" text-anchor="start">and auto layout rule</text>
+<path class="aip-ln" d="M292,213 C330,213 340,250 378,250" marker-end="url(#aip-a)"/>
+<rect class="aip-box" x="40" y="274" width="250" height="86" rx="6"/>
+<text class="aip-sb" x="58" y="302" text-anchor="start">Component library</text>
+<text class="aip-s" x="58" y="324" text-anchor="start">variants, tokens</text>
+<text class="aip-s" x="58" y="342" text-anchor="start">and text styles</text>
+<path class="aip-ln" d="M292,317 C330,317 340,250 378,250" marker-end="url(#aip-a)"/>
+<rect class="aip-box" x="40" y="378" width="250" height="86" rx="6"/>
+<text class="aip-sb" x="58" y="406" text-anchor="start">Android code</text>
+<text class="aip-s" x="58" y="428" text-anchor="start">components, tokens,</text>
+<text class="aip-s" x="58" y="446" text-anchor="start">size class logic</text>
+<path class="aip-ln" d="M292,421 C330,421 340,250 378,250" marker-end="url(#aip-a)"/>
+<rect class="aip-boxs" x="380" y="150" width="280" height="200" rx="8"/>
+<text class="aip-h" x="400" y="186" text-anchor="start">Per component,</text>
+<text class="aip-h" x="400" y="210" text-anchor="start">not per screen</text>
+<text class="aip-sb" x="400" y="244" text-anchor="start">Where does the fix belong?</text>
+<text class="aip-s" x="400" y="284" text-anchor="start">1  the screen</text>
+<text class="aip-s" x="400" y="304" text-anchor="start">2  the code component</text>
+<text class="aip-s" x="400" y="324" text-anchor="start">3  the library</text>
+<rect class="aip-box" x="700" y="86" width="260" height="90" rx="6"/>
+<text class="aip-sb" x="718" y="114" text-anchor="start">Figma review page</text>
+<text class="aip-s" x="718" y="136" text-anchor="start">live vs designed at each size,</text>
+<text class="aip-s" x="718" y="154" text-anchor="start">spacing bands in both directions</text>
+<path class="aip-ln" d="M662,250 C690,250 680,131 698,131" marker-end="url(#aip-a)"/>
+<rect class="aip-box" x="700" y="196" width="260" height="90" rx="6"/>
+<text class="aip-sb" x="718" y="224" text-anchor="start">Jira tickets</text>
+<text class="aip-s" x="718" y="246" text-anchor="start">grouped by component, with value,</text>
+<text class="aip-s" x="718" y="264" text-anchor="start">measured value and done-when</text>
+<path class="aip-ln" d="M662,250 C690,250 680,241 698,241" marker-end="url(#aip-a)"/>
+<rect class="aip-box" x="700" y="306" width="260" height="90" rx="6"/>
+<text class="aip-sb" x="718" y="334" text-anchor="start">CSV for Jira</text>
+<text class="aip-s" x="718" y="356" text-anchor="start">one import, matches</text>
+<text class="aip-s" x="718" y="374" text-anchor="start">the tickets in Figma</text>
+<path class="aip-ln" d="M662,250 C690,250 680,351 698,351" marker-end="url(#aip-a)"/>
+<rect class="aip-band" x="40" y="500" width="920" height="64" rx="8"/>
+<text class="aip-sb" x="60" y="528" text-anchor="start">Languages page</text>
+<text class="aip-s" x="60" y="548" text-anchor="start">26 changes in 6 component groups became 9 tickets</text>
+<text class="aip-sb" x="520" y="528" text-anchor="start">Back into the skill</text>
+<text class="aip-s" x="520" y="548" text-anchor="start">Developers fix, and each new rule becomes a skill lesson</text>
+<path class="aip-lngd" d="M830,420 C830,470 700,470 700,498"/>
+<path class="aip-lngd" d="M600,498 C600,440 580,420 580,356" marker-end="url(#aip-ag)"/>
+</svg>
