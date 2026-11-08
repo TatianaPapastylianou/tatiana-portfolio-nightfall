@@ -12,6 +12,11 @@ const bandTilts = [-0.8, 0.7, -0.5];
 
 // landing-page-only band overrides (leave the case pages on their own screens)
 const landingBand: Record<string, { src: string; alt: string; orient: 'portrait' | 'landscape' }[]> = {
+  'real-estate': [
+    { src: '/cases/realestate-hero.svg', alt: '23 apps and services consolidated into 4 products', orient: 'landscape' },
+    { src: '/cases/realestate-before.svg', alt: 'Before: 23 apps grouped by tenancy stage, with data copied between them', orient: 'landscape' },
+    { src: '/cases/realestate-after.svg', alt: 'After: 4 products along one tenancy', orient: 'landscape' },
+  ],
   'math-app': [
     { src: '/cases/math-home-1.jpg', alt: 'Akelius Education — numbers up to 1000, grade progress', orient: 'landscape' },
     { src: '/cases/math-home-2.jpg', alt: 'Akelius Education — your learning journey', orient: 'landscape' },
@@ -212,7 +217,7 @@ const manifestoWords = manifesto.split(' ');
   <section class="section work" id="work">
     <div class="container">
       <header class="work-head reveal">
-        <p class="kicker">Selected work · <span class="num">three rooms</span></p>
+        <p class="kicker">Selected work · <span class="num">four rooms</span></p>
         <h2 class="work-title">The collection</h2>
       </header>
 

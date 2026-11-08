@@ -1,7 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-// The three case studies. Edit the markdown files in src/content/cases/ and the
+// The case studies. Edit the markdown files in src/content/cases/ and the
 // site updates. Frontmatter drives the plaque, the framed hero, and the curated
 // visual exhibits; the body renders as the readable case narrative (the deep read).
 const exhibit = z.object({
@@ -14,6 +14,12 @@ const exhibit = z.object({
   size: z.enum(['lg', 'md', 'sm']).optional(),
   tilt: z.number().optional(), // museum hang angle for variety
   fit: z.enum(['contain', 'top']).optional(), // 'top' fills the window width and pins to the top (crops the bottom)
+});
+
+const drawing = z.object({
+  src: z.string(), // /cases/….svg (file in public/cases)
+  kicker: z.string(), // tracked-uppercase label, e.g. "BEFORE"
+  caption: z.string(), // one or two short sentences
 });
 
 // The visible "thinking" layer: how the problem was framed, the questions asked,
@@ -76,6 +82,9 @@ const cases = defineCollection({
     }),
     // the Head-of-Design depth: 2–3 curated framed exhibits
     exhibits: z.array(exhibit).default([]),
+    // full-width drawings (maps, flows): SVG files in public/cases, inlined on the
+    // case page so they pick up the site fonts and tokens; tap opens them full screen
+    drawings: z.array(drawing).default([]),
     // the visible reasoning layer (problem → questions → hypotheses → path → trade-off → measure)
     process,
   }),

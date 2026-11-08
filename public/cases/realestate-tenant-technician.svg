@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="1000" height="520" role="img" aria-labelledby="ret-t ret-d" class="re-drawing">
+<title id="ret-t">Tenant to technician flow</title>
+<desc id="ret-d">Two lanes. Tenant in My Pages: 1, reports a problem; 2, answers access questions up front, such as permission to enter and pets. The request goes straight to the technician in the maintenance app: 3, gets the request with the access answers attached; 4, plans the visit with no call back; 6, fixes and closes it. 5, the tenant follows the status and chats with the technician. The old step, calling the tenant to ask about access, is removed.</desc>
+<style>
+.ret-k{fill:var(--dim, #8c7e69);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:11px;font-weight:600;letter-spacing:.14em}
+.ret-kg{fill:var(--gold-deep, #7e611f);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:11px;font-weight:600;letter-spacing:.14em}
+.ret-h{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:19px}
+.ret-hl{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:21px}
+.ret-num{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:120px}
+.ret-s{fill:var(--body, #4e4234);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12.5px}
+.ret-sd{fill:var(--dim, #8c7e69);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12px}
+.ret-sb{fill:var(--head, #1c140e);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:13px;font-weight:600}
+.ret-st{fill:var(--body, #4e4234);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12px;text-decoration:line-through}
+.ret-on{fill:var(--card, #f6f0e2);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12px;font-weight:600}
+.ret-box{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.2}
+.ret-boxs{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.8}
+.ret-boxg{fill:var(--card, #f6f0e2);stroke:var(--gold-deep, #7e611f);stroke-width:1.6}
+.ret-boxd{fill:none;stroke:var(--dim, #8c7e69);stroke-width:1.2;stroke-dasharray:4 4}
+.ret-boxsep{fill:var(--paper-2, #e6dcc6);stroke:var(--dim, #8c7e69);stroke-width:1.2}
+.ret-band{fill:var(--paper-2, #e6dcc6);stroke:var(--line-strong, rgba(60,44,24,.28));stroke-width:1}
+.ret-fill{fill:var(--ink, #211913)}
+.ret-dot{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.8}
+.ret-dotg{fill:var(--gold-lite, #e6c878);stroke:var(--gold-deep, #7e611f);stroke-width:1.8}
+.ret-ln{fill:none;stroke:var(--ink, #211913);stroke-width:1.5}
+.ret-lnf{fill:none;stroke:var(--line-strong, rgba(60,44,24,.28));stroke-width:1}
+.ret-lng{fill:none;stroke:var(--gold-deep, #7e611f);stroke-width:2}
+.ret-lngd{fill:none;stroke:var(--gold-deep, #7e611f);stroke-width:1.6;stroke-dasharray:4 5}
+.ret-wire{fill:none;stroke:var(--ink, #211913);stroke-width:1.1;stroke-dasharray:3 4;opacity:.55}
+.ret-wired{fill:var(--ink, #211913);opacity:.55}
+.ret-ah{fill:var(--ink, #211913)}
+.ret-ahg{fill:var(--gold-deep, #7e611f)}
+.ret-x{fill:none;stroke:var(--gold-deep, #7e611f);stroke-width:1.6}
+</style>
+<defs>
+<marker id="ret-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ret-ah" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="ret-ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ret-ahg" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<g class="re-label"><text class="ret-k" x="22" y="30" text-anchor="start">TENANT TO TECHNICIAN · MY PAGES TO MAINTENANCE</text></g>
+<rect class="ret-band" x="22" y="70" width="956" height="170" rx="10"/>
+<rect class="ret-band" x="22" y="270" width="956" height="170" rx="10"/>
+<text class="ret-h" x="42" y="104" text-anchor="start">Tenant</text>
+<text class="ret-sd" x="42" y="124" text-anchor="start">My Pages</text>
+<text class="ret-h" x="42" y="304" text-anchor="start">Technician</text>
+<text class="ret-sd" x="42" y="324" text-anchor="start">Maintenance app</text>
+<rect class="ret-box" x="180" y="140" width="168" height="82" rx="8"/>
+<circle class="ret-dot" cx="180" cy="140" r="12"/>
+<text class="ret-sb" x="180" y="144.5" text-anchor="middle">1</text>
+<text class="ret-sb" x="196" y="170" text-anchor="start">Reports a problem</text>
+<text class="ret-s" x="196" y="192" text-anchor="start">What is wrong</text>
+<text class="ret-s" x="196" y="210" text-anchor="start">and where</text>
+<rect class="ret-boxg" x="386" y="140" width="168" height="82" rx="8"/>
+<circle class="ret-dotg" cx="386" cy="140" r="12"/>
+<text class="ret-sb" x="386" y="144.5" text-anchor="middle">2</text>
+<text class="ret-sb" x="402" y="170" text-anchor="start">Answers up front</text>
+<text class="ret-s" x="402" y="192" text-anchor="start">Can we enter?</text>
+<text class="ret-s" x="402" y="210" text-anchor="start">Any pets?</text>
+<rect class="ret-box" x="776" y="140" width="168" height="82" rx="8"/>
+<circle class="ret-dot" cx="776" cy="140" r="12"/>
+<text class="ret-sb" x="776" y="144.5" text-anchor="middle">5</text>
+<text class="ret-sb" x="792" y="170" text-anchor="start">Follows and chats</text>
+<text class="ret-s" x="792" y="192" text-anchor="start">Status in My Pages,</text>
+<text class="ret-s" x="792" y="210" text-anchor="start">chat with the tech</text>
+<rect class="ret-box" x="386" y="340" width="168" height="82" rx="8"/>
+<circle class="ret-dot" cx="386" cy="340" r="12"/>
+<text class="ret-sb" x="386" y="344.5" text-anchor="middle">3</text>
+<text class="ret-sb" x="402" y="370" text-anchor="start">Gets the request</text>
+<text class="ret-s" x="402" y="392" text-anchor="start">With the access</text>
+<text class="ret-s" x="402" y="410" text-anchor="start">answers attached</text>
+<rect class="ret-box" x="590" y="340" width="168" height="82" rx="8"/>
+<circle class="ret-dot" cx="590" cy="340" r="12"/>
+<text class="ret-sb" x="590" y="344.5" text-anchor="middle">4</text>
+<text class="ret-sb" x="606" y="370" text-anchor="start">Plans the visit</text>
+<text class="ret-s" x="606" y="392" text-anchor="start">No call back</text>
+<text class="ret-s" x="606" y="410" text-anchor="start">to ask about access</text>
+<rect class="ret-box" x="796" y="340" width="168" height="82" rx="8"/>
+<circle class="ret-dot" cx="796" cy="340" r="12"/>
+<text class="ret-sb" x="796" y="344.5" text-anchor="middle">6</text>
+<text class="ret-sb" x="812" y="370" text-anchor="start">Fixes and closes</text>
+<text class="ret-s" x="812" y="392" text-anchor="start">Tenant sees it</text>
+<text class="ret-s" x="812" y="410" text-anchor="start">is done</text>
+<path class="ret-ln" d="M348,181 L380,181" marker-end="url(#ret-a)"/>
+<path class="ret-lng" d="M470,224 L470,324" marker-end="url(#ret-ag)"/>
+<text class="ret-kg" x="482" y="262" text-anchor="start">STRAIGHT TO THE TECHNICIAN</text>
+<path class="ret-ln" d="M554,381 L584,381" marker-end="url(#ret-a)"/>
+<path class="ret-ln" d="M758,381 L790,381" marker-end="url(#ret-a)"/>
+<path class="ret-ln" d="M820,226 L820,324" marker-start="url(#ret-a)" marker-end="url(#ret-a)"/>
+<text class="ret-sd" x="830" y="262" text-anchor="start">chat</text>
+<rect class="ret-boxd" x="180" y="346" width="168" height="70" rx="8"/>
+<text class="ret-st" x="196" y="374" text-anchor="start">Call the tenant</text>
+<text class="ret-st" x="196" y="394" text-anchor="start">to ask about access</text>
+<path class="ret-x" d="M188,354 L340,408"/>
+<text class="ret-kg" x="180" y="438" text-anchor="start">REMOVED</text>
+<line class="ret-lnf" x1="22" y1="468" x2="978" y2="468"/>
+<text class="ret-s" x="22" y="496" text-anchor="start">The questions a technician used to phone about are answered when the request is made.</text>
+</svg>

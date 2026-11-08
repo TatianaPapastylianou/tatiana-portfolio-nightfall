@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700" role="img" aria-labelledby="reh-t reh-d" class="re-drawing">
+<title id="reh-t">23 apps and services consolidated into 4 products</title>
+<desc id="reh-d">Twenty-three small tiles on the left converge into four products on the right: Customer Management, Maintenance, My Pages and Investment. Two tiles are crossed out as decommissioned.</desc>
+<style>
+.reh-k{fill:var(--dim, #8c7e69);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:11px;font-weight:600;letter-spacing:.14em}
+.reh-kg{fill:var(--gold-deep, #7e611f);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:11px;font-weight:600;letter-spacing:.14em}
+.reh-h{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:19px}
+.reh-hl{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:21px}
+.reh-num{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:120px}
+.reh-s{fill:var(--body, #4e4234);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12.5px}
+.reh-sd{fill:var(--dim, #8c7e69);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12px}
+.reh-sb{fill:var(--head, #1c140e);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:13px;font-weight:600}
+.reh-st{fill:var(--body, #4e4234);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12px;text-decoration:line-through}
+.reh-on{fill:var(--card, #f6f0e2);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12px;font-weight:600}
+.reh-box{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.2}
+.reh-boxs{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.8}
+.reh-boxg{fill:var(--card, #f6f0e2);stroke:var(--gold-deep, #7e611f);stroke-width:1.6}
+.reh-boxd{fill:none;stroke:var(--dim, #8c7e69);stroke-width:1.2;stroke-dasharray:4 4}
+.reh-boxsep{fill:var(--paper-2, #e6dcc6);stroke:var(--dim, #8c7e69);stroke-width:1.2}
+.reh-band{fill:var(--paper-2, #e6dcc6);stroke:var(--line-strong, rgba(60,44,24,.28));stroke-width:1}
+.reh-fill{fill:var(--ink, #211913)}
+.reh-dot{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.8}
+.reh-dotg{fill:var(--gold-lite, #e6c878);stroke:var(--gold-deep, #7e611f);stroke-width:1.8}
+.reh-ln{fill:none;stroke:var(--ink, #211913);stroke-width:1.5}
+.reh-lnf{fill:none;stroke:var(--line-strong, rgba(60,44,24,.28));stroke-width:1}
+.reh-lng{fill:none;stroke:var(--gold-deep, #7e611f);stroke-width:2}
+.reh-lngd{fill:none;stroke:var(--gold-deep, #7e611f);stroke-width:1.6;stroke-dasharray:4 5}
+.reh-wire{fill:none;stroke:var(--ink, #211913);stroke-width:1.1;stroke-dasharray:3 4;opacity:.55}
+.reh-wired{fill:var(--ink, #211913);opacity:.55}
+.reh-ah{fill:var(--ink, #211913)}
+.reh-ahg{fill:var(--gold-deep, #7e611f)}
+.reh-x{fill:none;stroke:var(--gold-deep, #7e611f);stroke-width:1.6}
+</style>
+<defs>
+<marker id="reh-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="reh-ah" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="reh-ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="reh-ahg" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<text class="reh-num" x="70" y="200" text-anchor="start">23</text>
+<text class="reh-sd" x="76" y="236" text-anchor="start">apps and services</text>
+<text class="reh-num" x="760" y="200" text-anchor="start">4</text>
+<text class="reh-sd" x="766" y="236" text-anchor="start">products</text>
+<path class="reh-lng" d="M300,160 L700,160" marker-end="url(#reh-ag)"/>
+<path class="reh-lnf" d="M368,313.0 C526,313.0 530,348 700,348"/>
+<path class="reh-lnf" d="M368,313.0 C526,313.0 530,438 700,438"/>
+<path class="reh-lnf" d="M368,313.0 C526,313.0 530,528 700,528"/>
+<path class="reh-lnf" d="M368,313.0 C526,313.0 530,618 700,618"/>
+<path class="reh-lnf" d="M368,373.0 C526,373.0 530,348 700,348"/>
+<path class="reh-lnf" d="M368,373.0 C526,373.0 530,438 700,438"/>
+<path class="reh-lnf" d="M368,373.0 C526,373.0 530,528 700,528"/>
+<path class="reh-lnf" d="M368,373.0 C526,373.0 530,618 700,618"/>
+<path class="reh-lnf" d="M368,433.0 C526,433.0 530,348 700,348"/>
+<path class="reh-lnf" d="M368,433.0 C526,433.0 530,438 700,438"/>
+<path class="reh-lnf" d="M368,433.0 C526,433.0 530,528 700,528"/>
+<path class="reh-lnf" d="M368,433.0 C526,433.0 530,618 700,618"/>
+<path class="reh-lnf" d="M368,493.0 C526,493.0 530,348 700,348"/>
+<path class="reh-lnf" d="M368,493.0 C526,493.0 530,438 700,438"/>
+<path class="reh-lnf" d="M368,493.0 C526,493.0 530,528 700,528"/>
+<path class="reh-lnf" d="M368,493.0 C526,493.0 530,618 700,618"/>
+<path class="reh-lnf" d="M368,553.0 C526,553.0 530,348 700,348"/>
+<path class="reh-lnf" d="M368,553.0 C526,553.0 530,438 700,438"/>
+<path class="reh-lnf" d="M368,553.0 C526,553.0 530,528 700,528"/>
+<path class="reh-lnf" d="M368,553.0 C526,553.0 530,618 700,618"/>
+<rect class="reh-box" x="70" y="290" width="46" height="46" rx="6"/>
+<rect class="reh-box" x="130" y="290" width="46" height="46" rx="6"/>
+<rect class="reh-box" x="190" y="290" width="46" height="46" rx="6"/>
+<rect class="reh-box" x="250" y="290" width="46" height="46" rx="6"/>
+<rect class="reh-box" x="310" y="290" width="46" height="46" rx="6"/>
+<rect class="reh-box" x="70" y="350" width="46" height="46" rx="6"/>
+<rect class="reh-box" x="130" y="350" width="46" height="46" rx="6"/>
+<rect class="reh-boxd" x="190" y="350" width="46" height="46" rx="6"/>
+<path class="reh-x" d="M198,358 L228,388"/>
+<rect class="reh-box" x="250" y="350" width="46" height="46" rx="6"/>
+<rect class="reh-box" x="310" y="350" width="46" height="46" rx="6"/>
+<rect class="reh-box" x="70" y="410" width="46" height="46" rx="6"/>
+<rect class="reh-box" x="130" y="410" width="46" height="46" rx="6"/>
+<rect class="reh-box" x="190" y="410" width="46" height="46" rx="6"/>
+<rect class="reh-boxd" x="250" y="410" width="46" height="46" rx="6"/>
+<path class="reh-x" d="M258,418 L288,448"/>
+<rect class="reh-box" x="310" y="410" width="46" height="46" rx="6"/>
+<rect class="reh-box" x="70" y="470" width="46" height="46" rx="6"/>
+<rect class="reh-box" x="130" y="470" width="46" height="46" rx="6"/>
+<rect class="reh-box" x="190" y="470" width="46" height="46" rx="6"/>
+<rect class="reh-box" x="250" y="470" width="46" height="46" rx="6"/>
+<rect class="reh-box" x="310" y="470" width="46" height="46" rx="6"/>
+<rect class="reh-boxsep" x="70" y="530" width="46" height="46" rx="6"/>
+<rect class="reh-box" x="130" y="530" width="46" height="46" rx="6"/>
+<rect class="reh-box" x="190" y="530" width="46" height="46" rx="6"/>
+<rect class="reh-boxs" x="700" y="330" width="230" height="36" rx="8"/>
+<text class="reh-s" x="714" y="353" text-anchor="start">Customer Management</text>
+<rect class="reh-boxs" x="700" y="420" width="230" height="36" rx="8"/>
+<text class="reh-s" x="714" y="443" text-anchor="start">Maintenance</text>
+<rect class="reh-boxs" x="700" y="510" width="230" height="36" rx="8"/>
+<text class="reh-s" x="714" y="533" text-anchor="start">My Pages</text>
+<rect class="reh-boxs" x="700" y="600" width="230" height="36" rx="8"/>
+<text class="reh-s" x="714" y="623" text-anchor="start">Investment</text>
+<text class="reh-sd" x="70" y="650" text-anchor="start">Crossed out: decommissioned. Shaded: kept as a separate tool for managers.</text>
+</svg>
