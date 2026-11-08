@@ -26,12 +26,13 @@ Requires Node 18+ (Node 20 recommended, matching Netlify).
 
 ## Editing content — you don’t need a developer
 
-### The three case studies
+### The case studies
 
 Each case is a Markdown file in **`src/content/cases/`**:
 
 | File | Page |
 |---|---|
+| `real-estate.md` | `/work/real-estate` |
 | `design-system.md` | `/work/design-system` |
 | `math-app.md` | `/work/math-app` |
 | `unified-app.md` | `/work/unified-app` |
@@ -70,6 +71,8 @@ exhibits:                          # 2–3 curated depth exhibits, each in its o
 Everything **below** the frontmatter is the case body (Problem, What I owned, etc.). It renders on the readable card placard. Keep the honest tone — no invented metrics.
 
 **To add an exhibit image:** drop the file into `public/cases/` and reference it as `/cases/your-file.jpg` in an `exhibits:` entry.
+
+**To add a full-width drawing (map or flow):** save an SVG in `public/cases/` and list it under `drawings:` with a `kicker` and a `caption`. It is inlined on the case page in the site fonts and opens full screen on tap. See `real-estate.md`.
 
 ### Other content
 
@@ -116,7 +119,7 @@ First-time setup (already done for this project): create the GitHub repo, push `
 
 ```
 src/
-  content/cases/      the three case Markdown files (edit these)
+  content/cases/      the case Markdown files (edit these)
   content.config.ts   case frontmatter schema (plaque + hero + exhibits)
   layouts/Base.astro  <head>, fonts, chrome, nav, footer, motion wiring
   components/

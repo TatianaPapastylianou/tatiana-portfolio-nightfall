@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 740" width="1000" height="740" role="img" aria-labelledby="rea-t rea-d" class="re-drawing">
+<title id="rea-t">After: 4 products along one tenancy</title>
+<desc id="rea-d">A tenancy timeline runs Invest, Let, Manage, Maintain, Live in it. Under it sit four products: Investment for the investment team (transactions, valuation); Customer Management for letting and property managers, with one role switch, covering letting, tenant administration, inspection (merged in), inventory, cases and tasks, building and tenant emails (was Message Dispatcher) and contracts (was Document Generator); Maintenance for technicians; and My Pages for tenants, whose requests go straight to the technician. User Service is the shared user backend. Outside the four: Staff stays a separate tool for managers, Dictionary Service now translates the websites, and Energy and Smart Buildings were decommissioned.</desc>
+<style>
+.rea-k{fill:var(--dim, #8c7e69);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:11px;font-weight:600;letter-spacing:.14em}
+.rea-kg{fill:var(--gold-deep, #7e611f);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:11px;font-weight:600;letter-spacing:.14em}
+.rea-h{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:19px}
+.rea-hl{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:21px}
+.rea-num{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:120px}
+.rea-s{fill:var(--body, #4e4234);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12.5px}
+.rea-sd{fill:var(--dim, #8c7e69);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12px}
+.rea-sb{fill:var(--head, #1c140e);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:13px;font-weight:600}
+.rea-st{fill:var(--body, #4e4234);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12px;text-decoration:line-through}
+.rea-on{fill:var(--card, #f6f0e2);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12px;font-weight:600}
+.rea-box{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.2}
+.rea-boxs{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.8}
+.rea-boxg{fill:var(--card, #f6f0e2);stroke:var(--gold-deep, #7e611f);stroke-width:1.6}
+.rea-boxd{fill:none;stroke:var(--dim, #8c7e69);stroke-width:1.2;stroke-dasharray:4 4}
+.rea-boxsep{fill:var(--paper-2, #e6dcc6);stroke:var(--dim, #8c7e69);stroke-width:1.2}
+.rea-band{fill:var(--paper-2, #e6dcc6);stroke:var(--line-strong, rgba(60,44,24,.28));stroke-width:1}
+.rea-fill{fill:var(--ink, #211913)}
+.rea-dot{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.8}
+.rea-dotg{fill:var(--gold-lite, #e6c878);stroke:var(--gold-deep, #7e611f);stroke-width:1.8}
+.rea-ln{fill:none;stroke:var(--ink, #211913);stroke-width:1.5}
+.rea-lnf{fill:none;stroke:var(--line-strong, rgba(60,44,24,.28));stroke-width:1}
+.rea-lng{fill:none;stroke:var(--gold-deep, #7e611f);stroke-width:2}
+.rea-lngd{fill:none;stroke:var(--gold-deep, #7e611f);stroke-width:1.6;stroke-dasharray:4 5}
+.rea-wire{fill:none;stroke:var(--ink, #211913);stroke-width:1.1;stroke-dasharray:3 4;opacity:.55}
+.rea-wired{fill:var(--ink, #211913);opacity:.55}
+.rea-ah{fill:var(--ink, #211913)}
+.rea-ahg{fill:var(--gold-deep, #7e611f)}
+.rea-x{fill:none;stroke:var(--gold-deep, #7e611f);stroke-width:1.6}
+</style>
+<defs>
+<marker id="rea-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="rea-ah" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="rea-ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="rea-ahg" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<g class="re-label"><text class="rea-k" x="22" y="30" text-anchor="start">AFTER · 4 PRODUCTS ALONG ONE TENANCY</text></g>
+<line class="rea-ln" x1="60" y1="86" x2="940" y2="86" marker-end="url(#rea-a)"/>
+<circle class="rea-dot" cx="111" cy="86" r="7"/>
+<text class="rea-sd" x="111" y="68" text-anchor="middle">Invest</text>
+<circle class="rea-dot" cx="307" cy="86" r="7"/>
+<text class="rea-sd" x="307" y="68" text-anchor="middle">Let</text>
+<circle class="rea-dot" cx="497" cy="86" r="7"/>
+<text class="rea-sd" x="497" y="68" text-anchor="middle">Manage</text>
+<circle class="rea-dot" cx="694" cy="86" r="7"/>
+<text class="rea-sd" x="694" y="68" text-anchor="middle">Maintain</text>
+<circle class="rea-dot" cx="889" cy="86" r="7"/>
+<text class="rea-sd" x="889" y="68" text-anchor="middle">Live in it</text>
+<rect class="rea-box" x="22" y="124" width="178" height="300" rx="10"/>
+<text class="rea-hl" x="40" y="162" text-anchor="start">Investment</text>
+<text class="rea-kg" x="40" y="186" text-anchor="start">INVESTMENT TEAM</text>
+<text class="rea-s" x="40" y="216" text-anchor="start">Transactions</text>
+<text class="rea-s" x="40" y="237" text-anchor="start">Valuation</text>
+<rect class="rea-boxs" x="214" y="124" width="380" height="300" rx="10"/>
+<text class="rea-hl" x="232" y="162" text-anchor="start">Customer Management</text>
+<text class="rea-kg" x="232" y="186" text-anchor="start">LETTING + PROPERTY MANAGERS</text>
+<rect class="rea-box" x="232" y="204" width="300" height="30" rx="15"/>
+<rect class="rea-fill" x="235" y="207" width="147" height="24" rx="12"/>
+<text class="rea-on" x="308" y="223.5" text-anchor="middle">Letting manager</text>
+<text class="rea-s" x="457" y="223.5" text-anchor="middle">Property manager</text>
+<text class="rea-s" x="232" y="264" text-anchor="start">· Letting</text>
+<text class="rea-s" x="232" y="285" text-anchor="start">· Tenant administration</text>
+<text class="rea-s" x="232" y="306" text-anchor="start">· Inspection</text>
+<text class="rea-sd" x="334" y="306" text-anchor="start">merged in</text>
+<text class="rea-s" x="232" y="327" text-anchor="start">· Inventory</text>
+<text class="rea-s" x="232" y="348" text-anchor="start">· Cases and tasks</text>
+<text class="rea-s" x="412" y="264" text-anchor="start">· Building and tenant emails</text>
+<text class="rea-sd" x="422" y="282" text-anchor="start">was Message Dispatcher</text>
+<text class="rea-s" x="412" y="306" text-anchor="start">· Contracts</text>
+<text class="rea-sd" x="422" y="324" text-anchor="start">was Document Generator</text>
+<rect class="rea-box" x="608" y="124" width="178" height="300" rx="10"/>
+<text class="rea-hl" x="626" y="162" text-anchor="start">Maintenance</text>
+<text class="rea-kg" x="626" y="186" text-anchor="start">TECHNICIANS</text>
+<text class="rea-s" x="626" y="216" text-anchor="start">Requests from My Pages</text>
+<text class="rea-s" x="626" y="237" text-anchor="start">Visits</text>
+<text class="rea-s" x="626" y="258" text-anchor="start">Access answers</text>
+<text class="rea-s" x="626" y="279" text-anchor="start">Chat with tenants</text>
+<rect class="rea-box" x="800" y="124" width="178" height="300" rx="10"/>
+<text class="rea-hl" x="818" y="162" text-anchor="start">My Pages</text>
+<text class="rea-kg" x="818" y="186" text-anchor="start">TENANTS</text>
+<text class="rea-s" x="818" y="216" text-anchor="start">Report a problem</text>
+<text class="rea-s" x="818" y="237" text-anchor="start">Follow requests</text>
+<text class="rea-s" x="818" y="258" text-anchor="start">Talk to support</text>
+<path class="rea-lng" d="M889,426 C889,472 697,472 697,432" marker-end="url(#rea-ag)"/>
+<text class="rea-kg" x="793" y="492" text-anchor="middle">REQUESTS GO STRAIGHT TO THE TECHNICIAN</text>
+<rect class="rea-band" x="214" y="512" width="764" height="64" rx="10"/>
+<text class="rea-sb" x="232" y="540" text-anchor="start">User Service</text>
+<text class="rea-s" x="232" y="560" text-anchor="start">One shared user backend for Customer Management, Maintenance and My Pages</text>
+<text class="rea-k" x="22" y="620" text-anchor="start">OUTSIDE THE FOUR</text>
+<rect class="rea-box" x="22" y="636" width="300" height="86" rx="8"/>
+<text class="rea-sb" x="40" y="664" text-anchor="start">Staff</text>
+<text class="rea-s" x="40" y="686" text-anchor="start">Kept as a separate tool for managers</text>
+<rect class="rea-box" x="340" y="636" width="300" height="86" rx="8"/>
+<text class="rea-sb" x="358" y="664" text-anchor="start">Dictionary Service</text>
+<text class="rea-s" x="358" y="686" text-anchor="start">Now the translation backend</text>
+<text class="rea-s" x="358" y="704" text-anchor="start">for the group websites</text>
+<rect class="rea-boxd" x="658" y="636" width="320" height="86" rx="8"/>
+<text class="rea-st" x="676" y="664" text-anchor="start">Energy · Smart Buildings</text>
+<text class="rea-sd" x="676" y="686" text-anchor="start">Decommissioned</text>
+</svg>

@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 540" width="1000" height="540" role="img" aria-labelledby="rer-t rer-d" class="re-drawing">
+<title id="rer-t">Role switch in Customer Management</title>
+<desc id="rer-d">Two states of the same Customer Management app. With the Letting role on, the tools are Letting and Contracts. With the Property role on, the tools are Inspection, Inventory and Cases. In both states the shared part stays the same: properties and tenants, tasks and messages. One tap switches the role inside the same app.</desc>
+<style>
+.rer-k{fill:var(--dim, #8c7e69);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:11px;font-weight:600;letter-spacing:.14em}
+.rer-kg{fill:var(--gold-deep, #7e611f);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:11px;font-weight:600;letter-spacing:.14em}
+.rer-h{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:19px}
+.rer-hl{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:21px}
+.rer-num{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:120px}
+.rer-s{fill:var(--body, #4e4234);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12.5px}
+.rer-sd{fill:var(--dim, #8c7e69);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12px}
+.rer-sb{fill:var(--head, #1c140e);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:13px;font-weight:600}
+.rer-st{fill:var(--body, #4e4234);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12px;text-decoration:line-through}
+.rer-on{fill:var(--card, #f6f0e2);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12px;font-weight:600}
+.rer-box{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.2}
+.rer-boxs{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.8}
+.rer-boxg{fill:var(--card, #f6f0e2);stroke:var(--gold-deep, #7e611f);stroke-width:1.6}
+.rer-boxd{fill:none;stroke:var(--dim, #8c7e69);stroke-width:1.2;stroke-dasharray:4 4}
+.rer-boxsep{fill:var(--paper-2, #e6dcc6);stroke:var(--dim, #8c7e69);stroke-width:1.2}
+.rer-band{fill:var(--paper-2, #e6dcc6);stroke:var(--line-strong, rgba(60,44,24,.28));stroke-width:1}
+.rer-fill{fill:var(--ink, #211913)}
+.rer-dot{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.8}
+.rer-dotg{fill:var(--gold-lite, #e6c878);stroke:var(--gold-deep, #7e611f);stroke-width:1.8}
+.rer-ln{fill:none;stroke:var(--ink, #211913);stroke-width:1.5}
+.rer-lnf{fill:none;stroke:var(--line-strong, rgba(60,44,24,.28));stroke-width:1}
+.rer-lng{fill:none;stroke:var(--gold-deep, #7e611f);stroke-width:2}
+.rer-lngd{fill:none;stroke:var(--gold-deep, #7e611f);stroke-width:1.6;stroke-dasharray:4 5}
+.rer-wire{fill:none;stroke:var(--ink, #211913);stroke-width:1.1;stroke-dasharray:3 4;opacity:.55}
+.rer-wired{fill:var(--ink, #211913);opacity:.55}
+.rer-ah{fill:var(--ink, #211913)}
+.rer-ahg{fill:var(--gold-deep, #7e611f)}
+.rer-x{fill:none;stroke:var(--gold-deep, #7e611f);stroke-width:1.6}
+</style>
+<defs>
+<marker id="rer-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="rer-ah" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="rer-ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="rer-ahg" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<g class="re-label"><text class="rer-k" x="22" y="30" text-anchor="start">SWITCH ROLES, NOT APPS · CUSTOMER MANAGEMENT</text></g>
+<rect class="rer-boxs" x="22" y="70" width="420" height="360" rx="12"/>
+<line class="rer-lnf" x1="22" y1="114" x2="442" y2="114"/>
+<text class="rer-sb" x="40" y="98" text-anchor="start">Customer Management</text>
+<rect class="rer-box" x="204" y="79" width="222" height="26" rx="13"/>
+<rect class="rer-fill" x="206" y="81" width="108" height="22" rx="11"/>
+<text class="rer-on" x="260" y="96.5" text-anchor="middle">Letting</text>
+<text class="rer-s" x="370" y="96.5" text-anchor="middle">Property</text>
+<text class="rer-kg" x="40" y="140" text-anchor="start">LETTING MANAGER</text>
+<rect class="rer-boxg" x="40" y="154" width="170" height="28" rx="6"/>
+<text class="rer-s" x="52" y="172.5" text-anchor="start">Letting</text>
+<rect class="rer-boxg" x="40" y="192" width="170" height="28" rx="6"/>
+<text class="rer-s" x="52" y="210.5" text-anchor="start">Contracts</text>
+<text class="rer-k" x="40" y="290" text-anchor="start">SHARED</text>
+<rect class="rer-box" x="40" y="304" width="170" height="28" rx="6"/>
+<text class="rer-s" x="52" y="322.5" text-anchor="start">Properties and tenants</text>
+<rect class="rer-box" x="40" y="342" width="170" height="28" rx="6"/>
+<text class="rer-s" x="52" y="360.5" text-anchor="start">Tasks</text>
+<rect class="rer-box" x="40" y="380" width="170" height="28" rx="6"/>
+<text class="rer-s" x="52" y="398.5" text-anchor="start">Messages</text>
+<rect class="rer-band" x="232" y="144" width="180" height="12" rx="6"/>
+<rect class="rer-band" x="232" y="182" width="150" height="12" rx="6"/>
+<rect class="rer-band" x="232" y="220" width="172" height="12" rx="6"/>
+<rect class="rer-band" x="232" y="258" width="120" height="12" rx="6"/>
+<rect class="rer-band" x="232" y="296" width="164" height="12" rx="6"/>
+<rect class="rer-band" x="232" y="334" width="140" height="12" rx="6"/>
+<rect class="rer-band" x="232" y="372" width="176" height="12" rx="6"/>
+<rect class="rer-boxs" x="558" y="70" width="420" height="360" rx="12"/>
+<line class="rer-lnf" x1="558" y1="114" x2="978" y2="114"/>
+<text class="rer-sb" x="576" y="98" text-anchor="start">Customer Management</text>
+<rect class="rer-box" x="740" y="79" width="222" height="26" rx="13"/>
+<rect class="rer-fill" x="852" y="81" width="108" height="22" rx="11"/>
+<text class="rer-s" x="796" y="96.5" text-anchor="middle">Letting</text>
+<text class="rer-on" x="906" y="96.5" text-anchor="middle">Property</text>
+<text class="rer-kg" x="576" y="140" text-anchor="start">PROPERTY MANAGER</text>
+<rect class="rer-boxg" x="576" y="154" width="170" height="28" rx="6"/>
+<text class="rer-s" x="588" y="172.5" text-anchor="start">Inspection</text>
+<rect class="rer-boxg" x="576" y="192" width="170" height="28" rx="6"/>
+<text class="rer-s" x="588" y="210.5" text-anchor="start">Inventory</text>
+<rect class="rer-boxg" x="576" y="230" width="170" height="28" rx="6"/>
+<text class="rer-s" x="588" y="248.5" text-anchor="start">Cases</text>
+<text class="rer-k" x="576" y="290" text-anchor="start">SHARED</text>
+<rect class="rer-box" x="576" y="304" width="170" height="28" rx="6"/>
+<text class="rer-s" x="588" y="322.5" text-anchor="start">Properties and tenants</text>
+<rect class="rer-box" x="576" y="342" width="170" height="28" rx="6"/>
+<text class="rer-s" x="588" y="360.5" text-anchor="start">Tasks</text>
+<rect class="rer-box" x="576" y="380" width="170" height="28" rx="6"/>
+<text class="rer-s" x="588" y="398.5" text-anchor="start">Messages</text>
+<rect class="rer-band" x="768" y="144" width="180" height="12" rx="6"/>
+<rect class="rer-band" x="768" y="182" width="150" height="12" rx="6"/>
+<rect class="rer-band" x="768" y="220" width="172" height="12" rx="6"/>
+<rect class="rer-band" x="768" y="258" width="120" height="12" rx="6"/>
+<rect class="rer-band" x="768" y="296" width="164" height="12" rx="6"/>
+<rect class="rer-band" x="768" y="334" width="140" height="12" rx="6"/>
+<rect class="rer-band" x="768" y="372" width="176" height="12" rx="6"/>
+<path class="rer-lng" d="M452,214 L548,214" marker-end="url(#rer-ag)"/>
+<path class="rer-lng" d="M548,262 L452,262" marker-end="url(#rer-ag)"/>
+<text class="rer-kg" x="500" y="196" text-anchor="middle">ONE TAP</text>
+<text class="rer-kg" x="500" y="292" text-anchor="middle">SAME APP</text>
+<line class="rer-lnf" x1="22" y1="466" x2="978" y2="466"/>
+<text class="rer-sb" x="22" y="498" text-anchor="start">The role changes the tools.</text>
+<text class="rer-s" x="22" y="520" text-anchor="start">Navigation, records, tasks and messages exist once, so nothing drifts out of sync between two apps.</text>
+</svg>

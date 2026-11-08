@@ -4,6 +4,8 @@ import Base from '../../layouts/Base.astro';
 import Frame from '../../components/Frame.astro';
 import LiveComponents from '../../components/LiveComponents.astro';
 import CaseThinking from '../../components/CaseThinking.astro';
+import fs from 'node:fs';
+import path from 'node:path';
 
 export async function getStaticPaths() {
   const cases = await getCollection('cases');
@@ -16,6 +18,13 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
+
+// inline each drawing's SVG at build time (one source file serves both the inline
+// figure and the framed <img> used elsewhere)
+const drawings = d.drawings.map((dr) => ({
+  ...dr,
+  svg: fs.readFileSync(path.join(process.cwd(), 'public', dr.src), 'utf8'),
+}));
 ---
 
 <Base title={`${d.number} · ${d.title} — Tatiana Papastylianou`} description={d.oneLiner}>
@@ -71,6 +80,37 @@ const d = entry.data;
       <p class="exhibit-caption reveal hero-caption">{d.hero.caption}</p>
     </div>
   </section>
+
+  <!-- full-width drawings: maps and flows -->
+  {
+    drawings.length > 0 && (
+      <section class="drawings" aria-label="Maps and flows">
+        <div class="container">
+          {drawings.map((dr) => (
+            <figure class="drawing">
+              <figcaption class="drawing-note reveal">
+                <p class="kicker">{dr.kicker}</p>
+                <p class="drawing-caption">{dr.caption}</p>
+              </figcaption>
+              <div
+                class="drawing-sheet reveal"
+                role="button"
+                tabindex="0"
+                data-zoom-src={dr.src}
+                data-zoom-alt={dr.kicker}
+                data-view
+                data-label="Zoom in ⤢"
+                aria-label={`View full screen: ${dr.kicker}`}
+              >
+                <div class="drawing-scroll" set:html={dr.svg} />
+              </div>
+              <p class="drawing-hint">Swipe to see the whole drawing, or tap to open it full screen.</p>
+            </figure>
+          ))}
+        </div>
+      </section>
+    )
+  }
 
   <!-- curated depth exhibits -->
   {
@@ -198,6 +238,71 @@ const d = entry.data;
   }
   .hero-caption {
     max-width: 40ch;
+  }
+
+  /* drawings: full-width maps and flows on a card sheet */
+  .drawings {
+    padding-bottom: var(--space-xl);
+  }
+  .drawing {
+    margin: 0;
+    padding-block: var(--space-l);
+    border-top: 1px solid var(--line);
+  }
+  .drawing-note {
+    max-width: 60ch;
+    margin-bottom: var(--space-m);
+  }
+  .drawing-note .kicker {
+    color: var(--gold-deep);
+  }
+  .drawing-caption {
+    margin-top: 0.6rem;
+    font-size: var(--step-0);
+    color: var(--body);
+    line-height: 1.55;
+  }
+  .drawing-sheet {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow:
+      0 24px 60px rgba(60, 44, 24, 0.12),
+      inset 0 0 0 1px var(--line);
+    padding: clamp(1rem, 3vw, 2.5rem);
+    cursor: zoom-in;
+  }
+  .drawing-sheet:focus-visible {
+    outline: 2px solid var(--gold-deep);
+    outline-offset: 6px;
+  }
+  .drawing-scroll :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  /* the drawing's own corner label repeats the kicker above it; keep it for framed use only */
+  .drawing-scroll :global(.re-label) {
+    display: none;
+  }
+  .drawing-hint {
+    display: none;
+    margin-top: 0.6rem;
+    font-family: var(--sans);
+    font-size: var(--step--1);
+    color: var(--dim);
+  }
+  @media (max-width: 760px) {
+    .drawing-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .drawing-scroll :global(svg) {
+      width: 860px;
+      max-width: none;
+    }
+    .drawing-hint {
+      display: block;
+    }
   }
 
   /* exhibits */

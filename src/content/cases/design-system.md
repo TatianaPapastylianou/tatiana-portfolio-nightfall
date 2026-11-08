@@ -1,5 +1,5 @@
 ---
-number: "01"
+number: "02"
 title: "Building the Akelius education design system"
 role: "Design Lead"
 roleFull: "Senior Product Designer — owner of the design system"
@@ -7,7 +7,7 @@ oneLiner: "I turned three disconnected app teams and a designer-vs-developer nam
 tag: "Design System · 2023–now"
 change: "A design system that existed on paper"
 impact: "became infrastructure — one language for design and code"
-order: 1
+order: 2
 next:
   slug: "math-app"
   title: "Akelius Education — shipping through three competing visions"

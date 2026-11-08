@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1090 630" width="1090" height="630" role="img" aria-labelledby="reb-t reb-d" class="re-drawing">
+<title id="reb-t">Before: 23 apps and services grouped by tenancy stage</title>
+<desc id="reb-d">Six columns. Invest: Investment, Transaction, Approval. Let: Lettings, Offer, Tenant Administration, Rent. Manage: Customer Management, Inspection, Inventory, Energy, Smart Buildings, Compliance, Litigation. Maintain: Work Order, Order, Supplier. Tenant: My Pages. Admin and tools: Staff, User Service, Dictionary Service, Message Dispatcher, Document Generator. Dashed lines cross between them: data was copied from app to app instead of shared. A property manager needed 8 apps to finish one tenancy.</desc>
+<style>
+.reb-k{fill:var(--dim, #8c7e69);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:11px;font-weight:600;letter-spacing:.14em}
+.reb-kg{fill:var(--gold-deep, #7e611f);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:11px;font-weight:600;letter-spacing:.14em}
+.reb-h{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:19px}
+.reb-hl{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:21px}
+.reb-num{fill:var(--head, #1c140e);font-family:var(--serif, Georgia, 'Times New Roman', serif);font-size:120px}
+.reb-s{fill:var(--body, #4e4234);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12.5px}
+.reb-sd{fill:var(--dim, #8c7e69);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12px}
+.reb-sb{fill:var(--head, #1c140e);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:13px;font-weight:600}
+.reb-st{fill:var(--body, #4e4234);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12px;text-decoration:line-through}
+.reb-on{fill:var(--card, #f6f0e2);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:12px;font-weight:600}
+.reb-box{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.2}
+.reb-boxs{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.8}
+.reb-boxg{fill:var(--card, #f6f0e2);stroke:var(--gold-deep, #7e611f);stroke-width:1.6}
+.reb-boxd{fill:none;stroke:var(--dim, #8c7e69);stroke-width:1.2;stroke-dasharray:4 4}
+.reb-boxsep{fill:var(--paper-2, #e6dcc6);stroke:var(--dim, #8c7e69);stroke-width:1.2}
+.reb-band{fill:var(--paper-2, #e6dcc6);stroke:var(--line-strong, rgba(60,44,24,.28));stroke-width:1}
+.reb-fill{fill:var(--ink, #211913)}
+.reb-dot{fill:var(--card, #f6f0e2);stroke:var(--ink, #211913);stroke-width:1.8}
+.reb-dotg{fill:var(--gold-lite, #e6c878);stroke:var(--gold-deep, #7e611f);stroke-width:1.8}
+.reb-ln{fill:none;stroke:var(--ink, #211913);stroke-width:1.5}
+.reb-lnf{fill:none;stroke:var(--line-strong, rgba(60,44,24,.28));stroke-width:1}
+.reb-lng{fill:none;stroke:var(--gold-deep, #7e611f);stroke-width:2}
+.reb-lngd{fill:none;stroke:var(--gold-deep, #7e611f);stroke-width:1.6;stroke-dasharray:4 5}
+.reb-wire{fill:none;stroke:var(--ink, #211913);stroke-width:1.1;stroke-dasharray:3 4;opacity:.55}
+.reb-wired{fill:var(--ink, #211913);opacity:.55}
+.reb-ah{fill:var(--ink, #211913)}
+.reb-ahg{fill:var(--gold-deep, #7e611f)}
+.reb-x{fill:none;stroke:var(--gold-deep, #7e611f);stroke-width:1.6}
+</style>
+<defs>
+<marker id="reb-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="reb-ah" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="reb-ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="reb-ahg" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<g class="re-label"><text class="reb-k" x="22" y="30" text-anchor="start">BEFORE · 23 APPS AND SERVICES, GROUPED BY TENANCY STAGE</text></g>
+<text class="reb-h" x="22" y="72" text-anchor="start">Invest</text>
+<text class="reb-sd" x="22" y="94" text-anchor="start">3 apps</text>
+<line class="reb-lnf" x1="22" y1="106" x2="168" y2="106"/>
+<text class="reb-h" x="202" y="72" text-anchor="start">Let</text>
+<text class="reb-sd" x="202" y="94" text-anchor="start">4 apps</text>
+<line class="reb-lnf" x1="202" y1="106" x2="348" y2="106"/>
+<text class="reb-h" x="382" y="72" text-anchor="start">Manage</text>
+<text class="reb-sd" x="382" y="94" text-anchor="start">7 apps</text>
+<line class="reb-lnf" x1="382" y1="106" x2="528" y2="106"/>
+<text class="reb-h" x="562" y="72" text-anchor="start">Maintain</text>
+<text class="reb-sd" x="562" y="94" text-anchor="start">3 apps</text>
+<line class="reb-lnf" x1="562" y1="106" x2="708" y2="106"/>
+<text class="reb-h" x="742" y="72" text-anchor="start">Tenant</text>
+<text class="reb-sd" x="742" y="94" text-anchor="start">1 app</text>
+<line class="reb-lnf" x1="742" y1="106" x2="888" y2="106"/>
+<text class="reb-h" x="922" y="72" text-anchor="start">Admin and tools</text>
+<text class="reb-sd" x="922" y="94" text-anchor="start">5 apps</text>
+<line class="reb-lnf" x1="922" y1="106" x2="1068" y2="106"/>
+<path class="reb-wire" d="M168,145.0 C195.52,145.0 195.52,191.0 168,191.0"/>
+<circle class="reb-wired" cx="168" cy="145.0" r="2.4"/>
+<circle class="reb-wired" cx="168" cy="191.0" r="2.4"/>
+<path class="reb-wire" d="M168,191.0 C195.52,191.0 195.52,237.0 168,237.0"/>
+<circle class="reb-wired" cx="168" cy="191.0" r="2.4"/>
+<circle class="reb-wired" cx="168" cy="237.0" r="2.4"/>
+<path class="reb-wire" d="M168,191.0 C275.0,131.0 275.0,205.0 382,145.0"/>
+<circle class="reb-wired" cx="168" cy="191.0" r="2.4"/>
+<circle class="reb-wired" cx="382" cy="145.0" r="2.4"/>
+<path class="reb-wire" d="M348,191.0 C375.52,191.0 375.52,145.0 348,145.0"/>
+<circle class="reb-wired" cx="348" cy="191.0" r="2.4"/>
+<circle class="reb-wired" cx="348" cy="145.0" r="2.4"/>
+<path class="reb-wire" d="M348,145.0 C381.04,145.0 381.04,237.0 348,237.0"/>
+<circle class="reb-wired" cx="348" cy="145.0" r="2.4"/>
+<circle class="reb-wired" cx="348" cy="237.0" r="2.4"/>
+<path class="reb-wire" d="M348,237.0 C375.52,237.0 375.52,283.0 348,283.0"/>
+<circle class="reb-wired" cx="348" cy="237.0" r="2.4"/>
+<circle class="reb-wired" cx="348" cy="283.0" r="2.4"/>
+<path class="reb-wire" d="M348,237.0 C365.0,207.0 365.0,175.0 382,145.0"/>
+<circle class="reb-wired" cx="348" cy="237.0" r="2.4"/>
+<circle class="reb-wired" cx="382" cy="145.0" r="2.4"/>
+<path class="reb-wire" d="M348,283.0 C365.0,253.0 365.0,175.0 382,145.0"/>
+<circle class="reb-wired" cx="348" cy="283.0" r="2.4"/>
+<circle class="reb-wired" cx="382" cy="145.0" r="2.4"/>
+<path class="reb-wire" d="M348,145.0 C635.0,85.0 635.0,389.0 922,329.0"/>
+<circle class="reb-wired" cx="348" cy="145.0" r="2.4"/>
+<circle class="reb-wired" cx="922" cy="329.0" r="2.4"/>
+<path class="reb-wire" d="M528,145.0 C555.52,145.0 555.52,191.0 528,191.0"/>
+<circle class="reb-wired" cx="528" cy="145.0" r="2.4"/>
+<circle class="reb-wired" cx="528" cy="191.0" r="2.4"/>
+<path class="reb-wire" d="M528,191.0 C555.52,191.0 555.52,237.0 528,237.0"/>
+<circle class="reb-wired" cx="528" cy="191.0" r="2.4"/>
+<circle class="reb-wired" cx="528" cy="237.0" r="2.4"/>
+<path class="reb-wire" d="M528,191.0 C545.0,161.0 545.0,175.0 562,145.0"/>
+<circle class="reb-wired" cx="528" cy="191.0" r="2.4"/>
+<circle class="reb-wired" cx="562" cy="145.0" r="2.4"/>
+<path class="reb-wire" d="M528,145.0 C725.0,85.0 725.0,343.0 922,283.0"/>
+<circle class="reb-wired" cx="528" cy="145.0" r="2.4"/>
+<circle class="reb-wired" cx="922" cy="283.0" r="2.4"/>
+<path class="reb-wire" d="M528,375.0 C577.6,375.0 577.6,145.0 528,145.0"/>
+<circle class="reb-wired" cx="528" cy="375.0" r="2.4"/>
+<circle class="reb-wired" cx="528" cy="145.0" r="2.4"/>
+<path class="reb-wire" d="M708,145.0 C735.52,145.0 735.52,191.0 708,191.0"/>
+<circle class="reb-wired" cx="708" cy="145.0" r="2.4"/>
+<circle class="reb-wired" cx="708" cy="191.0" r="2.4"/>
+<path class="reb-wire" d="M708,191.0 C735.52,191.0 735.52,237.0 708,237.0"/>
+<circle class="reb-wired" cx="708" cy="191.0" r="2.4"/>
+<circle class="reb-wired" cx="708" cy="237.0" r="2.4"/>
+<path class="reb-wire" d="M742,145.0 C725.0,115.0 725.0,175.0 708,145.0"/>
+<circle class="reb-wired" cx="742" cy="145.0" r="2.4"/>
+<circle class="reb-wired" cx="708" cy="145.0" r="2.4"/>
+<path class="reb-wire" d="M742,145.0 C635.0,85.0 635.0,205.0 528,145.0"/>
+<circle class="reb-wired" cx="742" cy="145.0" r="2.4"/>
+<circle class="reb-wired" cx="528" cy="145.0" r="2.4"/>
+<path class="reb-wire" d="M922,191.0 C905.0,161.0 905.0,175.0 888,145.0"/>
+<circle class="reb-wired" cx="922" cy="191.0" r="2.4"/>
+<circle class="reb-wired" cx="888" cy="145.0" r="2.4"/>
+<path class="reb-wire" d="M922,191.0 C725.0,131.0 725.0,205.0 528,145.0"/>
+<circle class="reb-wired" cx="922" cy="191.0" r="2.4"/>
+<circle class="reb-wired" cx="528" cy="145.0" r="2.4"/>
+<path class="reb-wire" d="M922,145.0 C815.0,85.0 815.0,205.0 708,145.0"/>
+<circle class="reb-wired" cx="922" cy="145.0" r="2.4"/>
+<circle class="reb-wired" cx="708" cy="145.0" r="2.4"/>
+<path class="reb-wire" d="M168,237.0 C185.0,207.0 185.0,175.0 202,145.0"/>
+<circle class="reb-wired" cx="168" cy="237.0" r="2.4"/>
+<circle class="reb-wired" cx="202" cy="145.0" r="2.4"/>
+<rect class="reb-box" x="22" y="128" width="146" height="34" rx="5"/>
+<text class="reb-s" x="95.0" y="149.5" text-anchor="middle">Investment</text>
+<rect class="reb-box" x="22" y="174" width="146" height="34" rx="5"/>
+<text class="reb-s" x="95.0" y="195.5" text-anchor="middle">Transaction</text>
+<rect class="reb-box" x="22" y="220" width="146" height="34" rx="5"/>
+<text class="reb-s" x="95.0" y="241.5" text-anchor="middle">Approval</text>
+<rect class="reb-box" x="202" y="128" width="146" height="34" rx="5"/>
+<text class="reb-s" x="275.0" y="149.5" text-anchor="middle">Lettings</text>
+<rect class="reb-box" x="202" y="174" width="146" height="34" rx="5"/>
+<text class="reb-s" x="275.0" y="195.5" text-anchor="middle">Offer</text>
+<rect class="reb-box" x="202" y="220" width="146" height="34" rx="5"/>
+<text class="reb-s" x="275.0" y="241.5" text-anchor="middle">Tenant Administration</text>
+<rect class="reb-box" x="202" y="266" width="146" height="34" rx="5"/>
+<text class="reb-s" x="275.0" y="287.5" text-anchor="middle">Rent</text>
+<rect class="reb-box" x="382" y="128" width="146" height="34" rx="5"/>
+<text class="reb-s" x="455.0" y="149.5" text-anchor="middle">Customer Management</text>
+<rect class="reb-box" x="382" y="174" width="146" height="34" rx="5"/>
+<text class="reb-s" x="455.0" y="195.5" text-anchor="middle">Inspection</text>
+<rect class="reb-box" x="382" y="220" width="146" height="34" rx="5"/>
+<text class="reb-s" x="455.0" y="241.5" text-anchor="middle">Inventory</text>
+<rect class="reb-box" x="382" y="266" width="146" height="34" rx="5"/>
+<text class="reb-s" x="455.0" y="287.5" text-anchor="middle">Energy</text>
+<rect class="reb-box" x="382" y="312" width="146" height="34" rx="5"/>
+<text class="reb-s" x="455.0" y="333.5" text-anchor="middle">Smart Buildings</text>
+<rect class="reb-box" x="382" y="358" width="146" height="34" rx="5"/>
+<text class="reb-s" x="455.0" y="379.5" text-anchor="middle">Compliance</text>
+<rect class="reb-box" x="382" y="404" width="146" height="34" rx="5"/>
+<text class="reb-s" x="455.0" y="425.5" text-anchor="middle">Litigation</text>
+<rect class="reb-box" x="562" y="128" width="146" height="34" rx="5"/>
+<text class="reb-s" x="635.0" y="149.5" text-anchor="middle">Work Order</text>
+<rect class="reb-box" x="562" y="174" width="146" height="34" rx="5"/>
+<text class="reb-s" x="635.0" y="195.5" text-anchor="middle">Order</text>
+<rect class="reb-box" x="562" y="220" width="146" height="34" rx="5"/>
+<text class="reb-s" x="635.0" y="241.5" text-anchor="middle">Supplier</text>
+<rect class="reb-box" x="742" y="128" width="146" height="34" rx="5"/>
+<text class="reb-s" x="815.0" y="149.5" text-anchor="middle">My Pages</text>
+<rect class="reb-box" x="922" y="128" width="146" height="34" rx="5"/>
+<text class="reb-s" x="995.0" y="149.5" text-anchor="middle">Staff</text>
+<rect class="reb-box" x="922" y="174" width="146" height="34" rx="5"/>
+<text class="reb-s" x="995.0" y="195.5" text-anchor="middle">User Service</text>
+<rect class="reb-box" x="922" y="220" width="146" height="34" rx="5"/>
+<text class="reb-s" x="995.0" y="241.5" text-anchor="middle">Dictionary Service</text>
+<rect class="reb-box" x="922" y="266" width="146" height="34" rx="5"/>
+<text class="reb-s" x="995.0" y="287.5" text-anchor="middle">Message Dispatcher</text>
+<rect class="reb-box" x="922" y="312" width="146" height="34" rx="5"/>
+<text class="reb-s" x="995.0" y="333.5" text-anchor="middle">Document Generator</text>
+<line class="reb-lnf" x1="22" y1="476" x2="1068" y2="476"/>
+<path class="reb-wire" d="M22,506 L70,506" style="opacity:.8"/>
+<text class="reb-s" x="82" y="510" text-anchor="start">Data copied from app to app instead of shared, so records drifted out of sync</text>
+<text class="reb-sd" x="82" y="530" text-anchor="start">Simplified: lines show the pattern, not every real integration</text>
+<text class="reb-num" x="660" y="592" text-anchor="start" style="font-size:96px">8</text>
+<text class="reb-sb" x="726" y="530" text-anchor="start">apps to finish one tenancy</text>
+<text class="reb-sd" x="726" y="550" text-anchor="start">for a property manager (team estimate)</text>
+<text class="reb-sb" x="726" y="584" text-anchor="start">Several apps per dev team</text>
+<text class="reb-sd" x="726" y="604" text-anchor="start">so nobody could tell what to fix first</text>
+</svg>

@@ -1,5 +1,5 @@
 ---
-number: "03"
+number: "04"
 title: "Unifying two apps and rebuilding the classroom, tested before a line of code"
 role: "Product Designer"
 roleFull: "Product Designer driving the work, reviewed by the Head of Design"
@@ -7,10 +7,10 @@ oneLiner: "Two separate apps, one new unified product, and a teacher experience 
 tag: "Product · in rollout"
 change: "Two apps and a broken classroom"
 impact: "one product, validated end-to-end before engineering"
-order: 3
+order: 4
 next:
-  slug: "design-system"
-  title: "Building the Akelius education design system"
+  slug: "real-estate"
+  title: "From 23 real estate apps to 4 products"
 hero:
   kind: "image"
   src: "/cases/unified-path-language.jpg"
@@ -163,7 +163,7 @@ The handoff was engineered so developers couldn't misread it:
 - **Components linked back to the design system**, each carrying its own documentation, so a developer can trace any element to its source of truth.
 - **Prototype connections** mapped the relationships between screens, cutting ambiguity about how the app flows together.
 
-This is the direct payoff of Case 01: because the design system exists, this handoff *could* be this tight.
+This is the direct payoff of Case 02, the design system: because the design system exists, this handoff *could* be this tight.
 
 ## Outcome — honestly stated
 

@@ -1,5 +1,5 @@
 ---
-number: "02"
+number: "03"
 title: "Akelius Education: shipping a live product through three competing visions"
 role: "Lead Designer"
 roleFull: "Lead Product Designer (sole design lead on the project)"
@@ -8,7 +8,7 @@ tag: "EdTech, shipped · 2026"
 change: "Three conflicting mandates"
 impact: "one coherent product, live worldwide and free"
 liveUrl: "https://akelius.education/"
-order: 2
+order: 3
 next:
   slug: "unified-app"
   title: "Unifying two apps and rebuilding the classroom"
