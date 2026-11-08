@@ -1,4 +1,6 @@
 ---
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 /**
  * Frame — the signature gilded picture frame.
  * Mounts a fitted image OR a live panel (default slot) behind the real
@@ -43,6 +45,15 @@ const {
   class: extra = '',
 } = Astro.props;
 
+// Display copy: a sized WebP in public/cases/web/ (max 1400px wide) when one exists.
+// The original file stays the zoom target, so the lightbox still shows full detail.
+const displaySrc = (() => {
+  if (!src || !/^\/cases\/[^/]+\.(jpe?g|png)$/i.test(src)) return src;
+  const name = src.replace(/^\/cases\//, '').replace(/\.(jpe?g|png)$/i, '');
+  const web = `/cases/web/${name}.webp`;
+  return existsSync(join(process.cwd(), 'public', web)) ? web : src;
+})();
+
 const frameSrc =
   orient === 'landscape' ? '/frames/frame-cut-web-landscape.webp' : '/frames/frame-cut-web.webp';
 const loadMode = eager ? 'eager' : 'lazy';
@@ -85,7 +96,7 @@ const tagProps = href
     <div class:list={['window', { 'window--mat': mat && src, 'window--live': live }]}>
       {
         src ? (
-          <img class:list={['fit', { 'fit--top': fit === 'top' }]} src={src} alt={alt} loading={loadMode} decoding="async" />
+          <img class:list={['fit', { 'fit--top': fit === 'top' }]} src={displaySrc} alt={alt} loading={loadMode} decoding="async" />
         ) : (
           <slot />
         )
