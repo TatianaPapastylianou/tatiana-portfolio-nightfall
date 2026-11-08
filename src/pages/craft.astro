@@ -2,182 +2,77 @@
 import Base from '../layouts/Base.astro';
 import Frame from '../components/Frame.astro';
 
-// Column-operations: framed real artefacts + the problem→outcome narrative.
-const exhibits = [
+// Independent work: apps designed and built in SwiftUI, live on the App Store.
+const apps = [
   {
-    src: '/craft/column-ops-system.jpg',
-    alt: 'The column-operations instructional-design board — multiplication and division, generator and consumer views, a toolbox for every cell',
-    orient: 'landscape' as const,
-    fit: 'top' as const,
-    kicker: 'The system',
-    caption:
-      'One board holds the whole method: multiplication and division, the generator (authoring) view beside the consumer kit, and a toolbox spec’d for every cell — total-number, divided-by, decimals and remainders — so editors can build any lesson the same way.',
-    size: 'lg' as const,
-    tilt: -0.8,
-  },
-  {
-    src: '/craft/column-ops-research.jpg',
-    alt: 'The research and rules behind the column-operations lessons',
-    orient: 'portrait' as const,
-    fit: 'top' as const,
-    kicker: 'The research',
-    caption:
-      'Behind it: the rules a learner never sees — digit limits, when the carry appears, how a too-tall equation scrolls, the exact behaviour for decimals and remainders. The discipline that makes the steps feel effortless.',
-    size: 'md' as const,
-    tilt: 1,
-  },
-];
-
-const panels = [
-  {
-    step: 'Problem',
-    body: 'A maths professor’s column-operations method is rigorous but dense. On a small screen, a learner sees a wall of digits and carries — and gives up before the logic lands.',
-  },
-  {
-    step: 'Decision',
-    body: 'Teach the operation the way a patient tutor would: one column at a time, the carry appearing exactly when it happens, nothing on screen that the next move doesn’t need.',
-  },
-  {
-    step: 'Craft',
-    body: 'Instructional design as choreography — sequencing each reveal, aligning digits to a strict grid, and letting a single functional accent point to the one thing that just changed.',
-  },
-  {
-    step: 'Outcome',
-    body: 'The method reads as steps a person can follow, not a proof to decode. Built into the Generator’s authoring tools so editors can produce more lessons the same way.',
-  },
-];
-
-// Framed side-pieces — real product imagery, links live where they exist.
-const pieces = [
-  {
-    kind: 'iOS · SwiftUI · Shipped',
+    kind: 'Eye wellness · iOS · SwiftUI',
     name: 'IrisVault',
-    line: 'An eye-wellness companion for iOS — gentle reminders, exercises and rest habits for people who live on screens. Designed and shipped end-to-end in SwiftUI.',
+    line: 'Eye exercises, symptom check-ins and rest reminders for people who work on screens. Designed and built end to end.',
     img: '/craft/irisvault-screen.svg',
-    mat: false,
-    fit: 'top' as const,
     tilt: -1.2,
     href: 'https://apps.apple.com/cy/app/irisvault-eye-exercises/id6764104619',
-    external: true,
-    cta: 'View on the App Store ↗',
   },
   {
-    kind: 'iOS · App Store · Freelance',
+    kind: 'Planning · iOS · SwiftUI',
     name: 'stePlan',
-    line: 'A freelance planning tool that reached the App Store — project and task planning distilled to the few moves a busy solo worker actually makes.',
+    line: 'Project planning for freelancers, with steps, phases and a live client link. Connects to Claude through MCP, so a project can start from a chat.',
     img: '/craft/steplan-projects-list.jpg',
-    mat: false,
-    fit: 'top' as const,
     tilt: 1,
     href: 'https://apps.apple.com/cy/app/steplan-freelancer-plan/id6762138338',
-    external: true,
-    cta: 'View on the App Store ↗',
   },
   {
-    kind: 'iOS · iPhone & iPad · Shipped 2026',
+    kind: 'Games · iPhone & iPad · SwiftUI',
     name: 'Ludos',
-    line: '20 mini-games in one download — math brain-teasers, pass-and-play party games, couples quizzes, and a “Designers” world of eye-training drills (judge the gap, pair the type, check the contrast). Designed, built and shipped solo; free, no account.',
+    line: '20 mini-games in one free app: maths puzzles, party games, couples quizzes and eye-training drills for designers. No account needed.',
     img: '/craft/ludos-hero.jpg',
-    mat: false,
-    fit: 'top' as const,
     tilt: -1,
     href: 'https://apps.apple.com/app/ludos/id6797640259',
-    external: true,
-    cta: 'View on the App Store ↗',
-  },
-  {
-    kind: 'Book · Memoir',
-    name: 'No Water — A Designer’s Confession',
-    line: 'The true story of becoming a lead designer with no design degree and no map — thirty-three chapters of shipped projects, hard conversations, and decisions still worth turning over.',
-    img: '/craft/no-water-cover.jpg',
-    mat: true,
-    tilt: -0.6,
-    href: 'https://no-water-book.netlify.app/',
-    external: true,
-    cta: 'Read the first 25 pages ↗',
   },
 ];
+
+const book = {
+  kind: 'Book · 339 pages · English and Russian',
+  name: 'No Water: A Designer’s Confession',
+  line: 'The true story of becoming a lead designer with no design degree and no map. Thirty-three chapters of shipped projects, hard conversations and decisions I still think about.',
+  img: '/craft/no-water-cover.jpg',
+  href: 'https://no-water-book.netlify.app/',
+  cta: 'Read the first 25 pages ↗',
+};
 ---
 
 <Base
-  title="Craft — Tatiana Papastylianou"
-  description="Instructional design for column-operations lessons, plus shipped side projects: IrisVault, stePlan, and the book No Water."
+  title="Side projects — Tatiana Papastylianou"
+  description="Independent work: three iOS apps designed and built in SwiftUI (IrisVault, stePlan, Ludos) and the book No Water, A Designer’s Confession."
 >
   <header class="section craft-head">
     <div class="container">
-      <p class="kicker reveal">The craft room</p>
-      <h1 class="craft-h1 reveal">Craft &amp; side rooms</h1>
+      <p class="kicker reveal">Independent work</p>
+      <h1 class="craft-h1 reveal">Side projects</h1>
       <p class="craft-lead reveal">
-        Not everything is a flagship case. This room holds the smaller pieces — the teaching
-        craft inside the product, and the things I’ve shipped on my own time.
+        I build what I design. Three iOS apps, designed and coded in SwiftUI and live on the App
+        Store, and a book.
       </p>
     </div>
   </header>
 
-  <!-- Column operations — framed artefacts + the narrative -->
-  <section class="section spotlight" aria-labelledby="spotlight-title">
+  <!-- apps -->
+  <section class="section pieces" aria-labelledby="apps-title">
     <div class="container">
-      <div class="spotlight-head reveal">
-        <p class="kicker">Spotlight · Instructional design</p>
-        <h2 id="spotlight-title" class="spotlight-title">Teaching column operations</h2>
-        <p class="spotlight-intro">
-          Turning a professor’s dense method into steps a learner can follow — the same
-          problem → decision → outcome discipline as the cases, at the scale of a single lesson.
-        </p>
-      </div>
-
-      <div class="exhibits">
-        {
-          exhibits.map((ex, i) => (
-            <figure class:list={['exhibit-row', { alt: i % 2 === 1 }]}>
-              <div class="exhibit-frame reveal" data-parallax-scope>
-                <div class="exhibit-art" data-parallax="0.04">
-                  <Frame src={ex.src} alt={ex.alt} orient={ex.orient} size={ex.size} tilt={ex.tilt} fit={ex.fit} />
-                </div>
-              </div>
-              <figcaption class="exhibit-note reveal">
-                <p class="kicker">{ex.kicker}</p>
-                <p class="exhibit-caption">{ex.caption}</p>
-              </figcaption>
-            </figure>
-          ))
-        }
-      </div>
-
-      <ol class="panels" data-stagger>
-        {
-          panels.map((p, i) => (
-            <li class="panel reveal">
-              <span class="panel-index" aria-hidden="true">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <span class="panel-step">{p.step}</span>
-              <p class="panel-body">{p.body}</p>
-            </li>
-          ))
-        }
-      </ol>
-    </div>
-  </section>
-
-  <!-- framed side-pieces -->
-  <section class="section pieces" aria-labelledby="pieces-title">
-    <div class="container">
-      <h2 id="pieces-title" class="pieces-title reveal">Framed side-pieces</h2>
+      <h2 id="apps-title" class="pieces-title reveal">Apps</h2>
       <ul class="pieces-grid" data-stagger>
         {
-          pieces.map((p) => (
+          apps.map((p) => (
             <li class="piece reveal">
               <Frame
                 src={p.img}
-                alt={`${p.name} — ${p.kind}`}
+                alt={`${p.name}, ${p.kind}`}
                 orient="portrait"
                 size="sm"
                 tilt={p.tilt}
-                mat={p.mat}
-                fit={p.fit}
+                mat={false}
+                fit="top"
                 href={p.href}
-                external={p.external}
+                external
                 label="Open ↗"
                 view
               />
@@ -189,12 +84,47 @@ const pieces = [
               </h3>
               <p class="piece-line">{p.line}</p>
               <a class="piece-cta" href={p.href} target="_blank" rel="noopener">
-                {p.cta}
+                View on the App Store ↗
               </a>
             </li>
           ))
         }
       </ul>
+    </div>
+  </section>
+
+  <!-- book -->
+  <section class="section book" aria-labelledby="book-title">
+    <div class="container">
+      <h2 id="book-title" class="pieces-title reveal">Book</h2>
+      <div class="book-row">
+        <div class="book-frame reveal">
+          <Frame
+            src={book.img}
+            alt={`${book.name} cover`}
+            orient="portrait"
+            size="sm"
+            tilt={-0.6}
+            mat
+            href={book.href}
+            external
+            label="Open ↗"
+            view
+          />
+        </div>
+        <div class="book-note reveal">
+          <p class="kicker piece-kind">{book.kind}</p>
+          <h3 class="book-name">
+            <a href={book.href} target="_blank" rel="noopener">
+              {book.name}
+            </a>
+          </h3>
+          <p class="book-line">{book.line}</p>
+          <a class="piece-cta" href={book.href} target="_blank" rel="noopener">
+            {book.cta}
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 </Base>
@@ -215,109 +145,9 @@ const pieces = [
     line-height: 1.5;
   }
 
-  .spotlight-head {
-    max-width: 58ch;
-    margin-bottom: var(--space-xl);
-  }
-  .spotlight-title {
-    font-size: var(--step-3);
-    margin-top: 0.3rem;
-  }
-  .spotlight-intro {
-    margin-top: var(--space-s);
-    color: var(--body);
-  }
-
-  /* framed exhibits (matches the case-page treatment) */
-  .exhibit-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1.15fr) 0.85fr;
-    gap: clamp(1.5rem, 5vw, 4rem);
-    align-items: center;
-    margin: 0;
-    padding-block: var(--space-l);
-    border-top: 1px solid var(--line);
-  }
-  .exhibit-row.alt {
-    direction: rtl;
-  }
-  .exhibit-row.alt > * {
-    direction: ltr;
-  }
-  .exhibit-note {
-    max-width: 42ch;
-  }
-  .exhibit-note .kicker {
-    color: var(--gold-deep);
-  }
-  .exhibit-caption {
-    margin-top: 0.7rem;
-    font-size: var(--step-0);
-    color: var(--body);
-    line-height: 1.55;
-  }
-  @media (max-width: 820px) {
-    .exhibit-row,
-    .exhibit-row.alt {
-      grid-template-columns: 1fr;
-      direction: ltr;
-    }
-  }
-
-  /* narrative panels */
-  .panels {
-    list-style: none;
-    padding: 0;
-    margin-top: var(--space-2xl);
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    overflow: hidden;
-  }
-  .panel {
-    background: var(--card);
-    padding: clamp(1.4rem, 2.4vw, 2.1rem);
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    min-height: 240px;
-  }
-  .panel-index {
-    font-family: var(--mono);
-    font-size: var(--step--1);
-    color: var(--gold-deep);
-    letter-spacing: 0.1em;
-  }
-  .panel-step {
-    font-family: var(--serif);
-    font-size: var(--step-2);
-    color: var(--head);
-  }
-  .panel-body {
-    color: var(--body);
-    font-size: var(--step--1);
-    line-height: 1.6;
-  }
-  @media (max-width: 900px) {
-    .panels {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .panel {
-      min-height: 0;
-    }
-  }
-  @media (max-width: 520px) {
-    .panels {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  /* side pieces */
+  /* apps */
   .pieces {
-    padding-block: var(--space-l) var(--space-2xl);
+    padding-block: var(--space-l) var(--space-xl);
   }
   .pieces-title {
     font-size: var(--step-3);
@@ -335,10 +165,10 @@ const pieces = [
     flex-direction: column;
   }
   /* fallback: push the link to the bottom of each card */
-  .piece-cta {
+  .piece .piece-cta {
     margin-top: auto;
   }
-  /* align frame, kicker, name, text and link rows across the cards in a row */
+  /* align frame, label, name, text and link rows across the cards in a row */
   @supports (grid-template-rows: subgrid) {
     .piece {
       display: grid;
@@ -349,7 +179,7 @@ const pieces = [
     .piece-kind {
       align-self: end;
     }
-    .piece-cta {
+    .piece .piece-cta {
       align-self: start;
     }
   }
@@ -361,11 +191,13 @@ const pieces = [
     font-size: var(--step-2);
     margin-top: 0.3rem;
   }
-  .piece-name a {
+  .piece-name a,
+  .book-name a {
     color: var(--head);
     border-bottom: 1px solid transparent;
   }
-  .piece-name a:hover {
+  .piece-name a:hover,
+  .book-name a:hover {
     border-bottom-color: var(--ink);
   }
   .piece-line {
@@ -387,5 +219,40 @@ const pieces = [
   }
   .piece-cta:hover {
     opacity: 0.62;
+  }
+
+  /* book: its own wide row, cover left, text right */
+  .book {
+    padding-block: var(--space-l) var(--space-2xl);
+  }
+  .book-row {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) 1.2fr;
+    gap: clamp(1.5rem, 5vw, 4rem);
+    align-items: center;
+    padding-top: var(--space-l);
+    border-top: 1px solid var(--line);
+  }
+  .book-note {
+    max-width: 46ch;
+  }
+  .book-note .piece-kind {
+    margin-top: 0;
+  }
+  .book-name {
+    font-size: var(--step-3);
+    margin-top: 0.3rem;
+  }
+  .book-line {
+    margin-top: 0.8rem;
+    margin-bottom: 1rem;
+    color: var(--body);
+    font-size: var(--step-0);
+    line-height: 1.55;
+  }
+  @media (max-width: 820px) {
+    .book-row {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

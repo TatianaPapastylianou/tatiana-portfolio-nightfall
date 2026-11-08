@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import Frame from '../../components/Frame.astro';
 import LiveComponents from '../../components/LiveComponents.astro';
 import CaseThinking from '../../components/CaseThinking.astro';
+import CaseSpotlight from '../../components/CaseSpotlight.astro';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -144,6 +145,9 @@ const drawings = d.drawings.map((dr) => ({
       </section>
     )
   }
+
+  <!-- optional zoom-in on one piece of craft -->
+  {d.spotlight && <CaseSpotlight spotlight={d.spotlight} />}
 
   <!-- the visible reasoning layer -->
   {d.process && <CaseThinking process={d.process} />}

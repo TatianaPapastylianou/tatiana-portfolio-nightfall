@@ -87,6 +87,18 @@ const cases = defineCollection({
     drawings: z.array(drawing).default([]),
     // the visible reasoning layer (problem → questions → hypotheses → path → trade-off → measure)
     process,
+    // optional zoom-in on one piece of craft inside the case (e.g. a single lesson type):
+    // short steps first, then framed artefacts and shipped screens, then one closing line
+    spotlight: z
+      .object({
+        kicker: z.string(),
+        title: z.string(),
+        intro: z.string(),
+        steps: z.array(z.object({ step: z.string(), body: z.string() })).default([]),
+        exhibits: z.array(exhibit).default([]),
+        outcome: z.string().optional(),
+      })
+      .optional(),
   }),
 });
 

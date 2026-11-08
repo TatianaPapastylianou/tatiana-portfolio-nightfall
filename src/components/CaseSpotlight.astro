@@ -1,0 +1,218 @@
+---
+/**
+ * CaseSpotlight — a zoom-in on one piece of craft inside a case study.
+ * Reads top to bottom: the problem and decision as short numbered steps,
+ * then the framed artefacts and shipped screens, then one closing line.
+ */
+import Frame from './Frame.astro';
+
+interface Exhibit {
+  src: string;
+  alt: string;
+  kicker: string;
+  caption: string;
+  status?: 'shipped' | 'explored';
+  orient?: 'portrait' | 'landscape';
+  size?: 'lg' | 'md' | 'sm';
+  tilt?: number;
+  fit?: 'contain' | 'top';
+}
+interface Props {
+  spotlight: {
+    kicker: string;
+    title: string;
+    intro: string;
+    steps: { step: string; body: string }[];
+    exhibits: Exhibit[];
+    outcome?: string;
+  };
+}
+const { spotlight: s } = Astro.props;
+---
+
+<section class="spotlight" aria-labelledby="spotlight-title">
+  <div class="container">
+    <div class="spot-head reveal">
+      <p class="kicker">{s.kicker}</p>
+      <h2 id="spotlight-title" class="spot-title">{s.title}</h2>
+      <p class="spot-intro">{s.intro}</p>
+    </div>
+
+    {
+      s.steps.length > 0 && (
+        <ol class="spot-steps" data-stagger>
+          {s.steps.map((st, i) => (
+            <li class="spot-step reveal">
+              <span class="spot-index" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span class="spot-name">{st.step}</span>
+              <p class="spot-body">{st.body}</p>
+            </li>
+          ))}
+        </ol>
+      )
+    }
+
+    <div class="spot-exhibits">
+      {
+        s.exhibits.map((ex, i) => (
+          <figure class:list={['spot-row', { alt: i % 2 === 1 }]}>
+            <div class="reveal">
+              <Frame
+                src={ex.src}
+                alt={ex.alt}
+                orient={ex.orient ?? 'portrait'}
+                fit={ex.fit}
+                size={ex.size ?? 'md'}
+                tilt={ex.tilt ?? 0}
+              />
+            </div>
+            <figcaption class="spot-note reveal">
+              {ex.status && (
+                <span class:list={['spot-status', `spot-status--${ex.status}`]}>
+                  {ex.status === 'shipped' ? 'Shipped — live' : 'Explored — not shipped'}
+                </span>
+              )}
+              <p class="kicker">{ex.kicker}</p>
+              <p class="spot-caption">{ex.caption}</p>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+
+    {s.outcome && <p class="spot-outcome reveal">{s.outcome}</p>}
+  </div>
+</section>
+
+<style>
+  .spotlight {
+    padding-block: var(--space-xl) var(--space-2xl);
+    border-top: 1px solid var(--line);
+  }
+  .spot-head {
+    max-width: 58ch;
+  }
+  .spot-title {
+    font-size: var(--step-3);
+    margin-top: 0.3rem;
+  }
+  .spot-intro {
+    margin-top: var(--space-s);
+    color: var(--body);
+  }
+
+  /* numbered steps */
+  .spot-steps {
+    list-style: none;
+    padding: 0;
+    margin-top: var(--space-l);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .spot-step {
+    background: var(--card);
+    padding: clamp(1.4rem, 2.4vw, 2.1rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .spot-index {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    color: var(--gold-deep);
+    letter-spacing: 0.1em;
+  }
+  .spot-name {
+    font-family: var(--serif);
+    font-size: var(--step-2);
+    color: var(--head);
+  }
+  .spot-body {
+    color: var(--body);
+    font-size: var(--step--1);
+    line-height: 1.6;
+  }
+  @media (max-width: 900px) {
+    .spot-steps {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* framed exhibits (same treatment as the case exhibits) */
+  .spot-exhibits {
+    margin-top: var(--space-l);
+  }
+  .spot-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) 0.85fr;
+    gap: clamp(1.5rem, 5vw, 4rem);
+    align-items: center;
+    margin: 0;
+    padding-block: var(--space-l);
+    border-top: 1px solid var(--line);
+  }
+  .spot-row.alt {
+    direction: rtl;
+  }
+  .spot-row.alt > * {
+    direction: ltr;
+  }
+  .spot-note {
+    max-width: 42ch;
+  }
+  .spot-note .kicker {
+    color: var(--gold-deep);
+  }
+  .spot-caption {
+    margin-top: 0.7rem;
+    font-size: var(--step-0);
+    color: var(--body);
+    line-height: 1.55;
+  }
+  .spot-status {
+    display: inline-block;
+    margin-bottom: 0.7rem;
+    padding: 0.28em 0.7em;
+    border-radius: 100px;
+    font-family: var(--sans);
+    font-size: var(--step--1);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--line);
+  }
+  .spot-status--shipped {
+    color: var(--head);
+    background: var(--paper-2);
+    border-color: var(--gold-deep);
+  }
+  .spot-status--explored {
+    color: var(--dim);
+    background: transparent;
+    border-style: dashed;
+  }
+  @media (max-width: 820px) {
+    .spot-row,
+    .spot-row.alt {
+      grid-template-columns: 1fr;
+      direction: ltr;
+    }
+  }
+
+  .spot-outcome {
+    margin-top: var(--space-m);
+    padding-top: var(--space-l);
+    border-top: 1px solid var(--line);
+    max-width: 62ch;
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    line-height: 1.45;
+    color: var(--head);
+  }
+</style>

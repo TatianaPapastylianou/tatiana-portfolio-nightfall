@@ -82,6 +82,51 @@ exhibits:
     size: "lg"
     fit: "top"
     tilt: -1.2
+spotlight:
+  kicker: "Zoom in · One lesson type"
+  title: "Teaching column operations"
+  intro: "From the whole product down to one lesson type: how a dense method became steps a learner can follow."
+  steps:
+    - step: "Problem"
+      body: "The column method in the maths material is rigorous but dense. On a small screen a learner sees a wall of digits and carries, and gives up before the logic lands."
+    - step: "Decision"
+      body: "Teach it the way a patient tutor would. One column at a time, the carry appears exactly when it happens, and nothing is on screen that the next move doesn't need."
+    - step: "Craft"
+      body: "Digits sit on a strict grid. One functional accent marks the cell that just changed. Every edge case has a rule: digit limits, carries, decimals, remainders, and what scrolls when an equation is too tall."
+  exhibits:
+    - src: "/cases/math-column-ops-research.jpg"
+      alt: "Handwritten working on squared paper: a long division with two decimals, used to define the lesson rules"
+      kicker: "The rules first"
+      caption: "The rules a learner never sees: digit limits, when the carry appears, how a too-tall equation scrolls, decimals and remainders. Worked out on paper before any screen."
+      orient: "portrait"
+      size: "md"
+      fit: "top"
+      tilt: 1
+    - src: "/cases/math-column-ops-system.jpg"
+      alt: "The column operations design board: multiplication and division, editor and learner views, and a toolbox for every cell"
+      kicker: "One system for every lesson"
+      caption: "One board holds the whole method: multiplication and division, the editor view beside the learner view, and a toolbox for every cell. Editors can build any lesson the same way."
+      orient: "landscape"
+      size: "lg"
+      fit: "top"
+      tilt: -0.8
+    - src: "/cases/math-column-ops-learner.png"
+      alt: "The shipped learner screen: 57 times 9 in columns, the carry 6 above the tens, answer cells and a number keypad"
+      kicker: "What the learner sees"
+      status: "shipped"
+      caption: "One column at a time. The carry sits above the digit it belongs to, the keypad moves between cells, and a hint is one tap away."
+      orient: "landscape"
+      size: "lg"
+      tilt: 0.8
+    - src: "/cases/math-column-ops-editor.png"
+      alt: "The shipped editor view in the Generator: 54 plus 23 lined up in columns with cells and a number keypad"
+      kicker: "What the editor sees"
+      status: "shipped"
+      caption: "The same kind of exercise in the Generator, the slide editor where lessons are built. Editors line up the numbers and set which cells the learner fills in."
+      orient: "landscape"
+      size: "lg"
+      tilt: -1
+  outcome: "Live in Akelius Education on web, Android and iOS. The rules are built into the Generator, so editors make new column operations lessons from the same system. I have no usage numbers for these lessons, so I don't claim any."
 process:
   lens: "The question was never whose idea wins. It was how to turn three conflicting directions into one product a learner can use."
   map: "stakeholders"
@@ -209,4 +254,5 @@ What this case shows: I can hold a founder, a board member, a content team and a
 - Dated Figma trail with founder, founder + board, math team and design team versions, each with mobile
 - Handoff section: variables, components and pages (home, lesson search, lesson page, progress)
 - Supporting work: concept flows, hierarchical search, curriculum view, math icons
+- Column operations lessons: rules on paper, the system board, and the shipped learner and editor views
 - Live product: Akelius Education on web, Android and iOS
