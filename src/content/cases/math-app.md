@@ -103,9 +103,9 @@ spotlight:
       fit: "top"
       tilt: 1
     - src: "/cases/math-column-ops-system.jpg"
-      alt: "The column operations design board: multiplication and division, editor and learner views, and a toolbox for every cell"
-      kicker: "One system for every lesson"
-      caption: "One board holds the whole method: multiplication and division, the editor view beside the learner view, and a toolbox for every cell. Editors can build any lesson the same way."
+      alt: "The developer flow for column operations: how multiplication and division work, look and behave for editors and for learners"
+      kicker: "The flow for developers"
+      caption: "A complete flow for developers: how column multiplication and division should work, look and behave, for the editor who builds the lesson and for the learner who solves it. Every cell has its toolbox and its rules, so any lesson is built the same way."
       orient: "landscape"
       size: "lg"
       fit: "top"
