@@ -17,6 +17,23 @@ hero:
   alt: "23 small app tiles converging into 4 products: Customer Management, Maintenance, My Pages and Investment"
   orient: "landscape"
   caption: "23 apps and services became 4 products. Two were shut down, and one stayed a separate tool for managers."
+exhibits:
+  - src: "/cases/realestate-hub-phase1.jpg"
+    alt: "Phase one hub app on mobile: Inspection, Inventory, Letting and Case management as four cards, with a shared task list below"
+    kicker: "Phase one · the hub app"
+    status: "shipped"
+    caption: "Four apps behind one entry point, with shared tasks underneath. Staff had one place to start before any app was merged."
+    orient: "portrait"
+    size: "md"
+    tilt: -1
+  - src: "/cases/realestate-mypages-request.jpg"
+    alt: "My Pages request detail: description, photos, comments with support, and the tenant's answers to access questions"
+    kicker: "My Pages · a tenant request"
+    status: "shipped"
+    caption: "The tenant adds photos and answers access questions up front, like permission to enter or pets. The technician gets what they need without calling back. Shown with demo data."
+    orient: "portrait"
+    size: "md"
+    tilt: 1
 drawings:
   - src: "/cases/realestate-before.svg"
     kicker: "Before · the map that changed the brief"
