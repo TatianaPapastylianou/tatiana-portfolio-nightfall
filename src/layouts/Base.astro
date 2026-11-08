@@ -64,6 +64,11 @@ const ogImage = new URL('/og-image.jpg', Astro.site);
     <!-- swap the no-js class as early as possible to avoid a flash -->
     <script is:inline>
       document.documentElement.classList.remove('no-js');
+      // the home loader plays once per session; hide it from the first paint after that
+      try {
+        if (sessionStorage.getItem('tp-loader-seen') === '1')
+          document.documentElement.classList.add('loader-seen');
+      } catch (_) {}
     </script>
   </head>
   <body class={dark ? 'dark' : ''}>
@@ -95,29 +100,35 @@ const ogImage = new URL('/og-image.jpg', Astro.site);
         window.__booted = true;
         if (!loader) return;
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (reduce || !firstEver) {
+        // play once per browser session: a reload or a return visit in the same tab session skips it
+        let seen = false;
+        try {
+          seen = sessionStorage.getItem('tp-loader-seen') === '1';
+          sessionStorage.setItem('tp-loader-seen', '1');
+        } catch (_) {}
+        if (reduce || !firstEver || seen) {
           document.documentElement.style.removeProperty('overflow');
           loader.remove();
           return;
         }
-        // cinematic play on the very first full load (skippable)
+        // cinematic play on the first full load of the session (~1s, skippable)
         const finish = () => {
           loader.classList.add('is-done');
           document.documentElement.style.removeProperty('overflow');
-          window.setTimeout(() => loader.remove(), 650);
+          window.setTimeout(() => loader.remove(), 400);
         };
         document.documentElement.style.overflow = 'hidden';
         const count = loader.querySelector('[data-count]');
         const skip = loader.querySelector('[data-skip]');
         let n = 0;
         const iv = window.setInterval(() => {
-          n = Math.min(100, n + Math.round(2 + Math.random() * 4.5));
+          n = Math.min(100, n + Math.round(4 + Math.random() * 4));
           if (count) count.textContent = String(n);
           if (n >= 100) {
             window.clearInterval(iv);
-            window.setTimeout(finish, 280);
+            window.setTimeout(finish, 150);
           }
-        }, 58);
+        }, 40);
         skip &&
           skip.addEventListener('click', () => {
             window.clearInterval(iv);

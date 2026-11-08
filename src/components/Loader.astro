@@ -2,13 +2,15 @@
 /**
  * Loader — the cinematic preloader (home only). A dark burgundy field, a live %
  * counter, and three case screens hanging up into gold frames, then it resolves
- * into the warm-paper gallery. ≤2s, skippable, plays on every home-page load, and
- * fully skipped for prefers-reduced-motion (composed light gallery shows immediately).
+ * into the warm-paper gallery. About 1s, skippable, plays once per browser session
+ * (first home-page load), and fully skipped for prefers-reduced-motion.
+ * Images are small WebP copies in /public/loader (77 KB total) so the loader never
+ * waits on the full-size case screenshots.
  */
 const shots = [
-  { src: '/cases/ds-overview.jpg', tilt: -2, orient: 'portrait' },
-  { src: '/cases/math-final-lesson.jpg', tilt: 1.4, orient: 'landscape' },
-  { src: '/cases/unified-path-language.jpg', tilt: -1, orient: 'portrait' },
+  { src: '/loader/ds-overview.webp', tilt: -2, orient: 'portrait' },
+  { src: '/loader/math-final-lesson.webp', tilt: 1.4, orient: 'landscape' },
+  { src: '/loader/unified-path-language.webp', tilt: -1, orient: 'portrait' },
 ];
 ---
 
@@ -25,8 +27,8 @@ const shots = [
             <img
               class="lf-fr"
               src={s.orient === 'landscape'
-                ? '/frames/frame-cut-web-landscape.png'
-                : '/frames/frame-cut-web.png'}
+                ? '/loader/frame-landscape.webp'
+                : '/loader/frame-portrait.webp'}
               alt=""
             />
           </div>
@@ -55,8 +57,8 @@ const shots = [
       linear-gradient(180deg, var(--burgundy) 0%, var(--char) 100%);
     color: var(--on-dark);
     transition:
-      opacity 0.6s var(--ease-out),
-      visibility 0.6s var(--ease-out);
+      opacity 0.35s var(--ease-out),
+      visibility 0.35s var(--ease-out);
   }
   .loader.is-done {
     opacity: 0;
@@ -89,8 +91,8 @@ const shots = [
     position: relative;
     width: clamp(78px, 15vw, 150px);
     transform-origin: top center;
-    animation: lf-hang 0.7s var(--ease-out) both;
-    animation-delay: calc(var(--i) * 0.16s);
+    animation: lf-hang 0.45s var(--ease-out) both;
+    animation-delay: calc(var(--i) * 0.08s);
   }
   /* a landscape mini-frame (wider frame + rotated window rect) */
   .lf.land {
@@ -118,8 +120,8 @@ const shots = [
     object-fit: cover;
     opacity: 0;
     transform: translateY(40%);
-    animation: lf-slide 0.6s var(--ease-out) both;
-    animation-delay: calc(0.2s + var(--i) * 0.16s);
+    animation: lf-slide 0.4s var(--ease-out) both;
+    animation-delay: calc(0.1s + var(--i) * 0.08s);
   }
   .lf-fr {
     position: relative;
@@ -179,6 +181,10 @@ const shots = [
   .loader-skip:hover {
     background: var(--on-dark);
     color: var(--char);
+  }
+
+  :global(html.loader-seen) .loader {
+    display: none;
   }
 
   @media (prefers-reduced-motion: reduce) {
