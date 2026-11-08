@@ -31,7 +31,7 @@ const children = [
 
   h2('Summary'),
   ...[
-    'I design complex B2B products and the design systems that hold them together.',
+    'I design complex B2B and consumer products, and the design systems that hold them together.',
     'At Akelius I turned a brief to merge 3 apps into a consolidation of 23 real estate apps into 4 products, used daily by about 200 staff in 7 countries.',
     'Since 2025 I have built 2 learning products from scratch and merged 3 apps into one, Akelius Education, live since October 2026.',
     'Information architecture is my strongest skill. I work close to engineering on tokens, specs and handoff, and I build AI skills that automate design review.',
