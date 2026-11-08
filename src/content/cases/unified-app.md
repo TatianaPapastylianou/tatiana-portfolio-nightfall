@@ -1,12 +1,12 @@
 ---
 number: "04"
-title: "Unifying two apps and rebuilding the classroom, tested before a line of code"
-role: "Product Designer"
-roleFull: "Product Designer driving the work, reviewed by the Head of Design"
-oneLiner: "Two separate apps, one new unified product, and a teacher experience rebuilt from scratch for web — de-risked with mobile and desktop prototypes so engineering could build it once, right."
-tag: "Product · in rollout"
-change: "Two apps and a broken classroom"
-impact: "one product, validated end-to-end before engineering"
+title: "Merging three apps into Akelius Education and rebuilding the classroom, tested before a line of code"
+role: "Senior Product Designer"
+roleFull: "Senior Product Designer driving the work, reviewed by the Head of Design"
+oneLiner: "Languages, Math and Vocational became one app, Akelius Education, live since October 2026. I also rebuilt the teacher experience for web and tested it in mobile and desktop prototypes before engineering started."
+tag: "Product · live 2026"
+change: "Three apps and a broken classroom"
+impact: "one app, live on web, Android and iOS"
 order: 4
 next:
   slug: "ai-skills"
@@ -15,7 +15,7 @@ hero:
   kind: "image"
   src: "/cases/unified-path-language.jpg"
   alt: "The unified learning-path 'mountain' screen — A1 to B2, word goals"
-  caption: "The signature screen of the unified product: one clean learning path (A1→B2), polished and shipping in staged rollout."
+  caption: "The signature screen of the unified product: one clean learning path (A1→B2), live in Akelius Education."
 exhibits:
   - src: "/cases/unified-path-merge.jpg"
     alt: "The learning path with course/language switcher and 'also available: math'"
@@ -59,7 +59,7 @@ exhibits:
 process:
   lens: "De-risking a large migration in a clickable prototype — so engineering builds it once, correctly, instead of discovering the gaps in code."
   map: "derisk"
-  briefed: "Merge the Languages and Math apps into one product, and move the teacher Classroom — which lived inside the Languages app, mobile-only — onto the web."
+  briefed: "Merge the Languages, Math and Vocational apps into one product, and move the teacher Classroom — which lived inside the Languages app, mobile-only — onto the web."
   reframe: "The split meant duplicated patterns and a fragmented journey, and the old Classroom had a real usability problem: teachers couldn't tell what to do. Rebuilding for web wasn't a reskin — it was a chance to fix the workflow at its root. And because a missed screen becomes expensive rebuild work, the job was as much de-risking as drawing screens."
   questions:
     - "What's actually broken in the old Classroom — the visuals, or the workflow teachers are forced to follow?"
@@ -90,9 +90,9 @@ process:
       move: "Per-breakpoint layouts, auto-layout + variables, DS-linked"
       why: "Engineered so developers can't misread it"
       outcome: "merged"
-    - tag: "Rollout"
-      move: "One product + a net-new web Classroom"
-      why: "Shipping step by step in a staged migration"
+    - tag: "Live"
+      move: "One app, Akelius Education"
+      why: "Live since October 2026 on web, Android and iOS"
       outcome: "shipped"
   tradeoff:
     chose: "Prototype-first — validate the whole thing end-to-end before engineering touches it"
@@ -103,24 +103,24 @@ process:
       value: "↑ directional"
       how: "After changing the path-page view we saw more users in the app — I don't have exact numbers, so I'd define the metric, baseline it, and isolate the change before claiming causation."
     - metric: "Teacher task success"
-      how: "The success measure is ‘teachers are no longer lost.’ I'd formalise it as task-completion rate on class creation, QR connection and reading reports, tested at each rollout step."
+      how: "The success measure is ‘teachers are no longer lost.’ I'd formalise it as task-completion rate on class creation, QR connection and reading reports, tested after each release."
     - metric: "Prototype gap-catch rate"
-      how: "I'd log gaps caught in prototype versus in production across the rollout — the clearest proof the de-risking pays for itself."
+      how: "I'd log gaps caught in prototype versus in production after launch — the clearest proof the de-risking pays for itself."
 ---
 
 ## Snapshot
 
 | | |
 |---|---|
-| **Role** | Product Designer driving the work, reviewed by the Head of Design |
-| **Scope** | Merge the Akelius **Languages** and **Math** apps into one educational product; redesign the teacher **Classroom** from scratch for web |
+| **Role** | Senior Product Designer driving the work, reviewed by the Head of Design |
+| **Scope** | Merge the Akelius **Languages**, **Math** and **Vocational** apps into one app, **Akelius Education**; redesign the teacher **Classroom** from scratch for web |
 | **Platforms** | iOS, Android, and Web — designed per breakpoint |
-| **Status** | In active, staged rollout (a long-horizon migration, shipping step by step) |
+| **Status** | Akelius Education live since October 2026 on web, Android and iOS |
 | **Method** | Prototype-first: full mobile + desktop prototypes and user-flow testing *before* handoff |
 
 ## The problem
 
-Akelius had **two separate apps** — Languages and Math — and the teacher **Classroom** lived as an option *inside* the Languages app. That split meant duplicated patterns, a fragmented learner journey, and a Classroom that only really existed on mobile. The goal was to converge everything into **one educational app**, and — critically — to **build the Classroom on web for the first time**, from scratch.
+Akelius had **separate apps** for Languages, Math and Vocational, and the teacher **Classroom** lived as an option *inside* the Languages app. That split meant duplicated patterns, a fragmented learner journey, and a Classroom that only really existed on mobile. The goal was to converge everything into **one educational app**, and — critically — to **build the Classroom on web for the first time**, from scratch.
 
 The old Classroom had a real usability problem: **teachers couldn't tell what to do.** Creating classes and students, using QR codes, managing connections between teacher and learner — the flow left teachers lost. Rebuilding it for web wasn't a reskin; it was a chance to fix the workflow at its root.
 
@@ -167,7 +167,7 @@ This is the direct payoff of Case 02, the design system: because the design syst
 
 ## Outcome — honestly stated
 
-The unified app is **in staged rollout** — a large migration we're doing step by step toward the final vision, so the honest status is "in progress, over a long horizon," not "done."
+The merged app, **Akelius Education, has been live since October 2026** on web, Android and iOS. It shipped in stages, one step at a time.
 
 There's one early, soft signal I'll frame carefully: after we **changed the path-page view**, we saw **more users in the app**. I don't have the exact numbers, so I won't dress it up — it's a directional indicator, not a measured result. If asked in an interview, I'd say precisely that, and describe how I'd instrument it properly (define the metric, baseline it, isolate the change).
 
@@ -176,7 +176,7 @@ The real, defensible win is the method: **a merge and a from-scratch web Classro
 ## What I'd do next
 
 - **Instrument the path-page change** to turn the "more users" signal into a real before/after number.
-- **Continue teacher usability testing** through the staged rollout, so each shipped step is validated, not assumed.
+- **Continue teacher usability testing** after launch, so each release is validated, not assumed.
 
 ### Evidence captured
 
