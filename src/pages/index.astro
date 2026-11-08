@@ -49,9 +49,9 @@ const gallery = cases.map((c) => {
 });
 
 const impact = [
-  { stat: '3', label: 'platforms — web, iOS, Android — on one token system' },
-  { stat: '24', label: 'core web component families designed & maintained' },
-  { stat: 'Live', label: 'shipped free & worldwide — akelius.education' },
+  { stat: '23 → 4', label: 'real estate apps consolidated into 4 products, used daily by about 200 staff' },
+  { stat: '3 → 1', label: 'learning apps merged into Akelius Education, live on web, Android and iOS' },
+  { stat: '24', label: 'core component families shared by web and Android, plus an iOS set' },
 ];
 
 // "Shipped & published" proof — the instant credibility a recruiter needs in the
@@ -61,7 +61,7 @@ const proof = [
   {
     kind: 'Live product',
     name: 'Akelius Education',
-    line: 'Shipped free, worldwide',
+    line: 'Free · web, Android and iOS',
     href: 'https://akelius.education/',
     live: true,
   },
@@ -120,7 +120,7 @@ const manifestoWords = manifesto.split(' ');
         <a class="btn reveal hero-cta" href="#work">Walk the gallery <span aria-hidden="true">→</span></a>
 
         <ul class="hero-chips reveal" aria-label="At a glance">
-          <li>Shipped a live global product</li>
+          <li>Akelius Education · live</li>
           <li>Design system · web · iOS · Android</li>
           <li>3 App Store apps</li>
           <li>Published author</li>
@@ -135,7 +135,7 @@ const manifestoWords = manifesto.split(' ');
         </div>
         <figcaption class="hero-plaque">
           <span class="hero-plaque-t">The design system — real components, not screenshots</span>
-          <span class="hero-plaque-s">01 · Design lead · Akelius</span>
+          <span class="hero-plaque-s">Design system · Akelius Education</span>
         </figcaption>
       </figure>
     </div>
@@ -595,6 +595,7 @@ const manifestoWords = manifesto.split(' ');
     gap: 0.4rem;
   }
   .impact-stat {
+    white-space: nowrap;
     font-family: var(--serif);
     font-size: var(--step-4);
     line-height: 1;

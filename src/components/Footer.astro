@@ -50,12 +50,23 @@ const linkedin = 'https://www.linkedin.com/in/tatiana-papastylianou-8b67a5193/';
     justify-content: space-between;
   }
 
+  .footer-lead {
+    min-width: 0;
+    max-width: 100%;
+  }
   .footer-mail {
     display: inline-block;
+    max-width: 100%;
+    overflow-wrap: anywhere;
     margin-top: 0.6rem;
     font-family: var(--serif);
     font-size: var(--step-2);
     color: var(--head);
+  }
+  @media (max-width: 480px) {
+    .footer-mail {
+      font-size: var(--step-1);
+    }
   }
   .footer-mail:hover {
     opacity: 0.62;

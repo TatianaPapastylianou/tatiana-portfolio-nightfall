@@ -3,30 +3,31 @@ import Base from '../layouts/Base.astro';
 
 const linkedin = 'https://www.linkedin.com/in/tatiana-papastylianou-8b67a5193/';
 
-// Recommendations. Paste the real LinkedIn text into `quote` when ready — until then
-// each card links out to the recommendation rather than inventing words. Honest by default.
+// Recommendations: word-for-word from LinkedIn, with each person's real relationship to Tatiana.
+// The same three quotes as the CV. Do not paraphrase.
 const recommendations = [
   {
-    name: 'Andreas Wallén',
-    relation: 'CEO, Akelius Technology',
-    quote: 'One of the best hires. Drives tasks to a solution.',
+    name: 'Muhammad Suhaib',
+    relation: 'Designer who reported to me, Akelius Technology',
+    quote:
+      'Tatiana was my mentor and team lead at Akelius Technology. She is an extraordinary UX/UI designer and team leader.',
   },
   {
     name: 'Svenja Henrichs',
-    relation: 'Direct manager, Akelius Technology',
-    quote: 'Fast, motivated, excellent eye for design. Would gladly welcome her back.',
+    relation: 'My manager at Akelius Technology, who hired me',
+    quote: 'Though she’s no longer in my team, I would gladly welcome her back anytime.',
   },
   {
-    name: 'Hadi Kashlan',
-    relation: 'Senior engineer, Akelius Technology',
-    quote: 'Strategic thinker. Improves engagement and retention. Inspiring leader.',
+    name: 'Andreas Wallén',
+    relation: 'Former CEO, Akelius Technology',
+    quote: 'Tatiana is one of the best hires one can do.',
   },
 ];
 ---
 
 <Base
   title="About — Tatiana Papastylianou"
-  description="The person behind the work: an International-Relations-to-design path, a taste for rigorous systems, and a book — No Water, A Designer's Confession."
+  description="The person behind the work: from International Relations to product design, information architecture and design systems, and a book, No Water, A Designer's Confession."
   dark={true}
 >
   <!-- dark atmosphere hero -->
@@ -50,33 +51,35 @@ const recommendations = [
       <h2 id="bio-title" class="reveal bio-title">From International Relations to interfaces</h2>
       <div class="bio-body reveal">
         <p>
-          I didn’t arrive at product design by the straight road. I came to it from
-          <strong>International Relations</strong> — a training in reading people, power and
-          competing interests, and in finding the one account of a situation everyone in the
-          room can actually stand behind. It turns out that’s most of the job. A brief with
-          three stakeholders who can each overrule the others isn’t a design problem you draw
-          your way out of; it’s one you <em>negotiate</em> your way through, with the user as the
-          person not in the meeting.
+          I came to product design from <strong>International Relations</strong>, not a design
+          school.
         </p>
         <p>
-          What I bring to the craft is two things held together. One is
-          <strong>discipline</strong>: token systems, responsive matrices, handoffs engineered
-          so a developer can’t misread them — the unglamorous infrastructure that lets a team
-          move fast without breaking. The other is <strong>judgement about what to leave
-          out</strong>. This portfolio is built the way I think: the work hangs in gold frames,
-          legible and credible; the case is made by the decisions, not the pixels.
+          That training taught me to read people, power and competing interests. It turns out
+          that is most of the job.
         </p>
         <p>
-          The spine of the work travels past any one industry: <strong>complex, multi-stakeholder
-          B2B and enterprise systems</strong>, conversion, design systems at scale, and
-          de-risking engineering before it writes a line of code. Edtech is where I've proven it —
-          but the problem shape is the same wherever the stakes and the systems are real.
+          A brief with three stakeholders who can each overrule the others is not solved by
+          drawing. You <em>negotiate</em> through it, and you keep the user in mind as the person
+          not in the meeting.
         </p>
         <p>
-          I’m drawn to work that matters — I’ve spent years on education products meant to reach
-          learners for free, worldwide, including children whose schooling has been interrupted
-          by war. Design as a lifeline, not a decoration. That’s the standard I hold my own work
-          to.
+          My strongest skill is <strong>information architecture</strong>: making a large,
+          tangled system make sense to the people who use it.
+        </p>
+        <p>
+          At Akelius Technology I turned a brief to merge 3 real estate apps into a
+          consolidation of 23 apps into 4 products. Since 2025 I have built learning products
+          from scratch and merged three apps into one, Akelius Education.
+        </p>
+        <p>
+          I work close to engineering: <strong>tokens, specs and handoff</strong> that a
+          developer cannot misread. I also build AI skills that check designs against our
+          rules.
+        </p>
+        <p>
+          The education work matters to me. It is free, and it is built for refugee camps and
+          schools that have few teachers.
         </p>
       </div>
     </div>
@@ -99,7 +102,7 @@ const recommendations = [
         <p class="kicker">The book</p>
         <h2 id="book-title" class="book-title"><em>No Water</em><br />A Designer’s Confession</h2>
         <p class="book-line">
-          The true story of how I became a lead designer without a degree, without a map, and
+          The true story of how I became a lead designer without a design degree, without a map, and
           without the things I thought I needed — thirty-three chapters of projects I shipped and
           decisions I still turn over, each closed by field notes on the craft. The most personal
           thing in this collection.
@@ -108,7 +111,7 @@ const recommendations = [
           <a class="book-cta" href="https://no-water-book.netlify.app/" target="_blank" rel="noopener"
             >Read the first 25 pages ↗</a
           >
-          <span class="book-avail">339 pages · EN · RU · Chinese edition coming soon</span>
+          <span class="book-avail">339 pages · English and Russian</span>
         </p>
       </div>
     </div>
