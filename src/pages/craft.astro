@@ -334,6 +334,25 @@ const pieces = [
     display: flex;
     flex-direction: column;
   }
+  /* fallback: push the link to the bottom of each card */
+  .piece-cta {
+    margin-top: auto;
+  }
+  /* align frame, kicker, name, text and link rows across the cards in a row */
+  @supports (grid-template-rows: subgrid) {
+    .piece {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 5;
+      row-gap: 0;
+    }
+    .piece-kind {
+      align-self: end;
+    }
+    .piece-cta {
+      align-self: start;
+    }
+  }
   .piece-kind {
     margin-top: var(--space-m);
     color: var(--gold-deep);
@@ -351,13 +370,13 @@ const pieces = [
   }
   .piece-line {
     margin-top: 0.6rem;
+    margin-bottom: 0.7rem;
     color: var(--body);
     font-size: var(--step--1);
     line-height: 1.6;
   }
   .piece-cta {
     display: inline-block;
-    margin-top: 0.7rem;
     font-size: var(--step--1);
     letter-spacing: 0.06em;
     text-transform: uppercase;
