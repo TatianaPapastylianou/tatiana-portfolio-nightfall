@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Frame from '../components/Frame.astro';
-import LiveComponents from '../components/LiveComponents.astro';
 
 const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
 
@@ -13,9 +12,9 @@ const bandTilts = [-0.8, 0.7, -0.5];
 // landing-page-only band overrides (leave the case pages on their own screens)
 const landingBand: Record<string, { src: string; alt: string; orient: 'portrait' | 'landscape' }[]> = {
   'real-estate': [
-    { src: '/cases/realestate-hero.svg', alt: '23 apps and services consolidated into 4 products', orient: 'landscape' },
     { src: '/cases/realestate-before.svg', alt: 'Before: 23 apps grouped by tenancy stage, with data copied between them', orient: 'landscape' },
     { src: '/cases/realestate-after.svg', alt: 'After: 4 products along one tenancy', orient: 'landscape' },
+    { src: '/cases/realestate-roles.svg', alt: 'Switch roles, not apps: one Customer Management for letting and property managers', orient: 'landscape' },
   ],
   'math-app': [
     { src: '/cases/math-home-1.jpg', alt: 'Akelius Education — numbers up to 1000, grade progress', orient: 'landscape' },
@@ -59,13 +58,6 @@ const impact = [
 // Gold stays on frames only; these are quiet ink plaques that each link out.
 const proof = [
   {
-    kind: 'Live product',
-    name: 'Akelius Education',
-    line: 'Free · web, Android and iOS',
-    href: 'https://akelius.education/',
-    live: true,
-  },
-  {
     kind: 'iOS · App Store · 2026',
     name: 'Ludos',
     line: '20 mini-games, one app',
@@ -96,105 +88,58 @@ const proof = [
   },
 ];
 
-// the manifesto statement — revealed word-by-word on scroll ("read" as you go)
-const manifesto =
-  'A portfolio in 2026 sells judgement, not screens. Lead with the problem, the constraint, the choice, the consequence. The screens are only evidence.';
-const manifestoWords = manifesto.split(' ');
 ---
 
-<Base title="Tatiana Papastylianou — Senior Product Designer" loader={true}>
-  <!-- hero: name + manifesto line, live-component frame -->
+<Base
+  title="Tatiana Papastylianou · Senior Product Designer · Complex products and design systems"
+  description="Senior Product Designer. I turn sprawling internal tools and multi-app products into clear systems: 23 real estate apps into 4 products, 3 learning apps into 1, one design system across web, iOS and Android."
+  loader={true}
+>
+  <!-- hero: who, what, proof -->
   <header class="hero">
     <div class="container hero-grid">
       <div class="hero-copy" data-stagger>
-        <p class="kicker reveal">Senior Product Designer</p>
+        <p class="kicker reveal">Senior Product Designer · Design Lead</p>
         <h1 class="hero-name reveal">Tatiana<br />Papastylianou</h1>
         <p class="hero-statement reveal">
-          I build the systems behind serious products — and keep the work legible enough to
-          trust.
+          I turn sprawling products into clear systems. Complex internal tools, multi-app
+          merges and the design systems that hold them together.
         </p>
         <p class="hero-manifesto reveal">
-          A portfolio sells <span class="accent">judgement</span>, not screens.
-          <cite>— No Water, a designer's confession</cite>
+          Five years at Akelius, across real estate tools for staff in seven countries and free
+          learning apps on web, Android and iOS.
         </p>
-        <a class="btn reveal hero-cta" href="#work">Walk the gallery <span aria-hidden="true">→</span></a>
+        <a class="btn reveal hero-cta" href="#work">See the work <span aria-hidden="true">→</span></a>
 
         <ul class="hero-chips reveal" aria-label="At a glance">
-          <li>Akelius Education · live</li>
-          <li>Design system · web · iOS · Android</li>
-          <li>3 App Store apps</li>
-          <li>Published author</li>
+          <li>Information architecture</li>
+          <li>Design systems · web · iOS · Android</li>
+          <li>B2B and consumer</li>
+          <li>Designs and codes in SwiftUI</li>
         </ul>
       </div>
 
       <figure class="hero-frame reveal" data-parallax-scope>
         <div class="hero-frame-art" data-parallax="0.035">
-          <Frame size="lg" tilt={-0.6} mat={false} live eager>
-            <LiveComponents />
-          </Frame>
+          <Frame
+            src="/cases/realestate-hero.svg"
+            alt="23 apps and services consolidated into 4 products"
+            orient="landscape"
+            size="lg"
+            tilt={-0.6}
+            href="/work/real-estate"
+            label="View case →"
+            view
+            eager
+          />
         </div>
         <figcaption class="hero-plaque">
-          <span class="hero-plaque-t">The design system — real components, not screenshots</span>
-          <span class="hero-plaque-s">Design system · Akelius Education</span>
+          <span class="hero-plaque-t">23 real estate apps, rebuilt as 4 products</span>
+          <span class="hero-plaque-s">Case 01 · Akelius Technology</span>
         </figcaption>
       </figure>
     </div>
   </header>
-
-  <!-- shipped & published: instant proof, high on the page -->
-  <section class="section proof" aria-labelledby="proof-title">
-    <div class="container">
-      <div class="proof-head reveal">
-        <p class="kicker">Shipped &amp; in the world</p>
-        <h2 id="proof-title" class="proof-title">Not just mockups — things real people use.</h2>
-        <p class="proof-sub">
-          A live global learning product, three apps on the App Store, and a book in print —
-          designed and shipped, not just pitched.
-        </p>
-      </div>
-      <ul class="proof-grid" data-stagger>
-        {
-          proof.map((p) => (
-            <li class="proof-item reveal">
-              <a class="proof-link" href={p.href} target="_blank" rel="noopener">
-                <span class:list={['proof-mark', { 'is-book': p.book, 'is-live': p.live }]}>
-                  {p.icon ? (
-                    <img src={p.icon} alt="" loading="lazy" />
-                  ) : (
-                    <span class="proof-livedot" aria-hidden="true" />
-                  )}
-                </span>
-                <span class="proof-body">
-                  <span class="proof-kind">{p.kind}</span>
-                  <span class="proof-name">{p.name}</span>
-                  <span class="proof-line">{p.line}</span>
-                </span>
-                <span class="proof-go" aria-hidden="true">↗</span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
-
-  <!-- manifesto statement — a cinematic pause -->
-  <section class="section manifesto" aria-label="Statement">
-    <div class="container manifesto-inner">
-      <p class="kicker reveal">The standard</p>
-      <p class="manifesto-line reveal" aria-label={manifesto}>
-        {
-          manifestoWords.map((w) => (
-            <>
-              {/* prettier-ignore */}
-              <span class:list={['mword', { accent: w.replace(/[.,]/g, '') === 'judgement' }]} aria-hidden="true">{w}</span>{' '}
-            </>
-          ))
-        }
-      </p>
-      <p class="manifesto-cite reveal">Adapted from my book, <em>No Water — A Designer's Confession</em></p>
-    </div>
-  </section>
 
   <!-- selected impact -->
   <section class="section impact" aria-label="Selected impact">
@@ -217,8 +162,8 @@ const manifestoWords = manifesto.split(' ');
   <section class="section work" id="work">
     <div class="container">
       <header class="work-head reveal">
-        <p class="kicker">Selected work · <span class="num">five rooms</span></p>
-        <h2 class="work-title">The collection</h2>
+        <p class="kicker">Selected work · <span class="num">five case studies</span></p>
+        <h2 class="work-title">Case studies</h2>
       </header>
 
       <div class="gallery">
@@ -270,21 +215,43 @@ const manifestoWords = manifesto.split(' ');
     </div>
   </section>
 
-  <!-- craft teaser -->
-  <section class="section craft-teaser">
-    <div class="container craft-inner reveal">
-      <div>
-        <p class="kicker">Beyond the main hall</p>
-        <h2 class="craft-title">Side projects</h2>
-        <p class="craft-copy">
-          Three iOS apps I designed and built in SwiftUI, live on the App Store, including
-          <em>Ludos</em>, 20 mini-games with a world built for designers. And a book,
-          <em>No Water, A Designer's Confession</em>.
+  <!-- also shipped: side projects, after the work -->
+  <section class="section proof" aria-labelledby="proof-title">
+    <div class="container">
+      <div class="proof-head reveal">
+        <p class="kicker">Also shipped</p>
+        <h2 id="proof-title" class="proof-title">Side projects I designed and built</h2>
+        <p class="proof-sub">
+          Three iOS apps, designed and coded in SwiftUI and live on the App Store, and a book.
+          <a class="textlink" href="/craft">See side projects <span aria-hidden="true">→</span></a>
         </p>
       </div>
-      <a class="btn" href="/craft">See side projects</a>
+      <ul class="proof-grid" data-stagger>
+        {
+          proof.map((p) => (
+            <li class="proof-item reveal">
+              <a class="proof-link" href={p.href} target="_blank" rel="noopener">
+                <span class:list={['proof-mark', { 'is-book': p.book, 'is-live': p.live }]}>
+                  {p.icon ? (
+                    <img src={p.icon} alt="" loading="lazy" />
+                  ) : (
+                    <span class="proof-livedot" aria-hidden="true" />
+                  )}
+                </span>
+                <span class="proof-body">
+                  <span class="proof-kind">{p.kind}</span>
+                  <span class="proof-name">{p.name}</span>
+                  <span class="proof-line">{p.line}</span>
+                </span>
+                <span class="proof-go" aria-hidden="true">↗</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </section>
+
 </Base>
 
 <style>

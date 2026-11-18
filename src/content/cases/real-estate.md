@@ -113,14 +113,6 @@ process:
 | **Markets** | Sweden, Germany, UK, France, Canada, US, Cyprus |
 | **Platforms** | Web, mobile friendly for field staff |
 
-## Summary
-
-I was asked to merge three apps.
-
-I mapped all 23 and proposed a bigger change: rebuild the suite around the tenancy and around who does each job.
-
-We shipped it in stages over two years. 23 apps became 4 products, two were shut down, and one stayed a separate tool for managers.
-
 ## One tenancy meant jumping between apps
 
 Letting, inspection, repairs and rent each lived in a separate app.
@@ -129,16 +121,6 @@ Letting, inspection, repairs and rent each lived in a separate app.
 - Apps sent data to each other instead of sharing it, so records drifted out of sync.
 - Each dev team owned several apps and couldn't tell what to fix first.
 - Selling 23 apps to other property companies looked complicated.
-
-## The brief was three apps, the problem was all 23
-
-Before designing anything, I mapped every app and service.
-
-For each one I noted who uses it, which job it does, what data it owns and where that data goes.
-
-The map showed two things. Apps followed departments, not the people doing the work. And several apps did overlapping jobs, each with its own copy of the same data.
-
-So I proposed organising the suite by tenancy stage and by role: property managers, letting managers, technicians, tenants and the investment team.
 
 ## Five decisions that shaped it
 
@@ -151,18 +133,6 @@ So I proposed organising the suite by tenancy stage and by role: property manage
 **4. Tenants reach technicians directly.** A request in My Pages goes to the maintenance app. The tenant answers access questions up front, like permission to enter or pets, so the technician doesn't have to call back.
 
 **5. Cut some apps, turn others into features.** Energy and Smart Buildings were decommissioned, and Staff stayed a separate tool for managers. Message Dispatcher and Document Generator became features of Customer Management, for emailing a whole building or single tenants and for producing contracts. User Service became the shared user backend for Customer Management, My Pages and the maintenance app. Dictionary Service now translates the websites.
-
-## What changed
-
-- 23 apps became 4 products. Two were decommissioned, one stayed separate for managers.
-- A property manager went from 8 apps per tenancy to 1.
-- Onboarding for new staff, until working alone, dropped from 8 days to 3.
-- Inspections took about 25% less time, thanks to redesigned questions, a progress bar, photos, comments and saved drafts.
-- Fewer support requests about the tools.
-- Around 200 staff in seven countries used the new tools daily.
-- Around 1,000 tenants joined My Pages in the first month, and the number kept growing.
-- Four dev teams of 5 to 6 people each owned one clear product.
-- The sales pitch went from 23 apps to 4.
 
 ## What I'd do differently
 

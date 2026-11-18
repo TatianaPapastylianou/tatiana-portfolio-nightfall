@@ -11,7 +11,7 @@ liveUrl: "https://akelius.education/"
 order: 3
 next:
   slug: "unified-app"
-  title: "Merging three apps into Akelius Education and rebuilding the classroom"
+  title: "Three learning apps, one product"
 hero:
   kind: "image"
   src: "/cases/math-final-lesson.jpg"

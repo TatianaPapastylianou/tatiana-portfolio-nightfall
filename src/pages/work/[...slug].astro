@@ -26,6 +26,11 @@ const drawings = d.drawings.map((dr) => ({
   ...dr,
   svg: fs.readFileSync(path.join(process.cwd(), 'public', dr.src), 'utf8'),
 }));
+
+// reading time: the prose body plus the visible reasoning layer, at 230 words a minute
+const countWords = (t: string) => (t.match(/[\p{L}\p{N}]+/gu) ?? []).length;
+const layerText = JSON.stringify([d.process ?? {}, d.spotlight ?? {}, d.exhibits.map((e) => e.caption), d.drawings.map((x) => x.caption)]);
+const readMin = Math.max(2, Math.round((countWords(entry.body ?? '') + countWords(layerText)) / 230));
 ---
 
 <Base title={`${d.number} · ${d.title} — Tatiana Papastylianou`} description={d.oneLiner}>
@@ -44,6 +49,10 @@ const drawings = d.drawings.map((dr) => ({
       </p>
       <p class="case-oneliner reveal">{d.oneLiner}</p>
       <p class="case-role reveal">{d.roleFull}</p>
+      <p class="case-meta reveal">
+        <span class="case-read">{readMin} min read</span>
+        <span class="case-nda">Product metrics are under NDA. Numbers here are scope, public facts or team estimates, and each one is labelled.</span>
+      </p>
       {
         d.liveUrl && (
           <p class="reveal case-cta-row">
@@ -155,7 +164,7 @@ const drawings = d.drawings.map((dr) => ({
   <!-- the readable placard: the deep read -->
   <div class="placard-wrap">
     <div class="container">
-      <p class="kicker placard-kicker reveal">The full account</p>
+      <p class="kicker placard-kicker reveal">The details</p>
       <article class="placard reveal">
         <Content />
       </article>
@@ -175,6 +184,25 @@ const drawings = d.drawings.map((dr) => ({
 <style>
   .case-hero {
     padding-block: var(--space-2xl) var(--space-l);
+  }
+  .case-meta {
+    margin-top: var(--space-s);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: var(--step--1);
+    color: var(--dim);
+  }
+  .case-read {
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.68rem;
+    color: var(--head);
+  }
+  .case-nda {
+    max-width: 52ch;
   }
   .case-hero-inner {
     max-width: 62ch;

@@ -38,9 +38,15 @@ const recommendations = [
       <p class="kicker reveal">The person behind the work</p>
       <h1 class="about-h1 reveal">A designer who reads<br /><em>the whole room</em></h1>
       <p class="about-sub reveal">
-        Senior product designer by craft, negotiator by training — happiest where rigorous
+        Senior product designer by craft, negotiator by training. Happiest where rigorous
         systems meet the messy politics of getting real work shipped.
       </p>
+      <ul class="about-facts reveal" aria-label="At a glance">
+        <li><span>5 years</span> at Akelius, promoted to Design Lead after 13 months</li>
+        <li><span>2 domains</span> real estate operations (B2B) and free learning apps (consumer)</li>
+        <li><span>7 markets</span> Sweden, Germany, UK, France, Canada, US, Cyprus</li>
+        <li><span>Led</span> a team of 3 designers, working with 4 dev teams</li>
+      </ul>
     </div>
     <span class="margin-note mn-1" aria-hidden="true">Padding. Margin. Container.</span>
   </header>
@@ -222,6 +228,27 @@ const recommendations = [
     font-size: var(--step-1);
     color: var(--on-dark);
     line-height: 1.5;
+  }
+  .about-facts {
+    list-style: none;
+    padding: 0;
+    margin-top: var(--space-l);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.9rem 1.5rem;
+    max-width: 60rem;
+    font-family: var(--sans);
+    font-size: var(--step--1);
+    line-height: 1.45;
+    color: var(--on-dark);
+    opacity: 0.85;
+  }
+  .about-facts span {
+    display: block;
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    color: var(--gold);
+    opacity: 1;
   }
 
   /* marginalia — sparing fragments from No Water */
