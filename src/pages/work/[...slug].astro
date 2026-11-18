@@ -34,6 +34,8 @@ const readMin = Math.max(2, Math.round((countWords(entry.body ?? '') + countWord
 ---
 
 <Base title={`${d.number} · ${d.title} — Tatiana Papastylianou`} description={d.oneLiner}>
+  <div class="read-progress" aria-hidden="true"><span></span></div>
+
   <!-- case hero -->
   <header class="case-hero">
     <div class="container case-hero-inner">
@@ -181,7 +183,34 @@ const readMin = Math.max(2, Math.round((countWords(entry.body ?? '') + countWord
   </nav>
 </Base>
 
+<script>
+  const bar = document.querySelector<HTMLElement>('.read-progress span');
+  if (bar) {
+    const update = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = `scaleX(${max > 0 ? Math.min(1, window.scrollY / max) : 0})`;
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+</script>
+
 <style>
+  .read-progress {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 2px;
+    z-index: 60;
+    pointer-events: none;
+  }
+  .read-progress span {
+    display: block;
+    height: 100%;
+    background: var(--gold-deep);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+  }
   .case-hero {
     padding-block: var(--space-2xl) var(--space-l);
   }

@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Frame from '../components/Frame.astro';
+import LiveComponents from '../components/LiveComponents.astro';
 
 const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
 
@@ -12,9 +13,9 @@ const bandTilts = [-0.8, 0.7, -0.5];
 // landing-page-only band overrides (leave the case pages on their own screens)
 const landingBand: Record<string, { src: string; alt: string; orient: 'portrait' | 'landscape' }[]> = {
   'real-estate': [
+    { src: '/cases/realestate-hero.svg', alt: '23 apps and services consolidated into 4 products', orient: 'landscape' },
     { src: '/cases/realestate-before.svg', alt: 'Before: 23 apps grouped by tenancy stage, with data copied between them', orient: 'landscape' },
     { src: '/cases/realestate-after.svg', alt: 'After: 4 products along one tenancy', orient: 'landscape' },
-    { src: '/cases/realestate-roles.svg', alt: 'Switch roles, not apps: one Customer Management for letting and property managers', orient: 'landscape' },
   ],
   'math-app': [
     { src: '/cases/math-home-1.jpg', alt: 'Akelius Education — numbers up to 1000, grade progress', orient: 'landscape' },
@@ -121,21 +122,13 @@ const proof = [
 
       <figure class="hero-frame reveal" data-parallax-scope>
         <div class="hero-frame-art" data-parallax="0.035">
-          <Frame
-            src="/cases/realestate-hero.svg"
-            alt="23 apps and services consolidated into 4 products"
-            orient="landscape"
-            size="lg"
-            tilt={-0.6}
-            href="/work/real-estate"
-            label="View case →"
-            view
-            eager
-          />
+          <Frame size="lg" tilt={-0.6} mat={false} live eager>
+            <LiveComponents />
+          </Frame>
         </div>
         <figcaption class="hero-plaque">
-          <span class="hero-plaque-t">23 real estate apps, rebuilt as 4 products</span>
-          <span class="hero-plaque-s">Case 01 · Akelius Technology</span>
+          <span class="hero-plaque-t">Try it: live components from the design system, not screenshots</span>
+          <span class="hero-plaque-s">Design system · Akelius Education</span>
         </figcaption>
       </figure>
     </div>
@@ -149,7 +142,7 @@ const proof = [
         {
           impact.map((i) => (
             <li class="impact-item reveal">
-              <span class="impact-stat">{i.stat}</span>
+              <span class="impact-stat" aria-label={i.stat.replace('→', 'to')} set:html={i.stat.replace('→', '<span class="arr" aria-hidden="true">→</span>')} />
               <span class="impact-label">{i.label}</span>
             </li>
           ))
@@ -567,6 +560,13 @@ const proof = [
     font-size: var(--step-4);
     line-height: 1;
     color: var(--head);
+  }
+  .impact-stat :global(.arr) {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 0.6em;
+    vertical-align: 0.32em;
+    margin-inline: 0.12em;
   }
   .impact-label {
     color: var(--dim);

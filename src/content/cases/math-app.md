@@ -46,33 +46,9 @@ exhibits:
     size: "lg"
     fit: "top"
     tilt: -0.8
-  - src: "/cases/math-journey-start.jpg"
-    alt: "An explored onboarding concept — a novice-to-expert skill slider with age, schooling and country"
-    kicker: "Placement, by test"
-    status: "explored"
-    caption: "A concept for a placement test that estimates a learner's level from a few inputs before they start. Explored, not developed."
-    orient: "landscape"
-    size: "lg"
-    fit: "top"
-    tilt: 1
-  - src: "/cases/math-journey-knowledge.jpg"
-    alt: "An explored progress concept with a per-topic knowledge panel and colour-coded strands"
-    kicker: "Progress, by topic"
-    status: "explored"
-    caption: "A richer progress view, with lessons per level colour-coded by topic. Designed, not built."
-    orient: "landscape"
-    size: "lg"
-    fit: "top"
-    tilt: -1
-  - src: "/cases/math-lesson-detail.jpg"
-    alt: "An explored lesson-page layout gathering every mode on one scaffold"
-    kicker: "The lesson page"
-    status: "explored"
-    caption: "One of several lesson page options: every mode on one layout, related lessons alongside. A study, not the approved layout."
-    orient: "landscape"
-    size: "lg"
-    fit: "top"
-    tilt: 0.8
+
+
+
   - src: "/cases/math-curriculum.jpg"
     alt: "An explored curriculum view — the whole syllabus as a legible vertical path per level"
     kicker: "Approved, then shelved"
@@ -135,9 +111,7 @@ process:
   questions:
     - "Who is this for now: a child, an adult, or both on the same screen? What has to read as serious for all of them?"
     - "When the founder, the board and the editors disagree, who is speaking for the learner? Where do I argue for the learner instead?"
-    - "If search is the main way to navigate, what happens when search fails? Does an older first-time learner find a lesson as fast as a child?"
     - "Which icons are decoration, and which are the only wayfinding left once illustration and colour are gone?"
-    - "What moves this debate faster: more abstract arguments, or each vision built as a real screen?"
   hypotheses:
     - h: "Showing each stakeholder's vision as a real screen will move the decision faster than arguing in the abstract."
       test: "Built named directions in Figma (founder, founder + board, math team, design team), each carried through to mobile."
@@ -167,12 +141,11 @@ process:
     gaveUp: "The editors' richer, more colourful direction, and most icons"
     why: "A learning tool for all ages has to read as serious first. The icons that stayed carry wayfinding, not decoration."
   measure:
-    - metric: "Search-first findability"
-      how: "Not measured yet. I'd run task tests across age groups: can an older first-time learner and a child both reach a lesson, and what happens when search returns nothing?"
-    - metric: "Lesson completion"
-      how: "I'd track how many started lessons are finished, per level, as the baseline for future changes."
-    - metric: "Return visits"
-      how: "I'd measure returning learners per week on a stable cohort before claiming any design change moved it."
+    - metric: "Live"
+      value: "3 platforms"
+      how: "Inside Akelius Education on web, Android and iOS since October 2026."
+    - metric: "What I'd add"
+      how: "Task tests across age groups for search-first navigation, and lesson completion per level as a baseline."
 ---
 
 ## Snapshot
@@ -188,71 +161,20 @@ process:
 
 ## How I came to it
 
-In November 2024 I was Design Lead at Akelius Technology. The Languages team needed help with a new maths app.
+In November 2024 I was Design Lead at Akelius Technology, and the Languages team needed help with a new maths app. One of my designers started it with my guidance. Within a few months the project was fully mine, and I moved to Akelius Languages in May 2025.
 
-One of my designers started the work, and I guided him when needed. Within a few months the project was fully under my direction.
+## Three people, three apps
 
-I moved to Akelius Languages officially in May 2025. I later built Akelius Vocational from scratch too.
+The founder wanted no long text, no colour, and search as the main way in. The board member wanted a clear structure and some visuals. The math editors wanted more colour and interactivity. Each could overrule the others, and halfway through, the audience widened from school children to any age.
 
-## The brief kept moving
-
-The goal: turn the maths material from the Akelius Math Learning Lab into a free app. It is meant for places where school has been interrupted, like refugee camps, and for schools with few teachers.
-
-Then the audience changed. It went from children in school to any age.
-
-That rewrote the visual rules. An app for everyone had to read as serious: no illustrations, no imagery, only a few functional colour accents.
-
-The same screen had to feel credible to an adult and clear to a child, on top of dense maths content.
-
-## Three people, three different apps
-
-Each of them could overrule the others:
-
-- **The founder** wanted no long text, no illustrations, no colour. Show progress. Every lesson free and reachable at any time. Search as the main way to navigate.
-- **The board member** wanted everything clear on screen, a legible structure, and some visual elements to hold attention.
-- **The math editors** wanted more assets, more colour, more interactivity.
-
-The founder pulled towards austerity, the editors towards richness, the board member in between. No option made all three happy, and I couldn't simply pick one.
-
-## What I did
-
-**Collected every round of feedback** and treated it as data, including when it contradicted the round before.
-
-**Built each vision as a real screen.** The Figma trail has named versions: founder, founder + board, math team, design team. Each one goes through to mobile.
-
-Real screens let people react to something concrete. The debate moved forward instead of in circles.
-
-**Kept the learner in the room.** The learner was the fourth stakeholder and never in the meeting. When taste and learner needs differed, I argued for the learner.
+I built each direction as a real screen, through to mobile. People reacted to something concrete, and the debate stopped going in circles. When taste and learner needs differed, I argued for the learner.
 
 ## Two calls, told honestly
 
-**Icons.** The push was to remove icons entirely. In an app without illustration and almost without colour, that would have left learners with no visual anchors in dense maths.
+**Icons.** The push was to remove them all. With no illustration and almost no colour, learners would have had nothing to hold on to. I kept the few that carry wayfinding. A partial win.
 
-I pushed back and kept the icons that carry wayfinding. Not all of them. A partial win.
-
-**The curriculum page.** The math editors pushed for a curriculum view. It was rejected twice, then approved on the third round, and I designed it.
-
-Then the editors decided it wasn't needed yet. It never reached production.
-
-My lesson: write down each decision and the reason when it is made. A reversal is then visible and traceable, not silent.
+**The curriculum page.** Rejected twice, approved on the third round, then shelved by the editors before production. Lesson: log each decision and its reason when it's made, so a reversal is visible.
 
 ## Outcome
 
-It shipped. Akelius Math is free and now runs inside Akelius Education on web, Android and iOS, together with Languages and Vocational.
-
-I have no measured outcome numbers, so I don't claim any.
-
-What this case shows: I can hold a founder, a board member, a content team and a learner in my head at once and still ship one coherent product.
-
-## What I'd do next
-
-- **Test search-first navigation** with learners of different ages, and design what happens when search finds nothing.
-- **Keep a light decision log,** so a shelved feature like the curriculum page can come back with its context.
-
-### Evidence
-
-- Dated Figma trail with founder, founder + board, math team and design team versions, each with mobile
-- Handoff section: variables, components and pages (home, lesson search, lesson page, progress)
-- Supporting work: concept flows, hierarchical search, curriculum view, math icons
-- Column operations lessons: rules on paper, the system board, and the shipped learner and editor views
-- Live product: Akelius Education on web, Android and iOS
+Akelius Math is free and runs inside Akelius Education on web, Android and iOS. I have no measured outcome numbers, so I don't claim any.

@@ -192,7 +192,7 @@ const { process: p } = Astro.props as { process: Process };
               <li class="th-m reveal">
                 <div class="th-m-head">
                   <span class="th-m-metric">{m.metric}</span>
-                  {m.value && <span class="th-m-value">{m.value}</span>}
+                  {m.value && <span class="th-m-value" aria-label={m.value.replace('→', 'to')} set:html={m.value.replace('→', '<span class="arr" aria-hidden="true">→</span>')} />}
                 </div>
                 <p class="th-m-how">{m.how}</p>
               </li>
@@ -558,6 +558,13 @@ const { process: p } = Astro.props as { process: Process };
     font-size: var(--step-1);
     color: var(--gold-deep);
     white-space: nowrap;
+  }
+  .th-m-value :global(.arr) {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 0.7em;
+    vertical-align: 0.2em;
+    margin-inline: 0.1em;
   }
   .th-m-how {
     font-size: var(--step--1);
