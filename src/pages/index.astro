@@ -89,33 +89,6 @@ const proof = [
   },
 ];
 
-// how I work: each habit points at the case that proves it
-const method = [
-  {
-    h: 'Map the whole system first',
-    p: 'Before redesigning any part, I map every app, user, job and data flow. That map turned a brief to merge 3 apps into 23 apps rebuilt as 4 products.',
-    href: '/work/real-estate',
-    link: 'Case 01',
-  },
-  {
-    h: 'Make each option real',
-    p: 'When a founder, a board and a content team want different products, I build each direction as a screen. People react to something concrete and decide faster.',
-    href: '/work/math-app',
-    link: 'Case 03',
-  },
-  {
-    h: 'Find the gaps before code',
-    p: 'I walk every path in a clickable prototype before handoff. A missing screen costs an afternoon there, and a sprint in engineering.',
-    href: '/work/unified-app',
-    link: 'Case 04',
-  },
-  {
-    h: 'Turn decisions into systems',
-    p: 'Tokens, components, Storybook and AI review skills, so the next screen starts consistent and the rules check themselves.',
-    href: '/work/design-system',
-    link: 'Case 02',
-  },
-];
 
 ---
 
@@ -131,8 +104,8 @@ const method = [
         <p class="kicker reveal">Senior Product Designer · Design Lead</p>
         <h1 class="hero-name reveal">Tatiana<br />Papastylianou</h1>
         <p class="hero-statement reveal">
-          I turn sprawling products into clear systems. Complex internal tools, multi-app
-          merges and the design systems that hold them together.
+          I take products that grew in every direction and make them make sense again. Usually
+          that means complex internal tools, merging apps, and the design system underneath.
         </p>
         <p class="hero-manifesto reveal">
           Five years at Akelius, across real estate tools for staff in seven countries and free
@@ -155,7 +128,7 @@ const method = [
           </Frame>
         </div>
         <figcaption class="hero-plaque">
-          <span class="hero-plaque-t">Try it: live components from the design system, not screenshots</span>
+          <span class="hero-plaque-t">Go on, click it. These are real components from the design system.</span>
           <span class="hero-plaque-s">Design system · Akelius Education</span>
         </figcaption>
       </figure>
@@ -176,6 +149,7 @@ const method = [
           ))
         }
       </ul>
+      <p class="impact-note reveal">Product metrics are under NDA, so these are scope numbers. Where a case uses an estimate, it says so.</p>
     </div>
   </section>
 
@@ -236,23 +210,33 @@ const method = [
     </div>
   </section>
 
-  <!-- how I work: four habits, each proven by a case -->
+  <!-- how I work: first person, uneven on purpose -->
   <section class="section method" aria-labelledby="method-title">
-    <div class="container">
-      <p class="kicker reveal">How I work</p>
-      <h2 id="method-title" class="method-title reveal">Four habits, each one shown in a case</h2>
-      <ol class="method-grid" data-stagger>
-        {
-          method.map((m, i) => (
-            <li class="method-item reveal">
-              <span class="method-n">{String(i + 1).padStart(2, '0')}</span>
-              <h3 class="method-h">{m.h}</h3>
-              <p class="method-p">{m.p}</p>
-              <a class="method-link" href={m.href}>{m.link} <span aria-hidden="true">→</span></a>
-            </li>
-          ))
-        }
-      </ol>
+    <div class="container method-grid">
+      <div class="method-head">
+        <p class="kicker reveal">How I work</p>
+        <h2 id="method-title" class="method-title reveal">Mostly, I draw the whole thing first.</h2>
+      </div>
+      <div class="method-body reveal">
+        <p>
+          Before I touch a screen, I map every app, who uses it and what data it owns. It's slow
+          and not very photogenic. It's also why a brief to merge three apps ended up as
+          <a href="/work/real-estate">23 apps rebuilt as 4 products</a>.
+        </p>
+        <p>
+          When people with the power to overrule each other disagree, I stop arguing and build
+          their versions. Seeing your own idea on a real screen settles more than a meeting does.
+          That's how <a href="/work/math-app">Akelius Math</a> got unstuck.
+        </p>
+        <p>
+          I'd rather find a missing screen in a prototype than in a sprint review.
+          <a href="/work/unified-app">Case 04</a> had two.
+        </p>
+        <p>
+          And once something works, I try to make it hard to break: tokens, Storybook, and lately
+          <a href="/work/ai-skills">AI skills that check screens against our own rules</a>.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -783,93 +767,52 @@ const method = [
     color: var(--body);
   }
   /* ---- how I work ---- */
+  .impact-note {
+    margin-top: var(--space-m);
+    font-family: var(--sans);
+    font-size: var(--step--1);
+    color: var(--dim);
+    max-width: 60ch;
+  }
+  .method-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--space-l);
+    align-items: start;
+  }
   .method-title {
     font-family: var(--serif);
     font-size: var(--step-3);
     line-height: 1.08;
     letter-spacing: -0.01em;
     color: var(--head);
-    margin: 0.4rem 0 var(--space-l);
-    max-width: 22ch;
+    margin: 0.4rem 0 0;
+    max-width: 14ch;
   }
-  .method-grid {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    border-top: 1px solid var(--line-strong);
-  }
-  .method-item {
-    padding: var(--space-m) var(--space-m) var(--space-m) 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-  .method-item + .method-item {
-    padding-left: var(--space-m);
-    border-left: 1px solid var(--line);
-  }
-  .method-n {
+  .method-body {
     font-family: var(--sans);
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
-    color: var(--dim);
-    font-variant-numeric: tabular-nums;
-  }
-  .method-h {
-    font-family: var(--serif);
-    font-size: var(--step-1);
-    line-height: 1.2;
-    color: var(--head);
-    margin: 0;
-  }
-  .method-p {
-    font-family: var(--sans);
-    font-size: var(--step--1);
-    line-height: 1.6;
+    font-size: var(--step-0);
+    line-height: 1.7;
     color: var(--body);
-    margin: 0;
-    flex: 1;
+    max-width: 58ch;
   }
-  .method-link {
-    font-family: var(--sans);
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+  .method-body p {
+    margin: 0 0 1.1em;
+  }
+  .method-body a {
     color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid var(--line-strong);
-    align-self: flex-start;
-    padding-bottom: 2px;
+    text-decoration: underline;
+    text-decoration-color: var(--line-strong);
+    text-underline-offset: 0.2em;
   }
-  .method-link:hover,
-  .method-link:focus-visible {
-    border-color: var(--ink);
+  .method-body a:hover,
+  .method-body a:focus-visible {
+    text-decoration-color: var(--ink);
   }
-  @media (max-width: 980px) {
-    .method-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-    .method-item:nth-child(3) {
-      padding-left: 0;
-      border-left: 0;
-    }
-    .method-item:nth-child(n + 3) {
-      border-top: 1px solid var(--line);
-    }
-  }
-  @media (max-width: 560px) {
+  @media (max-width: 860px) {
     .method-grid {
       grid-template-columns: 1fr;
-    }
-    .method-item,
-    .method-item + .method-item {
-      padding-left: 0;
-      border-left: 0;
-    }
-    .method-item + .method-item {
-      border-top: 1px solid var(--line);
+      gap: var(--space-m);
     }
   }
 

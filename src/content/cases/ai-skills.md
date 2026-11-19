@@ -53,11 +53,6 @@ process:
   lens: "Write the rules once, as tools people and AI both run, so the standard holds without me in the room."
   briefed: "House rules for writing, file names and the design system lived in documents. The Android app had drifted from the designs, and checking the whole app by hand would take one to two months."
   reframe: "A rule people have to remember gets skipped. A rule built into the tool they already use gets followed. So I wrote each rule set once, as a skill, and made the design review produce tickets developers can pick up without asking me."
-  questions:
-    - "Which rules get broken most, and by whom?"
-    - "What does a developer need in a ticket to fix it without a meeting?"
-    - "Does the fix belong in the screen, the code component or the library?"
-    - "How do the skills stay correct when a rule changes?"
   path:
     - tag: "Foundations"
       move: "Two rule skills"
@@ -79,14 +74,10 @@ process:
       move: "Four groups"
       why: "Design, content, Android and management. I update the skills when people report a rule should work differently"
       outcome: "shipped"
-  tradeoff:
-    chose: "Live captures at all three window sizes before any review is called done"
-    gaveUp: "Faster reviews built from code values and design files alone"
-    why: "Wrapping, clipping and real text heights only show on screen. A review without them misses the bugs people actually see."
   measure:
     - metric: "Full app review"
       value: "~2 wks"
-      how: "With the skill. By hand, I estimate one to two months. Estimate, not tracked."
+      how: "With the skill. By hand, I'd guess one to two months. I didn't time it."
     - metric: "Languages page"
       value: "26 → 9"
       how: "26 changes in 6 component groups became 9 tickets. 4 high, 4 medium, 1 low."

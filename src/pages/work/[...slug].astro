@@ -71,7 +71,6 @@ const readMin = Math.max(2, Math.round((countWords(entry.body ?? '') + countWord
       {!d.glance && <p class="case-role reveal">{d.roleFull}</p>}
       <p class="case-meta reveal">
         <span class="case-read">{readMin} min read</span>
-        <span class="case-nda">Product metrics are under NDA. Numbers here are scope, public facts or team estimates, and each one is labelled.</span>
       </p>
       {
         d.glance && (
@@ -174,7 +173,7 @@ const readMin = Math.max(2, Math.round((countWords(entry.body ?? '') + countWord
               <figcaption class="exhibit-note reveal">
                 {ex.status && (
                   <span class:list={['exhibit-status', `exhibit-status--${ex.status}`]}>
-                    {ex.status === 'shipped' ? 'Shipped — live' : 'Explored — not shipped'}
+                    {ex.status === 'shipped' ? 'Shipped' : 'Explored'}
                   </span>
                 )}
                 <p class="kicker">{ex.kicker}</p>
@@ -206,7 +205,7 @@ const readMin = Math.max(2, Math.round((countWords(entry.body ?? '') + countWord
   <!-- next case -->
   <nav class="next-case" aria-label="Next case">
     <a href={`/work/${d.next.slug}`} class="container next-inner" data-view data-label="View case →">
-      <span class="kicker">Next in the collection</span>
+      <span class="kicker">Next</span>
       <span class="next-title">{d.next.title}</span>
       <span class="next-arrow" aria-hidden="true">→</span>
     </a>

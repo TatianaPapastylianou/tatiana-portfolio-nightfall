@@ -53,7 +53,7 @@ drawings:
     kicker: "After · 4 products along one tenancy"
     caption: "One product per group of people doing the work. One shared user backend underneath, and the rest cut or turned into features."
   - src: "/cases/realestate-roles.svg"
-    kicker: "Switch roles, not apps"
+    kicker: "One app, two roles"
     caption: "Property and letting managers share Customer Management. Changing your role changes your tools, while navigation and data exist once."
   - src: "/cases/realestate-tenant-technician.svg"
     kicker: "Tenant to technician"
@@ -61,7 +61,7 @@ drawings:
 process:
   lens: "Information architecture at suite scale: map the whole system before redesigning any part of it."
   briefed: "Merge three apps."
-  reframe: "Apps followed departments, not the people doing the work. Several did overlapping jobs, each with its own copy of the same data. Merging three would have moved the problem around, so I proposed rebuilding the suite around the tenancy and around who does each job."
+  reframe: "The apps were built around departments, and the people doing the work had to stitch them together. Several did overlapping jobs, each with its own copy of the same data. Merging three would have moved the problem around, so I proposed rebuilding the suite around the tenancy and around who does each job."
   questions:
     - "Who uses each of the 23 apps and services?"
     - "Which job does each one do?"
@@ -70,7 +70,7 @@ process:
   path:
     - tag: "The brief"
       move: "Merge three apps"
-      why: "Would have shifted the overlap, not removed it"
+      why: "The overlap would just move somewhere else"
       outcome: "dropped"
     - tag: "The map"
       move: "All 23 apps mapped by user, job and data"
@@ -149,6 +149,6 @@ Letting, inspection, repairs and rent each lived in a separate app.
 
 I'd set a measured baseline before phase one.
 
-Our before numbers come from team estimates, not tracking. An inspection took around 45 to 60 minutes, a tenancy needed 8 apps, and onboarding took 8 days.
+Our before numbers are team estimates. Nobody tracked them. An inspection took around 45 to 60 minutes, a tenancy needed 8 apps, and onboarding took 8 days.
 
 Measured data would have made the gains easier to prove and the business case stronger. Adoption and feedback won people over inside the company. Data would have won them over faster.

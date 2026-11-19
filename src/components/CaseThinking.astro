@@ -40,8 +40,8 @@ const { process: p } = Astro.props as { process: Process };
 <section class="thinking" aria-labelledby="thinking-title">
   <div class="container">
     <header class="th-head reveal">
-      <p class="kicker">How I thought about it</p>
-      <h2 id="thinking-title" class="th-title">The reasoning, not just the result</h2>
+      <p class="kicker">The thinking</p>
+      <h2 id="thinking-title" class="th-title">How I got there</h2>
       {p.lens && <p class="th-lens">{p.lens}</p>}
     </header>
 
@@ -64,8 +64,8 @@ const { process: p } = Astro.props as { process: Process };
         <figure class="th-diagram reveal">
           <StakeholderMap />
           <figcaption class="th-diagram-cap">
-            Three authorities who could each overrule the others — and the learner, the
-            stakeholder not in the meeting, that I argued for.
+            Three people who could each overrule the others. And the learner, who was never in
+            the meeting, so I argued for them.
           </figcaption>
         </figure>
       )
@@ -75,8 +75,8 @@ const { process: p } = Astro.props as { process: Process };
         <figure class="th-diagram reveal">
           <DerriskFlow />
           <figcaption class="th-diagram-cap">
-            Every path walked in a clickable prototype first — so missing screens and broken
-            ordering were caught here, not in a sprint of engineering rework.
+            I walked every path in a clickable prototype first. That's where the missing screens
+            turned up, which was a lot cheaper than finding them in a sprint.
           </figcaption>
         </figure>
       )
@@ -134,7 +134,7 @@ const { process: p } = Astro.props as { process: Process };
     {
       p.path && p.path.length > 0 && (
         <div class="th-block reveal">
-          <p class="th-block-title">How the solution moved — A to shipped</p>
+          <p class="th-block-title">What happened, in order</p>
           <ol class="th-path" data-stagger>
             {p.path.map((s, i) => (
               <li class={`th-step reveal th-step--${s.outcome ?? 'explored'}`}>
@@ -186,7 +186,7 @@ const { process: p } = Astro.props as { process: Process };
     {
       p.measure && p.measure.length > 0 && (
         <div class="th-block reveal">
-          <p class="th-block-title">How I measure it — honestly</p>
+          <p class="th-block-title">What changed</p>
           <ul class="th-measure" data-stagger>
             {p.measure.map((m) => (
               <li class="th-m reveal">

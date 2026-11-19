@@ -60,13 +60,7 @@ exhibits:
 process:
   lens: "The components existed. The connection between design and code did not. The work was building that connection and getting two groups to use it."
   briefed: "A design system already existed: a Figma folder of finished-looking components for the Math and Languages apps."
-  reframe: "Designers and developers used different names, and sometimes different values, for the same token. Components were drawn, not built to be shared. The brand was also changing. The problem was not missing components. It was the missing shared language, and a team that had no reason yet to adopt one."
-  questions:
-    - "Where do design and code actually diverge: names, values, or the components themselves? Which one costs the most?"
-    - "Should token names suit designers or match what developers write?"
-    - "Which components really need to differ per platform, and which are duplicated out of habit?"
-    - "What would make using the system easier than not using it, without a mandate?"
-    - "The learner app and the internal authoring tool do different jobs. One library or two?"
+  reframe: "Designers and developers used different names, and sometimes different values, for the same token. Components were drawn to look right, and nobody had built them to be shared. The brand was also changing. The problem was not missing components. It was the missing shared language, and a team that had no reason yet to adopt one."
   hypotheses:
     - h: "If token names match code syntax, the same token will mean the same thing in Figma and in the repo."
       test: "Met each engineering group (web, Android, iOS) and aligned token names and syntax with what they write."
@@ -76,24 +70,7 @@ process:
       learned: "This is the part I am proudest of. It is the difference between a system as a picture and a system as infrastructure."
     - h: "Sharing components by default, and splitting only where a platform demands it, saves work without hidden duplication."
       test: "Web and Android share one set. Platform variants only where needed (top navigation, dialog). iOS gets its own set."
-      learned: "Where a component can't match 1:1 between Figma and code, I wrote down why. The difference is a known decision, not a bug."
-  path:
-    - tag: "Inherited"
-      move: "Components in Figma only"
-      why: "Looked finished, but design and code used different names"
-      outcome: "explored"
-    - tag: "Step 1"
-      move: "One token language across web, Android and iOS"
-      why: "A Figma token maps to the variable a developer writes"
-      outcome: "merged"
-    - tag: "Step 2"
-      move: "Storybook as the shared reference"
-      why: "Builds are reviewed against the library, component by component"
-      outcome: "merged"
-    - tag: "Now"
-      move: "Four libraries: core, iOS, Generator, icons"
-      why: "Maintained as the three apps merged into Akelius Education"
-      outcome: "shipped"
+      learned: "Where a component can't match 1:1 between Figma and code, I wrote down why. So the difference is a decision someone can look up, and nobody mistakes it for a bug."
   tradeoff:
     chose: "Token names that follow code syntax, the same on all three platforms"
     gaveUp: "Designer-friendly names, and exact 1:1 parity for a few flexible Figma components"
@@ -157,7 +134,7 @@ I didn't simplify the design or over-build the code. I documented where and why 
 
 ## Adoption, month by month
 
-The harder part was people, not pixels.
+The pixels were the easy part.
 
 Designers felt they had no time for the system. Developers felt alignment wasn't necessary because they could build roughly from a mockup.
 
@@ -181,7 +158,7 @@ There was no big argument that won it. I kept going, month by month, until using
 
 ## Outcome
 
-I didn't measure before and after, so there are no percentages here.
+I didn't track a before and after.
 
 What changed is visible:
 

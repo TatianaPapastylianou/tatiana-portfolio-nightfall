@@ -52,7 +52,7 @@ exhibits:
     alt: "An explored home-page concept — country, level, topic, activity and keyword filters over a clean field"
     kicker: "The front door"
     status: "explored"
-    caption: "An explored home page: one search-first surface with filters for country, level, topic and keyword. Prototyped to test the idea, not built."
+    caption: "An explored home page: one search-first surface with filters for country, level, topic and keyword. We prototyped it to test the idea and never built it."
     orient: "landscape"
     size: "lg"
     fit: "top"
@@ -113,23 +113,12 @@ spotlight:
       orient: "landscape"
       size: "lg"
       tilt: -1
-  outcome: "Live in Akelius Education on web, Android and iOS. The rules are built into the Generator, so editors make new column operations lessons from the same system. I have no usage numbers for these lessons, so I don't claim any."
+  outcome: "Live in Akelius Education on web, Android and iOS. The rules are built into the Generator, so editors make new column operations lessons from the same system."
 process:
   lens: "The question was never whose idea wins. It was how to turn three conflicting directions into one product a learner can use."
   map: "stakeholders"
   briefed: "Turn the Akelius Math Learning Lab's school maths material into a free app for children and teenagers, including learners in refugee camps and schools with few teachers."
   reframe: "Mid-project the audience widened from school children to any age. Three people who could each overrule the others wanted three different apps. The job was designing minimalism for a moving target, and keeping the learner in the room."
-  questions:
-    - "Who is this for now: a child, an adult, or both on the same screen? What has to read as serious for all of them?"
-    - "When the founder, the board and the editors disagree, who is speaking for the learner? Where do I argue for the learner instead?"
-    - "Which icons are decoration, and which are the only wayfinding left once illustration and colour are gone?"
-  hypotheses:
-    - h: "Showing each stakeholder's vision as a real screen will move the decision faster than arguing in the abstract."
-      test: "Built named directions in Figma (founder, founder + board, math team, design team), each carried through to mobile."
-      learned: "People reacted to real screens instead of circling. The shipped product came out of those versions."
-    - h: "A minimal, search-first interface with no illustration and almost no colour can feel credible for an adult and still work for a child."
-      test: "Stripped the interface to functional accents, then tested removing icons entirely."
-      learned: "It works, but only if a few method icons stay. Without any icons, dense maths had no visual anchors."
   path:
     - tag: "Direction A · Founder"
       move: "No long text, no colour, search-first"
@@ -150,7 +139,7 @@ process:
   tradeoff:
     chose: "Austerity, with a small set of wayfinding icons protected"
     gaveUp: "The editors' richer, more colourful direction, and most icons"
-    why: "A learning tool for all ages has to read as serious first. The icons that stayed carry wayfinding, not decoration."
+    why: "A learning tool for all ages has to look serious first. The icons that stayed are the ones learners use to find their way."
   measure:
     - metric: "Live"
       value: "3 platforms"
@@ -180,7 +169,7 @@ The founder wanted no long text, no colour, and search as the main way in. The b
 
 I built each direction as a real screen, through to mobile. People reacted to something concrete, and the debate stopped going in circles. When taste and learner needs differed, I argued for the learner.
 
-## Two calls, told honestly
+## Two arguments I had
 
 **Icons.** The push was to remove them all. With no illustration and almost no colour, learners would have had nothing to hold on to. I kept the few that carry wayfinding. A partial win.
 
@@ -188,4 +177,4 @@ I built each direction as a real screen, through to mobile. People reacted to so
 
 ## Outcome
 
-Akelius Math is free and runs inside Akelius Education on web, Android and iOS. I have no measured outcome numbers, so I don't claim any.
+Akelius Math is free and runs inside Akelius Education on web, Android and iOS. The curriculum page is still in the Figma file. The editors said they don't need it yet. Yet.

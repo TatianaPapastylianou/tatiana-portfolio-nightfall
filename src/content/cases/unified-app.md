@@ -67,52 +67,6 @@ exhibits:
     caption: "The same Classroom on a phone. Every screen was drawn for each device size, so developers didn't have to guess."
     size: "sm"
     tilt: 1.4
-process:
-  lens: "On a big merge, the cheapest place to be wrong is a clickable prototype."
-  map: "derisk"
-  briefed: "Merge the Languages, Math and Vocational apps into one product, and move the teacher Classroom from the mobile Languages app to the web."
-  reframe: "The old Classroom didn't need a new skin. Teachers didn't know what to do next. And on a merge this size, every screen nobody thought of becomes rework in engineering."
-  questions:
-    - "Is the Classroom broken in its visuals, or in the order teachers have to do things?"
-    - "Which screens will we only notice are missing when someone walks the whole flow?"
-    - "Where does navigation break if changes ship in the wrong order?"
-  hypotheses:
-    - h: "Walking every path in a full mobile and desktop prototype will surface missing screens while they are still cheap to fix."
-      test: "I built clickable prototypes for mobile and desktop and walked every flow before handoff."
-      learned: "Two screens were missing: QR code login and forgot password. Breadcrumbs also had to go out at the same time as back buttons came in, or navigation would break."
-    - h: "Designing the Classroom for web from scratch will make the teacher's next step obvious."
-      test: "I redesigned class creation, QR connection and reports, and tested the flow with teachers."
-      learned: "Teachers could follow the flow without help. The web version became the base for mobile, not the other way round."
-  path:
-    - tag: "Before"
-      move: "Three apps, and a mobile-only Classroom"
-      why: "Repeated patterns and a split learner journey"
-      outcome: "explored"
-    - tag: "Prototype"
-      move: "Mobile and desktop, every path walked"
-      why: "Missing screens and wrong ordering caught here"
-      outcome: "merged"
-    - tag: "Handoff"
-      move: "Every breakpoint, built from design system components"
-      why: "Nothing left for developers to guess"
-      outcome: "merged"
-    - tag: "Live"
-      move: "One app, Akelius Education"
-      why: "Since October 2026 on web, Android and iOS"
-      outcome: "shipped"
-  tradeoff:
-    chose: "Prototype everything before engineering starts"
-    gaveUp: "A faster start on code"
-    why: "A gap found after code costs a sprint. A gap found in a prototype costs an afternoon."
-  measure:
-    - metric: "Apps learners need"
-      value: "3 → 1"
-      how: "Languages, Math and Vocational in one app, live since October 2026."
-    - metric: "Gaps caught before code"
-      value: "2 screens"
-      how: "QR code login and forgot password, found in the prototype, not in production."
-    - metric: "What I'd add"
-      how: "Task success for teachers on class creation, QR connection and reports, tracked after each release."
 ---
 
 ## Snapshot
@@ -125,18 +79,26 @@ process:
 | **Platforms** | Web, Android and iOS |
 | **Status** | Live since October 2026 |
 
-## The problem
+## Three apps, one learner
 
-Learners needed a separate app for each course. Teachers had a Classroom tucked inside the Languages app, on mobile only, and they couldn't tell what to do next.
+A learner who wanted English and maths needed two apps. Vocational would have made it three. Each app had its own copy of the same patterns, drifting a little further apart with every release.
 
-## What I did
+The merge itself was mostly careful plumbing. One course switcher, one learning path, and Math offered right next to Languages instead of in another store listing.
 
-I designed the merged app and the new Classroom: creating classes, adding students, connecting them by QR code, and reading reports.
+## The Classroom was the real job
 
-Before handoff, I built full prototypes for mobile and desktop and walked every path. That is where we found two missing screens and a navigation change that had to ship in one step.
+Teachers had a Classroom tucked inside the Languages app, on phones only, and they couldn't tell what to do next.
 
-Every screen was drawn for each breakpoint, in auto layout, from design system components. Developers built from the file without guessing spacing or states. That only worked because the design system from case 02 already existed.
+So I didn't move it to the web as it was. I rebuilt the flow: create a class, connect students with a QR code, read their progress. Reports got a week, month and quarter view, a filter for students below the threshold, and a monthly PDF.
 
-## What I'd do differently
+## Walking every path first
 
-I'd agree on teacher task success as a metric before launch, so each release has a number to beat.
+Before handoff I built the whole thing as clickable prototypes, mobile and desktop, and walked every path like a slightly paranoid teacher.
+
+Two screens didn't exist: QR code login and forgot password. Nobody had drawn them because nobody had walked that far. I also found that breadcrumbs had to disappear in the same release that back buttons arrived, or navigation would break for a sprint.
+
+Every screen was then drawn for each breakpoint, from design system components. Developers built from the file without asking me for spacing. That only worked because the design system in case 02 was already there.
+
+## What I'd change
+
+I'd agree a number for teacher success before launch. For example, how many teachers create a class and connect a student on the first try. Then every release has something to beat.

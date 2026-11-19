@@ -71,7 +71,7 @@ const { spotlight: s } = Astro.props;
             <figcaption class="spot-note reveal">
               {ex.status && (
                 <span class:list={['spot-status', `spot-status--${ex.status}`]}>
-                  {ex.status === 'shipped' ? 'Shipped — live' : 'Explored — not shipped'}
+                  {ex.status === 'shipped' ? 'Shipped' : 'Explored'}
                 </span>
               )}
               <p class="kicker">{ex.kicker}</p>
