@@ -8,6 +8,17 @@ tag: "Design System · 2025–now"
 change: "A design system that existed on paper"
 impact: "became infrastructure: one language for design and code"
 order: 2
+glance:
+  - k: "Role"
+    v: "Owner of the design system"
+  - k: "Worked with"
+    v: "Web, Android and iOS engineering"
+  - k: "Time"
+    v: "May 2025 – now"
+  - k: "Scope"
+    v: "24 core component families · 4 libraries"
+  - k: "Platforms"
+    v: "Web · Android · iOS"
 next:
   slug: "math-app"
   title: "Akelius Math: three visions, one minimal product"

@@ -9,6 +9,17 @@ change: "Three conflicting directions"
 impact: "one minimal product, now live in Akelius Education"
 liveUrl: "https://akelius.education/"
 order: 3
+glance:
+  - k: "Role"
+    v: "Design lead on the project"
+  - k: "Stakeholders"
+    v: "Founder · board · math editors"
+  - k: "Time"
+    v: "Nov 2024 – Jan 2026"
+  - k: "Content"
+    v: "Akelius Math Learning Lab"
+  - k: "Platforms"
+    v: "Web · Android · iOS"
 next:
   slug: "unified-app"
   title: "Three learning apps, one product"

@@ -8,6 +8,17 @@ tag: "Product · live 2026"
 change: "Three apps and a Classroom teachers got lost in"
 impact: "one app on web, Android and iOS"
 order: 4
+glance:
+  - k: "Role"
+    v: "Senior Product Designer"
+  - k: "Review"
+    v: "Head of Design"
+  - k: "Live"
+    v: "Since October 2026"
+  - k: "Scope"
+    v: "3 apps → 1 · Classroom on web"
+  - k: "Platforms"
+    v: "Web · Android · iOS"
 next:
   slug: "ai-skills"
   title: "Turning design rules into AI skills the team uses"

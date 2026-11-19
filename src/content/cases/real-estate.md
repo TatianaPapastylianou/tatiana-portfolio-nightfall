@@ -8,6 +8,17 @@ tag: "Information architecture · 2023–2025"
 change: "23 apps, one tenancy split across them"
 impact: "4 products along one tenancy"
 order: 1
+glance:
+  - k: "Role"
+    v: "Design Lead and Product Owner"
+  - k: "Team"
+    v: "3 designers · 4 dev teams"
+  - k: "Time"
+    v: "2023–2025, in stages"
+  - k: "Scale"
+    v: "~200 staff daily · 7 countries"
+  - k: "Platforms"
+    v: "Web, mobile friendly"
 next:
   slug: "design-system"
   title: "Building the Akelius education design system"

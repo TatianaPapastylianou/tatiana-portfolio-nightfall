@@ -8,6 +8,17 @@ tag: "AI workflows · 2026"
 change: "Rules in documents, an app drifting from its designs"
 impact: "7 AI skills, used by four groups"
 order: 5
+glance:
+  - k: "Role"
+    v: "Author and maintainer"
+  - k: "Users"
+    v: "Design · content · Android devs · CEO"
+  - k: "Time"
+    v: "2026, ongoing"
+  - k: "Scope"
+    v: "7 skills"
+  - k: "Tools"
+    v: "Claude skills · Figma · adb · Jira"
 next:
   slug: "real-estate"
   title: "From 23 real estate apps to 4 products"

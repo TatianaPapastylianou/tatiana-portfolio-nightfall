@@ -27,6 +27,16 @@ const drawings = d.drawings.map((dr) => ({
   svg: fs.readFileSync(path.join(process.cwd(), 'public', dr.src), 'utf8'),
 }));
 
+// section index: only the layers this case actually has
+const sections = [
+  { id: 'overview', label: 'Overview' },
+  ...(d.drawings.length ? [{ id: 'maps', label: 'Maps and flows' }] : []),
+  ...(d.exhibits.length ? [{ id: 'screens', label: 'Screens' }] : []),
+  ...(d.spotlight ? [{ id: 'zoom', label: 'Zoom in' }] : []),
+  ...(d.process ? [{ id: 'reasoning', label: 'Reasoning' }] : []),
+  { id: 'details', label: 'Details' },
+];
+
 // reading time: the prose body plus the visible reasoning layer, at 230 words a minute
 const countWords = (t: string) => (t.match(/[\p{L}\p{N}]+/gu) ?? []).length;
 const layerText = JSON.stringify([d.process ?? {}, d.spotlight ?? {}, d.exhibits.map((e) => e.caption), d.drawings.map((x) => x.caption)]);
@@ -36,8 +46,16 @@ const readMin = Math.max(2, Math.round((countWords(entry.body ?? '') + countWord
 <Base title={`${d.number} · ${d.title} — Tatiana Papastylianou`} description={d.oneLiner}>
   <div class="read-progress" aria-hidden="true"><span></span></div>
 
+  <nav class="case-index" aria-label="Sections in this case">
+    <ol>
+      {sections.map((sec, i) => (
+        <li><a href={`#${sec.id}`} data-sec={sec.id}><span class="ci-n">{String(i + 1).padStart(2, '0')}</span>{sec.label}</a></li>
+      ))}
+    </ol>
+  </nav>
+
   <!-- case hero -->
-  <header class="case-hero">
+  <header class="case-hero" id="overview">
     <div class="container case-hero-inner">
       <p class="kicker reveal">
         <a href="/#work" class="back-link">Work</a>
@@ -50,11 +68,23 @@ const readMin = Math.max(2, Math.round((countWords(entry.body ?? '') + countWord
         <span class="change-to">{d.impact}</span>
       </p>
       <p class="case-oneliner reveal">{d.oneLiner}</p>
-      <p class="case-role reveal">{d.roleFull}</p>
+      {!d.glance && <p class="case-role reveal">{d.roleFull}</p>}
       <p class="case-meta reveal">
         <span class="case-read">{readMin} min read</span>
         <span class="case-nda">Product metrics are under NDA. Numbers here are scope, public facts or team estimates, and each one is labelled.</span>
       </p>
+      {
+        d.glance && (
+          <dl class="glance reveal">
+            {d.glance.map((g) => (
+              <div class="glance-item">
+                <dt>{g.k}</dt>
+                <dd>{g.v}</dd>
+              </div>
+            ))}
+          </dl>
+        )
+      }
       {
         d.liveUrl && (
           <p class="reveal case-cta-row">
@@ -96,7 +126,7 @@ const readMin = Math.max(2, Math.round((countWords(entry.body ?? '') + countWord
   <!-- full-width drawings: maps and flows -->
   {
     drawings.length > 0 && (
-      <section class="drawings" aria-label="Maps and flows">
+      <section class="drawings" id="maps" aria-label="Maps and flows">
         <div class="container">
           {drawings.map((dr) => (
             <figure class="drawing">
@@ -127,7 +157,7 @@ const readMin = Math.max(2, Math.round((countWords(entry.body ?? '') + countWord
   <!-- curated depth exhibits -->
   {
     d.exhibits.length > 0 && (
-      <section class="exhibits" aria-label="Selected exhibits">
+      <section class="exhibits" id="screens" aria-label="Selected exhibits">
         <div class="container">
           {d.exhibits.map((ex, i) => (
             <figure class:list={['exhibit-row', { alt: i % 2 === 1 }]}>
@@ -158,13 +188,13 @@ const readMin = Math.max(2, Math.round((countWords(entry.body ?? '') + countWord
   }
 
   <!-- optional zoom-in on one piece of craft -->
-  {d.spotlight && <CaseSpotlight spotlight={d.spotlight} />}
+  {d.spotlight && <div id="zoom" class="anchor"><CaseSpotlight spotlight={d.spotlight} /></div>}
 
   <!-- the visible reasoning layer -->
-  {d.process && <CaseThinking process={d.process} />}
+  {d.process && <div id="reasoning" class="anchor"><CaseThinking process={d.process} /></div>}
 
   <!-- the readable placard: the deep read -->
-  <div class="placard-wrap">
+  <div class="placard-wrap" id="details">
     <div class="container">
       <p class="kicker placard-kicker reveal">The details</p>
       <article class="placard reveal">
@@ -194,9 +224,142 @@ const readMin = Math.max(2, Math.round((countWords(entry.body ?? '') + countWord
     window.addEventListener('resize', update);
     update();
   }
+
+  // index clicks go through Lenis when smooth scroll is on, so the jump isn't swallowed
+  document.querySelectorAll<HTMLAnchorElement>('.case-index a').forEach((a) => {
+    a.addEventListener('click', (ev) => {
+      const target = document.getElementById(a.dataset.sec ?? '');
+      const lenis = (window as unknown as { __lenis?: { scrollTo: (t: number, o?: Record<string, unknown>) => void } }).__lenis;
+      if (!target) return;
+      ev.preventDefault();
+      // pixel targets: images above may finish loading mid-scroll and push the
+      // section down, so land once, then re-measure and correct until it holds
+      const y = () => Math.round(target.getBoundingClientRect().top + window.scrollY - 80);
+      const go = (immediate: boolean) =>
+        lenis ? lenis.scrollTo(y(), { immediate }) : window.scrollTo({ top: y(), behavior: immediate ? 'auto' : 'smooth' });
+      go(false);
+      let tries = 0;
+      const settle = () => {
+        if (Math.abs(target.getBoundingClientRect().top - 80) > 4) go(true);
+        if (++tries < 10) setTimeout(settle, 250);
+      };
+      setTimeout(settle, 1100);
+      history.replaceState(null, '', `#${target.id}`);
+    });
+  });
+
+  // highlight the section in view in the index
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('.case-index a')];
+  if (links.length && 'IntersectionObserver' in window) {
+    const byId = new Map(links.map((a) => [a.dataset.sec, a]));
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          links.forEach((a) => a.removeAttribute('aria-current'));
+          byId.get(e.target.id)?.setAttribute('aria-current', 'true');
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px' },
+    );
+    byId.forEach((_, id) => {
+      const el = id && document.getElementById(id);
+      if (el) io.observe(el);
+    });
+  }
 </script>
 
 <style>
+  html {
+    scroll-padding-top: 5rem;
+  }
+  .anchor {
+    display: block;
+  }
+  .glance {
+    margin: var(--space-m) 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .glance-item {
+    padding: 0.85rem 1rem 0.9rem 0;
+  }
+  .glance-item + .glance-item {
+    padding-left: 1rem;
+    border-left: 1px solid var(--line);
+  }
+  .glance dt {
+    font-family: var(--sans);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dim);
+  }
+  .glance dd {
+    margin: 0.3rem 0 0;
+    font-family: var(--sans);
+    font-size: var(--step--1);
+    line-height: 1.4;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  @media (max-width: 640px) {
+    .glance {
+      grid-template-columns: 1fr 1fr;
+    }
+    .glance-item,
+    .glance-item + .glance-item {
+      padding: 0.75rem 0.75rem 0.75rem 0;
+      border-left: 0;
+    }
+  }
+  .case-index {
+    display: none;
+  }
+  @media (min-width: 1360px) {
+    .case-index {
+      display: block;
+      position: fixed;
+      left: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 40;
+    }
+    .case-index ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.55rem;
+    }
+    .case-index a {
+      display: flex;
+      gap: 0.5rem;
+      align-items: baseline;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      color: var(--dim);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+    .case-index a:hover,
+    .case-index a:focus-visible,
+    .case-index a[aria-current='true'] {
+      opacity: 1;
+      color: var(--ink);
+    }
+    .case-index a[aria-current='true'] {
+      font-weight: 600;
+    }
+    .ci-n {
+      font-variant-numeric: tabular-nums;
+      font-size: 0.64rem;
+    }
+  }
   .read-progress {
     position: fixed;
     inset: 0 0 auto 0;
@@ -207,7 +370,7 @@ const readMin = Math.max(2, Math.round((countWords(entry.body ?? '') + countWord
   .read-progress span {
     display: block;
     height: 100%;
-    background: var(--gold-deep);
+    background: var(--ink);
     transform: scaleX(0);
     transform-origin: 0 50%;
   }

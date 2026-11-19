@@ -64,6 +64,8 @@ const cases = defineCollection({
     title: z.string(),
     role: z.string(), // short plaque label, e.g. "Design Lead"
     roleFull: z.string(), // full role line for the snapshot hero
+    // scannable facts under the case hero: role, team, time, scale, platforms
+    glance: z.array(z.object({ k: z.string(), v: z.string() })).optional(),
     oneLiner: z.string(),
     tag: z.string().optional(), // "Category · year" for the work index, e.g. "Design System · 2023"
     change: z.string(), // the "[change]" half of the case title discipline
