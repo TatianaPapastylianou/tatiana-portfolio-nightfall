@@ -53,7 +53,7 @@ const children = [
   bullet('Redesigned teacher mode for web. Tested flows, breakpoints and edge states in prototypes before build, which caught missing QR login and password reset screens before engineering started.'),
   bullet('Own the multi-library design system: 24 core component families shared by web and Android, a dedicated iOS set, a library for the Generator slide editor and an icon library. Brought Storybook to the team, so developers build by component and designers review builds against the Figma library.'),
   bullet('Designed the Akelius handwritten typeface in FontForge, with OpenType substitutions and math size families for MathJax, and extend it as new languages launch.'),
-  bullet('Built 7 AI skills that turn our design and writing rules into screen reviews, component specs and developer handoff. Designers, content and marketing staff, Android developers and the CEO of Akelius Languages use them.'),
+  bullet('Built 7 AI skills that turn our design and writing rules into screen reviews, component specs and developer handoff. Designers, content and marketing staff and Android developers use them.'),
   bullet('Coordinate illustrators, animators and voice producers for course content.'),
 
   ...job('Design Lead & Product Owner, Websites', 'Feb 2023 – May 2025', 'Akelius Technology, Cyprus · internal real estate software for property, letting and maintenance teams'),

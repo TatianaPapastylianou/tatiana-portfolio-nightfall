@@ -133,6 +133,12 @@ Letting, inspection, repairs and rent each lived in a separate app.
 - Each dev team owned several apps and couldn't tell what to fix first.
 - Selling 23 apps to other property companies looked complicated.
 
+## The room was sceptical
+
+When I showed the full map of 23 apps, people were sceptical. The worry was simple: we don't have the resources for a change this big.
+
+So I didn't ask for one big rebuild. I asked for one hub app first, built on the design system we already had, and then one merge at a time. Each step could ship on its own, and each one made the next easier to say yes to.
+
 ## Five decisions that shaped it
 
 **1. Hub first, merges later.** Phase one put Inspection, Inventory, Letting and Case management into one app with shared tasks, on the existing design system. Staff got one entry point fast and engineering risk stayed low. Then we merged apps one at a time.

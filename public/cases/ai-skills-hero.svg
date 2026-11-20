@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" width="1000" height="640" role="img" aria-labelledby="aih-t aih-d" class="re-drawing">
 <title id="aih-t">Seven AI skills on two foundations</title>
-<desc id="aih-d">Two foundation skills, clean-your-text for writing and akelius-design for the design system, sit at the bottom. Five working skills build on them: android-screen-review, dev-handoff-spec, component-spec, akelius-measurement-spec and akelius-renaming-files. At the top are the people who use them: the design team, content and marketing staff, Android developers and the CEO of Akelius Languages.</desc>
+<desc id="aih-d">Two foundation skills, clean-your-text for writing and akelius-design for the design system, sit at the bottom. Five working skills build on them: android-screen-review, dev-handoff-spec, component-spec, akelius-measurement-spec and akelius-renaming-files. At the top are the people who use them: the design team, content and marketing staff, and Android developers.</desc>
 <style>
 .aih-k{fill:var(--dim, #8c7e69);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:11px;font-weight:600;letter-spacing:.14em}
 .aih-kg{fill:var(--gold-deep, #7e611f);font-family:var(--sans, 'Helvetica Neue', Arial, sans-serif);font-size:11px;font-weight:600;letter-spacing:.14em}
@@ -25,16 +25,14 @@
 </defs>
 <text class="aih-num" x="60" y="250" text-anchor="start">7</text>
 <text class="aih-sd" x="66" y="284" text-anchor="start">AI skills, written once,</text>
-<text class="aih-sd" x="66" y="302" text-anchor="start">used by four groups</text>
+<text class="aih-sd" x="66" y="302" text-anchor="start">used by three groups</text>
 <text class="aih-k" x="250" y="70" text-anchor="start">WHO USES THEM</text>
-<rect class="aih-chip" x="250.0" y="86" width="167.0" height="38" rx="19"/>
-<text class="aih-sb" x="333.5" y="110" text-anchor="middle">Design team</text>
-<rect class="aih-chip" x="431.0" y="86" width="167.0" height="38" rx="19"/>
-<text class="aih-sb" x="514.5" y="110" text-anchor="middle">Content and marketing</text>
-<rect class="aih-chip" x="612.0" y="86" width="167.0" height="38" rx="19"/>
-<text class="aih-sb" x="695.5" y="110" text-anchor="middle">Android developers</text>
-<rect class="aih-chip" x="793.0" y="86" width="167.0" height="38" rx="19"/>
-<text class="aih-sb" x="876.5" y="110" text-anchor="middle">CEO, Akelius Languages</text>
+<rect class="aih-chip" x="250.0" y="86" width="227.3" height="38" rx="19"/>
+<text class="aih-sb" x="363.6" y="110" text-anchor="middle">Design team</text>
+<rect class="aih-chip" x="491.3" y="86" width="227.3" height="38" rx="19"/>
+<text class="aih-sb" x="605.0" y="110" text-anchor="middle">Content and marketing</text>
+<rect class="aih-chip" x="732.7" y="86" width="227.3" height="38" rx="19"/>
+<text class="aih-sb" x="846.4" y="110" text-anchor="middle">Android developers</text>
 <text class="aih-k" x="250" y="182" text-anchor="start">WORKING SKILLS</text>
 <rect class="aih-boxs" x="250.0" y="198" width="132.4" height="128" rx="6"/>
 <text class="aih-sb" x="262.0" y="226" text-anchor="start">android-screen-</text>

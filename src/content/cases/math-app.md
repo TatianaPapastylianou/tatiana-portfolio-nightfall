@@ -29,7 +29,7 @@ hero:
   alt: "The shipped Akelius Math lesson screen: minimal, search-first, with method icon cards"
   orient: "landscape"
   fit: "top"
-  caption: "Shipped. Minimal so it reads as serious for a child and an adult: search-first navigation, and the method icons kept for wayfinding."
+  caption: "Shipped. Minimal, so it reads as serious for a child and an adult, with search as the main way in."
 exhibits:
   - src: "/cases/math-final-progress.jpg"
     alt: "The shipped my-progress / learning-track screen"
@@ -44,7 +44,7 @@ exhibits:
     alt: "The mobile topic picker — the surviving wayfinding icons for each subject"
     kicker: "The decision I defended"
     status: "shipped"
-    caption: "The push was for zero icons. In an app with no illustration and almost no colour, I kept the few that carry wayfinding. A partial win, and the part the learner needed."
+    caption: "The mobile topic picker. Nothing on screen that the learner doesn't need to pick a topic."
     orient: "portrait"
     size: "md"
     tilt: -1.2
@@ -133,13 +133,13 @@ process:
       why: "Too busy for a serious tool for all ages"
       outcome: "dropped"
     - tag: "Shipped"
-      move: "Minimal, search-first, a few wayfinding icons kept"
+      move: "Minimal and search-first"
       why: "Serious for an adult, usable for a child. Now part of Akelius Education"
       outcome: "shipped"
   tradeoff:
-    chose: "Austerity, with a small set of wayfinding icons protected"
-    gaveUp: "The editors' richer, more colourful direction, and most icons"
-    why: "A learning tool for all ages has to look serious first. The icons that stayed are the ones learners use to find their way."
+    chose: "The founder's minimal direction: search first, no images or icons that don't have a job"
+    gaveUp: "The editors' richer, more colourful direction"
+    why: "The founder sets the direction. My job was to make minimal work for a child and an adult at the same time."
   measure:
     - metric: "Live"
       value: "3 platforms"
@@ -169,11 +169,15 @@ The founder wanted no long text, no colour, and search as the main way in. The b
 
 I built each direction as a real screen, through to mobile. People reacted to something concrete, and the debate stopped going in circles. When taste and learner needs differed, I argued for the learner.
 
-## Two arguments I had
+## The curriculum page
 
-**Icons.** The push was to remove them all. With no illustration and almost no colour, learners would have had nothing to hold on to. I kept the few that carry wayfinding. A partial win.
+The math editors wanted a curriculum page: a clear path through the course, topic by topic. I designed it.
 
-**The curriculum page.** Rejected twice, approved on the third round, then shelved by the editors before production. Lesson: log each decision and its reason when it's made, so a reversal is visible.
+The founder said no. He didn't want learners on a fixed path. In his view, people learn better when they feel free to go wherever they want, and a curriculum page tells them where to go.
+
+It went back twice more. On the third round it was approved, and then the editors decided they didn't need it yet. It never reached production.
+
+I'd do one thing differently: write down each decision and the reason the day it's made. When a decision flips three times, the reasons are the first thing to get lost.
 
 ## Outcome
 

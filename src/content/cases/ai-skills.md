@@ -3,7 +3,7 @@ number: "05"
 title: "Turning design rules into AI skills the team uses"
 role: "Senior Product Designer"
 roleFull: "Senior Product Designer, author and maintainer of the skills"
-oneLiner: "Akelius rules for writing, design and handoff lived in documents. I turned them into seven AI skills that the design team, content staff, Android developers and the CEO use."
+oneLiner: "Akelius rules for writing, design and handoff lived in documents. I turned them into seven AI skills that the design team, content staff and Android developers use."
 tag: "AI workflows · 2026"
 change: "Rules in documents, an app drifting from its designs"
 impact: "7 AI skills, used by four groups"
@@ -12,7 +12,7 @@ glance:
   - k: "Role"
     v: "Author and maintainer"
   - k: "Users"
-    v: "Design · content · Android devs · CEO"
+    v: "Design · content · Android devs"
   - k: "Time"
     v: "2026, ongoing"
   - k: "Scope"
@@ -25,7 +25,7 @@ next:
 hero:
   kind: "image"
   src: "/cases/ai-skills-hero.svg"
-  alt: "Seven AI skills: two foundations, clean-your-text and akelius-design, with five working skills on top, used by the design team, content and marketing, Android developers and the CEO of Akelius Languages"
+  alt: "Seven AI skills: two foundations, clean-your-text and akelius-design, with five working skills on top, used by the design team, content and marketing, and Android developers"
   orient: "landscape"
   caption: "Two skills hold the rules, five do the work on top of them. The Android review follows both, so its tickets use the house wording and the real tokens."
 exhibits:
@@ -86,7 +86,7 @@ process:
       how: "13 changes became 5 tickets. 3 high, 7 medium and 3 low changes."
     - metric: "Groups using the skills"
       value: "4"
-      how: "The design team, content and marketing staff, Android developers and the CEO of Akelius Languages."
+      how: "The design team, content and marketing staff, and Android developers."
     - metric: "Fixes live"
       value: "Yes"
       how: "Some review tickets are already fixed in the live Android app."
@@ -101,7 +101,7 @@ process:
 | **Company** | Akelius Languages, free learning apps for children and adults |
 | **Role** | Senior Product Designer, author and maintainer of the skills |
 | **Skills** | 7: clean-your-text, akelius-design, android-screen-review, dev-handoff-spec, component-spec, akelius-measurement-spec, akelius-renaming-files |
-| **Users** | Design team, content and marketing staff, Android developers, CEO of Akelius Languages |
+| **Users** | Design team, content and marketing staff, Android developers |
 | **Tools** | Claude skills, Figma, Android Studio and adb, Jira |
 | **Time** | 2026, ongoing |
 
@@ -162,6 +162,12 @@ Each ticket names the value to set, the value measured today and when it counts 
 
 None of these show up when you lay a screenshot over a design. They show up when you read the code, the library and the live app together.
 
+## The developers didn't want it
+
+At first, the Android developers were sceptical. Tickets written with an AI skill sounded like one more thing to check.
+
+It took a while of pushing before they used them for real. That was the point, though: every time they used a skill and told me what was off, I could fix it for how we actually work. Eventually they saw how much it helped.
+
 ## Keeping the skills right
 
 A skill is only useful while it's correct.
@@ -172,7 +178,7 @@ When colleagues report that something should work differently, I update the skil
 
 ## What changed
 
-- 7 skills, used by four groups: the design team, content and marketing staff, Android developers and the CEO of Akelius Languages.
+- 7 skills, used by three groups: the design team, content and marketing staff, and Android developers.
 - A full app review takes about two weeks instead of an estimated one to two months by hand.
 - The languages page review found 26 changes and turned them into 9 tickets.
 - The welcome page review found 13 changes and turned them into 5 tickets.

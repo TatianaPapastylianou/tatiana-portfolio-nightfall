@@ -99,6 +99,10 @@ Two screens didn't exist: QR code login and forgot password. Nobody had drawn th
 
 Every screen was then drawn for each breakpoint, from design system components. Developers built from the file without asking me for spacing. That only worked because the design system in case 02 was already there.
 
+## What changed for teachers
+
+Teachers could find their way around without asking anyone. Creating a class and adding students got faster. And the explanation of what to do, and how, was right where they needed it, so the process no longer depended on someone sitting next to them.
+
 ## What I'd change
 
 I'd agree a number for teacher success before launch. For example, how many teachers create a class and connect a student on the first try. Then every release has something to beat.
